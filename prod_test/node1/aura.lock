@@ -1,0 +1,9 @@
+{
+  "node_id": "617ac238cb5d89a5",
+  "name": "node1",
+  "pid": 78509,
+  "started": 1778249880.094832,
+  "field": "239.214.228.169:7692",
+  "channel": "prod",
+  "proto": "v0.4"
+}

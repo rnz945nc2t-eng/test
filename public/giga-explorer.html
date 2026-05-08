@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aethyr Global | GIGA Explorer</title>
+    <style>
+        :root {
+            --gold: #c9a84c;
+            --deep: #07070c;
+            --surface: #111118;
+            --text: #d8d2c4;
+            --text-dim: #7a7568;
+        }
+        body {
+            background-color: var(--deep);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #sidebar {
+            width: 300px;
+            background: var(--surface);
+            border-right: 1px solid rgba(201,168,76,0.2);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        #content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        .folder { color: var(--gold); cursor: pointer; margin: 5px 0; }
+        .file { color: var(--text-dim); cursor: pointer; margin: 3px 0; padding-left: 15px; }
+        .children { display: none; margin-left: 15px; }
+        .visible { display: block; }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h3>GIGA ARCHIVE</h3>
+        <div id="tree"></div>
+    </div>
+    <div id="content">
+        <div id="detail">Select a file from the archive...</div>
+    </div>
+    <script>
+        async function init() {
+            const res = await fetch('GIGA/folder-structure.json');
+            const data = await res.json();
+            document.getElementById('tree').appendChild(renderNode(data));
+        }
+        function renderNode(node) {
+            const div = document.createElement('div');
+            if (node.type === 'folder') {
+                const label = document.createElement('div');
+                label.className = 'folder';
+                label.textContent = '📁 ' + node.name;
+                div.appendChild(label);
+                const children = document.createElement('div');
+                children.className = 'children';
+                node.children.forEach(c => children.appendChild(renderNode(c)));
+                div.appendChild(children);
+                label.onclick = () => children.classList.toggle('visible');
+            } else {
+                const label = document.createElement('div');
+                label.className = 'file';
+                label.textContent = '📄 ' + node.name;
+                label.onclick = () => {
+                    const relPath = node.path.replace('public/', '');
+                    document.getElementById('detail').innerHTML = `
+                        <h2>${node.name}</h2>
+                        <p>Path: ${node.path}</p>
+                        <a href="${relPath}" target="_blank" style="color: var(--gold)">Open File</a>
+                    `;
+                };
+                div.appendChild(label);
+            }
+            return div;
+        }
+        init();
+    </script>
+</body>
+</html>

@@ -1,770 +1,137 @@
-<!DOCTYPE html>
-<html lang="sr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nacrt Pronalaska - Simbiotski Antikompjuter</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #2c3e50;
-            font-size: 24px;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 15px;
-        }
-        
-        .figure {
-            margin-bottom: 60px;
-            page-break-inside: avoid;
-        }
-        
-        .figure-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #34495e;
-        }
-        
-        .diagram {
-            border: 2px solid #000;
-            background: white;
-            position: relative;
-            margin-bottom: 10px;
-        }
-        
-        /* Slika 1 - Blok šema */
-        .block-diagram {
-            padding: 40px;
-            min-height: 600px;
-        }
-        
-        .block {
-            border: 2px solid #000;
-            background: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 12px;
-            position: absolute;
-            min-width: 120px;
-        }
-        
-        .block-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .block-number {
-            font-size: 10px;
-            color: #666;
-        }
-        
-        .arrow {
-            position: absolute;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .flow-label {
-            position: absolute;
-            font-size: 11px;
-            background: white;
-            padding: 2px 5px;
-            border: 1px solid #000;
-        }
-        
-        /* Slika 2 - Computational Harvester */
-        .harvester-diagram {
-            padding: 40px;
-            min-height: 500px;
-        }
-        
-        .magnetic-gate {
-            border: 2px solid #e74c3c;
-            background: #fef5e7;
-            padding: 10px;
-            position: absolute;
-            width: 80px;
-            height: 120px;
-            text-align: center;
-        }
-        
-        .electron-path {
-            position: absolute;
-            border-top: 3px dashed #3498db;
-        }
-        
-        /* Slika 3 - Timing diagram */
-        .timing-diagram {
-            padding: 40px;
-            min-height: 400px;
-            background: #fafafa;
-        }
-        
-        .timeline {
-            position: absolute;
-            left: 80px;
-            right: 40px;
-            height: 2px;
-            background: #000;
-        }
-        
-        .time-marker {
-            position: absolute;
-            width: 2px;
-            height: 20px;
-            background: #000;
-        }
-        
-        .time-label {
-            position: absolute;
-            font-size: 10px;
-            top: 25px;
-            transform: translateX(-50%);
-        }
-        
-        .event {
-            position: absolute;
-            border: 2px solid #2ecc71;
-            background: #e8f8f5;
-            padding: 8px;
-            font-size: 11px;
-            width: 180px;
-        }
-        
-        /* Slika 4 - Aerogel presek */
-        .aerogel-diagram {
-            padding: 40px;
-            min-height: 400px;
-        }
-        
-        .cross-section {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .porous-structure {
-            fill: none;
-            stroke: #95a5a6;
-            stroke-width: 1;
-        }
-        
-        .electrode {
-            fill: #f39c12;
-            stroke: #000;
-            stroke-width: 2;
-        }
-        
-        .dimension-line {
-            stroke: #000;
-            stroke-width: 1;
-            marker-end: url(#arrowhead);
-        }
-        
-        .dimension-text {
-            font-size: 11px;
-            fill: #000;
-        }
-        
-        /* Legenda */
-        .legend {
-            border: 1px solid #bdc3c7;
-            padding: 15px;
-            margin-top: 15px;
-            background: #ecf0f1;
-        }
-        
-        .legend-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 12px;
-        }
-        
-        .legend-item {
-            margin: 5px 0;
-            font-size: 11px;
-        }
-        
-        .legend-symbol {
-            display: inline-block;
-            width: 20px;
-            height: 10px;
-            margin-right: 5px;
-            vertical-align: middle;
-            border: 1px solid #000;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>NACRT PRONALASKA - SIMBIOTSKI ANTIKOMPJUTER</h1>
-        
-        <!-- SLIKA 1: Blok šema ACN -->
-        <div class="figure">
-            <div class="figure-title">Slika 1: Blok šema Modularnog Antikompjuterskog Čvora (ACN) sa označenim tokovima energije i materije</div>
-            <div class="diagram block-diagram">
-                
-                <!-- Ulaz - Električna energija -->
-                <div class="block" style="left: 20px; top: 20px; background: #e8f8f5;">
-                    <div class="block-label">ELEKTRIČNA ENERGIJA</div>
-                    <div class="block-number">(3) 5 MW</div>
-                </div>
-                
-                <!-- Laserski sistem -->
-                <div class="block" style="left: 20px; top: 120px; background: #fef5e7;">
-                    <div class="block-label">LASERSKI SISTEM</div>
-                    <div class="block-number">(2)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+<!DOCTYPE html><html lang="sr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Nacrt Pronalaska - Simbiotski Antikompjuter</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Arial',sans-serif;background:#f5f5f5;padding:20px;}.container{max-width:1400px;margin:0 auto;background:white;padding:30px;box-shadow:0 2px 10px rgba(0,0,0,0.1);}h1{text-align:center;margin-bottom:40px;color:#2c3e50;font-size:24px;border-bottom:3px solid #3498db;padding-bottom:15px;}.figure{margin-bottom:60px;page-break-inside:avoid;}.figure-title{font-weight:bold;margin-bottom:15px;font-size:16px;color:#34495e;}.diagram{border:2px solid #000;background:white;position:relative;margin-bottom:10px;}.block-diagram{padding:40px;min-height:600px;}.block{border:2px solid #000;background:white;padding:15px;text-align:center;font-size:12px;position:absolute;min-width:120px;}.block-label{font-weight:bold;margin-bottom:5px;}.block-number{font-size:10px;color:#666;}.arrow{position:absolute;font-size:24px;font-weight:bold;}.flow-label{position:absolute;font-size:11px;background:white;padding:2px 5px;border:1px solid #000;}.harvester-diagram{padding:40px;min-height:500px;}.magnetic-gate{border:2px solid #e74c3c;background:#fef5e7;padding:10px;position:absolute;width:80px;height:120px;text-align:center;}.electron-path{position:absolute;border-top:3px dashed #3498db;}.timing-diagram{padding:40px;min-height:400px;background:#fafafa;}.timeline{position:absolute;left:80px;right:40px;height:2px;background:#000;}.time-marker{position:absolute;width:2px;height:20px;background:#000;}.time-label{position:absolute;font-size:10px;top:25px;transform:translateX(-50%);}.event{position:absolute;border:2px solid #2ecc71;background:#e8f8f5;padding:8px;font-size:11px;width:180px;}.aerogel-diagram{padding:40px;min-height:400px;}.cross-section{position:absolute;left:50%;transform:translateX(-50%);}.porous-structure{fill:none;stroke:#95a5a6;stroke-width:1;}.electrode{fill:#f39c12;stroke:#000;stroke-width:2;}.dimension-line{stroke:#000;stroke-width:1;marker-end:url(#arrowhead);}.dimension-text{font-size:11px;fill:#000;}.legend{border:1px solid #bdc3c7;padding:15px;margin-top:15px;background:#ecf0f1;}.legend-title{font-weight:bold;margin-bottom:10px;font-size:12px;}.legend-item{margin:5px 0;font-size:11px;}.legend-symbol{display:inline-block;width:20px;height:10px;margin-right:5px;vertical-align:middle;border:1px solid #000;}</style></head><body><div class="container"><h1>NACRT PRONALASKA - SIMBIOTSKI ANTIKOMPJUTER</h1><div class="figure"><div class="figure-title">Slika 1: Blok šema Modularnog Antikompjuterskog Čvora (ACN) sa označenim tokovima energije i materije</div><div class="diagram block-diagram"><div class="block" style="left: 20px; top: 20px; background: #e8f8f5;"><div class="block-label">ELEKTRIČNA ENERGIJA</div><div class="block-number">(3) 5 MW</div></div><div class="block" style="left: 20px; top: 120px; background: #fef5e7;"><div class="block-label">LASERSKI SISTEM</div><div class="block-number">(2)</div><div style="font-size: 10px; margin-top: 5px;">
                         Petawatt-klasa<br>
                         100 J @ 10-1000 Hz<br>
                         30-50 fs puls
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 95px; top: 95px;">↓</div>
-                <div class="flow-label" style="left: 115px; top: 93px;">Optički puls (4)<br>1 MW</div>
-                
-                <!-- LWFA -->
-                <div class="block" style="left: 20px; top: 250px; background: #e8f6f3;">
-                    <div class="block-label">LASER-WAKEFIELD<br>AKCELERATOR</div>
-                    <div class="block-number">(5)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                    </div></div><div class="arrow" style="left: 95px; top: 95px;">↓</div><div class="flow-label" style="left: 115px; top: 93px;">Optički puls (4)<br>1 MW</div><div class="block" style="left: 20px; top: 250px; background: #e8f6f3;"><div class="block-label">LASER-WAKEFIELD<br>AKCELERATOR</div><div class="block-number">(5)</div><div style="font-size: 10px; margin-top: 5px;">
                         Plazma meta<br>
                         e⁻: 500 MeV - 2 GeV
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 95px; top: 225px;">↓</div>
-                
-                <!-- Bremsstrahlung -->
-                <div class="block" style="left: 250px; top: 250px; background: #fdecea;">
-                    <div class="block-label">BREMSSTRAHLUNG<br>KONVERTOR</div>
-                    <div class="block-number">(7)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                    </div></div><div class="arrow" style="left: 95px; top: 225px;">↓</div><div class="block" style="left: 250px; top: 250px; background: #fdecea;"><div class="block-label">BREMSSTRAHLUNG<br>KONVERTOR</div><div class="block-number">(7)</div><div style="font-size: 10px; margin-top: 5px;">
                         Ta/W meta
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 180px; top: 285px;">→</div>
-                <div class="flow-label" style="left: 185px; top: 265px;">e⁻ snop (6)</div>
-                
-                <!-- Gamma zraci -->
-                <div class="arrow" style="left: 385px; top: 285px;">→</div>
-                <div class="flow-label" style="left: 390px; top: 265px;">γ-zraci (8)<br>10-100 MeV</div>
-                
-                <!-- Produkcija parova -->
-                <div class="block" style="left: 480px; top: 250px; background: #ebf5fb;">
-                    <div class="block-label">AEROGEL META</div>
-                    <div class="block-number">(9)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                    </div></div><div class="arrow" style="left: 180px; top: 285px;">→</div><div class="flow-label" style="left: 185px; top: 265px;">e⁻ snop (6)</div><div class="arrow" style="left: 385px; top: 285px;">→</div><div class="flow-label" style="left: 390px; top: 265px;">γ-zraci (8)<br>10-100 MeV</div><div class="block" style="left: 480px; top: 250px; background: #ebf5fb;"><div class="block-label">AEROGEL META</div><div class="block-number">(9)</div><div style="font-size: 10px; margin-top: 5px;">
                         W aerogel<br>
                         85-95% poroznost<br>
                         γ → e⁺ + e⁻
-                    </div>
-                </div>
-                
-                <!-- Magnetni separator -->
-                <div class="block" style="left: 480px; top: 380px; background: #f4ecf7;">
-                    <div class="block-label">MAGNETNI SEPARATOR</div>
-                    <div class="block-number">(10)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                    </div></div><div class="block" style="left: 480px; top: 380px; background: #f4ecf7;"><div class="block-label">MAGNETNI SEPARATOR</div><div class="block-number">(10)</div><div style="font-size: 10px; margin-top: 5px;">
                         Dipolarno polje<br>
                         B = 1-2 T
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 540px; top: 355px;">↓</div>
-                
-                <!-- PATH A - Pozitroni -->
-                <div class="arrow" style="left: 420px; top: 425px; color: #e74c3c;">←</div>
-                <div class="flow-label" style="left: 375px; top: 405px; border-color: #e74c3c; color: #e74c3c;">
+                    </div></div><div class="arrow" style="left: 540px; top: 355px;">↓</div><div class="arrow" style="left: 420px; top: 425px; color: #e74c3c;">←</div><div class="flow-label" style="left: 375px; top: 405px; border-color: #e74c3c; color: #e74c3c;">
                     PATH A (11)<br>e⁺ pozitron
-                </div>
-                
-                <div class="block" style="left: 220px; top: 400px; background: #fadbd8; border-color: #e74c3c;">
-                    <div class="block-label">PENNING ZAMKE</div>
-                    <div class="block-number">(12)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                </div><div class="block" style="left: 220px; top: 400px; background: #fadbd8; border-color: #e74c3c;"><div class="block-label">PENNING ZAMKE</div><div class="block-number">(12)</div><div style="font-size: 10px; margin-top: 5px;">
                         Skladištenje<br>
                         10¹²-10¹⁸ e⁺<br>
                         Kriogeno hlađenje
-                    </div>
-                </div>
-                
-                <div class="flow-label" style="left: 220px; top: 510px; background: #f9ebea; font-weight: bold;">
+                    </div></div><div class="flow-label" style="left: 220px; top: 510px; background: #f9ebea; font-weight: bold;">
                     ANTIMATERIJA<br>
                     5 μg/god<br>
                     $16M vrednost
-                </div>
-                
-                <!-- PATH B - Elektroni -->
-                <div class="arrow" style="left: 660px; top: 425px; color: #3498db;">→</div>
-                <div class="flow-label" style="left: 670px; top: 405px; border-color: #3498db; color: #3498db;">
+                </div><div class="arrow" style="left: 660px; top: 425px; color: #3498db;">→</div><div class="flow-label" style="left: 670px; top: 405px; border-color: #3498db; color: #3498db;">
                     PATH B (13)<br>e⁻ elektron<br>v = 0.99c
-                </div>
-                
-                <!-- INOVACIJA - Computational Harvester -->
-                <div class="block" style="left: 780px; top: 200px; background: #d5f4e6; border: 3px solid #27ae60; width: 180px;">
-                    <div class="block-label" style="color: #27ae60;">⭐ RAČUNARSKI ŽETELAC</div>
-                    <div class="block-number">(14) - INOVACIJA</div>
-                    <div style="font-size: 10px; margin-top: 8px;">
+                </div><div class="block" style="left: 780px; top: 200px; background: #d5f4e6; border: 3px solid #27ae60; width: 180px;"><div class="block-label" style="color: #27ae60;">⭐ RAČUNARSKI ŽETELAC</div><div class="block-number">(14) - INOVACIJA</div><div style="font-size: 10px; margin-top: 8px;">
                         • M²LA rešetke (15)<br>
                         • FPGA kontroler (16)<br>
                         • Readout (17)<br>
                         • Gamma takt (18)
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 870px; top: 350px; color: #3498db;">↓</div>
-                
-                <div class="flow-label" style="left: 780px; top: 375px; background: #eafaf1; font-weight: bold; border-color: #27ae60;">
+                    </div></div><div class="arrow" style="left: 870px; top: 350px; color: #3498db;">↓</div><div class="flow-label" style="left: 780px; top: 375px; background: #eafaf1; font-weight: bold; border-color: #27ae60;">
                     RAČUNANJE<br>
                     170 TeraOps<br>
                     0 J marginal cost
-                </div>
-                
-                <!-- Beam dump -->
-                <div class="block" style="left: 780px; top: 450px; background: #d5d8dc;">
-                    <div class="block-label">BEAM DUMP</div>
-                    <div class="block-number">(25)</div>
-                    <div style="font-size: 10px; margin-top: 5px;">
+                </div><div class="block" style="left: 780px; top: 450px; background: #d5d8dc;"><div class="block-label">BEAM DUMP</div><div class="block-number">(25)</div><div style="font-size: 10px; margin-top: 5px;">
                         Apsorpcija<br>
                         2.5 MW toplota
-                    </div>
-                </div>
-                
-                <!-- Refleksna petlja -->
-                <div style="position: absolute; left: 950px; top: 280px; width: 150px; border: 2px dashed #f39c12; padding: 10px; background: #fef9e7;">
-                    <div style="font-size: 11px; font-weight: bold; color: #d68910;">REFLEKSNA PETLJA (26)</div>
-                    <div style="font-size: 9px; margin-top: 5px;">
+                    </div></div><div style="position: absolute; left: 950px; top: 280px; width: 150px; border: 2px dashed #f39c12; padding: 10px; background: #fef9e7;"><div style="font-size: 11px; font-weight: bold; color: #d68910;">REFLEKSNA PETLJA (26)</div><div style="font-size: 9px; margin-top: 5px;">
                         Analiza → Optimizacija → Feedback
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 950px; top: 240px; color: #f39c12; transform: rotate(180deg);">→</div>
-                <div class="arrow" style="left: 1020px; top: 160px; color: #f39c12; transform: rotate(270deg);">→</div>
-            </div>
-            
-            <div class="legend">
-                <div class="legend-title">Legenda pozivnih oznaka:</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #e8f8f5;"></span>(2) Laserski sistem</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #ebf5fb;"></span>(9) Aerogel meta</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #f4ecf7;"></span>(10) Magnetni separator</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #d5f4e6; border: 2px solid #27ae60;"></span>(14) <strong>Računarski žetelac - INOVACIJA</strong></div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #fadbd8; border-color: #e74c3c;"></span>(12) Penning zamke</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #d5d8dc;"></span>(25) Beam dump</div>
-            </div>
-        </div>
-        
-        <!-- SLIKA 2: Computational Harvester detalj -->
-        <div class="figure">
-            <div class="figure-title">Slika 2: Detalj "Računarskog žeteoca" (Computational Harvester) koji se nalazi između mete i apsorbera zračenja</div>
-            <div class="diagram harvester-diagram">
-                
-                <!-- Ulazni snop -->
-                <div style="position: absolute; left: 20px; top: 200px; font-size: 12px; font-weight: bold;">
+                    </div></div><div class="arrow" style="left: 950px; top: 240px; color: #f39c12; transform: rotate(180deg);">→</div><div class="arrow" style="left: 1020px; top: 160px; color: #f39c12; transform: rotate(270deg);">→</div></div><div class="legend"><div class="legend-title">Legenda pozivnih oznaka:</div><div class="legend-item"><span class="legend-symbol" style="background: #e8f8f5;"></span>(2) Laserski sistem</div><div class="legend-item"><span class="legend-symbol" style="background: #ebf5fb;"></span>(9) Aerogel meta</div><div class="legend-item"><span class="legend-symbol" style="background: #f4ecf7;"></span>(10) Magnetni separator</div><div class="legend-item"><span class="legend-symbol" style="background: #d5f4e6; border: 2px solid #27ae60;"></span>(14) <strong>Računarski žetelac - INOVACIJA</strong></div><div class="legend-item"><span class="legend-symbol" style="background: #fadbd8; border-color: #e74c3c;"></span>(12) Penning zamke</div><div class="legend-item"><span class="legend-symbol" style="background: #d5d8dc;"></span>(25) Beam dump</div></div></div><div class="figure"><div class="figure-title">Slika 2: Detalj "Računarskog žeteoca" (Computational Harvester) koji se nalazi između mete i apsorbera zračenja</div><div class="diagram harvester-diagram"><div style="position: absolute; left: 20px; top: 200px; font-size: 12px; font-weight: bold;">
                     ULAZ: Relativistički e⁻<br>
                     v = 0.99c<br>
                     1.7×10¹⁴ /s
-                </div>
-                
-                <div class="electron-path" style="left: 150px; top: 220px; width: 80px;"></div>
-                <div style="position: absolute; left: 170px; top: 200px; font-size: 10px; color: #3498db;">
+                </div><div class="electron-path" style="left: 150px; top: 220px; width: 80px;"></div><div style="position: absolute; left: 170px; top: 200px; font-size: 10px; color: #3498db;">
                     Elektronski snop
-                </div>
-                
-                <!-- Logički gate 1 -->
-                <div class="magnetic-gate" style="left: 250px; top: 160px;">
-                    <div style="font-size: 10px; font-weight: bold;">GATE 1</div>
-                    <div style="font-size: 9px; margin-top: 5px;">(19, 21a)</div>
-                    <div style="font-size: 8px; margin-top: 8px;">
+                </div><div class="magnetic-gate" style="left: 250px; top: 160px;"><div style="font-size: 10px; font-weight: bold;">GATE 1</div><div style="font-size: 9px; margin-top: 5px;">(19, 21a)</div><div style="font-size: 8px; margin-top: 8px;">
                         Elektromagnet<br>
                         B_ctrl(t)
-                    </div>
-                    <div style="position: absolute; bottom: 5px; left: 5px; right: 5px; height: 20px; background: #e74c3c; font-size: 8px; color: white; line-height: 20px;">
+                    </div><div style="position: absolute; bottom: 5px; left: 5px; right: 5px; height: 20px; background: #e74c3c; font-size: 8px; color: white; line-height: 20px;">
                         N ⟷ S
-                    </div>
-                </div>
-                
-                <div class="electron-path" style="left: 330px; top: 220px; width: 40px;"></div>
-                
-                <!-- Logički gate 2 -->
-                <div class="magnetic-gate" style="left: 390px; top: 160px;">
-                    <div style="font-size: 10px; font-weight: bold;">GATE 2</div>
-                    <div style="font-size: 9px; margin-top: 5px;">(19, 21b)</div>
-                    <div style="font-size: 8px; margin-top: 8px;">
+                    </div></div><div class="electron-path" style="left: 330px; top: 220px; width: 40px;"></div><div class="magnetic-gate" style="left: 390px; top: 160px;"><div style="font-size: 10px; font-weight: bold;">GATE 2</div><div style="font-size: 9px; margin-top: 5px;">(19, 21b)</div><div style="font-size: 8px; margin-top: 8px;">
                         Elektromagnet<br>
                         B_ctrl(t)
-                    </div>
-                    <div style="position: absolute; bottom: 5px; left: 5px; right: 5px; height: 20px; background: #3498db; font-size: 8px; color: white; line-height: 20px;">
+                    </div><div style="position: absolute; bottom: 5px; left: 5px; right: 5px; height: 20px; background: #3498db; font-size: 8px; color: white; line-height: 20px;">
                         N ⟷ S
-                    </div>
-                </div>
-                
-                <div class="electron-path" style="left: 470px; top: 220px; width: 40px;"></div>
-                
-                <!-- Logički gate 3 -->
-                <div class="magnetic-gate" style="left: 530px; top: 160px;">
-                    <div style="font-size: 10px; font-weight: bold;">GATE 3</div>
-                    <div style="font-size: 9px; margin-top: 5px;">(19, 21c)</div>
-                    <div style="font-size: 8px; margin-top: 8px;">
+                    </div></div><div class="electron-path" style="left: 470px; top: 220px; width: 40px;"></div><div class="magnetic-gate" style="left: 530px; top: 160px;"><div style="font-size: 10px; font-weight: bold;">GATE 3</div><div style="font-size: 9px; margin-top: 5px;">(19, 21c)</div><div style="font-size: 8px; margin-top: 8px;">
                         Elektromagnet<br>
                         B_ctrl(t)
-                    </div>
-                    <div style="position: absolute; bottom: 5px; left: 5px; right: 5px; height: 20px; background: #27ae60; font-size: 8px; color: white; line-height: 20px;">
+                    </div><div style="position: absolute; bottom: 5px; left: 5px; right: 5px; height: 20px; background: #27ae60; font-size: 8px; color: white; line-height: 20px;">
                         N ⟷ S
-                    </div>
-                </div>
-                
-                <!-- Defleksija primera -->
-                <div style="position: absolute; left: 370px; top: 240px; width: 2px; height: 40px; background: #3498db; opacity: 0.5;"></div>
-                <div style="position: absolute; left: 372px; top: 260px; font-size: 9px; color: #3498db;">
+                    </div></div><div style="position: absolute; left: 370px; top: 240px; width: 2px; height: 40px; background: #3498db; opacity: 0.5;"></div><div style="position: absolute; left: 372px; top: 260px; font-size: 9px; color: #3498db;">
                     Defleksija ↓
-                </div>
-                
-                <div class="electron-path" style="left: 610px; top: 220px; width: 60px;"></div>
-                
-                <!-- Readout detektor -->
-                <div style="position: absolute; left: 690px; top: 180px; border: 2px solid #8e44ad; background: #f4ecf7; padding: 15px; width: 120px;">
-                    <div style="font-size: 11px; font-weight: bold;">READOUT</div>
-                    <div style="font-size: 9px;">(17)</div>
-                    <div style="font-size: 8px; margin-top: 5px;">
+                </div><div class="electron-path" style="left: 610px; top: 220px; width: 60px;"></div><div style="position: absolute; left: 690px; top: 180px; border: 2px solid #8e44ad; background: #f4ecf7; padding: 15px; width: 120px;"><div style="font-size: 11px; font-weight: bold;">READOUT</div><div style="font-size: 9px;">(17)</div><div style="font-size: 8px; margin-top: 5px;">
                         Očitavanje<br>
                         pozicije e⁻<br>
                         → Logički izlaz
-                    </div>
-                </div>
-                
-                <div class="arrow" style="left: 755px; top: 260px;">↓</div>
-                
-                <!-- Ka beam dump -->
-                <div style="position: absolute; left: 720px; top: 280px; font-size: 11px; font-weight: bold;">
+                    </div></div><div class="arrow" style="left: 755px; top: 260px;">↓</div><div style="position: absolute; left: 720px; top: 280px; font-size: 11px; font-weight: bold;">
                     ↓ Ka beam dump (25)
-                </div>
-                
-                <!-- FPGA kontroler -->
-                <div style="position: absolute; left: 250px; top: 20px; border: 3px solid #2c3e50; background: #ecf0f1; padding: 15px; width: 400px;">
-                    <div style="font-size: 12px; font-weight: bold;">FPGA KONTROLER (16)</div>
-                    <div style="font-size: 9px; margin-top: 8px;">
+                </div><div style="position: absolute; left: 250px; top: 20px; border: 3px solid #2c3e50; background: #ecf0f1; padding: 15px; width: 400px;"><div style="font-size: 12px; font-weight: bold;">FPGA KONTROLER (16)</div><div style="font-size: 9px; margin-top: 8px;">
                         • Program učitavanje (bitstream)<br>
                         • Generisanje B_ctrl(t) za sve gate-ove<br>
                         • 12-bit DAC → 4096 nivoa<br>
                         • Timing rezolucija: 1 μs<br>
                         • Adaptivna korekcija
-                    </div>
-                </div>
-                
-                <!-- Kontrolne linije -->
-                <div style="position: absolute; left: 290px; top: 115px; width: 2px; height: 45px; background: #2c3e50;"></div>
-                <div style="position: absolute; left: 430px; top: 115px; width: 2px; height: 45px; background: #2c3e50;"></div>
-                <div style="position: absolute; left: 570px; top: 115px; width: 2px; height: 45px; background: #2c3e50;"></div>
-                
-                <div style="position: absolute; left: 275px; top: 95px; font-size: 8px;">B₁_ctrl</div>
-                <div style="position: absolute; left: 415px; top: 95px; font-size: 8px;">B₂_ctrl</div>
-                <div style="position: absolute; left: 555px; top: 95px; font-size: 8px;">B₃_ctrl</div>
-                
-                <!-- Gamma takt -->
-                <div style="position: absolute; left: 20px; top: 350px; border: 2px solid #f39c12; background: #fef9e7; padding: 12px; width: 250px;">
-                    <div style="font-size: 11px; font-weight: bold; color: #d68910;">GAMMA TAKT (18)</div>
-                    <div style="font-size: 9px; margin-top: 5px;">
+                    </div></div><div style="position: absolute; left: 290px; top: 115px; width: 2px; height: 45px; background: #2c3e50;"></div><div style="position: absolute; left: 430px; top: 115px; width: 2px; height: 45px; background: #2c3e50;"></div><div style="position: absolute; left: 570px; top: 115px; width: 2px; height: 45px; background: #2c3e50;"></div><div style="position: absolute; left: 275px; top: 95px; font-size: 8px;">B₁_ctrl</div><div style="position: absolute; left: 415px; top: 95px; font-size: 8px;">B₂_ctrl</div><div style="position: absolute; left: 555px; top: 95px; font-size: 8px;">B₃_ctrl</div><div style="position: absolute; left: 20px; top: 350px; border: 2px solid #f39c12; background: #fef9e7; padding: 12px; width: 250px;"><div style="font-size: 11px; font-weight: bold; color: #d68910;">GAMMA TAKT (18)</div><div style="font-size: 9px; margin-top: 5px;">
                         Nekonvertovani γ-fotoni<br>
                         Brzina: c (3×10⁸ m/s)<br>
                         Jitter: <1 fs<br>
                         → Univerzalni clock signal
-                    </div>
-                </div>
-                
-                <div style="position: absolute; left: 275px; top: 380px; font-size: 9px; color: #f39c12;">
+                    </div></div><div style="position: absolute; left: 275px; top: 380px; font-size: 9px; color: #f39c12;">
                     Clock → Sinhronizacija B_ctrl
-                </div>
-            </div>
-            
-            <div class="legend">
-                <div class="legend-title">Princip rada Lorentz-Force Logic Gate:</div>
-                <div class="legend-item">• Elektron ulazi brzinom v = 0.99c</div>
-                <div class="legend-item">• Lorentz sila: <strong>F = -e(v × B_ctrl)</strong></div>
-                <div class="legend-item">• B_ctrl = 0 → "0" stanje (elektron prolazi pravo)</div>
-                <div class="legend-item">• B_ctrl = B_max → "1" stanje (elektron se skreće)</div>
-                <div class="legend-item">• Kombinacija N gate-ova → Bulove funkcije (AND, OR, NOT, XOR)</div>
-            </div>
-        </div>
-        
-        <!-- SLIKA 3: Vremenska sinhronizacija -->
-        <div class="figure">
-            <div class="figure-title">Slika 3: Vremenska sinhronizacija između gama-takta i elektronskih paketa podataka</div>
-            <div class="diagram timing-diagram">
-                
-                <div style="position: absolute; left: 20px; top: 20px; font-size: 14px; font-weight: bold;">
+                </div></div><div class="legend"><div class="legend-title">Princip rada Lorentz-Force Logic Gate:</div><div class="legend-item">• Elektron ulazi brzinom v = 0.99c</div><div class="legend-item">• Lorentz sila: <strong>F = -e(v × B_ctrl)</strong></div><div class="legend-item">• B_ctrl = 0 → "0" stanje (elektron prolazi pravo)</div><div class="legend-item">• B_ctrl = B_max → "1" stanje (elektron se skreće)</div><div class="legend-item">• Kombinacija N gate-ova → Bulove funkcije (AND, OR, NOT, XOR)</div></div></div><div class="figure"><div class="figure-title">Slika 3: Vremenska sinhronizacija između gama-takta i elektronskih paketa podataka</div><div class="diagram timing-diagram"><div style="position: absolute; left: 20px; top: 20px; font-size: 14px; font-weight: bold;">
                     TEMPORALNI DIJAGRAM
-                </div>
-                
-                <!-- Glavna timeline -->
-                <div class="timeline" style="top: 80px;">
-                    <!-- Time markers -->
-                    <div class="time-marker" style="left: 0;"></div>
-                    <div class="time-label" style="left: 0;">t = 0</div>
-                    
-                    <div class="time-marker" style="left: 150px;"></div>
-                    <div class="time-label" style="left: 150px;">100 fs</div>
-                    
-                    <div class="time-marker" style="left: 300px;"></div>
-                    <div class="time-label" style="left: 300px;">200 fs</div>
-                    
-                    <div class="time-marker" style="left: 450px;"></div>
-                    <div class="time-label" style="left: 450px;">300 fs</div>
-                    
-                    <div class="time-marker" style="left: 600px;"></div>
-                    <div class="time-label" style="left: 600px;">500 fs</div>
-                    
-                    <div class="time-marker" style="left: 750px;"></div>
-                    <div class="time-label" style="left: 750px;">1 ps</div>
-                    
-                    <div class="time-marker" style="left: 900px;"></div>
-                    <div class="time-label" style="left: 900px;">2 ps</div>
-                </div>
-                
-                <!-- Eventi -->
-                <div class="event" style="left: 80px; top: 120px; border-color: #e74c3c; background: #fadbd8;">
-                    <strong>t=0: Laser puls (24)</strong><br>
+                </div><div class="timeline" style="top: 80px;"><div class="time-marker" style="left: 0;"></div><div class="time-label" style="left: 0;">t = 0</div><div class="time-marker" style="left: 150px;"></div><div class="time-label" style="left: 150px;">100 fs</div><div class="time-marker" style="left: 300px;"></div><div class="time-label" style="left: 300px;">200 fs</div><div class="time-marker" style="left: 450px;"></div><div class="time-label" style="left: 450px;">300 fs</div><div class="time-marker" style="left: 600px;"></div><div class="time-label" style="left: 600px;">500 fs</div><div class="time-marker" style="left: 750px;"></div><div class="time-label" style="left: 750px;">1 ps</div><div class="time-marker" style="left: 900px;"></div><div class="time-label" style="left: 900px;">2 ps</div></div><div class="event" style="left: 80px; top: 120px; border-color: #e74c3c; background: #fadbd8;"><strong>t=0: Laser puls (24)</strong><br>
                     • Trajanje: 30-50 fs<br>
                     • Energija: 100 J<br>
                     • Pogađa LWFA metu (5)
-                </div>
-                
-                <div class="event" style="left: 230px; top: 200px; border-color: #3498db; background: #ebf5fb;">
-                    <strong>t=100 fs:</strong><br>
-                    <strong>e⁻ snop (6)</strong><br>
+                </div><div class="event" style="left: 230px; top: 200px; border-color: #3498db; background: #ebf5fb;"><strong>t=100 fs:</strong><br><strong>e⁻ snop (6)</strong><br>
                     • Udara bremsstrahlung<br>
                     • Meta (7): Ta/W
-                </div>
-                
-                <div class="event" style="left: 380px; top: 120px; border-color: #f39c12; background: #fef9e7;">
-                    <strong>t=200 fs:</strong><br>
-                    <strong>γ-puls (8) nastaje</strong><br>
+                </div><div class="event" style="left: 380px; top: 120px; border-color: #f39c12; background: #fef9e7;"><strong>t=200 fs:</strong><br><strong>γ-puls (8) nastaje</strong><br>
                     • 10¹⁰-10¹¹ fotona<br>
                     • 10-100 MeV
-                </div>
-                
-                <div class="event" style="left: 530px; top: 200px; border-color: #9b59b6; background: #f4ecf7;">
-                    <strong>t=300 fs:</strong><br>
-                    <strong>Produkcija parova</strong><br>
+                </div><div class="event" style="left: 530px; top: 200px; border-color: #9b59b6; background: #f4ecf7;"><strong>t=300 fs:</strong><br><strong>Produkcija parova</strong><br>
                     • γ pogađa aerogel (9)<br>
                     • γ → e⁺ + e⁻
-                </div>
-                
-                <div class="event" style="left: 680px; top: 120px; border-color: #27ae60; background: #eafaf1;">
-                    <strong>t=500 fs:</strong><br>
-                    <strong>Magnetna separacija</strong><br>
+                </div><div class="event" style="left: 680px; top: 120px; border-color: #27ae60; background: #eafaf1;"><strong>t=500 fs:</strong><br><strong>Magnetna separacija</strong><br>
                     • Path A: e⁺ → (12)<br>
                     • Path B: e⁻ → (14)
-                </div>
-                
-                <div class="event" style="left: 830px; top: 200px; border-color: #16a085; background: #d5f4e6;">
-                    <strong>t=1 ps:</strong><br>
-                    <strong>Ulaz u M²LA</strong><br>
+                </div><div class="event" style="left: 830px; top: 200px; border-color: #16a085; background: #d5f4e6;"><strong>t=1 ps:</strong><br><strong>Ulaz u M²LA</strong><br>
                     • e⁻ ulaze u prvi gate<br>
                     • Početak računanja
-                </div>
-                
-                <div class="event" style="left: 80px; top: 310px; border-color: #2c3e50; background: #ecf0f1; width: 280px;">
-                    <strong>t=1 ps + N×10 fs:</strong><br>
-                    <strong>Propagacija kroz N gate-ova</strong><br>
+                </div><div class="event" style="left: 80px; top: 310px; border-color: #2c3e50; background: #ecf0f1; width: 280px;"><strong>t=1 ps + N×10 fs:</strong><br><strong>Propagacija kroz N gate-ova</strong><br>
                     • Svaki gate: ~10 fs prolaz<br>
                     • 10-stage pipeline: ~100 fs ukupno<br>
                     • Lorentz defleksija + readout
-                </div>
-                
-                <div class="event" style="left: 420px; top: 310px; border-color: #c0392b; background: #f9ebea;">
-                    <strong>t=2 ps:</strong><br>
-                    <strong>Readout završen (17)</strong><br>
+                </div><div class="event" style="left: 420px; top: 310px; border-color: #c0392b; background: #f9ebea;"><strong>t=2 ps:</strong><br><strong>Readout završen (17)</strong><br>
                     • Konačne pozicije e⁻<br>
                     • Logički rezultat<br>
                     • → Ka beam dump (25)
-                </div>
-                
-                <!-- Gamma takt indikator -->
-                <div style="position: absolute; left: 380px; top: 50px; width: 520px; height: 10px; background: linear-gradient(to right, #f39c12, #d68910); border: 1px solid #000;"></div>
-                <div style="position: absolute; left: 550px; top: 35px; font-size: 11px; font-weight: bold; color: #d68910;">
+                </div><div style="position: absolute; left: 380px; top: 50px; width: 520px; height: 10px; background: linear-gradient(to right, #f39c12, #d68910); border: 1px solid #000;"></div><div style="position: absolute; left: 550px; top: 35px; font-size: 11px; font-weight: bold; color: #d68910;">
                     γ-fotoni putuju brzinom c →
-                </div>
-                
-                <!-- Jitter indikator -->
-                <div style="position: absolute; left: 750px; top: 280px; border: 2px solid #27ae60; padding: 10px; background: #e8f8f5;">
-                    <div style="font-size: 10px; font-weight: bold;">JITTER-FREE CLOCK</div>
-                    <div style="font-size: 9px; margin-top: 3px;">
+                </div><div style="position: absolute; left: 750px; top: 280px; border: 2px solid #27ae60; padding: 10px; background: #e8f8f5;"><div style="font-size: 10px; font-weight: bold;">JITTER-FREE CLOCK</div><div style="font-size: 9px; margin-top: 3px;">
                         Preciznost: <1 fs<br>
                         10⁶× bolji od silicijuma
-                    </div>
-                </div>
-            </div>
-            
-            <div class="legend">
-                <div class="legend-title">Ključne karakteristike sinhronizacije:</div>
-                <div class="legend-item">• <strong>Femtosekundna skala</strong>: Kompletni ciklus = 2 ps (2000 fs)</div>
-                <div class="legend-item">• <strong>Gamma takt</strong>: Nekonvertovani γ-fotoni dolaze simultano sa e⁻ (oba brzinom ~c)</div>
-                <div class="legend-item">• <strong>Deterministički timing</strong>: Laser puls određuje sve događaje</div>
-                <div class="legend-item">• <strong>Latencija</strong>: 10⁶× niža od silicijumskih procesora (ns vs ps)</div>
-            </div>
-        </div>
-        
-        <!-- SLIKA 4: Aerogel presek -->
-        <div class="figure">
-            <div class="figure-title">Slika 4: Poprečni presek nanostrukturirane aerogel mete sa integrisanim elektrodama za ekstrakciju</div>
-            <div class="diagram aerogel-diagram">
-                
-                <svg width="100%" height="400" class="cross-section">
-                    <!-- Definicije -->
-                    <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                            <polygon points="0 0, 10 3, 0 6" fill="#000" />
-                        </marker>
-                        
-                        <!-- Pattern za poroznu strukturu -->
-                        <pattern id="porous" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <circle cx="5" cy="5" r="2" fill="#bdc3c7" opacity="0.3"/>
-                            <circle cx="15" cy="10" r="1.5" fill="#95a5a6" opacity="0.4"/>
-                            <circle cx="10" cy="15" r="1.8" fill="#7f8c8d" opacity="0.35"/>
-                        </pattern>
-                    </defs>
-                    
-                    <!-- Glavni aerogel blok -->
-                    <rect x="200" y="50" width="400" height="200" fill="url(#porous)" stroke="#34495e" stroke-width="3"/>
-                    
-                    <!-- Label aerogela -->
-                    <text x="400" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">
+                    </div></div></div><div class="legend"><div class="legend-title">Ključne karakteristike sinhronizacije:</div><div class="legend-item">• <strong>Femtosekundna skala</strong>: Kompletni ciklus = 2 ps (2000 fs)</div><div class="legend-item">• <strong>Gamma takt</strong>: Nekonvertovani γ-fotoni dolaze simultano sa e⁻ (oba brzinom ~c)</div><div class="legend-item">• <strong>Deterministički timing</strong>: Laser puls određuje sve događaje</div><div class="legend-item">• <strong>Latencija</strong>: 10⁶× niža od silicijumskih procesora (ns vs ps)</div></div></div><div class="figure"><div class="figure-title">Slika 4: Poprečni presek nanostrukturirane aerogel mete sa integrisanim elektrodama za ekstrakciju</div><div class="diagram aerogel-diagram"><svg width="100%" height="400" class="cross-section"><defs><marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><polygon points="0 0, 10 3, 0 6" fill="#000" /></marker><pattern id="porous" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2" fill="#bdc3c7" opacity="0.3"/><circle cx="15" cy="10" r="1.5" fill="#95a5a6" opacity="0.4"/><circle cx="10" cy="15" r="1.8" fill="#7f8c8d" opacity="0.35"/></pattern></defs><rect x="200" y="50" width="400" height="200" fill="url(#porous)" stroke="#34495e" stroke-width="3"/><text x="400" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">
                         VOLFRAM AEROGEL (9)
-                    </text>
-                    <text x="400" y="180" text-anchor="middle" font-size="11" fill="#34495e">
+                    </text><text x="400" y="180" text-anchor="middle" font-size="11" fill="#34495e">
                         Poroznost: 85-95%
-                    </text>
-                    
-                    <!-- Gornja elektroda -->
-                    <rect x="220" y="30" width="360" height="15" class="electrode"/>
-                    <text x="400" y="22" text-anchor="middle" font-size="10" font-weight="bold">
+                    </text><rect x="220" y="30" width="360" height="15" class="electrode"/><text x="400" y="22" text-anchor="middle" font-size="10" font-weight="bold">
                         EKSTRAKCIONA ELEKTRODA (+)
-                    </text>
-                    
-                    <!-- Donja elektroda -->
-                    <rect x="220" y="255" width="360" height="15" class="electrode"/>
-                    <text x="400" y="288" text-anchor="middle" font-size="10" font-weight="bold">
+                    </text><rect x="220" y="255" width="360" height="15" class="electrode"/><text x="400" y="288" text-anchor="middle" font-size="10" font-weight="bold">
                         EKSTRAKCIONA ELEKTRODA (-)
-                    </text>
-                    
-                    <!-- Elektično polje linije -->
-                    <line x1="250" y1="50" x2="250" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/>
-                    <line x1="350" y1="50" x2="350" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/>
-                    <line x1="450" y1="50" x2="450" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/>
-                    <line x1="550" y1="50" x2="550" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/>
-                    
-                    <text x="420" y="120" font-size="9" fill="#c0392b">E = 10 MV/m ↓</text>
-                    
-                    <!-- Dolazni gamma zrak -->
-                    <path d="M 50 150 L 180 150" stroke="#f39c12" stroke-width="4" marker-end="url(#arrowhead)"/>
-                    <text x="90" y="140" font-size="11" font-weight="bold" fill="#d68910">γ-zrak (8)</text>
-                    <text x="70" y="170" font-size="9" fill="#d68910">10-100 MeV</text>
-                    
-                    <!-- Produkcija para u aerogelu -->
-                    <circle cx="400" cy="150" r="8" fill="#e74c3c" opacity="0.7"/>
-                    <text x="385" y="135" font-size="9" font-weight="bold" fill="#c0392b">γ → e⁺ + e⁻</text>
-                    
-                    <!-- Pozitron ka gore -->
-                    <path d="M 400 150 L 400 55" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowhead)"/>
-                    <circle cx="400" cy="70" r="5" fill="#e74c3c"/>
-                    <text x="410" y="90" font-size="10" fill="#c0392b" font-weight="bold">e⁺</text>
-                    <text x="410" y="105" font-size="8" fill="#c0392b">ekstrakcija ↑</text>
-                    
-                    <!-- Elektron ka dole -->
-                    <path d="M 400 150 L 400 245" stroke="#3498db" stroke-width="3" marker-end="url(#arrowhead)"/>
-                    <circle cx="400" cy="230" r="5" fill="#3498db"/>
-                    <text x="410" y="220" font-size="10" fill="#2980b9" font-weight="bold">e⁻</text>
-                    <text x="410" y="235" font-size="8" fill="#2980b9">ekstrakcija ↓</text>
-                    
-                    <!-- Nanostruktura detalji -->
-                    <circle cx="280" cy="100" r="3" fill="#7f8c8d" opacity="0.5"/>
-                    <circle cx="320" cy="120" r="2.5" fill="#95a5a6" opacity="0.5"/>
-                    <circle cx="480" cy="180" r="3.5" fill="#bdc3c7" opacity="0.5/>
-                    <circle cx="520" cy="140" r="2" fill="#7f8c8d" opacity="0.5"/>
-                    
-                    <!-- Dimenzije -->
-                    <!-- Širina -->
-                    <line x1="200" y1="310" x2="600" y2="310" class="dimension-line"/>
-                    <line x1="200" y1="305" x2="200" y2="315" stroke="#000" stroke-width="1"/>
-                    <line x1="600" y1="305" x2="600" y2="315" stroke="#000" stroke-width="1"/>
-                    <text x="400" y="330" class="dimension-text" text-anchor="middle">400 mm (tipično)</text>
-                    
-                    <!-- Visina -->
-                    <line x1="650" y1="50" x2="650" y2="250" class="dimension-line"/>
-                    <line x1="645" y1="50" x2="655" y2="50" stroke="#000" stroke-width="1"/>
-                    <line x1="645" y1="250" x2="655" y2="250" stroke="#000" stroke-width="1"/>
-                    <text x="670" y="155" class="dimension-text">200 mm</text>
-                    
-                    <!-- Voltage indikator -->
-                    <rect x="620" y="100" width="120" height="60" fill="#fef9e7" stroke="#f39c12" stroke-width="2"/>
-                    <text x="680" y="120" font-size="10" text-anchor="middle" font-weight="bold" fill="#d68910">
+                    </text><line x1="250" y1="50" x2="250" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/><line x1="350" y1="50" x2="350" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/><line x1="450" y1="50" x2="450" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/><line x1="550" y1="50" x2="550" y2="250" stroke="#e74c3c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/><text x="420" y="120" font-size="9" fill="#c0392b">E = 10 MV/m ↓</text><path d="M 50 150 L 180 150" stroke="#f39c12" stroke-width="4" marker-end="url(#arrowhead)"/><text x="90" y="140" font-size="11" font-weight="bold" fill="#d68910">γ-zrak (8)</text><text x="70" y="170" font-size="9" fill="#d68910">10-100 MeV</text><circle cx="400" cy="150" r="8" fill="#e74c3c" opacity="0.7"/><text x="385" y="135" font-size="9" font-weight="bold" fill="#c0392b">γ → e⁺ + e⁻</text><path d="M 400 150 L 400 55" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowhead)"/><circle cx="400" cy="70" r="5" fill="#e74c3c"/><text x="410" y="90" font-size="10" fill="#c0392b" font-weight="bold">e⁺</text><text x="410" y="105" font-size="8" fill="#c0392b">ekstrakcija ↑</text><path d="M 400 150 L 400 245" stroke="#3498db" stroke-width="3" marker-end="url(#arrowhead)"/><circle cx="400" cy="230" r="5" fill="#3498db"/><text x="410" y="220" font-size="10" fill="#2980b9" font-weight="bold">e⁻</text><text x="410" y="235" font-size="8" fill="#2980b9">ekstrakcija ↓</text><circle cx="280" cy="100" r="3" fill="#7f8c8d" opacity="0.5"/><circle cx="320" cy="120" r="2.5" fill="#95a5a6" opacity="0.5"/><circle cx="480" cy="180" r="3.5" fill="#bdc3c7" opacity="0.5/><circle cx="520" cy="140" r="2" fill="#7f8c8d" opacity="0.5"/><line x1="200" y1="310" x2="600" y2="310" class="dimension-line"/><line x1="200" y1="305" x2="200" y2="315" stroke="#000" stroke-width="1"/><line x1="600" y1="305" x2="600" y2="315" stroke="#000" stroke-width="1"/><text x="400" y="330" class="dimension-text" text-anchor="middle">400 mm (tipično)</text><line x1="650" y1="50" x2="650" y2="250" class="dimension-line"/><line x1="645" y1="50" x2="655" y2="50" stroke="#000" stroke-width="1"/><line x1="645" y1="250" x2="655" y2="250" stroke="#000" stroke-width="1"/><text x="670" y="155" class="dimension-text">200 mm</text><rect x="620" y="100" width="120" height="60" fill="#fef9e7" stroke="#f39c12" stroke-width="2"/><text x="680" y="120" font-size="10" text-anchor="middle" font-weight="bold" fill="#d68910">
                         PULSED E-FIELD
-                    </text>
-                    <text x="680" y="135" font-size="9" text-anchor="middle" fill="#d68910">
+                    </text><text x="680" y="135" font-size="9" text-anchor="middle" fill="#d68910">
                         V = 10 MV/m
-                    </text>
-                    <text x="680" y="150" font-size="8" text-anchor="middle" fill="#d68910">
+                    </text><text x="680" y="150" font-size="8" text-anchor="middle" fill="#d68910">
                         Timing: <1 ps
-                    </text>
-                </svg>
-                
-                <!-- Dodatni opis ispod -->
-                <div style="position: absolute; left: 50px; top: 320px; width: 700px;">
-                    <div style="border: 2px solid #27ae60; background: #eafaf1; padding: 15px;">
-                        <div style="font-weight: bold; margin-bottom: 8px; color: #229954;">Princip ekstrakcije pozitrona:</div>
-                        <div style="font-size: 11px; line-height: 1.6;">
-                            <strong>1.</strong> γ-zrak ulazi u aerogel → Bethe-Heitler proces → stvaranje e⁺/e⁻ para<br>
-                            <strong>2.</strong> Nanoporozna struktura (85-95% vakuuma) omogućava pozitronima da napuste česticu pre anihilacije<br>
-                            <strong>3.</strong> Pulsed E-field (10 MV/m) primenjuje se <1 ps nakon kreacije para<br>
-                            <strong>4.</strong> e⁺ ubrzava ka gornjoj elektrodi (+), e⁻ ka donjoj elektrodi (-)<br>
-                            <strong>5.</strong> Efikasnost ekstrakcije: <strong>30-40%</strong> (vs. 5-10% u bulk materijalima)
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="legend">
-                <div class="legend-title">Karakteristike aerogel mete:</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: url(#porous);"></span>Volfram (W-184) aerogel - visoka atomska masa (Z=74)</div>
-                <div class="legend-item"><span class="legend-symbol" style="background: #f39c12;"></span>Ekstrakcione elektrode - zlato (Au) ili tantal (Ta)</div>
-                <div class="legend-item">• Poroznost: 85-95% (samo 5-15% čvrsta materija)</div>
-                <div class="legend-item">• Efektivna debljina puta pozitrona: 50-100 nm (vs. 0.1 mm u bulk W)</div>
-                <div class="legend-item">• Pulsed voltage timing sinhronizovan sa laser pulsom</div>
-                <div class="legend-item">• Životni vek mete: ~1000 sati pri 10¹⁴ γ/s fluksu</div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #bdc3c7; text-align: center; color: #7f8c8d; font-size: 11px;">
-            <strong>SIMBIOTSKI ANTIKOMPJUTER - TEHNIČKI NACRT</strong><br>
+                    </text></svg><div style="position: absolute; left: 50px; top: 320px; width: 700px;"><div style="border: 2px solid #27ae60; background: #eafaf1; padding: 15px;"><div style="font-weight: bold; margin-bottom: 8px; color: #229954;">Princip ekstrakcije pozitrona:</div><div style="font-size: 11px; line-height: 1.6;"><strong>1.</strong> γ-zrak ulazi u aerogel → Bethe-Heitler proces → stvaranje e⁺/e⁻ para<br><strong>2.</strong> Nanoporozna struktura (85-95% vakuuma) omogućava pozitronima da napuste česticu pre anihilacije<br><strong>3.</strong> Pulsed E-field (10 MV/m) primenjuje se <1 ps nakon kreacije para<br><strong>4.</strong> e⁺ ubrzava ka gornjoj elektrodi (+), e⁻ ka donjoj elektrodi (-)<br><strong>5.</strong> Efikasnost ekstrakcije: <strong>30-40%</strong> (vs. 5-10% u bulk materijalima)
+                        </div></div></div></div><div class="legend"><div class="legend-title">Karakteristike aerogel mete:</div><div class="legend-item"><span class="legend-symbol" style="background: url(#porous);"></span>Volfram (W-184) aerogel - visoka atomska masa (Z=74)</div><div class="legend-item"><span class="legend-symbol" style="background: #f39c12;"></span>Ekstrakcione elektrode - zlato (Au) ili tantal (Ta)</div><div class="legend-item">• Poroznost: 85-95% (samo 5-15% čvrsta materija)</div><div class="legend-item">• Efektivna debljina puta pozitrona: 50-100 nm (vs. 0.1 mm u bulk W)</div><div class="legend-item">• Pulsed voltage timing sinhronizovan sa laser pulsom</div><div class="legend-item">• Životni vek mete: ~1000 sati pri 10¹⁴ γ/s fluksu</div></div></div><div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #bdc3c7; text-align: center; color: #7f8c8d; font-size: 11px;"><strong>SIMBIOTSKI ANTIKOMPJUTER - TEHNIČKI NACRT</strong><br>
             Modularni čvor za simultanu proizvodnju antimaterije i izvršavanje logičkih operacija<br>
             Pronalazač: Miloš M. Ilić | Februar 2026
-        </div>
-        
-    </div>
-</body>
-</html>
+        </div></div></body></html>

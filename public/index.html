@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHYR GLOBAL - AETHYR ONE EXECUTIVE TERMINAL</title>
+    <link rel="stylesheet" href="terminal.css">
+</head>
+<body>
+    <header class="global-header">
+        <img src="WEB_SVG.ic_logo_postlogin.svg" class="global-logo" alt="Logo">
+        <div class="global-title-wrap">
+            <h1>Aethyr Global - Aethyr One</h1>
+            <p>100% Free Antimatter - THE SYSTEM IS ON FOR MORE THAN TWO MONTHS.</p>
+        </div>
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;">
+            <input type="text" id="search-db" placeholder="SEARCH DATABASE..." style="background: transparent; border: 1px solid #333; color: #fff; padding: 8px 15px; font-family: inherit; font-size: 0.7rem; width: 300px;">
+            <div id="search-overlay"></div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="left-sidebar">
+            <nav class="nav-section">
+                <span class="nav-label">Applications</span>
+                <a href="#" class="nav-item" onclick="loadContent('crypto.pdf')">
+                    <div class="nav-dot"></div>
+                    <span>CRYPTO IP HUB</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('not-money.html')">
+                    <div class="nav-dot"></div>
+                    <span>AYR</span>
+                </a>
+                <button class="sidebar-btn" onclick="loadContent('potvrda.pdf')">● Upload QES & Troshkovy</button>
+            </nav>
+
+            <nav class="nav-section">
+                <span class="nav-label">Core Assets</span>
+                <a href="#" class="nav-item active" onclick="loadContent('not-money.html')">
+                    <span>$ NOT MONEY</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('aura.html')">
+                    <span>AURA</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('io.html')">
+                    <span>IO AI</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('land.html')">
+                    <span>DOMAIN FOR SALE</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('land.html')">
+                    <span>ADDITION TO GIGA PACKAGE 01</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('land.html')">
+                    <span>ADDITION TO GIGA PACKAGE 02</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('land.html')">
+                    <span>ADDITION TO GIGA PACKAGE 03</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('crew.html')">
+                    <span>AETHYR GO SPACE PROGRAM</span>
+                </a>
+                <a href="#" class="nav-item" onclick="loadContent('aethyr-vision.html')">
+                    <span>AETHYR VISION</span>
+                </a>
+            </nav>
+
+            <footer class="sidebar-footer">
+                AETHYR ONE EXECUTIVE TERMINAL<br>
+                T115392-5803-87CF3811-VVBVIRAG-G4#
+            </footer>
+        </aside>
+
+        <main class="work-area">
+            <header class="work-area-header">
+                <div class="work-area-title">
+                    <div class="title-pipe"></div>
+                    <h2 id="active-title">NOT MONEY</h2>
+                </div>
+                <div class="data-btn">DATA</div>
+            </header>
+
+            <div class="content-viewer">
+                <div id="dashboard" class="dash-panel" hidden>
+                    <!-- Default content -->
+                </div>
+                <iframe id="content-frame" src="not-money.html"></iframe>
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="vault-header">MARVENIK / VAULT</div>
+
+            <div class="vault-card">
+                <p class="vault-card-title">
+                    GIGA ARCHIVE EXPLORER / NO NEED FOR PASSWORDS, JUST DROP SIGNED PDF AT TROSHOKOVY. ALL LICENCED FILES ARE OPEN HERE, CLICK
+                </p>
+                <a class="vault-link" onclick="loadContent('giga-explorer.html')">
+                    <span>▶ GIGA</span>
+                </a>
+            </div>
+
+            <div class="orb-container">
+                <img src="m.png" class="orb-img" alt="Orb">
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        let fileIndex = [];
+        async function init() {
+            try {
+                const res = await fetch('file-index.json');
+                fileIndex = await res.json();
+            } catch(e) {}
+        }
+
+        function loadContent(path) {
+            const frame = document.getElementById('content-frame');
+            const title = document.getElementById('active-title');
+            frame.src = path;
+
+            const f = fileIndex.find(x => x.path === path);
+            if(f) {
+                title.innerText = f.title.split('|')[0].split('-')[0].toUpperCase().trim();
+            } else {
+                title.innerText = path.split('.')[0].replace(/-/g, ' ').toUpperCase();
+            }
+
+            document.querySelectorAll('.nav-item').forEach(n => {
+                n.classList.remove('active');
+                if(n.getAttribute('onclick') && n.getAttribute('onclick').includes(path)) {
+                    n.classList.add('active');
+                }
+            });
+        }
+
+        const searchInput = document.getElementById('search-db');
+        const overlay = document.getElementById('search-overlay');
+
+        searchInput.addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase();
+            if(q.length < 2) { overlay.style.display = 'none'; return; }
+            const results = fileIndex.filter(f => f.name.toLowerCase().includes(q) || f.title.toLowerCase().includes(q)).slice(0, 10);
+            if(results.length > 0) {
+                overlay.innerHTML = results.map(f => `
+                    <div class="search-result" onclick="loadContent('${f.path}'); document.getElementById('search-overlay').style.display='none';">
+                        <div class="res-t">${f.title || f.name}</div>
+                        <div class="res-p">${f.category} / ${f.path}</div>
+                    </div>
+                `).join('');
+                overlay.style.display = 'block';
+            } else { overlay.style.display = 'none'; }
+        });
+
+        init();
+    </script>
+</body>
+</html>

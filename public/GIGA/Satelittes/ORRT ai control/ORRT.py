@@ -1,4 +1,3 @@
-```python
 """
 ORRT SATELLITE AI CONTROL SYSTEM
 =================================
@@ -682,4 +681,3 @@ def main_demo():
 
 if __name__ == '__main__':
     main_demo()
-```

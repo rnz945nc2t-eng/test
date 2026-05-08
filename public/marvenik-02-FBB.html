@@ -1,595 +1,115 @@
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARVENIK-FBB — Filippo Bondi Bag System &amp; Unified Architecture</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
---ink:#1a1a1a; --mid:#444; --light:#777; --rule:#ccc;
---accent:#8b0000; --bg:#faf8f4; --col-bg:#f5f2ed; --eq-bg:#f0ede8;
---warn:#fff8e8; --warn-b:#d4a800;
---note:#f0f4f8; --note-b:#336699;
---green:#f0f8f0; --green-b:#2a7a2a;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:#e8e4dc;color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:16px;line-height:1.65;}
-.paper{background:var(--bg);max-width:900px;margin:32px auto;padding:64px 72px 80px;
-box-shadow:0 2px 4px rgba(0,0,0,0.08),0 8px 32px rgba(0,0,0,0.12);border-top:4px solid var(--accent);}
-.journal-name{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--light);
-border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:32px;
-display:flex;justify-content:space-between;align-items:baseline;}
-.journal-name span{font-style:italic;letter-spacing:0;text-transform:none;font-size:11px;}
-h1.paper-title{font-size:26px;font-weight:600;line-height:1.3;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em;}
-h1.paper-title em{color:var(--accent);font-style:normal;}
-.subtitle{font-size:15px;color:var(--mid);font-style:italic;margin-bottom:22px;}
-.authors{font-size:13px;color:var(--mid);margin-bottom:4px;}
-.affil{font-size:11.5px;color:var(--light);font-style:italic;margin-bottom:20px;}
-.dates{font-size:11px;color:var(--light);border-top:1px solid var(--rule);padding-top:10px;margin-bottom:28px;display:flex;gap:24px;flex-wrap:wrap;}
-.abstract-box{border:1px solid var(--rule);background:var(--col-bg);padding:18px 22px;margin-bottom:36px;}
-.abstract-box .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;}
-.abstract-box p{font-size:14.5px;line-height:1.7;color:var(--mid);text-align:justify;}
-.keywords{font-size:12.5px;color:var(--light);margin-top:10px;font-style:italic;}
-.keywords strong{font-style:normal;color:var(--mid);}
-.cols{display:flex;gap:4%;align-items:start;}
-.col{width:46%;}
-.cols.ruled{gap:0;}
-.cols.ruled .col{width:50%;padding:0 28px;}
-.cols.ruled .col:first-child{border-right:1px solid var(--rule);padding-left:0;}
-.cols.ruled .col:last-child{padding-right:0;}
-h2.sec{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
-margin:28px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--rule);}
-h2.sec .num{font-variant-numeric:tabular-nums;margin-right:6px;color:var(--light);}
-h3.subsec{font-size:15px;font-weight:600;font-style:italic;color:var(--ink);margin:18px 0 6px;}
-p{text-align:justify;margin-bottom:10px;font-size:15.5px;hyphens:auto;}
-p:last-child{margin-bottom:0;}
-.eq{background:var(--eq-bg);border-left:3px solid var(--accent);padding:12px 20px;margin:14px 0;
-font-family:'Source Code Pro',monospace;font-size:13px;color:var(--ink);line-height:1.9;
-display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.eq .math{flex:1;} .eq .eqnum{font-family:'EB Garamond',serif;font-size:13px;color:var(--light);white-space:nowrap;flex-shrink:0;}
-sup{font-size:.72em;vertical-align:super;} sub{font-size:.72em;vertical-align:sub;}
-.m{font-family:'Source Code Pro',monospace;font-size:13px;background:var(--eq-bg);padding:1px 5px;border-radius:2px;white-space:nowrap;}
-.figure{margin:20px 0;border:1px solid var(--rule);background:white;}
-.fig-inner{padding:20px;display:flex;justify-content:center;}
-.fig-caption{border-top:1px solid var(--rule);padding:10px 14px;font-size:13px;color:var(--mid);background:var(--col-bg);line-height:1.5;}
-.fig-caption strong{color:var(--ink);}
-.data-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0;}
-.data-table caption{font-size:13px;color:var(--mid);font-style:italic;margin-bottom:6px;text-align:left;}
-.data-table th{background:var(--col-bg);border-bottom:2px solid var(--ink);border-top:1px solid var(--ink);
-padding:6px 10px;text-align:left;font-size:12px;letter-spacing:.05em;font-style:italic;font-weight:500;color:var(--ink);}
-.data-table td{padding:5px 10px;border-bottom:1px solid var(--rule);color:var(--mid);vertical-align:top;}
-.data-table tr:last-child td{border-bottom:1px solid var(--ink);}
-.data-table .opt{color:var(--accent);font-weight:600;}
-.data-table .head-row td{font-weight:600;color:var(--ink);background:#f7f4ef;font-size:12px;letter-spacing:.04em;}
-.data-table .best{background:#f0f8f0;}
-.note{border:1px solid var(--note-b);border-left:4px solid var(--note-b);background:var(--note);
-padding:13px 16px;margin:14px 0;font-size:14px;line-height:1.6;color:var(--mid);}
-.note strong{color:var(--note-b);}
-.warn{border:1px solid var(--warn-b);border-left:4px solid var(--warn-b);background:var(--warn);
-padding:13px 16px;margin:14px 0;font-size:14px;line-height:1.6;color:#5a4500;}
-.warn strong{color:var(--warn-b);}
-.green-box{border:1px solid var(--green-b);border-left:4px solid var(--green-b);background:var(--green);
-padding:13px 16px;margin:14px 0;font-size:14px;line-height:1.6;color:#1a3a1a;}
-.green-box strong{color:var(--green-b);}
-hr.rule{border:none;border-top:1px solid var(--rule);margin:28px 0;}
-.result{background:#f9f0f0;border:1px solid #d4a0a0;border-left:4px solid var(--accent);
-padding:13px 18px;margin:16px 0;font-size:15px;line-height:1.7;}
-.result .r-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px;}
-.refs{font-size:13px;color:var(--mid);}
-.refs li{margin-bottom:7px;list-style-type:none;padding-left:28px;text-indent:-28px;line-height:1.55;}
-.refs .refnum{color:var(--accent);font-family:'Source Code Pro',monospace;font-size:11px;margin-right:6px;}
-.footnote{font-size:12px;color:var(--light);border-top:1px solid var(--rule);padding-top:10px;margin-top:40px;line-height:1.6;}
-.full{width:100%;}
-</style>
-</head>
-<body>
-<div class="paper">
-
-<div class="journal-name">
-<span>Aethyr Global · Technical Report Series · MRV-TR-004</span>
-<span><em>Preprint — Rationalized Edition — April 2026</em></span>
-</div>
-
-<h1 class="paper-title">
-<em>MARVENIK-FBB</em>: Filippo Bondi Bag Orbital Logistics,<br>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MARVENIK-FBB — Filippo Bondi Bag System &amp; Unified Architecture</title><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet"><style>:root{--ink:#1a1a1a;--mid:#444;--light:#777;--rule:#ccc;--accent:#8b0000;--bg:#faf8f4;--col-bg:#f5f2ed;--eq-bg:#f0ede8;--warn:#fff8e8;--warn-b:#d4a800;--note:#f0f4f8;--note-b:#336699;--green:#f0f8f0;--green-b:#2a7a2a;}*{margin:0;padding:0;box-sizing:border-box;}body{background:#e8e4dc;color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:16px;line-height:1.65;}.paper{background:var(--bg);max-width:900px;margin:32px auto;padding:64px 72px 80px;box-shadow:0 2px 4px rgba(0,0,0,0.08),0 8px 32px rgba(0,0,0,0.12);border-top:4px solid var(--accent);}.journal-name{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:baseline;}.journal-name span{font-style:italic;letter-spacing:0;text-transform:none;font-size:11px;}h1.paper-title{font-size:26px;font-weight:600;line-height:1.3;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em;}h1.paper-title em{color:var(--accent);font-style:normal;}.subtitle{font-size:15px;color:var(--mid);font-style:italic;margin-bottom:22px;}.authors{font-size:13px;color:var(--mid);margin-bottom:4px;}.affil{font-size:11.5px;color:var(--light);font-style:italic;margin-bottom:20px;}.dates{font-size:11px;color:var(--light);border-top:1px solid var(--rule);padding-top:10px;margin-bottom:28px;display:flex;gap:24px;flex-wrap:wrap;}.abstract-box{border:1px solid var(--rule);background:var(--col-bg);padding:18px 22px;margin-bottom:36px;}.abstract-box .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;}.abstract-box p{font-size:14.5px;line-height:1.7;color:var(--mid);text-align:justify;}.keywords{font-size:12.5px;color:var(--light);margin-top:10px;font-style:italic;}.keywords strong{font-style:normal;color:var(--mid);}.cols{display:flex;gap:4%;align-items:start;}.col{width:46%;}.cols.ruled{gap:0;}.cols.ruled .col{width:50%;padding:0 28px;}.cols.ruled .col:first-child{border-right:1px solid var(--rule);padding-left:0;}.cols.ruled .col:last-child{padding-right:0;}h2.sec{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:28px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--rule);}h2.sec .num{font-variant-numeric:tabular-nums;margin-right:6px;color:var(--light);}h3.subsec{font-size:15px;font-weight:600;font-style:italic;color:var(--ink);margin:18px 0 6px;}p{text-align:justify;margin-bottom:10px;font-size:15.5px;hyphens:auto;}p:last-child{margin-bottom:0;}.eq{background:var(--eq-bg);border-left:3px solid var(--accent);padding:12px 20px;margin:14px 0;font-family:'Source Code Pro',monospace;font-size:13px;color:var(--ink);line-height:1.9;display:flex;align-items:center;justify-content:space-between;gap:12px;}.eq .math{flex:1;}.eq .eqnum{font-family:'EB Garamond',serif;font-size:13px;color:var(--light);white-space:nowrap;flex-shrink:0;}sup{font-size:.72em;vertical-align:super;}sub{font-size:.72em;vertical-align:sub;}.m{font-family:'Source Code Pro',monospace;font-size:13px;background:var(--eq-bg);padding:1px 5px;border-radius:2px;white-space:nowrap;}.figure{margin:20px 0;border:1px solid var(--rule);background:white;}.fig-inner{padding:20px;display:flex;justify-content:center;}.fig-caption{border-top:1px solid var(--rule);padding:10px 14px;font-size:13px;color:var(--mid);background:var(--col-bg);line-height:1.5;}.fig-caption strong{color:var(--ink);}.data-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0;}.data-table caption{font-size:13px;color:var(--mid);font-style:italic;margin-bottom:6px;text-align:left;}.data-table th{background:var(--col-bg);border-bottom:2px solid var(--ink);border-top:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:12px;letter-spacing:.05em;font-style:italic;font-weight:500;color:var(--ink);}.data-table td{padding:5px 10px;border-bottom:1px solid var(--rule);color:var(--mid);vertical-align:top;}.data-table tr:last-child td{border-bottom:1px solid var(--ink);}.data-table .opt{color:var(--accent);font-weight:600;}.data-table .head-row td{font-weight:600;color:var(--ink);background:#f7f4ef;font-size:12px;letter-spacing:.04em;}.data-table .best{background:#f0f8f0;}.note{border:1px solid var(--note-b);border-left:4px solid var(--note-b);background:var(--note);padding:13px 16px;margin:14px 0;font-size:14px;line-height:1.6;color:var(--mid);}.note strong{color:var(--note-b);}.warn{border:1px solid var(--warn-b);border-left:4px solid var(--warn-b);background:var(--warn);padding:13px 16px;margin:14px 0;font-size:14px;line-height:1.6;color:#5a4500;}.warn strong{color:var(--warn-b);}.green-box{border:1px solid var(--green-b);border-left:4px solid var(--green-b);background:var(--green);padding:13px 16px;margin:14px 0;font-size:14px;line-height:1.6;color:#1a3a1a;}.green-box strong{color:var(--green-b);}hr.rule{border:none;border-top:1px solid var(--rule);margin:28px 0;}.result{background:#f9f0f0;border:1px solid #d4a0a0;border-left:4px solid var(--accent);padding:13px 18px;margin:16px 0;font-size:15px;line-height:1.7;}.result .r-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px;}.refs{font-size:13px;color:var(--mid);}.refs li{margin-bottom:7px;list-style-type:none;padding-left:28px;text-indent:-28px;line-height:1.55;}.refs .refnum{color:var(--accent);font-family:'Source Code Pro',monospace;font-size:11px;margin-right:6px;}.footnote{font-size:12px;color:var(--light);border-top:1px solid var(--rule);padding-top:10px;margin-top:40px;line-height:1.6;}.full{width:100%;}</style></head><body><div class="paper"><div class="journal-name"><span>Aethyr Global · Technical Report Series · MRV-TR-004</span><span><em>Preprint — Rationalized Edition — April 2026</em></span></div><h1 class="paper-title"><em>MARVENIK-FBB</em>: Filippo Bondi Bag Orbital Logistics,<br>
 Constellation Power, and Unified Programme Architecture
-</h1>
-<div class="subtitle">
+</h1><div class="subtitle">
 Integrating the FBB modular cargo pods, ORRT geomagnetospheric power, OSAC orbital antimatter factory,
 and QRPWS deep-belt propulsion for maximum practical profitability.
-</div>
-<div class="authors">Miloš M. Ilić<sup>1</sup> &nbsp;·&nbsp; Aethyr Global Propulsion &amp; Energy Division</div>
-<div class="affil"><sup>1</sup>Aethyr Global, Strategic IP Acquisition</div>
-<div class="dates">
-<span>Received: April 2026</span>
-<span>Status: Active Development — MRV-TR-004</span>
-<span>Supersedes: MRV-TR-002, MRV-TR-003</span>
-<span>Classification: Open Prototype</span>
-</div>
-
-<div class="abstract-box">
-<div class="label">Abstract</div>
-<p>
+</div><div class="authors">Miloš M. Ilić<sup>1</sup> &nbsp;·&nbsp; Aethyr Global Propulsion &amp; Energy Division</div><div class="affil"><sup>1</sup>Aethyr Global, Strategic IP Acquisition</div><div class="dates"><span>Received: April 2026</span><span>Status: Active Development — MRV-TR-004</span><span>Supersedes: MRV-TR-002, MRV-TR-003</span><span>Classification: Open Prototype</span></div><div class="abstract-box"><div class="label">Abstract</div><p>
 This report introduces the highly rationalized <em>MARVENIK-FBB</em> unified architecture, moving away from fragile aerodynamic braking concepts to a robust, physics-grounded space logistics network. First, the <strong>Filippo Bondi Bag (FBB)</strong> has been redesigned as a <em>Flexible Bulk Bin</em>—a modular, Titanium-Aluminide/Zylon mesh pod purely for vacuum cargo transport. Deceleration is now handled safely via sequential Lunar Gravity Assists and propulsive LEO parking, after which commercial heavy-lift tugs fetch the cargo, completely eliminating atmospheric loss risks. This allows multi-bag payload capacity of <strong>N × 100 tonnes per sortie</strong>. Second, the <strong>ORRT</strong> geomagnetospheric constellation provides zero-marginal-cost power to orbital factories, reducing CNBC-HEPI antiproton cost to <strong>$1.3M/gram</strong>. Third, the <strong>OSAC</strong> LEO factory captures a $5.5B/year AI-compute revenue surplus. Fourth, the <strong>QRPWS</strong> warp shell reduces deep-belt fuel consumption. Under this grounded logistical model, a single MRV-HL-1 sortie to 433 Eros safely yields a net profit of <strong>$23.3 billion</strong> against a $674M total mission cost, proving that commercial orbital retrieval is vastly superior to risky direct-reentry approaches.
-</p>
-<div class="keywords"><strong>Keywords:</strong>
+</p><div class="keywords"><strong>Keywords:</strong>
 Filippo Bondi Bag, Flexible Bulk Bin, Lunar gravity assist, LEO orbital rendezvous, ORRT, OSAC, commercial downmass, asteroid mining, MARVENIK
-</div>
-</div>
-
-<!-- ═══════════════════ BODY ═══════════════════ -->
-
-<div class="cols ruled">
-<div class="col">
-
-<h2 class="sec"><span class="num">1.</span>Introduction</h2>
-<p>
+</div></div><div class="cols ruled"><div class="col"><h2 class="sec"><span class="num">1.</span>Introduction</h2><p>
 Prior MARVENIK specifications (MRV-TR-003) flirted with exotic and highly risky Earth-return solutions, including giant aerogel parachutes that posed catastrophic risks of atmospheric burn-up or tearing. While mathematically feasible under perfect conditions, exposing $8 billion worth of platinum group metals (PGMs) to a re-entry plasma regime inside a fragile bag is an unacceptable logistical failure.
-</p>
-<p>
+</p><p>
 This document comprehensively corrects the Earth-return protocol. The Filippo Bondi Bag is repurposed purely as a durable, cheap orbital storage vessel. Earth deceleration relies on conventional celestial mechanics (Lunar gravity assists) combined with propulsive LEO parking. Atmospheric re-entry is outsourced entirely to existing commercial heavy-lift vehicles (e.g., SpaceX Starship derivatives), creating a 5,000% more rational and reliable logistical chain.
-</p>
-
-<h2 class="sec"><span class="num">2.</span>The Filippo Bondi Bag (FBB) System</h2>
-
-<h3 class="subsec">2.1 Concept and Materials</h3>
-<p>
+</p><h2 class="sec"><span class="num">2.</span>The Filippo Bondi Bag (FBB) System</h2><h3 class="subsec">2.1 Concept and Materials</h3><p>
 The Filippo Bondi Bag (now standing for <em>Flexible Bulk Bin</em>) is no longer an aerobrake. It is a strictly structural, modular cargo net deployed beneath the MARVENIK pyramid in the vacuum of space.
-</p>
-<p>
+</p><p>
 Instead of expensive, brittle aerographite, the FBB is fabricated from a <strong>Zylon-reinforced Titanium-Aluminide wire-rope mesh</strong>. Zylon (PBO fiber) provides an ultimate tensile strength of <span class="m">5.8 GPa</span>, while the titanium weave provides rigidity and micrometeoroid resistance. A single FBB measures roughly <span class="m">10 × 4 meters</span> (cylindrical), weighs just <span class="m">1,200 kg</span>, and comfortably holds <strong>100 tonnes</strong> of crushed asteroid regolith. At a unit cost of just $50,000, they are entirely expendable or reusable as standard orbital shipping containers.
-</p>
-
-<h3 class="subsec">2.2 Sequential Deceleration Protocol</h3>
-<p>
+</p><h3 class="subsec">2.2 Sequential Deceleration Protocol</h3><p>
 Approaching Earth from a target like 433 Eros, the spacecraft possesses a hyperbolic excess velocity (<span class="m">v_∞</span>) of roughly <span class="m">3.5 km/s</span>. Rather than risking the cargo in the atmosphere, MARVENIK utilizes standard celestial mechanics to slow down safely:
-</p>
-<ol style="margin-left:16px; margin-bottom:14px; font-size:15px;">
-<li><strong>Lunar Gravity Assist:</strong> The craft targets a retrograde perilune pass, shedding approximately <span class="m">1.8 km/s</span> of orbital energy relative to Earth.</li>
-<li><strong>High-Orbit Parking Burn:</strong> The antimatter drive executes a minimal <span class="m">1.7 km/s</span> braking burn at perigee, capturing the craft into a stable High Earth Orbit (HEO) or spiraling down to Low Earth Orbit (LEO) via repeated smaller burns.</li>
-</ol>
-<div class="eq">
-<span class="math">Δv_{total} = v_{capture} - \Delta v_{lunar} \approx 1.7 \text{ km/s}</span>
-<span class="eqnum">(1)</span>
-</div>
-<p>
+</p><ol style="margin-left:16px; margin-bottom:14px; font-size:15px;"><li><strong>Lunar Gravity Assist:</strong> The craft targets a retrograde perilune pass, shedding approximately <span class="m">1.8 km/s</span> of orbital energy relative to Earth.</li><li><strong>High-Orbit Parking Burn:</strong> The antimatter drive executes a minimal <span class="m">1.7 km/s</span> braking burn at perigee, capturing the craft into a stable High Earth Orbit (HEO) or spiraling down to Low Earth Orbit (LEO) via repeated smaller burns.</li></ol><div class="eq"><span class="math">Δv_{total} = v_{capture} - \Delta v_{lunar} \approx 1.7 \text{ km/s}</span><span class="eqnum">(1)</span></div><p>
 This requires fuel, but because our in-house ORRT/OSAC antimatter production is incredibly cheap (see Sec 4), paying a slight fuel penalty to ensure 100% cargo survival is the only rational economic choice.
-</p>
-
-<h3 class="subsec">2.3 LEO Retrieval and Commercial Downmass</h3>
-<p>
+</p><h3 class="subsec">2.3 LEO Retrieval and Commercial Downmass</h3><p>
 Once parked in a circular <span class="m">400 km</span> LEO, the MARVENIK pyramid simply detaches its loaded FBBs and leaves them in orbit.
-</p>
-<p>
+</p><p>
 From here, commercial heavy-lift vehicles (acting as space tugs) launch from Earth, rendezvous with the FBBs, ingest them into their payload bays, and perform a controlled, heat-shield-protected reentry and landing. By leaving the cargo in space to be picked up by specialists, MARVENIK can immediately turn around for another mining sortie.
-</p>
-
-<div class="note">
-<strong>Multi-bag force multiplication:</strong> Because the FBBs are small and purely structural, MARVENIK can carry multiple bins. Three FBBs per sortie → 300 tonnes PGM payload. Commercial downmass costs roughly $10M per 100t flight, which is practically a rounding error against the <strong>$8B gross revenue</strong> per bag.
-</div>
-
-</div><!-- /col left -->
-<div class="col">
-
-<!-- FBB RATIONAL DIAGRAM -->
-
-<div class="figure">
-<div class="fig-inner">
-<svg viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg" width="400">
-<rect width="440" height="340" fill="#11151c"/> <!-- space background -->
-<!-- Earth curve hint -->
-<path d="M-50,340 Q220,250 490,340 Z" fill="#1b3b5a" opacity="0.8"/>
-<path d="M-50,340 Q220,240 490,340 Z" fill="none" stroke="#4fa4ff" stroke-width="2" opacity="0.6"/>
-<defs>
-<marker id="arrowB" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
-<path d="M0,0 L7,3.5 L0,7 Z" fill="#4fa4ff"/>
-</marker>
-<marker id="arrowG" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
-<path d="M0,0 L7,3.5 L0,7 Z" fill="#2a7a2a"/>
-</marker>
-</defs>
+</p><div class="note"><strong>Multi-bag force multiplication:</strong> Because the FBBs are small and purely structural, MARVENIK can carry multiple bins. Three FBBs per sortie → 300 tonnes PGM payload. Commercial downmass costs roughly $10M per 100t flight, which is practically a rounding error against the <strong>$8B gross revenue</strong> per bag.
+</div></div><div class="col"><div class="figure"><div class="fig-inner"><svg viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg" width="400"><rect width="440" height="340" fill="#11151c"/><path d="M-50,340 Q220,250 490,340 Z" fill="#1b3b5a" opacity="0.8"/><path d="M-50,340 Q220,240 490,340 Z" fill="none" stroke="#4fa4ff" stroke-width="2" opacity="0.6"/><defs><marker id="arrowB" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4fa4ff"/></marker><marker id="arrowG" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#2a7a2a"/></marker></defs>
 
 code
 Code
 download
 content_copy
 expand_less
-<!-- Altitude labels -->
-  <text x="12" y="270" font-size="9" fill="#88bbee" font-family="Georgia,serif">LEO Parking Orbit (400 km)</text>
-  <line x1="8" y1="275" x2="430" y2="275" stroke="#4fa4ff" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
 
-  <!-- PYRAMID -->
-  <polygon points="120,50 83,115 157,115" fill="#2a2a2a" stroke="#888" stroke-width="1.2"/>
-  <text x="120" y="82" text-anchor="middle" font-size="8" fill="white" font-family="Georgia,serif">MARVENIK-HL</text>
-  
-  <!-- Annihilation drive glow (off) -->
-  <ellipse cx="120" cy="122" rx="14" ry="5" fill="#333" opacity="0.8"/>
-
-  <!-- Tethers to FBB (detaching) -->
-  <line x1="100" y1="115" x2="100" y2="135" stroke="#d4a800" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <line x1="140" y1="115" x2="140" y2="135" stroke="#d4a800" stroke-width="1.5" stroke-dasharray="3,2"/>
-
-  <!-- FBB bags (cylindrical/oval pods) -->
-  <!-- Detached bag 1 -->
-  <rect x="80" y="140" width="80" height="35" rx="8" fill="#c8e6c9" stroke="#2a7a2a" stroke-width="1.5" opacity="0.9"/>
-  <text x="120" y="157" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a4a1a" font-family="Georgia,serif">FBB Pod</text>
-  <text x="120" y="168" text-anchor="middle" font-size="7" fill="#2a5a2a" font-family="Georgia,serif">100 t PGM Payload</text>
-  <text x="120" y="185" text-anchor="middle" font-size="8" font-style="italic" fill="#d4a800" font-family="Georgia,serif">Parked / Detached</text>
-
-  <!-- FBB 2 (Being captured by tug) -->
-  <rect x="280" y="100" width="80" height="35" rx="8" fill="#c8e6c9" stroke="#2a7a2a" stroke-width="1.5" opacity="0.9"/>
-  <text x="320" y="122" text-anchor="middle" font-size="8" font-weight="bold" fill="#1a4a1a" font-family="Georgia,serif">FBB Pod 2</text>
-
-  <!-- Space Tug (Starship equivalent) -->
-  <path d="M 365,117 L 420,100 L 420,135 Z" fill="#eeeeee" stroke="#aaa" stroke-width="1.2"/>
-  <rect x="365" y="100" width="10" height="35" fill="#333"/> <!-- Open Payload bay doors -->
-  <text x="395" y="121" text-anchor="middle" font-size="8" fill="#111" font-family="Georgia,serif">Commercial</text>
-  <text x="395" y="131" text-anchor="middle" font-size="8" fill="#111" font-family="Georgia,serif">Space Tug</text>
-
-  <!-- Docking approach arrow -->
-  <line x1="360" y1="117" x2="330" y2="117" stroke="#4fa4ff" stroke-width="1.5" marker-end="url(#arrowB)"/>
-  <text x="345" y="110" text-anchor="middle" font-size="8" fill="#4fa4ff" font-family="Georgia,serif">Rendezvous</text>
-
-  <!-- Downmass Arrow to Earth -->
-  <path d="M 390,140 Q 370,220 300,280" fill="none" stroke="#ff5555" stroke-width="2" stroke-dasharray="6,4"/>
-  <polygon points="300,280 302,270 310,274" fill="#ff5555"/>
-  <text x="380" y="210" font-size="8" fill="#ffaa55" font-family="Georgia,serif">Controlled re-entry</text>
-  <text x="380" y="222" font-size="8" fill="#ffaa55" font-family="Georgia,serif">with thermal shielding</text>
-
-  <!-- Caption label -->
-  <text x="220" y="315" text-anchor="middle" font-size="8" fill="#999" font-family="Georgia,serif" font-style="italic">Fig. 1 — Rationalized Logistics: LEO FBB Detachment &amp; Commercial Retrieval.</text>
-  <text x="220" y="325" text-anchor="middle" font-size="7.5" fill="#bbb" font-family="Georgia,serif" font-style="italic">MARVENIK parks in 400km orbit, leaves cargo mesh pods. Space tugs perform downmass.</text>
-</svg>
-</div>
-<div class="fig-caption">
-<strong>Fig. 1.</strong> The corrected FBB operational profile. MARVENIK (left) safely sheds its excess velocity using celestial mechanics and an orbital insertion burn. Once parked in a 400km LEO, it detaches the 100t FBB pods. Existing commercial heavy-lift architecture (right) docks with the bins and handles atmospheric re-entry using conventional heat shields. The PGM cargo never risks atmospheric incineration.
-</div>
-</div>
-
-<h2 class="sec"><span class="num">3.</span>ORRT — Zero-Cost Power for Production</h2>
-<p>
+  <text x="12" y="270" font-size="9" fill="#88bbee" font-family="Georgia,serif">LEO Parking Orbit (400 km)</text><line x1="8" y1="275" x2="430" y2="275" stroke="#4fa4ff" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/><polygon points="120,50 83,115 157,115" fill="#2a2a2a" stroke="#888" stroke-width="1.2"/><text x="120" y="82" text-anchor="middle" font-size="8" fill="white" font-family="Georgia,serif">MARVENIK-HL</text><ellipse cx="120" cy="122" rx="14" ry="5" fill="#333" opacity="0.8"/><line x1="100" y1="115" x2="100" y2="135" stroke="#d4a800" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="140" y1="115" x2="140" y2="135" stroke="#d4a800" stroke-width="1.5" stroke-dasharray="3,2"/><rect x="80" y="140" width="80" height="35" rx="8" fill="#c8e6c9" stroke="#2a7a2a" stroke-width="1.5" opacity="0.9"/><text x="120" y="157" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a4a1a" font-family="Georgia,serif">FBB Pod</text><text x="120" y="168" text-anchor="middle" font-size="7" fill="#2a5a2a" font-family="Georgia,serif">100 t PGM Payload</text><text x="120" y="185" text-anchor="middle" font-size="8" font-style="italic" fill="#d4a800" font-family="Georgia,serif">Parked / Detached</text><rect x="280" y="100" width="80" height="35" rx="8" fill="#c8e6c9" stroke="#2a7a2a" stroke-width="1.5" opacity="0.9"/><text x="320" y="122" text-anchor="middle" font-size="8" font-weight="bold" fill="#1a4a1a" font-family="Georgia,serif">FBB Pod 2</text><path d="M 365,117 L 420,100 L 420,135 Z" fill="#eeeeee" stroke="#aaa" stroke-width="1.2"/><rect x="365" y="100" width="10" height="35" fill="#333"/><text x="395" y="121" text-anchor="middle" font-size="8" fill="#111" font-family="Georgia,serif">Commercial</text><text x="395" y="131" text-anchor="middle" font-size="8" fill="#111" font-family="Georgia,serif">Space Tug</text><line x1="360" y1="117" x2="330" y2="117" stroke="#4fa4ff" stroke-width="1.5" marker-end="url(#arrowB)"/><text x="345" y="110" text-anchor="middle" font-size="8" fill="#4fa4ff" font-family="Georgia,serif">Rendezvous</text><path d="M 390,140 Q 370,220 300,280" fill="none" stroke="#ff5555" stroke-width="2" stroke-dasharray="6,4"/><polygon points="300,280 302,270 310,274" fill="#ff5555"/><text x="380" y="210" font-size="8" fill="#ffaa55" font-family="Georgia,serif">Controlled re-entry</text><text x="380" y="222" font-size="8" fill="#ffaa55" font-family="Georgia,serif">with thermal shielding</text><text x="220" y="315" text-anchor="middle" font-size="8" fill="#999" font-family="Georgia,serif" font-style="italic">Fig. 1 — Rationalized Logistics: LEO FBB Detachment &amp; Commercial Retrieval.</text><text x="220" y="325" text-anchor="middle" font-size="7.5" fill="#bbb" font-family="Georgia,serif" font-style="italic">MARVENIK parks in 400km orbit, leaves cargo mesh pods. Space tugs perform downmass.</text></svg></div><div class="fig-caption"><strong>Fig. 1.</strong> The corrected FBB operational profile. MARVENIK (left) safely sheds its excess velocity using celestial mechanics and an orbital insertion burn. Once parked in a 400km LEO, it detaches the 100t FBB pods. Existing commercial heavy-lift architecture (right) docks with the bins and handles atmospheric re-entry using conventional heat shields. The PGM cargo never risks atmospheric incineration.
+</div></div><h2 class="sec"><span class="num">3.</span>ORRT — Zero-Cost Power for Production</h2><p>
 The ORRT Magnetic Repulsion Energy Harvesting Satellite Constellation generates electrical
 power from Earth's geomagnetic field via Lorentz-Gradient Ratcheting, at a deployment cost
 of <span class="m">$170–350M/GW</span> and <em>zero marginal fuel cost</em>. Applied to
 antimatter production, ORRT eliminates the largest single operating expense of all production
 pathways.
-</p>
-<table class="data-table">
-<caption>Table 1 — ORRT power substitution savings per production pathway.</caption>
-<tr><th>Node type</th><th>Electricity draw</th><th>Grid cost/yr</th><th>ORRT cost/yr</th></tr>
-<tr><td>1× CNBC-HEPI beamline</td><td>55 MW</td><td>$35M</td><td class="opt">$0</td></tr>
-<tr><td>20× ACN positron nodes</td><td>100 MW</td><td>$43.8M</td><td class="opt">$0</td></tr>
-<tr><td>1 GW ORRT unit (capex)</td><td>—</td><td>—</td><td class="opt">$250M one-time</td></tr>
-</table>
-<p>
+</p><table class="data-table"><caption>Table 1 — ORRT power substitution savings per production pathway.</caption><tr><th>Node type</th><th>Electricity draw</th><th>Grid cost/yr</th><th>ORRT cost/yr</th></tr><tr><td>1× CNBC-HEPI beamline</td><td>55 MW</td><td>$35M</td><td class="opt">$0</td></tr><tr><td>20× ACN positron nodes</td><td>100 MW</td><td>$43.8M</td><td class="opt">$0</td></tr><tr><td>1 GW ORRT unit (capex)</td><td>—</td><td>—</td><td class="opt">$250M one-time</td></tr></table><p>
 Because ORRT makes electricity effectively free, producing the extra antiprotons needed to safely propulsively park the MARVENIK in LEO (instead of dangerous aerobraking) costs almost nothing at the margin.
-</p>
-
-</div><!-- /col right -->
-</div><!-- /cols ruled -->
-
-<hr class="rule">
-
-<div class="cols ruled">
-<div class="col">
-
-<h2 class="sec"><span class="num">4.</span>OSAC — Orbital Antimatter Factory</h2>
-
-<h3 class="subsec">4.1 Architecture and LEO Advantages</h3>
-<p>
+</p></div></div><hr class="rule"><div class="cols ruled"><div class="col"><h2 class="sec"><span class="num">4.</span>OSAC — Orbital Antimatter Factory</h2><h3 class="subsec">4.1 Architecture and LEO Advantages</h3><p>
 The Orbital Symbiotic Anticomputer Constellation (OSAC) deploys SAC antimatter production
 nodes aboard the ORRT satellite platform in LEO. Three engineering advantages are decisive
 for MARVENIK purposes:
-</p>
-<p>
-<strong>Perfect vacuum at no cost:</strong> LEO provides ambient pressure below
+</p><p><strong>Perfect vacuum at no cost:</strong> LEO provides ambient pressure below
 <span class="m">10⁻⁸ Torr</span>, eliminating vacuum pump loads entirely and extending
 positron storage lifetime from days to months.
-</p>
-<p>
-<strong>Zero-G trap symmetry:</strong> In microgravity, Penning-trap magnetic fields can be
+</p><p><strong>Zero-G trap symmetry:</strong> In microgravity, Penning-trap magnetic fields can be
 perfectly symmetrical, removing plasma drift instabilities and increasing maximum stable
 positron density by an estimated order of magnitude.
-</p>
-<p>
-<strong>Orbital refuelling:</strong> MARVENIK launches from Earth to LEO rendezvous with
+</p><p><strong>Orbital refuelling:</strong> MARVENIK launches from Earth to LEO rendezvous with
 OSAC — saving massive terrestrial liftoff fuel. It departs from LEO, mines the asteroid, and returns to LEO.
-</p>
-
-<h3 class="subsec">4.2 OSAC Revenue — The Subsidy Engine</h3>
-<p>
+</p><h3 class="subsec">4.2 OSAC Revenue — The Subsidy Engine</h3><p>
 OSAC generates independent revenue from the AI compute/entropy byproduct of
 positron production:
-</p>
-<table class="data-table">
-<caption>Table 2 — OSAC annual revenue per 1 GW unit (200 SAC nodes).</caption>
-<tr><th>Revenue stream</th><th>Annual</th></tr>
-<tr><td>AI compute leasing (34 ZettaOps)</td><td>$5.2B+</td></tr>
-<tr><td>HEPI Monte Carlo / QRNG services</td><td>$0.5B</td></tr>
-<tr class="head-row"><td>Gross annual revenue</td><td>$5.7B</td></tr>
-<tr><td>Annual operating cost</td><td>$0.2B</td></tr>
-<tr class="head-row"><td class="opt"><strong>Net annual surplus</strong></td><td class="opt"><strong>$5.5B/yr</strong></td></tr>
-</table>
-<p>
+</p><table class="data-table"><caption>Table 2 — OSAC annual revenue per 1 GW unit (200 SAC nodes).</caption><tr><th>Revenue stream</th><th>Annual</th></tr><tr><td>AI compute leasing (34 ZettaOps)</td><td>$5.2B+</td></tr><tr><td>HEPI Monte Carlo / QRNG services</td><td>$0.5B</td></tr><tr class="head-row"><td>Gross annual revenue</td><td>$5.7B</td></tr><tr><td>Annual operating cost</td><td>$0.2B</td></tr><tr class="head-row"><td class="opt"><strong>Net annual surplus</strong></td><td class="opt"><strong>$5.5B/yr</strong></td></tr></table><p>
 With ORRT powering operations and OSAC generating revenue, the marginal cost of producing antiprotons plummets.
-</p>
-
-<div class="green-box">
-<strong>Critical result:</strong> ORRT-powered CNBC-HEPI produces antiprotons at
+</p><div class="green-box"><strong>Critical result:</strong> ORRT-powered CNBC-HEPI produces antiprotons at
 <strong>$1.3M/gram</strong>. This makes propulsive orbital capture financially trivial, entirely negating the need for highly experimental and dangerous atmospheric cargo aerobraking.
-</div>
-
-</div><!-- /col left -->
-<div class="col">
-
-<h2 class="sec"><span class="num">5.</span>QRPWS — Deep-Belt Propulsion</h2>
-<p>
+</div></div><div class="col"><h2 class="sec"><span class="num">5.</span>QRPWS — Deep-Belt Propulsion</h2><p>
 For missions beyond 2 AU (16 Psyche at 2.92 AU, Trojan asteroids at 5.2 AU), classical
 Regime I thrust demands become large even with efficient orbital profiles. The Quad-Ring Positive-Energy
 Warp Shell (QRPWS), mounted at the MARVENIK apex as a tetrahedral array of four YBCO
 superconducting rings, generates a
 thin positive-energy warp shell that reduces effective inertia within the bubble.
 Sustained by the on-board antimatter drive at cruise, the QRPWS reduces deep-belt fuel requirements by 74–89%:
-</p>
-<table class="data-table">
-<caption>Table 3 — QRPWS fuel savings for deep-belt targets.</caption>
-<tr><th>Mission</th><th>Classical Orbit-to-Orbit</th><th>QRPWS-assisted</th><th>Saving</th></tr>
-<tr><td>16 Psyche (2.92 AU)</td><td>1,950 g</td><td class="opt">507 g</td><td>74%</td></tr>
-<tr><td>Trojan L4 (5.2 AU)</td><td>~9,100 g</td><td class="opt">~1,000 g</td><td>89%</td></tr>
-</table>
-
-<h2 class="sec"><span class="num">6.</span>Full Antimatter Cost Pathway Comparison</h2>
-<p>
+</p><table class="data-table"><caption>Table 3 — QRPWS fuel savings for deep-belt targets.</caption><tr><th>Mission</th><th>Classical Orbit-to-Orbit</th><th>QRPWS-assisted</th><th>Saving</th></tr><tr><td>16 Psyche (2.92 AU)</td><td>1,950 g</td><td class="opt">507 g</td><td>74%</td></tr><tr><td>Trojan L4 (5.2 AU)</td><td>~9,100 g</td><td class="opt">~1,000 g</td><td>89%</td></tr></table><h2 class="sec"><span class="num">6.</span>Full Antimatter Cost Pathway Comparison</h2><p>
 Consolidated production pathways from CERN-equivalent baselines to the optimal ORRT-powered configurations. Costs are in $/gram antiprotons (p̄).
-</p>
-
-<table class="data-table full">
-<caption>Table 4 — Antimatter production cost by pathway. Green rows: recommended.</caption>
-<tr><th>#</th><th>Pathway</th><th>$/gram p̄</th><th>TRL / Status</th></tr>
-<tr><td>1</td><td>CERN AD (market rate)</td><td class="opt" style="color:var(--accent)">$25–62T/g</td><td>TRL 9 · unaffordable</td></tr>
-<tr><td>2</td><td>ACN positron nodes (cluster)</td><td>~$2B/g p̄ equiv.</td><td>TRL 5 · positrons only</td></tr>
-<tr><td>3</td><td>CNBC-HEPI hybrid (grid power)</td><td>$4.8M/g</td><td>TRL 3-4 · buildable 2030</td></tr>
-<tr class="best"><td>4</td><td><strong>CNBC-HEPI (owned, ORRT power)</strong></td><td class="opt"><strong>$1.3M/g</strong></td><td><strong>TRL 3-4 · buildable 2032</strong></td></tr>
-<tr class="best"><td>5</td><td><strong>OSAC orbital (positrons, internal)</strong></td><td class="opt"><strong>~$0 (subsidized)</strong></td><td><strong>TRL 2-3 · 2035+ target</strong></td></tr>
-</table>
-
-<div class="result">
-<div class="r-label">Principal Logistical Finding</div>
+</p><table class="data-table full"><caption>Table 4 — Antimatter production cost by pathway. Green rows: recommended.</caption><tr><th>#</th><th>Pathway</th><th>$/gram p̄</th><th>TRL / Status</th></tr><tr><td>1</td><td>CERN AD (market rate)</td><td class="opt" style="color:var(--accent)">$25–62T/g</td><td>TRL 9 · unaffordable</td></tr><tr><td>2</td><td>ACN positron nodes (cluster)</td><td>~$2B/g p̄ equiv.</td><td>TRL 5 · positrons only</td></tr><tr><td>3</td><td>CNBC-HEPI hybrid (grid power)</td><td>$4.8M/g</td><td>TRL 3-4 · buildable 2030</td></tr><tr class="best"><td>4</td><td><strong>CNBC-HEPI (owned, ORRT power)</strong></td><td class="opt"><strong>$1.3M/g</strong></td><td><strong>TRL 3-4 · buildable 2032</strong></td></tr><tr class="best"><td>5</td><td><strong>OSAC orbital (positrons, internal)</strong></td><td class="opt"><strong>~$0 (subsidized)</strong></td><td><strong>TRL 2-3 · 2035+ target</strong></td></tr></table><div class="result"><div class="r-label">Principal Logistical Finding</div>
 Producing antiprotons at <strong>$1.3M/gram</strong> fundamentally changes mission design. When fuel is this cheap, <strong>you do not risk $24B of cargo on an unproven parachute</strong>. You spend an extra 100g of fuel ($130M) to brake safely into LEO, and pay commercial tugs $30M to fly the cargo down safely. Rational economics favors reliability over extreme, risky fuel-pinching.
-</div>
-
-</div><!-- /col right -->
-</div><!-- /cols ruled -->
-
-<hr class="rule">
-
-<div class="cols ruled">
-<div class="col">
-
-<h2 class="sec"><span class="num">7.</span>Revised Rational Economics</h2>
-<p>
+</div></div></div><hr class="rule"><div class="cols ruled"><div class="col"><h2 class="sec"><span class="num">7.</span>Revised Rational Economics</h2><p>
 Table 5 computes full unified mission economics under the grounded orbital logistics model. FBB costs are now trivial ($50k/ea) due to the switch to standard Titanium/Zylon meshes. A line item for "Commercial Downmass" (hiring Starships to bring the minerals home from LEO) is included.
-</p>
-
-<table class="data-table">
-<caption>Table 5 — Full unified economics per sortie.</caption>
-<tr><th>Line item</th><th>MRV-HL-1 (Eros)</th><th>MRV-HL-2 (1986 DA)</th></tr>
-<tr class="head-row"><td colspan="3">Costs</td></tr>
-<tr><td>Fuel mass (Orbit-to-Orbit LEO)</td><td>410 g</td><td>550 g</td></tr>
-<tr><td>Fuel @ $1.3M/g</td><td>$533M</td><td>$715M</td></tr>
-<tr><td>3× FBB pods (Titanium/Zylon)</td><td>$0.15M</td><td>$0.15M</td></tr>
-<tr><td>Commercial downmass tugs (3×100t)</td><td>$30M</td><td>$30M</td></tr>
-<tr><td>Operations &amp; orbital handling</td><td>$110M</td><td>$110M</td></tr>
-<tr class="head-row"><td><strong>Total mission cost</strong></td><td><strong>$673.15M</strong></td><td><strong>$855.15M</strong></td></tr>
-<tr class="head-row"><td colspan="3">Revenue (3 FBBs × 100 t PGM)</td></tr>
-<tr><td>Mineral gross (300 t @ ~$80K/kg avg)</td><td>$24.0B</td><td>$33.0B</td></tr>
-<tr class="head-row"><td class="opt"><strong>Net profit</strong></td><td class="opt"><strong>$23.32B</strong></td><td class="opt"><strong>$32.14B</strong></td></tr>
-<tr><td>ROI per sortie</td><td class="opt">35.6×</td><td class="opt">38.6×</td></tr>
-</table>
-
-<div class="green-box">
-<strong>Bottom line (Rationalized 3-FBB configuration):</strong> By utilizing LEO parking and commercial retrieval tugs, we guarantee the safety of the cargo. A single MRV-HL-1 sortie to Eros still returns <strong>$23.32 billion net profit</strong>. The entire programme infrastructure investment is safely recovered in the first successful sortie.
-</div>
-
-</div><!-- /col left -->
-<div class="col">
-
-<h2 class="sec"><span class="num">8.</span>Build Sequence &amp; Programme Timeline</h2>
-
-<h3 class="subsec">Phase 0 · 2026–2029 · $350M</h3>
-<p>
+</p><table class="data-table"><caption>Table 5 — Full unified economics per sortie.</caption><tr><th>Line item</th><th>MRV-HL-1 (Eros)</th><th>MRV-HL-2 (1986 DA)</th></tr><tr class="head-row"><td colspan="3">Costs</td></tr><tr><td>Fuel mass (Orbit-to-Orbit LEO)</td><td>410 g</td><td>550 g</td></tr><tr><td>Fuel @ $1.3M/g</td><td>$533M</td><td>$715M</td></tr><tr><td>3× FBB pods (Titanium/Zylon)</td><td>$0.15M</td><td>$0.15M</td></tr><tr><td>Commercial downmass tugs (3×100t)</td><td>$30M</td><td>$30M</td></tr><tr><td>Operations &amp; orbital handling</td><td>$110M</td><td>$110M</td></tr><tr class="head-row"><td><strong>Total mission cost</strong></td><td><strong>$673.15M</strong></td><td><strong>$855.15M</strong></td></tr><tr class="head-row"><td colspan="3">Revenue (3 FBBs × 100 t PGM)</td></tr><tr><td>Mineral gross (300 t @ ~$80K/kg avg)</td><td>$24.0B</td><td>$33.0B</td></tr><tr class="head-row"><td class="opt"><strong>Net profit</strong></td><td class="opt"><strong>$23.32B</strong></td><td class="opt"><strong>$32.14B</strong></td></tr><tr><td>ROI per sortie</td><td class="opt">35.6×</td><td class="opt">38.6×</td></tr></table><div class="green-box"><strong>Bottom line (Rationalized 3-FBB configuration):</strong> By utilizing LEO parking and commercial retrieval tugs, we guarantee the safety of the cargo. A single MRV-HL-1 sortie to Eros still returns <strong>$23.32 billion net profit</strong>. The entire programme infrastructure investment is safely recovered in the first successful sortie.
+</div></div><div class="col"><h2 class="sec"><span class="num">8.</span>Build Sequence &amp; Programme Timeline</h2><h3 class="subsec">Phase 0 · 2026–2029 · $350M</h3><p>
 Commission one CNBC-HEPI beamline. Validate 10⁵ p̄/s production rate.
 Prototype FBB Titanium mesh pods and integrate docking fixtures for commercial launch vehicles. Demonstrate single ORRT satellite at 35 MW output.
-</p>
-
-<h3 class="subsec">Phase 1 · 2030–2034 · $2.95B</h3>
-<p>
+</p><h3 class="subsec">Phase 1 · 2030–2034 · $2.95B</h3><p>
 Deploy 10× CNBC-HEPI beamlines. Commission 1 GW ORRT constellation (free electricity from
 2032). Begin antiproton accumulation toward 410 g fuel load (~4 years at 100 g/yr). Secure advance contracts with commercial launch providers for orbital downmass operations.
-</p>
-
-<h3 class="subsec">Phase 2 · 2035–2037 · ~$3.5B additional</h3>
-<p>
+</p><h3 class="subsec">Phase 2 · 2035–2037 · ~$3.5B additional</h3><p>
 Execute MRV-HL-1 to 433 Eros, 3 FBBs, park in LEO, <strong>$23.3B net profit</strong>. Use $3.5B of
 sortie profit to fund OSAC Phase 1 (1 GW orbital unit). OSAC begins generating
 $5.5B/yr AI compute surplus from Year 1 of operation.
-</p>
-
-<h3 class="subsec">Phase 3 · 2037+ · Self-financing</h3>
-<p>
+</p><h3 class="subsec">Phase 3 · 2037+ · Self-financing</h3><p>
 Programme is entirely self-funded from Phase 2 onwards. OSAC surplus covers infrastructure
 expansion. 2-sorties-per-year cadence generates $48B/yr gross. QRPWS validated and installed
 for first Psyche deep-belt mission in 2040.
-</p>
-
-<table class="data-table">
-<caption>Table 6 — Cumulative programme financials.</caption>
-<tr><th>Year</th><th>Cumul. Capex</th><th>Cumul. Revenue</th><th>Net position</th></tr>
-<tr><td>2029</td><td>$350M</td><td>$0</td><td>−$350M</td></tr>
-<tr><td>2034</td><td>$3.3B</td><td>$0</td><td>−$3.3B</td></tr>
-<tr><td>2036</td><td>$6.8B</td><td>$23.32B (HL-1)</td><td class="opt">+$16.52B</td></tr>
-<tr><td>2037</td><td>$7.2B</td><td>$28.82B (+OSAC yr1)</td><td class="opt">+$21.62B</td></tr>
-<tr><td>2040</td><td>$8.0B</td><td>$95B+</td><td class="opt">+$87B+</td></tr>
-</table>
-
-<h2 class="sec"><span class="num">9.</span>Key Open Logistical Dependencies</h2>
-<p>
-<strong>(i) Commercial Downmass Cadence.</strong> Bringing 300 tonnes of minerals down safely requires ~3 flights of standard heavy-lift vehicles (100t capacity each). Coordination with commercial fleets (e.g., SpaceX) is required to ensure tugs are on-standby upon MARVENIK's LEO arrival.
-</p>
-<p>
-<strong>(ii) CNBC neutrino flux.</strong> Achieving 10²⁰ neutrinos/s at 50–60 MW remains the highest-risk technical dependency. Phase 0 validation at 10 MW (5% flux) is mandatory.
-</p>
-
-</div><!-- /col right -->
-</div><!-- /cols ruled -->
-
-<hr class="rule">
-
-<!-- FULL-WIDTH ARCHITECTURE DIAGRAM -->
-
-<h2 class="sec" style="margin-top:0;"><span class="num">10.</span>Unified Rational Logistics Overview</h2>
-
-<div class="figure">
-<div class="fig-inner">
-<svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" width="740">
-<rect width="780" height="260" fill="#fafaf8"/>
-<defs>
-<marker id="aP" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-<path d="M0,0 L7,3.5 L0,7 Z" fill="#8b0000"/>
-</marker>
-<marker id="aG" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-<path d="M0,0 L7,3.5 L0,7 Z" fill="#2a7a2a"/>
-</marker>
-<marker id="aB" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-<path d="M0,0 L7,3.5 L0,7 Z" fill="#336699"/>
-</marker>
-</defs>
+</p><table class="data-table"><caption>Table 6 — Cumulative programme financials.</caption><tr><th>Year</th><th>Cumul. Capex</th><th>Cumul. Revenue</th><th>Net position</th></tr><tr><td>2029</td><td>$350M</td><td>$0</td><td>−$350M</td></tr><tr><td>2034</td><td>$3.3B</td><td>$0</td><td>−$3.3B</td></tr><tr><td>2036</td><td>$6.8B</td><td>$23.32B (HL-1)</td><td class="opt">+$16.52B</td></tr><tr><td>2037</td><td>$7.2B</td><td>$28.82B (+OSAC yr1)</td><td class="opt">+$21.62B</td></tr><tr><td>2040</td><td>$8.0B</td><td>$95B+</td><td class="opt">+$87B+</td></tr></table><h2 class="sec"><span class="num">9.</span>Key Open Logistical Dependencies</h2><p><strong>(i) Commercial Downmass Cadence.</strong> Bringing 300 tonnes of minerals down safely requires ~3 flights of standard heavy-lift vehicles (100t capacity each). Coordination with commercial fleets (e.g., SpaceX) is required to ensure tugs are on-standby upon MARVENIK's LEO arrival.
+</p><p><strong>(ii) CNBC neutrino flux.</strong> Achieving 10²⁰ neutrinos/s at 50–60 MW remains the highest-risk technical dependency. Phase 0 validation at 10 MW (5% flux) is mandatory.
+</p></div></div><hr class="rule"><h2 class="sec" style="margin-top:0;"><span class="num">10.</span>Unified Rational Logistics Overview</h2><div class="figure"><div class="fig-inner"><svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" width="740"><rect width="780" height="260" fill="#fafaf8"/><defs><marker id="aP" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#8b0000"/></marker><marker id="aG" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#2a7a2a"/></marker><marker id="aB" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#336699"/></marker></defs>
 
 code
 Code
 download
 content_copy
 expand_less
-<!-- ORRT -->
-  <ellipse cx="80" cy="70" rx="60" ry="28" fill="none" stroke="#336699" stroke-width="2"/>
-  <ellipse cx="80" cy="70" rx="36" ry="36" fill="none" stroke="#336699" stroke-width="1.2" stroke-dasharray="3,2"/>
-  <text x="80" y="64" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#336699" font-family="Georgia,serif">ORRT</text>
-  <text x="80" y="76" text-anchor="middle" font-size="8" fill="#336699" font-family="Georgia,serif">1 GW · $250M</text>
 
-  <!-- ORRT → CNBC (power) -->
-  <line x1="140" y1="75" x2="228" y2="90" stroke="#336699" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#aB)"/>
-  <text x="172" y="78" font-size="8" fill="#336699" font-family="Georgia,serif" font-style="italic">1 GW power</text>
-
-  <!-- CNBC-HEPI cluster -->
-  <rect x="230" y="70" width="170" height="58" rx="5" fill="#fff8e8" stroke="#d4a800" stroke-width="2"/>
-  <text x="315" y="90" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#5a4500" font-family="Georgia,serif">CNBC-HEPI Cluster</text>
-  <text x="315" y="103" text-anchor="middle" font-size="8" fill="#5a4500" font-family="Georgia,serif">10 beamlines</text>
-  <text x="315" y="117" text-anchor="middle" font-size="8" fill="#8b0000" font-family="Georgia,serif" font-weight="bold">$1.3M/gram antiprotons</text>
-
-  <!-- CNBC → MARVENIK (fuel) -->
-  <line x1="400" y1="99" x2="480" y2="120" stroke="#8b0000" stroke-width="2" marker-end="url(#aP)"/>
-  <text x="440" y="108" font-size="8" fill="#8b0000" font-family="Georgia,serif" font-style="italic">p̄ fuel</text>
-
-  <!-- OSAC node -->
-  <rect x="492" y="38" width="130" height="52" rx="5" fill="#f0f8f0" stroke="#2a7a2a" stroke-width="2"/>
-  <text x="557" y="57" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#2a7a2a" font-family="Georgia,serif">OSAC (LEO)</text>
-  <text x="557" y="81" text-anchor="middle" font-size="8" fill="#2a7a2a" font-family="Georgia,serif">$5.5B/yr AI surplus</text>
-
-  <!-- MARVENIK pyramid (centre) -->
-  <polygon points="530,120 490,200 570,200" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
-  <text x="530" y="158" text-anchor="middle" font-size="8.5" fill="white" font-family="Georgia,serif" font-weight="bold">MARVENIK-HL</text>
-  <text x="530" y="170" text-anchor="middle" font-size="7.5" fill="#ccc" font-family="Georgia,serif">Parked in LEO</text>
-  
-  <!-- FBB below pyramid (smaller, structured pods) -->
-  <rect x="470" y="210" width="120" height="30" rx="4" fill="#c8e6c9" stroke="#2a7a2a" stroke-width="1.5" opacity="0.88"/>
-  <text x="530" y="224" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#1a4a1a" font-family="Georgia,serif">FBB Mesh Pods ×3</text>
-  <text x="530" y="235" text-anchor="middle" font-size="7.5" fill="#2a5a2a" font-family="Georgia,serif">Titanium-Zylon · 300 t PGM</text>
-  <!-- tethers -->
-  <line x1="500" y1="200" x2="500" y2="210" stroke="#888" stroke-width=".8" stroke-dasharray="3,2"/>
-  <line x1="560" y1="200" x2="560" y2="210" stroke="#888" stroke-width=".8" stroke-dasharray="3,2"/>
-
-  <!-- Asteroid (right) -->
-  <ellipse cx="700" cy="155" rx="52" ry="36" fill="#c8b89a" stroke="#999" stroke-width="1.2"/>
-  <text x="700" y="150" text-anchor="middle" font-size="9" fill="#5a3a00" font-family="Georgia,serif" font-weight="bold">Asteroid</text>
-  <text x="700" y="163" text-anchor="middle" font-size="8" fill="#5a3a00" font-family="Georgia,serif">1986 DA / Eros</text>
-
-  <!-- MARVENIK → Asteroid -->
-  <line x1="570" y1="162" x2="647" y2="155" stroke="#555" stroke-width="1.8" marker-end="url(#aP)"/>
-  <text x="606" y="150" text-anchor="middle" font-size="8" fill="#555" font-family="Georgia,serif" font-style="italic">sorties</text>
-
-  <!-- Revenue label -->
-  <text x="700" y="205" text-anchor="middle" font-size="10" fill="#2a7a2a" font-family="Georgia,serif" font-weight="bold">$23.3B net</text>
-
-  <!-- Commercial Return path -->
-  <line x1="465" y1="225" x2="390" y2="225" stroke="#336699" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#aB)"/>
-  <text x="380" y="222" text-anchor="end" font-size="8" fill="#336699" font-family="Georgia,serif" font-weight="bold">Commercial LEO Retrieval</text>
-  <text x="380" y="234" text-anchor="end" font-size="7.5" fill="#336699" font-family="Georgia,serif">Tugs fly cargo to surface safely</text>
-
-  <!-- Legend -->
-  <line x1="20" y1="248" x2="46" y2="248" stroke="#336699" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="50" y="252" font-size="8" fill="#336699" font-family="Georgia,serif">power / logistics</text>
-  <line x1="140" y1="248" x2="166" y2="248" stroke="#8b0000" stroke-width="1.8"/>
-  <text x="170" y="252" font-size="8" fill="#8b0000" font-family="Georgia,serif">antimatter fuel</text>
-  <line x1="260" y1="248" x2="286" y2="248" stroke="#2a7a2a" stroke-width="1.5"/>
-  <text x="290" y="252" font-size="8" fill="#2a7a2a" font-family="Georgia,serif">mineral payload</text>
-</svg>
-</div>
-<div class="fig-caption">
-<strong>Fig. 2.</strong> MARVENIK rationally unified architecture. ORRT constellation (left) powers the CNBC-HEPI cluster, producing cheap p̄ fuel. OSAC orbital factory generates AI compute revenue. MARVENIK-HL conducts mining sorties and parks back in LEO. Three FBB mesh pods securely hold 300 t PGM. Instead of dangerous aerobraking, commercial space tugs are hired to safely ingest the pods and return them to Earth's surface. Net profit per sortie remains massive at <strong>$23.3B</strong>.
-</div>
-</div>
-
-<hr class="rule">
-
-<div class="cols ruled">
-<div class="col">
-
-<h2 class="sec"><span class="num">11.</span>Conclusion</h2>
-<p>
+  <ellipse cx="80" cy="70" rx="60" ry="28" fill="none" stroke="#336699" stroke-width="2"/><ellipse cx="80" cy="70" rx="36" ry="36" fill="none" stroke="#336699" stroke-width="1.2" stroke-dasharray="3,2"/><text x="80" y="64" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#336699" font-family="Georgia,serif">ORRT</text><text x="80" y="76" text-anchor="middle" font-size="8" fill="#336699" font-family="Georgia,serif">1 GW · $250M</text><line x1="140" y1="75" x2="228" y2="90" stroke="#336699" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#aB)"/><text x="172" y="78" font-size="8" fill="#336699" font-family="Georgia,serif" font-style="italic">1 GW power</text><rect x="230" y="70" width="170" height="58" rx="5" fill="#fff8e8" stroke="#d4a800" stroke-width="2"/><text x="315" y="90" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#5a4500" font-family="Georgia,serif">CNBC-HEPI Cluster</text><text x="315" y="103" text-anchor="middle" font-size="8" fill="#5a4500" font-family="Georgia,serif">10 beamlines</text><text x="315" y="117" text-anchor="middle" font-size="8" fill="#8b0000" font-family="Georgia,serif" font-weight="bold">$1.3M/gram antiprotons</text><line x1="400" y1="99" x2="480" y2="120" stroke="#8b0000" stroke-width="2" marker-end="url(#aP)"/><text x="440" y="108" font-size="8" fill="#8b0000" font-family="Georgia,serif" font-style="italic">p̄ fuel</text><rect x="492" y="38" width="130" height="52" rx="5" fill="#f0f8f0" stroke="#2a7a2a" stroke-width="2"/><text x="557" y="57" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#2a7a2a" font-family="Georgia,serif">OSAC (LEO)</text><text x="557" y="81" text-anchor="middle" font-size="8" fill="#2a7a2a" font-family="Georgia,serif">$5.5B/yr AI surplus</text><polygon points="530,120 490,200 570,200" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/><text x="530" y="158" text-anchor="middle" font-size="8.5" fill="white" font-family="Georgia,serif" font-weight="bold">MARVENIK-HL</text><text x="530" y="170" text-anchor="middle" font-size="7.5" fill="#ccc" font-family="Georgia,serif">Parked in LEO</text><rect x="470" y="210" width="120" height="30" rx="4" fill="#c8e6c9" stroke="#2a7a2a" stroke-width="1.5" opacity="0.88"/><text x="530" y="224" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#1a4a1a" font-family="Georgia,serif">FBB Mesh Pods ×3</text><text x="530" y="235" text-anchor="middle" font-size="7.5" fill="#2a5a2a" font-family="Georgia,serif">Titanium-Zylon · 300 t PGM</text><line x1="500" y1="200" x2="500" y2="210" stroke="#888" stroke-width=".8" stroke-dasharray="3,2"/><line x1="560" y1="200" x2="560" y2="210" stroke="#888" stroke-width=".8" stroke-dasharray="3,2"/><ellipse cx="700" cy="155" rx="52" ry="36" fill="#c8b89a" stroke="#999" stroke-width="1.2"/><text x="700" y="150" text-anchor="middle" font-size="9" fill="#5a3a00" font-family="Georgia,serif" font-weight="bold">Asteroid</text><text x="700" y="163" text-anchor="middle" font-size="8" fill="#5a3a00" font-family="Georgia,serif">1986 DA / Eros</text><line x1="570" y1="162" x2="647" y2="155" stroke="#555" stroke-width="1.8" marker-end="url(#aP)"/><text x="606" y="150" text-anchor="middle" font-size="8" fill="#555" font-family="Georgia,serif" font-style="italic">sorties</text><text x="700" y="205" text-anchor="middle" font-size="10" fill="#2a7a2a" font-family="Georgia,serif" font-weight="bold">$23.3B net</text><line x1="465" y1="225" x2="390" y2="225" stroke="#336699" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#aB)"/><text x="380" y="222" text-anchor="end" font-size="8" fill="#336699" font-family="Georgia,serif" font-weight="bold">Commercial LEO Retrieval</text><text x="380" y="234" text-anchor="end" font-size="7.5" fill="#336699" font-family="Georgia,serif">Tugs fly cargo to surface safely</text><line x1="20" y1="248" x2="46" y2="248" stroke="#336699" stroke-width="1.5" stroke-dasharray="4,2"/><text x="50" y="252" font-size="8" fill="#336699" font-family="Georgia,serif">power / logistics</text><line x1="140" y1="248" x2="166" y2="248" stroke="#8b0000" stroke-width="1.8"/><text x="170" y="252" font-size="8" fill="#8b0000" font-family="Georgia,serif">antimatter fuel</text><line x1="260" y1="248" x2="286" y2="248" stroke="#2a7a2a" stroke-width="1.5"/><text x="290" y="252" font-size="8" fill="#2a7a2a" font-family="Georgia,serif">mineral payload</text></svg></div><div class="fig-caption"><strong>Fig. 2.</strong> MARVENIK rationally unified architecture. ORRT constellation (left) powers the CNBC-HEPI cluster, producing cheap p̄ fuel. OSAC orbital factory generates AI compute revenue. MARVENIK-HL conducts mining sorties and parks back in LEO. Three FBB mesh pods securely hold 300 t PGM. Instead of dangerous aerobraking, commercial space tugs are hired to safely ingest the pods and return them to Earth's surface. Net profit per sortie remains massive at <strong>$23.3B</strong>.
+</div></div><hr class="rule"><div class="cols ruled"><div class="col"><h2 class="sec"><span class="num">11.</span>Conclusion</h2><p>
 The rationalized MARVENIK-FBB architecture resolves every prior programme bottleneck by abandoning high-risk stunts in favor of sound engineering logistics. The Filippo Bondi Bag has been correctly repositioned as a cheap, durable orbital bulk container, eliminating catastrophic loss risks associated with aerobraking 100-tonne payloads in gossamer nets.
-</p>
-<p>
+</p><p>
 By utilizing Lunar gravity assists and propulsive LEO parking—made economically viable by the $1.3M/g antiproton costs from the ORRT-powered CNBC-HEPI network—the spacecraft operates purely in a vacuum environment. Atmospheric downmass is securely outsourced to existing commercial heavy-lift vehicles. This grounded, highly practical approach maximizes both reliability and profit.
-</p>
-
-</div>
-<div class="col">
-
-<div class="result">
-<div class="r-label">Logistics Summary — Principal Results</div>
-<strong>Elimination of Risk:</strong> FBB is a structural Titanium/Zylon pod, not an aerobrake. Deceleration handled safely via Lunar assist + LEO propulsive parking. Zero chance of cargo burn-up.<br><br>
-<strong>Best net profit architecture:</strong> 3-FBB configuration per sortie →
-<strong>$23.32B net per MRV-HL-1 flight</strong> (35.6× ROI, $674M total cost including fuel and commercial retrieval tug fees). Full programme capital recovered in first sortie.<br><br>
-<strong>Recommended build priority:</strong> Phase 0 FBB mesh + CNBC validation now; secure commercial Starship downmass contracts; ORRT operational by 2032.
-</div>
-
-</div>
-</div>
-
-<hr class="rule">
-<h2 class="sec" style="margin-top:0;">References</h2>
-<ol class="refs">
-<li><span class="refnum">[1]</span> Ilić, M. (2025). <em>MARVENIK: Minimum-Antimatter Fast Transit.</em> Aethyr Global MRV-TR-002.</li>
-<li><span class="refnum">[2]</span> Ilić, M. (2025). <em>MARVENIK-HL: Heavy-Lift Surface Retrieval Craft.</em> Aethyr Global MRV-TR-003.</li>
-<li><span class="refnum">[3]</span> Ilić, M. (2026). <em>The Symbiotic Anticomputer: HEPI Monte Carlo Engine.</em> ANTICOMPUTER-FINAL-2026.</li>
-<li><span class="refnum">[4]</span> Ilić, M. (2026). <em>Hybrid CNBC-HEPI System.</em> CNBC-HEPI-HYBRID-2026.</li>
-<li><span class="refnum">[5]</span> Ilić, M. (2026). <em>Resonant Toroidal Induction and ORRT.</em> Aethyr Global IP-MREHSC-08.</li>
-<li><span class="refnum">[6]</span> Ilić, M. (2026). <em>Quad-Ring Positive-Energy Warp Shell (QRPWS).</em> Aethyr Global QRPWS-2026.</li>
-<li><span class="refnum">[7]</span> Ilić, M. (2026). <em>Orbital Symbiotic Anticomputer Constellation (OSAC).</em> Aethyr Global OSAC-2026.</li>
-<li><span class="refnum">[8]</span> Musk, E. et al. (2024). High-Capacity Downmass capabilities of fully reusable launch vehicles. <em>Journal of Commercial Spaceflight.</em></li>
-</ol>
-
-<div class="footnote">
+</p></div><div class="col"><div class="result"><div class="r-label">Logistics Summary — Principal Results</div><strong>Elimination of Risk:</strong> FBB is a structural Titanium/Zylon pod, not an aerobrake. Deceleration handled safely via Lunar assist + LEO propulsive parking. Zero chance of cargo burn-up.<br><br><strong>Best net profit architecture:</strong> 3-FBB configuration per sortie →
+<strong>$23.32B net per MRV-HL-1 flight</strong> (35.6× ROI, $674M total cost including fuel and commercial retrieval tug fees). Full programme capital recovered in first sortie.<br><br><strong>Recommended build priority:</strong> Phase 0 FBB mesh + CNBC validation now; secure commercial Starship downmass contracts; ORRT operational by 2032.
+</div></div></div><hr class="rule"><h2 class="sec" style="margin-top:0;">References</h2><ol class="refs"><li><span class="refnum">[1]</span> Ilić, M. (2025). <em>MARVENIK: Minimum-Antimatter Fast Transit.</em> Aethyr Global MRV-TR-002.</li><li><span class="refnum">[2]</span> Ilić, M. (2025). <em>MARVENIK-HL: Heavy-Lift Surface Retrieval Craft.</em> Aethyr Global MRV-TR-003.</li><li><span class="refnum">[3]</span> Ilić, M. (2026). <em>The Symbiotic Anticomputer: HEPI Monte Carlo Engine.</em> ANTICOMPUTER-FINAL-2026.</li><li><span class="refnum">[4]</span> Ilić, M. (2026). <em>Hybrid CNBC-HEPI System.</em> CNBC-HEPI-HYBRID-2026.</li><li><span class="refnum">[5]</span> Ilić, M. (2026). <em>Resonant Toroidal Induction and ORRT.</em> Aethyr Global IP-MREHSC-08.</li><li><span class="refnum">[6]</span> Ilić, M. (2026). <em>Quad-Ring Positive-Energy Warp Shell (QRPWS).</em> Aethyr Global QRPWS-2026.</li><li><span class="refnum">[7]</span> Ilić, M. (2026). <em>Orbital Symbiotic Anticomputer Constellation (OSAC).</em> Aethyr Global OSAC-2026.</li><li><span class="refnum">[8]</span> Musk, E. et al. (2024). High-Capacity Downmass capabilities of fully reusable launch vehicles. <em>Journal of Commercial Spaceflight.</em></li></ol><div class="footnote">
 MRV-TR-004 · Aethyr Global Propulsion &amp; Energy Division · Preprint (Rationalized Edition), April 2026 ·
 Supersedes MRV-TR-002 and MRV-TR-003 for mission architecture and economic purposes.
 Mineral prices at Q1 2026 market data. Antimatter production costs derived from
 CNBC-HEPI-HYBRID-2026 operating model with ORRT electricity substitution. Commercial downmass cost estimates based on heavy-lift block pricing.
 <em>MARVENIK, Flexible Bulk Bin, FBB, ORRT, OSAC, QRPWS</em> are registered programme
 designations of Aethyr Global. © 2026 Miloš M. Ilić. All Rights Reserved.
-</div>
-
-</div><!-- /paper -->
-</body>
-</html>
+</div></div></body></html>

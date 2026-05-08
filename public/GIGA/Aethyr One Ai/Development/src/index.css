@@ -1,3 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg: #050608;
+  --bg2: #090b10;
+  --bg3: #0d1018;
+  --surface: #111420;
+  --surface2: #171b28;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #f0f2f8;
+  --text2: #8890a8;
+  --text3: #5a6070;
+  --accent: #4f8aff;
+  --accent2: #2dd4bf;
+  --accent3: #a78bfa;
+  --gold: #f0c96e;
+  --danger: #ff6b6b;
+  --glow: rgba(79,138,255,0.15);
+  --glow2: rgba(45,212,191,0.12);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  @apply antialiased;
+}
+
+.syne { font-family: 'Syne', sans-serif; }
+.mono { font-family: 'Space Mono', monospace; }
+
+h1, h2, h3, h4 {
+  font-family: 'Syne', sans-serif;
+  @apply tracking-tight;
+}
+
+.glass-panel {
+  background: rgba(17, 20, 32, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.glow-text {
+  text-shadow: 0 0 15px var(--glow);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.io-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.io-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+.io-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--surface2);
+  border-radius: 10px;
+}
+.io-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

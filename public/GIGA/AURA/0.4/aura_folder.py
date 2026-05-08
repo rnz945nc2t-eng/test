@@ -76,10 +76,36 @@ EXT_MEANING = {
 }
 
 
+from typing import Any, Callable, Dict, List, Optional, Tuple
+import time
+
+# ==============================================================================
+# CLOSED IF SET CORE (Shared from field logic)
+# ==============================================================================
+
+class ClosedIfSet:
+    __slots__ = ('value', 'cache', '_ts')
+    def __init__(self, value: Any):
+        self.value = value
+        self.cache = None
+        self._ts = 0.0
+
+class Affirm(ClosedIfSet):
+    def test(self, fn: Callable) -> Any: return fn(self.value)
+    def flip(self) -> 'ClosedIfSet': return Deny(self.value)
+
+class Deny(ClosedIfSet):
+    def test(self, fn: Callable) -> Any:
+        if self.cache is None:
+            self.cache = fn(self.value)
+            self._ts = time.time()
+        return self.cache
+    def flip(self) -> 'ClosedIfSet': return Affirm(self.value)
+
 class FolderAura:
     """
     Reads a folder. Builds its semantic fingerprint.
-    Understands the v0.3 folder structure.
+    Understands the v0.4 folder structure.
     Never reads private/. Always reads shared/.
     """
 
@@ -97,6 +123,7 @@ class FolderAura:
         self.in_count    = 0
         self.out_count   = 0
         self.shared_count= 0
+        self._resonance_cache: Dict[str, Deny] = {}
 
     # ── public ───────────────────────────────────────────────────────────
 
@@ -113,19 +140,27 @@ class FolderAura:
         return self
 
     def resonate(self, query: str) -> float:
-        words = [w.lower().strip() for w in query.split() if len(w) > 1]
-        if not words:
-            return 0.0
-        total = 0.0
-        for w in words:
-            if w in self.tags:
-                total += self.tags[w]
-            else:
-                for tag, weight in self.tags.items():
-                    if w in tag or tag in w:
-                        total += weight * 0.55
-                        break
-        return min(1.0, total / max(1, len(words)))
+        if query not in self._resonance_cache:
+            self._resonance_cache[query] = Deny(query)
+
+        state = self._resonance_cache[query]
+
+        def compute_resonance(q):
+            words = [w.lower().strip() for w in q.split() if len(w) > 1]
+            if not words:
+                return 0.0
+            total = 0.0
+            for w in words:
+                if w in self.tags:
+                    total += self.tags[w]
+                else:
+                    for tag, weight in self.tags.items():
+                        if w in tag or tag in w:
+                            total += weight * 0.55
+                            break
+            return min(1.0, total / max(1, len(words)))
+
+        return state.test(compute_resonance)
 
     def fingerprint(self) -> str:
         h = hashlib.sha256()

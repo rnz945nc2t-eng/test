@@ -1,9 +1,0 @@
-{
-  "node_id": "4bbd4f0b9f38cc77",
-  "name": "node2",
-  "pid": 78509,
-  "started": 1778249880.095938,
-  "field": "239.214.228.169:7692",
-  "channel": "prod",
-  "proto": "v0.4"
-}

@@ -16,6 +16,8 @@ No apps. The protocol does what apps pretend to do.
   aura talk <node>             open a live session with a node's entry point
   aura route <node> <file>     send a file to their in/ (shadow routing)
   aura scan [folder]           inspect a folder's aura without joining
+  aura balance                 check your intelligence points (NOT Money)
+  aura wallet                  show your AYR address and keys
   aura status                  your node's current state
 """
 
@@ -265,10 +267,11 @@ def cmd_status(field: AuraField):
     st = s['structure']
     print(f"\n  {c(WHT+BOLD, field.name)}  {c(DIM,'['+field.node_id+']')}")
     print(f"  {c(DIM, str(field.folder.path))}")
+    if field.channel:
+        print(f"  {c(BLUE, 'channel: ' + field.channel)}")
     print()
-    print(f"  {c(PUR,'aura:')}")
-    for tag, w in list(s['tags'].items())[:8]:
-        print(f"    {bar(w,10)}  {tag}")
+    print(f"  {c(AYR, 'intelligence')}  {c(WHT, str(round(field.ledger.balance, 2)))} {c(DIM, 'NOT Money')}")
+    print(f"  {c(AYR, 'wallet')}        {c(DIM, field.wallet_addr)}")
     print()
     inf = field.in_files()
     print(f"  {c(CYAN,'in/')}     {len(inf)} files waiting")
@@ -281,6 +284,31 @@ def cmd_status(field: AuraField):
 
 
 # ── Field REPL ────────────────────────────────────────────────────────────
+
+def cmd_balance(field: AuraField):
+    print(f"\n  {c(AYR, 'Intelligence Balance')}")
+    print(f"  {hr('=', 32)}")
+    print(f"  {c(WHT+BOLD, str(round(field.ledger.balance, 4)))} {c(DIM, 'NOT Money (pts)')}")
+    print()
+    history = field.ledger._data.get("history", [])
+    if history:
+        print(f"  {c(DIM, 'Recent Activity:')}")
+        for entry in reversed(history[-10:]):
+            dt = time.strftime("%H:%M", time.localtime(entry['ts']))
+            print(f"    {c(DIM, dt)}  {c(GRN if entry['points']>0 else RED, '+'+str(entry['points']))}  {entry['reason']}")
+    print()
+
+
+def cmd_wallet(field: AuraField):
+    print(f"\n  {c(AYR, 'AYR Wallet')}")
+    print(f"  {hr('=', 32)}")
+    print(f"  Address: {c(WHT, field.wallet_addr)}")
+    print(f"  Node ID: {c(DIM, field.node_id)}")
+    import base64
+    pub_bytes = field.folder.get_public_key_bytes()
+    print(f"  Public:  {c(DIM, base64.b64encode(pub_bytes).decode())}")
+    print()
+
 
 def run_repl(field: AuraField):
     print(BANNER)
@@ -303,7 +331,7 @@ def run_repl(field: AuraField):
             print("  > ", end="", flush=True)
 
     def ev_route(pid, name, fname, score):
-        print(f"\r  {ts()}  {c(CYAN,'⬡')} {c(WHT,fname)} arrived in in/  {c(DIM,'from '+name)}")
+        print(f"\r  {ts()}  {c(CYAN,'⬡')} {c(WHT,fname)} arrived in in/  {c(DIM,'from '+name)} {c(AYR,'+0.1 pts')}")
         print("  > ", end="", flush=True)
 
     field.on_peer(ev_peer)
@@ -450,6 +478,12 @@ def run_repl(field: AuraField):
             print()
 
         # ── who ───────────────────────────────────────────────────────
+        elif cmd == "balance":
+            cmd_balance(field); field.leave()
+
+        elif cmd == "wallet":
+            cmd_wallet(field); field.leave()
+
         elif cmd == "who":
             peers = field.peers_list()
             if not peers:
@@ -472,6 +506,12 @@ def run_repl(field: AuraField):
             cmd_status(field)
 
         # ── scan ──────────────────────────────────────────────────────
+        elif cmd in ("balance", "bal", "money"):
+            cmd_balance(field)
+
+        elif cmd == "wallet":
+            cmd_wallet(field)
+
         elif cmd == "scan":
             cmd_scan(a1 or str(field.folder.path))
 
@@ -615,6 +655,12 @@ def main():
 
         elif cmd == "status":
             cmd_status(field); field.leave()
+
+        elif cmd == "balance":
+            cmd_balance(field); field.leave()
+
+        elif cmd == "wallet":
+            cmd_wallet(field); field.leave()
 
         elif cmd == "who":
             time.sleep(2)

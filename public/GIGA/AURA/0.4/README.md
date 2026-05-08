@@ -73,5 +73,4 @@ This isolates your node's heartbeats and seeks to a specific multicast port/grou
 - v0.1 — UDP multicast, basic heartbeat, seek/resonate
 - v0.2 — folder scanning, aura.meta, entry point execution, file sharing
 - v0.3 — in/out routing, field watcher, shadow routing, aura.lock, talk protocol, pull
-- v0.4 — cryptographic identity, private aura, multicast channels, production hardening
-- v0.5 (planned) — NOT Money integration, intelligence point accumulation per interaction
+- v0.4 — cryptographic identity, private aura, multicast channels, NOT Money (Intelligence Points), production hardening

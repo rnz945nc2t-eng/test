@@ -18,6 +18,8 @@ import threading
 import uuid
 import base64
 import hashlib
+import math
+from typing import Any, Callable, Dict, List, Optional, Tuple
 from pathlib import Path
 from aura_folder import FolderAura
 
@@ -26,6 +28,126 @@ from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
 from cryptography.exceptions import InvalidSignature
+
+# ==============================================================================
+# CLOSED IF SET CORE
+# ==============================================================================
+
+class ClosedIfSet:
+    __slots__ = ('value', 'cache', '_ts')
+    def __init__(self, value: Any):
+        self.value = value
+        self.cache = None
+        self._ts = 0.0
+
+class Affirm(ClosedIfSet):
+    """Direct path - always recomputes. Use for dynamic data."""
+    def test(self, fn: Callable) -> Any:
+        return fn(self.value)
+    def flip(self) -> 'ClosedIfSet':
+        return Deny(self.value)
+
+class Deny(ClosedIfSet):
+    """Memory path - computes once, caches. Use for expensive/static."""
+    def test(self, fn: Callable) -> Any:
+        if self.cache is None:
+            self.cache = fn(self.value)
+            self._ts = time.time()
+        return self.cache
+    def flip(self) -> 'ClosedIfSet':
+        return Affirm(self.value)
+    def invalidate(self):
+        self.cache = None
+        self._ts = 0.0
+    def age(self) -> float:
+        return time.time() - self._ts if self._ts else float('inf')
+
+def cond(value: Any, cached: bool = False) -> ClosedIfSet:
+    return Deny(value) if cached else Affirm(value)
+
+
+# ==============================================================================
+# INTELLIGENCE LEDGER (NOT Money)
+# ==============================================================================
+
+class IntelligenceLedger:
+    def __init__(self, aura_dir: Path):
+        self.path = aura_dir / "ledger.json"
+        self._lock = threading.Lock()
+        self._data = self._load()
+
+    def _load(self) -> dict:
+        if self.path.exists():
+            try:
+                return json.loads(self.path.read_text())
+            except Exception:
+                pass
+        return {"balance": 0.0, "history": []}
+
+    def _save(self):
+        try:
+            self.path.write_text(json.dumps(self._data, indent=2))
+        except Exception:
+            pass
+
+    def credit(self, points: float, reason: str):
+        if points <= 0: return
+        with self._lock:
+            self._data["balance"] += points
+            self._data["history"].append({
+                "ts": time.time(),
+                "points": round(points, 4),
+                "reason": reason
+            })
+            # keep last 50 entries
+            self._data["history"] = self._data["history"][-50:]
+            self._save()
+
+    @property
+    def balance(self) -> float:
+        return self._data["balance"]
+
+# ==============================================================================
+# PELL-LUCAS TEMPORAL SPINE
+# Compresses infinite history into O(log n) hierarchical levels
+# ==============================================================================
+
+class PellLucasSpine:
+    SILVER = 1.0 + math.sqrt(2)  # ~2.414
+
+    def __init__(self, max_levels: int = 16):
+        self.max_levels = max_levels
+        self._pell = self._compute_pell(max_levels + 2)
+
+    def _compute_pell(self, n: int) -> List[int]:
+        p = [0, 1]
+        for i in range(2, n):
+            p.append(2 * p[-1] + p[-2])
+        return p
+
+    def level_of(self, t: int) -> int:
+        if t <= 0:
+            return 0
+        return min(int(math.log(max(t, 1)) / math.log(self.SILVER)), self.max_levels)
+
+    def context_window(self, level: int) -> int:
+        return self._pell[min(level + 1, len(self._pell) - 1)]
+
+    def encode(self, history: List[float], levels: int = 8) -> List[float]:
+        """Compress history into multi-scale features using Pell window sizes."""
+        result = []
+        for lvl in range(min(levels, self.max_levels)):
+            window = self.context_window(lvl)
+            slice_ = history[-window:] if len(history) >= window else history
+            if slice_:
+                avg = sum(slice_) / len(slice_)
+                variance = sum((x - avg) ** 2 for x in slice_) / len(slice_)
+                result.append(avg)
+                result.append(math.sqrt(variance + 1e-10))
+            else:
+                result.extend([0.0, 0.0])
+        return result
+
 
 # ── Wire protocol ─────────────────────────────────────────────────────────
 FIELD_GROUP   = "239.77.77.77"
@@ -120,6 +242,12 @@ class AuraField:
         self.folder   = FolderAura(folder_path).scan()
         pub_bytes = self.folder.get_public_key_bytes()
         self.node_id  = hashlib.sha256(pub_bytes).hexdigest()[:16]
+        # AYR Wallet Address derived from pub key
+        self.wallet_addr = "AYR" + hashlib.sha256(pub_bytes).hexdigest()[:32].upper()
+        self.ledger = IntelligenceLedger(self.folder.aura_dir)
+        self.spine = PellLucasSpine()
+        self.resonance_history = []
+
         self.name     = name or self.folder.meta.get("name", Path(folder_path).name)
         self.peers:   dict[str, dict] = {}
         self._lock    = threading.Lock()
@@ -570,6 +698,11 @@ class AuraField:
                     "score":   round(score, 3),
                     "summary": self.folder.summary(),
                 })
+                # Award intelligence points for high resonance responses
+                if score > 0.5:
+                    pts = (score - 0.5) * 2.0
+                    self.ledger.credit(pts, f"Resonated to seek: {query[:20]}...")
+
             for fn in self._on_seek:
                 fn(pid, name, query, score)
 
@@ -587,6 +720,9 @@ class AuraField:
         elif msg_type == MSG_ROUTE:
             # someone is routing a file to us
             if payload.get("target") == self.node_id:
+                # Award points for receiving routed content
+                self.ledger.credit(0.1, "Received routed file")
+
                 fname   = os.path.basename(payload.get("filename", "received"))
                 content = payload.get("content", "")
                 encrypted = payload.get("encrypted", False)

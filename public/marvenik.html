@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARVENIK — Minimum-Fuel Surface Retrieval Craft - GIGA package EXTRAS</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #1a1a1a;
+    --mid:    #444;
+    --light:  #777;
+    --rule:   #ccc;
+    --accent: #8b0000;
+    --bg:     #faf8f4;
+    --col-bg: #f5f2ed;
+    --eq-bg:  #f0ede8;
+    --warn:   #fff8e8;
+    --warn-b: #d4a800;
+    --note:   #f0f4f8;
+    --note-b: #336699;
+    --col-w:  46%;
+    --gap:    4%;
+    --full:   96%;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #e8e4dc;
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ─── PAPER SHEET ─── */
+  .paper {
+    background: var(--bg);
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 64px 72px 80px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.12);
+    border-top: 4px solid var(--accent);
+    position: relative;
+  }
+
+  /* ─── HEADER / TITLE ─── */
+  .journal-name {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--light);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .journal-name span { font-style: italic; letter-spacing: 0; text-transform: none; font-size: 11px; }
+
+  h1.paper-title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  h1.paper-title em { color: var(--accent); font-style: normal; }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--mid);
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+
+  .authors {
+    font-size: 13px;
+    color: var(--mid);
+    margin-bottom: 4px;
+  }
+  .affil {
+    font-size: 11.5px;
+    color: var(--light);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .dates {
+    font-size: 11px;
+    color: var(--light);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 32px;
+  }
+
+  /* ─── ABSTRACT ─── */
+  .abstract-box {
+    border: 1px solid var(--rule);
+    background: var(--col-bg);
+    padding: 18px 22px;
+    margin-bottom: 36px;
+  }
+  .abstract-box .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .abstract-box p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--mid);
+    text-align: justify;
+  }
+
+  .keywords {
+    font-size: 12.5px;
+    color: var(--light);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .keywords strong { font-style: normal; color: var(--mid); }
+
+  /* ─── TWO-COLUMN ─── */
+  .cols {
+    display: flex;
+    gap: var(--gap);
+    align-items: start;
+  }
+  .col { width: var(--col-w); }
+  .col-wide { width: 58%; }
+  .col-narrow { width: 38%; }
+
+  /* ─── SECTIONS ─── */
+  h2.sec {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 28px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h2.sec .num {
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px;
+    color: var(--light);
+  }
+
+  h3.subsec {
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    margin: 18px 0 6px;
+  }
+
+  p { 
+    text-align: justify; 
+    margin-bottom: 10px; 
+    font-size: 15.5px;
+    hyphens: auto;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── EQUATIONS ─── */
+  .eq {
+    background: var(--eq-bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 14px 0;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .eq .math { flex: 1; }
+  .eq .eqnum {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: var(--light);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  sup { font-size: 0.72em; vertical-align: super; }
+  sub { font-size: 0.72em; vertical-align: sub; }
+
+  /* ─── INLINE MATH ─── */
+  .m {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    background: var(--eq-bg);
+    padding: 1px 5px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ─── FIGURE / DIAGRAM ─── */
+  .figure {
+    margin: 20px 0;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+  .fig-inner {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .fig-caption {
+    border-top: 1px solid var(--rule);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--mid);
+    background: var(--col-bg);
+    line-height: 1.5;
+  }
+  .fig-caption strong { color: var(--ink); }
+
+  /* ─── DATA TABLE ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 14px 0;
+  }
+  .data-table caption {
+    font-size: 13px;
+    color: var(--mid);
+    font-style: italic;
+    margin-bottom: 6px;
+    text-align: left;
+    caption-side: top;
+  }
+  .data-table th {
+    background: var(--col-bg);
+    border-bottom: 2px solid var(--ink);
+    border-top: 1px solid var(--ink);
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .data-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--mid);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: 1px solid var(--ink); }
+  .data-table .opt { color: var(--accent); font-weight: 600; }
+  .data-table .head-row td { 
+    font-weight: 600; 
+    color: var(--ink); 
+    background: #f7f4ef; 
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .note {
+    border: 1px solid var(--note-b);
+    border-left: 4px solid var(--note-b);
+    background: var(--note);
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+  .note strong { color: var(--note-b); }
+
+  .warn {
+    border: 1px solid var(--warn-b);
+    border-left: 4px solid var(--warn-b);
+    background: var(--warn);
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #5a4500;
+  }
+  .warn strong { color: var(--warn-b); }
+
+  /* ─── FULL-WIDTH RULE ─── */
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 28px 0;
+  }
+
+  /* ─── REFERENCES ─── */
+  .refs { font-size: 13px; color: var(--mid); }
+  .refs li {
+    margin-bottom: 7px;
+    list-style-type: none;
+    padding-left: 28px;
+    text-indent: -28px;
+    line-height: 1.55;
+  }
+  .refs .refnum { 
+    color: var(--accent); 
+    font-family: 'Source Code Pro', monospace;
+    font-size: 11px;
+    margin-right: 6px;
+  }
+
+  /* ─── FOOTNOTE ─── */
+  .footnote {
+    font-size: 12px;
+    color: var(--light);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-top: 40px;
+    line-height: 1.6;
+  }
+
+  /* ─── RESULT HIGHLIGHT ─── */
+  .result {
+    background: #f9f0f0;
+    border: 1px solid #d4a0a0;
+    border-left: 4px solid var(--accent);
+    padding: 13px 18px;
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .result .r-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* ─── COLUMN RULE ─── */
+  .cols.ruled {
+    gap: 0;
+  }
+  .cols.ruled .col {
+    width: 50%;
+    padding: 0 28px;
+  }
+  .cols.ruled .col:first-child {
+    border-right: 1px solid var(--rule);
+    padding-left: 0;
+  }
+  .cols.ruled .col:last-child {
+    padding-right: 0;
+  }
+
+  /* Print feel */
+  @media print {
+    body { background: white; }
+    .paper { box-shadow: none; margin: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <!-- ═══ JOURNAL HEADER ═══ -->
+  <div class="journal-name">
+    <span>Aethyr Global · Technical Report Series · MRV-TR-002</span>
+    <span><em>Preprint — Not peer reviewed — September 2025</em></span>
+  </div>
+
+  <!-- ═══ TITLE BLOCK ═══ -->
+  <h1 class="paper-title">
+    <em>MARVENIK</em>: Minimum-Antimatter Fast Transit for<br>
+    Autonomous Surface Retrieval Spacecraft - Giga licence addition
+  </h1>
+  <div class="subtitle">
+    Prototype specification, QRFT Φ-field propulsion optimisation,<br>
+    and mission economics for near-Earth asteroid mineral extraction
+  </div>
+
+  <div class="authors">Miloš Ilić<sup>1</sup> &nbsp;·&nbsp; Aethyr Global Propulsion Division</div>
+  <div class="affil"><sup>1</sup>Aethyr Global, Strategic IP Acquisition, Umka, Serbia · contact: classified</div>
+
+  <div class="dates">
+    <span>Received: 25 Sep 2025</span>
+    <span>Revised: 28 Sep 2025</span>
+    <span>Status: Active Development — MRV-PROTO-001-A</span>
+    <span>Classification: Open Prototype</span>
+  </div>
+
+  <!-- ═══ ABSTRACT ═══ -->
+  <div class="abstract-box">
+    <div class="label">Abstract</div>
+    <p>
+      We present the full prototype specification for <em>MARVENIK</em>, a quadrilateral-pyramid surface retrieval 
+      spacecraft propelled by antiproton annihilation in conjunction with a QRFT Φ-field spacetime contraction 
+      drive. The central challenge identified in prior work — the catastrophic antimatter production bottleneck — 
+      is addressed here through a novel minimum-fuel transit optimisation. By decoupling mission velocity from 
+      warp contraction factor <em>k</em>, we demonstrate that near-Earth asteroid (NEA) missions (&lt;2 AU) can be 
+      completed with as little as <strong>62–180 grams of antiprotons</strong>, achievable via a single CNBC 
+      beamline within the near-term production horizon. The craft geometry — a black graphene-composite 
+      four-sided pyramid with a central vacuum extraction well and four corner-mounted articulated retrieval 
+      arms — is optimised for low-gravity surface hovering. We derive a closed-form expression for minimum 
+      antimatter mass as a function of mission distance, craft mass, target velocity, and drive efficiency. 
+      All missions are designated <em>MARVENIK</em> sorties. The CERN 2025 transport of 92 antiprotons is taken 
+      as the validated containment baseline.
+    </p>
+    <div class="keywords"><strong>Keywords:</strong> antimatter propulsion, QRFT, Φ-field, warp drive optimisation, asteroid mining, surface extraction, minimum-fuel trajectory</div>
+  </div>
+
+  <!-- ═══ BODY: TWO-COLUMN ═══ -->
+  <div class="cols ruled">
+
+    <!-- LEFT COLUMN -->
+    <div class="col">
+
+      <h2 class="sec"><span class="num">1.</span>Introduction</h2>
+      <p>
+        The MARVENIK programme targets recovery of platinum-group metals (PGMs) and refractory minerals 
+        from asteroid surfaces. Economic analysis across programme documents identifies the ratio of 
+        retrieval value to propulsion fuel cost as the decisive feasibility constraint, not aerodynamic 
+        or structural engineering. At current CERN-equivalent antimatter pricing of 
+        approximately $12.5 billion per gram <span class="m">[1]</span>, even a 10-gram fuel load 
+        represents $125 billion in expenditure — dwarfing the mineral payload value.
+      </p>
+      <p>
+        The prior prototype specification (MRV-PROTO-001) assumed a 10 kg antimatter load for 
+        full-mission propulsion, consistent with the Emergent Warp Network (EWN) system operating at 
+        contraction factor <span class="m">k ≈ 500</span> for interstellar transit 
+        <span class="m">[2]</span>. For near-Earth missions, this is massively over-specified. 
+        This report derives the actual minimum antimatter mass for each mission class.
+      </p>
+
+      <h2 class="sec"><span class="num">2.</span>Propulsion Physics</h2>
+
+      <h3 class="subsec">2.1 Antimatter annihilation energy</h3>
+      <p>
+        Antiproton–proton annihilation releases energy according to 
+        <span class="m">E = 2 m_AM c²</span>. At a drive system efficiency 
+        <span class="m">η ≈ 0.40</span> (annihilation → directed thrust), the useful 
+        specific energy is:
+      </p>
+      <div class="eq">
+        <span class="math">e_AM = η · 2c² = 0.40 × 2 × (3×10⁸)² = 7.2×10¹⁶ J/kg</span>
+        <span class="eqnum">(1)</span>
+      </div>
+      <p>
+        This is compared with chemical propellants (<span class="m">~10⁷ J/kg</span>) and 
+        nuclear fission (<span class="m">~10¹³ J/kg</span>), confirming antimatter's energy-density 
+        advantage at the cost of production difficulty.
+      </p>
+
+      <h3 class="subsec">2.2 Kinetic energy requirement</h3>
+      <p>
+        For a craft of dry mass <span class="m">m_c = 50,000 kg</span> (MRV-1 prototype), 
+        accelerating to cruise velocity <span class="m">v</span> and decelerating symmetrically 
+        at the target, the total kinetic energy budget is:
+      </p>
+      <div class="eq">
+        <span class="math">E_kin = 2 × ½ m_c v² = m_c v²</span>
+        <span class="eqnum">(2)</span>
+      </div>
+      <p>
+        The minimum antimatter mass <span class="m">m_AM</span> required satisfies:
+      </p>
+      <div class="eq">
+        <span class="math">m_AM · e_AM ≥ E_kin<br>
+m_AM ≥ m_c v² / (η · 2c²)</span>
+        <span class="eqnum">(3)</span>
+      </div>
+
+      <h3 class="subsec">2.3 Velocity–time trade-off</h3>
+      <p>
+        For a mission at distance <span class="m">d</span> with target transit time 
+        <span class="m">t</span>, the required cruise velocity is approximately 
+        <span class="m">v = d / (0.5 t)</span> (half-time to accelerate, half to decelerate). 
+        Substituting:
+      </p>
+      <div class="eq">
+        <span class="math">m_AM(d,t) = m_c · (2d/t)² / (η · 2c²)</span>
+        <span class="eqnum">(4)</span>
+      </div>
+      <p>
+        Equation (4) is the core result of this section. Minimum antimatter mass scales as 
+        <span class="m">m_AM ∝ d² / t²</span>: <strong>doubling mission time reduces fuel mass 
+        by a factor of four.</strong> Accepting a 30-day transit to a 1 AU asteroid instead of 
+        a 7-day transit reduces antimatter consumption by ~18×.
+      </p>
+
+      <div class="note">
+        <strong>Key insight:</strong> For NEA missions (&lt;2 AU), the QRFT 
+        warp contraction <em>k</em> ≈ 500 is entirely unnecessary. Contraction adds massive 
+        Φ-field energy overhead. Classical thrust at 0.001–0.01<em>c</em> is optimal.
+      </div>
+
+      <h2 class="sec"><span class="num">3.</span>Optimal Transit Regimes</h2>
+      <p>
+        We partition the mission space into three regimes based on distance:
+      </p>
+      <p>
+        <strong>Regime I — NEA (&lt;2 AU):</strong> Classical antimatter thrust only. No Φ-field 
+        contraction. Minimum fuel. Target <span class="m">v ≤ 0.005c</span>.
+      </p>
+      <p>
+        <strong>Regime II — Main Belt (2–5 AU):</strong> Low-<em>k</em> Φ-field contraction 
+        (<span class="m">k = 5–20</span>). Φ-field powered primarily by dark energy extraction 
+        via QVRC; antimatter powers thrust only.
+      </p>
+      <p>
+        <strong>Regime III — Outer System / Interstellar (&gt;5 AU):</strong> Full EWN operation 
+        at <span class="m">k ≈ 500</span>. Both antimatter and dark energy required. Not considered 
+        for prototype programme.
+      </p>
+
+    </div><!-- /LEFT COL -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+
+      <h2 class="sec"><span class="num">4.</span>Minimum Fuel Calculation</h2>
+      <p>
+        Table 1 applies Eq. (4) to the MARVENIK mission roster, using 
+        <span class="m">m_c = 50,000 kg</span>, <span class="m">η = 0.40</span>, and a target 
+        transit time of 30 days per mission leg (60 days round trip). Results are compared with 
+        the prior 10 kg assumption.
+      </p>
+
+      <table class="data-table">
+        <caption>Table 1 — Minimum antimatter mass by mission. <em>d</em> = one-way distance; <em>t</em> = one-way transit time = 30 days; <em>v</em> = cruise velocity; optimised values shown in red.</caption>
+        <tr>
+          <th>Sortie</th><th>Target</th><th><em>d</em></th><th><em>v</em></th><th>m<sub>AM</sub></th><th>vs. prior</th>
+        </tr>
+        <tr>
+          <td>MRV-1A</td><td>433 Eros</td><td>1.13 AU</td><td>0.00245<em>c</em></td>
+          <td class="opt">62 g</td><td>−99.994%</td>
+        </tr>
+        <tr>
+          <td>MRV-1B</td><td>16 Psyche</td><td>2.92 AU</td><td>0.00633<em>c</em></td>
+          <td class="opt">413 g</td><td>−99.959%</td>
+        </tr>
+        <tr>
+          <td>MRV-2</td><td>Ryugu</td><td>1.18 AU</td><td>0.00256<em>c</em></td>
+          <td class="opt">68 g</td><td>−99.993%</td>
+        </tr>
+        <tr class="head-row">
+          <td colspan="4">Prior assumption (all missions)</td>
+          <td>10,000 g</td><td>baseline</td>
+        </tr>
+      </table>
+
+      <div class="result">
+        <div class="r-label">Principal Result</div>
+        The MRV-1A mission to 433 Eros requires a minimum of <strong>62 grams</strong> of 
+        antiprotons — a 99.994% reduction over the prior 10 kg assumption. At current CERN 
+        production rates of ~92 antiprotons per transport event, 62 grams requires 
+        ~3.7 × 10²⁵ antiprotons: achievable via CNBC Phase-1 beamline production 
+        (~10⁹ p̄/s) over approximately 1.17 × 10⁹ years. Therefore, <strong>CNBC scale-up 
+        to 10⁷ beamlines remains necessary</strong>, reducing production time to ~4 months.
+      </div>
+
+      <h2 class="sec"><span class="num">5.</span>Φ-Field Contraction Economics</h2>
+      <p>
+        For Regime II missions, we compare the energy cost of adding Φ-field contraction 
+        <span class="m">k</span> against the kinetic energy saved by reaching the target faster. 
+        From EWN documentation <span class="m">[2]</span>, the Φ-field bubble maintenance power is:
+      </p>
+      <div class="eq">
+        <span class="math">P_Φ = E_field / t_transit ≈ (½ρ_vac k² V c²) / t</span>
+        <span class="eqnum">(5)</span>
+      </div>
+      <p>
+        where <span class="m">ρ_vac ≈ 10⁻²⁷ kg/m³</span> (dark energy equivalent), 
+        <span class="m">V ≈ 10⁴ m³</span> (pyramid bubble volume), 
+        <span class="m">k</span> is the contraction factor. For 
+        <span class="m">k = 10</span>, <span class="m">t = 3 days</span>:
+      </p>
+      <div class="eq">
+        <span class="math">P_Φ = ½ × 10⁻²⁷ × 100 × 10⁴ × 9×10¹⁶ / 2.6×10⁵<br>
+      = 1.73 × 10⁻¹⁰ W   ← negligible</span>
+        <span class="eqnum">(6)</span>
+      </div>
+      <p>
+        At physical vacuum energy density, the Φ-field bubble energy is negligible. However, 
+        the EWN system's reported 10¹⁹ J total energy budget suggests the majority is spent 
+        on <em>initiating</em> the metric perturbation, not sustaining it — consistent with a 
+        one-time Φ-excitation cost. Table 2 shows the break-even contraction factor above which 
+        the Φ-field initiation cost exceeds the kinetic energy saving.
+      </p>
+
+      <table class="data-table">
+        <caption>Table 2 — Φ-field contraction break-even for MRV-1A (Eros, 1.13 AU, m<sub>c</sub> = 50 t). <em>k*</em> denotes minimum useful contraction.</caption>
+        <tr><th><em>k</em></th><th>Transit time</th><th>ΔE<sub>kin</sub> saved</th><th>E<sub>Φ-init</sub> cost</th><th>Net gain</th></tr>
+        <tr><td>1 (none)</td><td>30 days</td><td>—</td><td>0</td><td>baseline</td></tr>
+        <tr><td>5</td><td>6 days</td><td>+3.53×10¹⁵ J</td><td>~10¹⁵ J</td><td class="opt">marginal</td></tr>
+        <tr><td>10</td><td>3 days</td><td>+4.24×10¹⁵ J</td><td>~4×10¹⁵ J</td><td class="opt">near neutral</td></tr>
+        <tr><td>50</td><td>0.6 days</td><td>+4.48×10¹⁵ J</td><td>~10¹⁷ J</td><td style="color:var(--accent)">net loss</td></tr>
+        <tr><td>500 (EWN full)</td><td>1.4 hrs</td><td>+4.49×10¹⁵ J</td><td>~10¹⁹ J</td><td style="color:var(--accent)">strongly negative</td></tr>
+      </table>
+
+      <div class="warn">
+        <strong>Optimisation finding:</strong> For NEA missions, any contraction factor 
+        <span class="m">k &gt; 10</span> costs more energy than it saves. The MARVENIK 
+        prototype should operate with <span class="m">k = 1</span> (classical thrust) for 
+        all missions within 2 AU. The Φ-field drive is reserved for 
+        Main Belt and beyond.
+      </div>
+
+    </div><!-- /RIGHT COL -->
+  </div><!-- /cols -->
+
+  <!-- ═══ FULL-WIDTH: CRAFT DIAGRAM ═══ -->
+  <hr class="rule">
+  <h2 class="sec" style="margin-top:0;"><span class="num">6.</span>Prototype Specification — MARVENIK-1</h2>
+
+  <!-- DIAGRAM ROW -->
+  <div class="cols" style="gap:3%;align-items:start;">
+    <div style="width:42%;">
+      <div class="figure">
+        <div class="fig-inner" style="padding:16px 10px;">
+          <svg viewBox="0 0 380 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
+            <defs>
+              <filter id="sm"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="smv"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <linearGradient id="fL" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#111"/><stop offset="100%" stop-color="#222"/></linearGradient>
+              <linearGradient id="fR" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#080808"/></linearGradient>
+              <linearGradient id="fF" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1e1e"/><stop offset="100%" stop-color="#090909"/></linearGradient>
+              <radialGradient id="vG" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#336699" stop-opacity="0.5"/><stop offset="100%" stop-color="#336699" stop-opacity="0"/></radialGradient>
+            </defs>
+
+            <!-- Ground -->
+            <ellipse cx="190" cy="300" rx="150" ry="18" fill="none" stroke="#aaa" stroke-width="0.7" stroke-dasharray="5 4"/>
+            <text x="190" y="324" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#999" font-style="italic">asteroid / planetary surface</text>
+
+            <!-- Shadow -->
+            <ellipse cx="190" cy="296" rx="108" ry="12" fill="rgba(0,0,0,0.10)"/>
+
+            <!-- Left face -->
+            <polygon points="190,44 76,268 190,238" fill="url(#fL)" stroke="#333" stroke-width="1.2"/>
+            <!-- Right face -->
+            <polygon points="190,44 304,268 190,238" fill="url(#fR)" stroke="#333" stroke-width="1.2"/>
+            <!-- Front face -->
+            <polygon points="76,268 304,268 190,238" fill="url(#fF)" stroke="#333" stroke-width="1.2"/>
+            <!-- Base ellipse -->
+            <ellipse cx="190" cy="268" rx="114" ry="15" fill="#101010" stroke="#555" stroke-width="1"/>
+
+            <!-- Panel texture -->
+            <line x1="190" y1="44" x2="140" y2="246" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="190" y1="44" x2="165" y2="252" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="190" y1="44" x2="215" y2="252" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="190" y1="44" x2="240" y2="246" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="118" y1="186" x2="262" y2="186" stroke="#1a1a1a" stroke-width="0.5"/>
+            <line x1="100" y1="232" x2="280" y2="232" stroke="#1a1a1a" stroke-width="0.5"/>
+
+            <!-- Apex -->
+            <circle cx="190" cy="44" r="3.5" fill="#8b0000" filter="url(#sm)"/>
+            <circle cx="190" cy="44" r="7" fill="none" stroke="#8b0000" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- Dashed back edges -->
+            <line x1="190" y1="44" x2="76" y2="268" stroke="#444" stroke-width="0.8" stroke-dasharray="4 5" opacity="0.6"/>
+            <line x1="190" y1="44" x2="304" y2="268" stroke="#444" stroke-width="0.8" stroke-dasharray="4 5" opacity="0.6"/>
+
+            <!-- Vacuum well -->
+            <ellipse cx="190" cy="268" rx="36" ry="8" fill="url(#vG)" filter="url(#smv)"/>
+            <ellipse cx="190" cy="268" rx="36" ry="8" fill="none" stroke="#336699" stroke-width="1.4"/>
+            <ellipse cx="190" cy="268" rx="18" ry="4" fill="none" stroke="#336699" stroke-width="0.7" stroke-dasharray="2 2" opacity="0.6"/>
+
+            <!-- Suction streams -->
+            <line x1="190" y1="276" x2="190" y2="306" stroke="#336699" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+            <line x1="178" y1="275" x2="174" y2="306" stroke="#336699" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.4"/>
+            <line x1="202" y1="275" x2="206" y2="306" stroke="#336699" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.4"/>
+
+            <!-- Retrieval Arms -->
+            <!-- FL -->
+            <line x1="120" y1="266" x2="64" y2="298" stroke="#8b0000" stroke-width="1.8"/>
+            <line x1="64" y1="298" x2="52" y2="310" stroke="#8b0000" stroke-width="2.2"/>
+            <rect x="44" y="307" width="14" height="7" fill="#1a1a1a" stroke="#8b0000" stroke-width="1"/>
+            <circle cx="51" cy="318" r="3.5" fill="#8b0000" opacity="0.85" filter="url(#sm)"/>
+            <!-- FR -->
+            <line x1="260" y1="266" x2="316" y2="298" stroke="#8b0000" stroke-width="1.8"/>
+            <line x1="316" y1="298" x2="328" y2="310" stroke="#8b0000" stroke-width="2.2"/>
+            <rect x="322" y="307" width="14" height="7" fill="#1a1a1a" stroke="#8b0000" stroke-width="1"/>
+            <circle cx="329" cy="318" r="3.5" fill="#8b0000" opacity="0.85" filter="url(#sm)"/>
+            <!-- BL -->
+            <line x1="154" y1="254" x2="116" y2="274" stroke="#555" stroke-width="1.3"/>
+            <rect x="108" y="272" width="10" height="5" fill="#0d0d0d" stroke="#555" stroke-width="0.8"/>
+            <!-- BR -->
+            <line x1="226" y1="254" x2="264" y2="274" stroke="#555" stroke-width="1.3"/>
+            <rect x="262" y="272" width="10" height="5" fill="#0d0d0d" stroke="#555" stroke-width="0.8"/>
+
+            <!-- AM drive pods -->
+            <ellipse cx="100" cy="210" rx="11" ry="5.5" fill="#0d1520" stroke="#336699" stroke-width="1"/>
+            <ellipse cx="91" cy="210" rx="5" ry="3.5" fill="#0a1a28" stroke="#336699" stroke-width="0.8"/>
+            <circle cx="88" cy="210" r="2" fill="#336699" opacity="0.9" filter="url(#smv)"/>
+            <ellipse cx="280" cy="210" rx="11" ry="5.5" fill="#0d1520" stroke="#336699" stroke-width="1"/>
+            <ellipse cx="289" cy="210" rx="5" ry="3.5" fill="#0a1a28" stroke="#336699" stroke-width="0.8"/>
+            <circle cx="292" cy="210" r="2" fill="#336699" opacity="0.9" filter="url(#smv)"/>
+
+            <!-- Dimension arrows -->
+            <line x1="76" y1="282" x2="304" y2="282" stroke="#666" stroke-width="0.7"/>
+            <line x1="76" y1="278" x2="76" y2="286" stroke="#666" stroke-width="0.8"/>
+            <line x1="304" y1="278" x2="304" y2="286" stroke="#666" stroke-width="0.8"/>
+            <text x="190" y="294" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" font-style="italic">12 m</text>
+
+            <line x1="58" y1="44" x2="58" y2="268" stroke="#666" stroke-width="0.7"/>
+            <line x1="54" y1="44" x2="62" y1="44" x2="62" y2="44" stroke="#666" stroke-width="0.8"/>
+            <line x1="54" y1="268" x2="62" y2="268" stroke="#666" stroke-width="0.8"/>
+            <text x="48" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" font-style="italic" transform="rotate(-90,48,160)">9 m</text>
+
+            <!-- Labels -->
+            <text x="190" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8b0000" font-style="italic">apex</text>
+            <text x="190" y="270" text-anchor="middle" font-family="Source Code Pro,monospace" font-size="7" fill="#336699">vacuum well (4 m∅)</text>
+            <text x="32" y="312" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8b0000" font-style="italic">arm ×4</text>
+            <text x="97" y="204" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#336699" font-style="italic">AM pod</text>
+            <text x="283" y="204" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#336699" font-style="italic">AM pod</text>
+
+            <!-- TOP VIEW inset -->
+            <rect x="290" y="40" width="76" height="76" fill="#f8f8f8" stroke="#bbb" stroke-width="0.8"/>
+            <text x="328" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888" font-style="italic">top view</text>
+            <rect x="304" y="54" width="48" height="48" fill="none" stroke="#333" stroke-width="1.2"/>
+            <line x1="304" y1="54" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <line x1="352" y1="54" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <line x1="304" y1="102" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <line x1="352" y1="102" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <circle cx="328" cy="78" r="2.5" fill="#8b0000"/>
+            <circle cx="328" cy="78" r="11" fill="none" stroke="#336699" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+            <line x1="304" y1="54" x2="296" y2="46" stroke="#8b0000" stroke-width="1.2"/>
+            <circle cx="294" cy="44" r="2" fill="#8b0000" opacity="0.7"/>
+            <line x1="352" y1="54" x2="360" y2="46" stroke="#8b0000" stroke-width="1.2"/>
+            <circle cx="362" cy="44" r="2" fill="#8b0000" opacity="0.7"/>
+            <line x1="304" y1="102" x2="296" y2="110" stroke="#8b0000" stroke-width="1.2"/>
+            <circle cx="294" cy="112" r="2" fill="#8b0000" opacity="0.7"/>
+            <line x1="352" y1="102" x2="360" y2="110" stroke="#8b0000" stroke-width="1.2"/>
+            <circle cx="362" cy="112" r="2" fill="#8b0000" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="fig-caption">
+          <strong>Fig. 1.</strong> MARVENIK-1 prototype schematic. Front isometric view (main) and top-down projection (inset, upper right). Black: graphene-composite hull. Dark red: apex, drive indicators, retrieval arm tips. Blue: antimatter annihilation pods, vacuum extraction well, suction streams. Grey dashed: asteroid surface hover plane. Dimensions in metres.
+        </div>
+      </div>
+    </div>
+
+    <div style="width:55%;">
+
+      <!-- SPECS TABLE -->
+      <table class="data-table" style="margin-top:0;">
+        <caption>Table 3 — MARVENIK-1 prototype specification summary.</caption>
+        <tr><th colspan="2">Geometry &amp; Structure</th></tr>
+        <tr><td>Configuration</td><td>4-sided black pyramid (square base)</td></tr>
+        <tr><td>Base dimensions</td><td>12 m × 12 m</td></tr>
+        <tr><td>Apex height</td><td>9 m</td></tr>
+        <tr><td>Dry mass m<sub>c</sub></td><td>50,000 kg (50 tonnes)</td></tr>
+        <tr><td>Shell material</td><td>Graphene-composite, matte black</td></tr>
+        <tr class="head-row"><td colspan="2">Propulsion (Optimised)</td></tr>
+        <tr><td>Fuel type</td><td>Antiprotons (p̄), Penning-trap confined</td></tr>
+        <tr><td>Containment field <em>B</em></td><td>6 T (ALPHA/BASE heritage)</td></tr>
+        <tr><td>Drive efficiency η</td><td>0.40</td></tr>
+        <tr><td>NEA cruise velocity</td><td>0.0025<em>c</em> – 0.006<em>c</em> (Regime I)</td></tr>
+        <tr><td><strong>Min. fuel (MRV-1A, Eros)</strong></td><td class="opt"><strong>62 grams p̄</strong></td></tr>
+        <tr><td><strong>Min. fuel (MRV-1B, Psyche)</strong></td><td class="opt"><strong>413 grams p̄</strong></td></tr>
+        <tr><td>Φ-field mode</td><td>Regime I: <em>k</em> = 1 (off). Regime II: <em>k</em> ≤ 10</td></tr>
+        <tr class="head-row"><td colspan="2">Extraction System</td></tr>
+        <tr><td>Vacuum well diameter</td><td>4 m</td></tr>
+        <tr><td>Operating pressure</td><td>&lt; 10⁻⁶ mbar</td></tr>
+        <tr><td>Retrieval arms</td><td>4 × 6-axis articulated, corner-mounted</td></tr>
+        <tr><td>Arm reach</td><td>6 m (extended)</td></tr>
+        <tr><td>Arm tip tools</td><td>Rotary drill, electromagnetic grab, plasma cutter</td></tr>
+        <tr><td>Max payload / sortie</td><td>2,400 kg</td></tr>
+        <tr><td>Hover altitude</td><td>&lt; 1 m above surface</td></tr>
+        <tr class="head-row"><td colspan="2">Target Minerals (Priority Order)</td></tr>
+        <tr><td>Rhodium</td><td>~$140,000/kg · highest ROI</td></tr>
+        <tr><td>Iridium</td><td>~$52,000/kg</td></tr>
+        <tr><td>Palladium</td><td>~$49,000/kg</td></tr>
+        <tr><td>Platinum</td><td>~$31,000/kg</td></tr>
+        <tr><td>Gross per full sortie</td><td>$120M – $300M</td></tr>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- ═══ FULL-WIDTH: FURTHER SECTIONS ═══ -->
+  <hr class="rule">
+
+  <div class="cols ruled">
+    <div class="col">
+
+      <h2 class="sec"><span class="num">7.</span>Antimatter Production Roadmap</h2>
+      <p>
+        The current state of the art — 92 antiprotons transported by CERN in 2025 — provides 
+        validated Penning-trap containment at the single-event level. The mass equivalent is 
+        approximately <span class="m">1.54 × 10⁻²⁵ kg</span>. The gap between this and the 
+        62 g minimum for MRV-1A is approximately 17 orders of magnitude.
+      </p>
+      <p>
+        Three production pathways are evaluated, ordered by near-term feasibility:
+      </p>
+      <p>
+        <strong>Path A — RHIC synchrotron array.</strong> Each upgraded RHIC-class synchrotron 
+        produces approximately <span class="m">3.5 × 10⁷ p̄/s</span> (with 
+        <span class="m">η = 0.5</span> trap efficiency). At this rate, 62 g requires:
+      </p>
+      <div class="eq">
+        <span class="math">N_p̄ = 0.062 / (1.67×10⁻²⁷) = 3.7×10²⁵ antiprotons
+T = 3.7×10²⁵ / (3.5×10⁷) ≈ 1.06×10¹⁸ s  [single unit]</span>
+        <span class="eqnum">(7)</span>
+      </div>
+      <p>
+        With <span class="m">N_syn = 10⁷</span> synchrotrons (Path A scaled): 
+        <span class="m">T ≈ 1.06 × 10¹¹ / 10⁷ ≈ 10⁴ s ≈ 3 hours</span>. This requires 
+        industrial-scale synchrotron manufacture, feasible by analogy with the 10,000+ 
+        medical cyclotrons currently in operation globally.
+      </p>
+      <p>
+        <strong>Path B — CNBC neutrino beamline.</strong> The Compact Neutrino Beam Collider 
+        produces <span class="m">8 × 10⁵ p̄/s</span> per beamline (optimised). For 62 g:
+      </p>
+      <div class="eq">
+        <span class="math">N_beam = 3.7×10²⁵ / (8×10⁵ × 3.15×10⁷) ≈ 1.47×10¹² beamlines</span>
+        <span class="eqnum">(8)</span>
+      </div>
+      <p>
+        Path B is less efficient per unit than Path A at this scale, but each beamline is 
+        smaller and cheaper. A hybrid approach using Path A for bulk production and Path B 
+        for supplementary yield is recommended.
+      </p>
+      <p>
+        <strong>Path C — QVRC dark energy extraction.</strong> The Quantum Vacuum Resonance 
+        Chamber offers a path to near-zero-cost energy supply for the Φ-field sustainer, 
+        reducing the antimatter demand for propulsion sustainment (as opposed to initial 
+        <span class="m">Δv</span> provision). QVRC reduces effective antimatter consumption 
+        by an estimated 30–50% in Regime II missions.
+      </p>
+
+    </div>
+    <div class="col">
+
+      <h2 class="sec"><span class="num">8.</span>Mission Economics</h2>
+      <p>
+        With the minimum fuel values from Table 1, the per-mission fuel cost drops dramatically. 
+        At 50% of current antimatter market price ($12.5B/g), the cost per mission is:
+      </p>
+
+      <table class="data-table">
+        <caption>Table 4 — Mission cost and revenue comparison at optimised fuel loads.</caption>
+        <tr><th>Sortie</th><th>m<sub>AM</sub></th><th>Fuel cost</th><th>Mineral rev.</th><th>Net</th></tr>
+        <tr><td>MRV-1A</td><td>62 g</td><td>$775M</td><td>$120–300M</td><td style="color:var(--accent)">−$475M</td></tr>
+        <tr><td>MRV-1B</td><td>413 g</td><td>$5.16B</td><td>$200–500M</td><td style="color:var(--accent)">−$4.66B</td></tr>
+        <tr><td>MRV-2</td><td>68 g</td><td>$850M</td><td>$200–500M</td><td style="color:var(--accent)">−$350M</td></tr>
+      </table>
+
+      <div class="warn">
+        <strong>Economic finding:</strong> Even at minimum fuel, missions are loss-making until 
+        antimatter production cost drops below approximately $300M/g — a reduction factor of 
+        ~40× from today's market price. This threshold is reachable if Path A synchrotron 
+        arrays achieve unit costs consistent with medical cyclotron manufacturing 
+        (~$8M per unit, doc. MRV-002).
+      </div>
+
+      <p style="margin-top:12px;">
+        Alternatively, missions become profitable if antimatter is produced in-house at 
+        marginal cost rather than purchased at market rate. The integrated model — where the 
+        MARVENIK programme owns its production infrastructure — achieves positive unit 
+        economics from Year 3 of operations.
+      </p>
+
+      <h2 class="sec"><span class="num">9.</span>Open Problems</h2>
+      <p>
+        Three fundamental problems require resolution before prototype flight:
+      </p>
+      <p>
+        <strong>(i) Production gap.</strong> 17 orders of magnitude separate CERN's 2025 
+        transport milestone from the minimum MRV-1A fuel load. No single-facility path 
+        closes this gap within a decade without industrial-scale replication of 
+        synchrotron hardware.
+      </p>
+      <p>
+        <strong>(ii) QRFT Φ-field validation.</strong> The spacetime contraction mechanism 
+        underlying Regime II and III propulsion remains theoretical. EWN warp bubble 
+        stability has not been demonstrated experimentally at any scale. Regime I 
+        (classical antimatter thrust) avoids this dependency entirely.
+      </p>
+      <p>
+        <strong>(iii) Low-gravity extraction.</strong> The vacuum well and retrieval arm 
+        system must be validated for sub-milligee surface environments. Arm torque 
+        against asteroid regolith cohesion (typically &lt;1 kPa tensile strength) must be 
+        characterised in ground-based simulated low-gravity facilities prior to MRV-1A.
+      </p>
+
+      <h2 class="sec"><span class="num">10.</span>Conclusion</h2>
+      <p>
+        The MARVENIK surface retrieval spacecraft, operating in Regime I (classical 
+        antimatter thrust, <span class="m">k = 1</span>), requires a minimum of 
+        <strong>62 grams of antiprotons</strong> for a round-trip mission to 433 Eros — 
+        a 99.994% improvement over the prior 10 kg baseline assumption. The pyramid geometry 
+        is well-suited to surface hovering. Full economic viability is conditioned on 
+        reducing antimatter production cost by approximately 40× from current market 
+        rates, achievable through in-house scaled synchrotron production.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ═══ REFERENCES ═══ -->
+  <hr class="rule">
+  <h2 class="sec" style="margin-top:0;"><span class="num"></span>References</h2>
+  <ol class="refs">
+    <li><span class="refnum">[1]</span> Ilić, M. (2025). <em>Antiproton production economics and market structure.</em> Aethyr Global Internal Report MRV-002, September 2025.</li>
+    <li><span class="refnum">[2]</span> Ilić, M. (2025). <em>Emergent Warp Network: QRFT Φ-field spacetime contraction for interstellar transit.</em> Aethyr Global Internal Report MRV-005, September 2025.</li>
+    <li><span class="refnum">[3]</span> Ilić, M. (2025). <em>Method of spacetime contraction and propulsion mechanism.</em> Aethyr Global Internal Report MRV-006, September 2025.</li>
+    <li><span class="refnum">[4]</span> Ilić, M. (2025). <em>Turnaround mechanism and return journey dynamics.</em> Aethyr Global Internal Report MRV-007, September 2025.</li>
+    <li><span class="refnum">[5]</span> CERN ALPHA/BASE Collaboration (2025). <em>Successful transport of 92 antiprotons over extended baseline.</em> Nature Physics, forthcoming.</li>
+    <li><span class="refnum">[6]</span> Alcubierre, M. (1994). The warp drive: hyper-fast travel within general relativity. <em>Class. Quantum Grav.</em> <strong>11</strong>, L73–L77.</li>
+    <li><span class="refnum">[7]</span> Tsiolkovsky, K.E. (1903). Exploration of the universe with reaction machines. <em>Nauchnoye Obozreniye</em> (Scientific Review), No. 5.</li>
+  </ol>
+
+  <div class="footnote">
+    MRV-TR-002 · Aethyr Global Propulsion Division · Preprint, September 2025 · 
+    All figures derived from internal programme documentation MRV-001 through MRV-008. 
+    Equations (1)–(8) are original derivations for this report. 
+    Mineral prices as of Q3 2025 market data. 
+    Antimatter pricing referenced at 50% of CERN-equivalent production cost ($12.5B/g). ·
+    <em>MARVENIK</em> is a registered programme designation of Aethyr Global.
+  </div>
+
+</div><!-- /paper -->
+</body>
+</html>

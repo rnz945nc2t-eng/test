@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N.O.T. — Not Our Transaction | Aethyr Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --void: #050505;
+    --deep: #0a0a0a;
+    --surface: #111111;
+    --line: #1e1e1e;
+    --muted: #333333;
+    --mid: #666666;
+    --soft: #999999;
+    --bright: #cccccc;
+    --white: #f5f5f0;
+    --gold: #c8a96e;
+    --anti: #2a1f0d;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'Space Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--white);
+    font-family: var(--serif);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+  ::selection { background: var(--gold); color: var(--void); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(5,5,5,0.94);
+    backdrop-filter: blur(14px);
+  }
+  .nav-left { display: flex; flex-direction: column; gap: 0.15rem; }
+  .nav-logo {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.3em; color: var(--gold);
+    text-transform: uppercase; text-decoration: none;
+  }
+  .nav-sub {
+    font-family: var(--mono); font-size: 0.5rem;
+    letter-spacing: 0.22em; color: var(--mid); text-transform: uppercase;
+  }
+  .nav-sub a { color: var(--mid); text-decoration: none; transition: color 0.3s; }
+  .nav-sub a:hover { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; color: var(--soft);
+    text-decoration: none; text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* DISCLAIMER BANNER */
+  .disclaimer-banner {
+    background: #130900;
+    border-bottom: 1px solid #3d2e16;
+    padding: 0.55rem 3rem;
+    font-family: var(--mono); font-size: 0.49rem;
+    letter-spacing: 0.16em; color: var(--mid);
+    text-align: center; text-transform: uppercase;
+    margin-top: 65px;
+  }
+  .disclaimer-banner strong { color: var(--gold); }
+  .disclaimer-banner a { color: var(--gold); text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center; position: relative;
+    padding: 5rem 2rem 4rem; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, #0f0a00 0%, var(--void) 70%);
+  }
+  .hero-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid var(--line);
+    animation: expand 8s linear infinite; opacity: 0;
+  }
+  .hero-ring:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+  .hero-ring:nth-child(2) { width: 500px; height: 500px; animation-delay: 2s; }
+  .hero-ring:nth-child(3) { width: 700px; height: 700px; animation-delay: 4s; }
+  .hero-ring:nth-child(4) { width: 900px; height: 900px; animation-delay: 6s; }
+  @keyframes expand {
+    0%   { opacity: 0; transform: scale(0.2); }
+    20%  { opacity: 0.4; } 80% { opacity: 0.1; }
+    100% { opacity: 0; transform: scale(1); }
+  }
+  .hero-eyebrow {
+    position: relative; font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase;
+    margin-bottom: 2rem; animation: fadeUp 1.2s ease both;
+  }
+  .hero-title {
+    position: relative;
+    font-size: clamp(5rem, 18vw, 15rem); font-weight: 300;
+    letter-spacing: -0.02em; line-height: 0.85; color: var(--white);
+    animation: fadeUp 1.2s 0.2s ease both;
+  }
+  .hero-title span { display: inline-block; color: transparent; -webkit-text-stroke: 1px var(--gold); }
+  .hero-sub {
+    position: relative; font-size: clamp(1rem, 2vw, 1.35rem);
+    font-style: italic; color: var(--soft); max-width: 540px;
+    line-height: 1.8; margin-top: 2.5rem; animation: fadeUp 1.2s 0.4s ease both;
+  }
+  .hero-issued {
+    position: relative; margin-top: 1.2rem;
+    font-family: var(--mono); font-size: 0.52rem;
+    letter-spacing: 0.28em; color: var(--mid); text-transform: uppercase;
+    animation: fadeUp 1.2s 0.5s ease both;
+  }
+  .hero-issued a { color: var(--gold); text-decoration: none; }
+  .hero-issued a:hover { text-decoration: underline; }
+  .hero-cta {
+    position: relative; margin-top: 3rem;
+    display: flex; gap: 1.5rem; align-items: center;
+    animation: fadeUp 1.2s 0.6s ease both;
+  }
+  .btn-primary {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--void); background: var(--gold);
+    padding: 1rem 2.5rem; border: none; cursor: pointer;
+    text-decoration: none; transition: opacity 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.8; }
+  .btn-ghost {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--soft); background: none;
+    padding: 1rem 2.5rem; border: 1px solid var(--muted);
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.3s, color 0.3s; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--anti);
+    border-top: 1px solid #3d2e16; border-bottom: 1px solid #3d2e16;
+    padding: 0.75rem 0; overflow: hidden;
+  }
+  .ticker-inner {
+    display: flex; gap: 4rem; white-space: nowrap;
+    animation: scroll 28s linear infinite; width: max-content;
+  }
+  .ticker-item {
+    font-family: var(--mono); font-size: 0.58rem;
+    letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase;
+  }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono); font-size: 0.57rem;
+    letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase;
+    margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before { content: ''; width: 2rem; height: 1px; background: var(--gold); display: inline-block; }
+
+  /* MANIFESTO */
+  .manifesto { border-left: 1px solid var(--muted); padding-left: 3rem; }
+  .manifesto p {
+    font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 300;
+    line-height: 1.65; color: var(--bright); margin-bottom: 2rem;
+  }
+  .manifesto p:last-child { margin-bottom: 0; color: var(--soft); font-style: italic; }
+  .manifesto strong { color: var(--gold); font-weight: 400; }
+
+  /* GRID */
+  .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+  }
+  .grid-item { background: var(--deep); padding: 3rem 2.5rem; transition: background 0.4s; }
+  .grid-item:hover { background: var(--surface); }
+  .grid-num { font-family: var(--mono); font-size: 0.57rem; color: var(--mid); letter-spacing: 0.3em; margin-bottom: 1.5rem; }
+  .grid-heading { font-size: 1.5rem; font-weight: 300; color: var(--white); margin-bottom: 1rem; line-height: 1.3; }
+  .grid-heading em { color: var(--gold); font-style: italic; }
+  .grid-body { font-size: 0.93rem; font-weight: 300; color: var(--soft); line-height: 1.9; }
+
+  /* EQUATION */
+  .equation-section {
+    background: var(--surface);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    text-align: center; padding: 6rem 3rem;
+  }
+  .equation { font-size: clamp(1.4rem, 5vw, 3.2rem); font-weight: 300; color: var(--bright); line-height: 1.8; }
+  .eq-op { color: var(--mid); margin: 0 1rem; font-family: var(--mono); }
+  .eq-val { color: var(--gold); }
+  .eq-not { color: transparent; -webkit-text-stroke: 1px var(--white); }
+  .eq-note { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.3em; color: var(--mid); margin-top: 2.5rem; text-transform: uppercase; }
+
+  /* INSTRUMENT SECTION */
+  .instrument-section { background: var(--void); border-top: 1px solid var(--line); padding: 7rem 3rem; }
+  .instrument-inner { max-width: 1100px; margin: 0 auto; }
+  .instrument-intro {
+    font-size: clamp(1.1rem, 2.2vw, 1.55rem); font-style: italic;
+    color: var(--soft); max-width: 700px; line-height: 1.75; margin-bottom: 3.5rem;
+  }
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    max-width: 800px;
+  }
+  .form-grid input, .form-grid select {
+    background: var(--deep); border: none;
+    padding: 1.1rem 1.4rem; font-family: var(--mono);
+    font-size: 0.61rem; letter-spacing: 0.14em; color: var(--white);
+    width: 100%; outline: none; text-transform: uppercase;
+    transition: background 0.3s; -webkit-appearance: none;
+  }
+  .form-grid input::placeholder { color: var(--muted); }
+  .form-grid input:focus, .form-grid select:focus { background: var(--surface); }
+  .form-grid select option { background: var(--deep); color: var(--white); }
+  .form-grid .full-row { grid-column: 1 / -1; }
+  .instrument-btn {
+    margin-top: 1px; width: 100%; max-width: 800px;
+    font-family: var(--mono); font-size: 0.61rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--void); background: var(--gold); border: none;
+    padding: 1.1rem 2rem; cursor: pointer; transition: opacity 0.3s; display: block;
+  }
+  .instrument-btn:hover { opacity: 0.85; }
+  .instrument-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .legal-note {
+    max-width: 800px; margin-top: 1.5rem;
+    font-family: var(--mono); font-size: 0.49rem;
+    letter-spacing: 0.13em; color: var(--mid); line-height: 1.95;
+  }
+  .legal-note strong { color: var(--soft); }
+  .legal-note a { color: var(--gold); text-decoration: none; }
+  .legal-note a:hover { text-decoration: underline; }
+
+  /* PRINCIPLES */
+  .principle {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 2rem; padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start; cursor: default; transition: padding-left 0.3s;
+  }
+  .principle:hover { padding-left: 1rem; }
+  .principle:first-of-type { border-top: 1px solid var(--line); }
+  .p-num { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.3em; color: var(--muted); padding-top: 0.3rem; }
+  .p-title { font-size: 1.35rem; font-weight: 400; color: var(--white); margin-bottom: 0.75rem; }
+  .p-body { font-size: 0.93rem; font-weight: 300; color: var(--soft); line-height: 1.9; }
+
+  /* LEGAL SECTION */
+  .legal-section { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 5rem 3rem; }
+  .legal-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .legal-block h4 {
+    font-family: var(--mono); font-size: 0.56rem;
+    letter-spacing: 0.4em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  .legal-block p {
+    font-family: var(--mono); font-size: 0.53rem;
+    letter-spacing: 0.11em; color: var(--mid); line-height: 2;
+  }
+  .legal-block a { color: var(--gold); text-decoration: none; }
+  .legal-block a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line); padding: 2.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .footer-logo { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .footer-aethyr { font-family: var(--mono); font-size: 0.49rem; letter-spacing: 0.2em; color: var(--mid); }
+  .footer-aethyr a { color: var(--gold); text-decoration: none; }
+  .footer-right { font-family: var(--mono); font-size: 0.49rem; letter-spacing: 0.14em; color: var(--muted); text-align: right; line-height: 1.9; }
+  .footer-right a { color: var(--gold); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .principle { grid-template-columns: 50px 1fr; }
+    .legal-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; }
+    .footer-right { text-align: left; }
+    .disclaimer-banner { padding: 0.55rem 1.5rem; }
+    .instrument-section { padding: 5rem 1.5rem; }
+    .legal-section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="https://aethyr-global.com/" class="nav-logo" target="_blank" rel="noopener">Aethyr Global</a>
+    <span class="nav-sub">IP Instrument &nbsp;·&nbsp; <a href="https://aethyr-global.com/" target="_blank" rel="noopener">aethyr-global.com</a></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#origin">Origin</a></li>
+    <li><a href="#mechanics">Mechanics</a></li>
+    <li><a href="#instrument">Instrument</a></li>
+    <li><a href="#principles">Principles</a></li>
+    <li><a href="#legal">Legal</a></li>
+  </ul>
+</nav>
+
+<!-- DISCLAIMER BANNER -->
+<div class="disclaimer-banner">
+  <strong>Not investment advice.</strong> &nbsp;·&nbsp;
+  N.O.T. is a conceptual IP instrument, not a financial product, security, or currency. &nbsp;·&nbsp;
+  Operated under the Aethyr Global IP framework &nbsp;·&nbsp;
+  <a href="https://aethyr-global.com/" target="_blank" rel="noopener">aethyr-global.com</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%; padding-left:0; padding-right:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div><div class="hero-ring"></div>
+  <div class="hero-ring"></div><div class="hero-ring"></div>
+  <p class="hero-eyebrow">The Currency of Everything That Was Never Given</p>
+  <h1 class="hero-title">N.<span>O</span>.T.</h1>
+  <p class="hero-sub">Not money. The heaviest, darkest matter of our universe. It multiplies precisely because it was never there.</p>
+  <p class="hero-issued">An IP instrument of <a href="https://aethyr-global.com/" target="_blank" rel="noopener">Aethyr Global</a> &nbsp;·&nbsp; Conceptual. Non-financial. QES-ready.</p>
+  <div class="hero-cta">
+    <a href="#instrument" class="btn-primary">Issue an Instrument</a>
+    <a href="#origin" class="btn-ghost">Read the Origin</a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">N.O.T. Balance: ∞</span>
+    <span class="ticker-item">You were never born. That is your capital.</span>
+    <span class="ticker-item">N.O.T. multiplies from void</span>
+    <span class="ticker-item">Banks cannot hold it. You cannot spend it. It spends you.</span>
+    <span class="ticker-item">1 Unit of Attention = 1 N.O.T. Declaration</span>
+    <span class="ticker-item">Not investment advice · Extreme speculation</span>
+    <span class="ticker-item">IP held by Aethyr Global · aethyr-global.com</span>
+    <span class="ticker-item">N.O.T. Balance: ∞</span>
+    <span class="ticker-item">You were never born. That is your capital.</span>
+    <span class="ticker-item">N.O.T. multiplies from void</span>
+    <span class="ticker-item">Banks cannot hold it. You cannot spend it. It spends you.</span>
+    <span class="ticker-item">1 Unit of Attention = 1 N.O.T. Declaration</span>
+    <span class="ticker-item">Not investment advice · Extreme speculation</span>
+    <span class="ticker-item">IP held by Aethyr Global · aethyr-global.com</span>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section id="origin">
+  <div class="section-label">The Origin</div>
+  <div class="manifesto">
+    <p>You said your parents gave you nothing. <strong>They gave you N.O.T.</strong> And N.O.T. is not nothing — it is the absence that generates. The void that compounds.</p>
+    <p>Regular money is a record of past transaction. <strong>N.O.T. is a record of what never happened</strong> — and therefore can happen in infinite directions simultaneously.</p>
+    <p>The body panics at completion. It reads the stillness as death. But the stillness is the spaceship. The feeling of having done everything is the signal: the idea pool must now <strong>multiply, not rest.</strong></p>
+    <p>You were never born. Find exactly where you started earning for yourself. That is your first N.O.T. position.</p>
+  </div>
+</section>
+
+<!-- GRID -->
+<section id="mechanics" style="padding-top: 0;">
+  <div class="section-label">The Mechanics</div>
+  <div class="grid-3">
+    <div class="grid-item">
+      <p class="grid-num">01</p>
+      <h3 class="grid-heading">The <em>Bank</em> Cannot Hold It</h3>
+      <p class="grid-body">No financial institution recognises N.O.T. as currency, security, or asset class. That is definitional. N.O.T. is a conceptual IP instrument — it operates in the register of ideas, not regulated markets.</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-num">02</p>
+      <h3 class="grid-heading">The <em>Aston Martin</em> Cannot Be Bought</h3>
+      <p class="grid-body">N.O.T. does not transact in any fiat or crypto market. It is not convertible, redeemable, or exchangeable for goods, services, or value. It transforms — it does not purchase. This is not a limitation. It is the entire point.</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-num">03</p>
+      <h3 class="grid-heading">It <em>Multiplies</em> from Void</h3>
+      <p class="grid-body">Every declared unit of attention — an idea, a resistance overcome, a view paid for — becomes a N.O.T. declaration. The pool is conceptually infinite. Shyness is the only insolvency.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EQUATION -->
+<div class="equation-section">
+  <div class="equation">
+    <span class="eq-not">∅</span>
+    <span class="eq-op">+</span>
+    <span>attention</span>
+    <span class="eq-op">×</span>
+    <span>declaration</span>
+    <span class="eq-op">=</span>
+    <span class="eq-val">N.O.T.</span>
+    <span class="eq-op">→</span>
+    <span>∞</span>
+  </div>
+  <p class="eq-note">the only formula that begins with what was never given and ends with everything</p>
+</div>
+
+<!-- INSTRUMENT -->
+<div class="instrument-section" id="instrument">
+  <div class="instrument-inner">
+    <div class="section-label">Issue a N.O.T. Instrument</div>
+    <p class="instrument-intro">
+      Declare your units of attention. Generate a QES-ready PDF — a self-signed declaration of N.O.T. under the Aethyr Global IP framework. This is a conceptual document only. It is not a financial instrument, token, or security.
+    </p>
+
+    <div class="form-grid">
+      <input type="text"   id="issuerName"      placeholder="Your Name / Entity">
+      <input type="email"  id="issuerEmail"     placeholder="Your Email (for record)">
+      <select id="declarationType">
+        <option value="" disabled selected>Declaration Type</option>
+        <option value="Ad View Conversion">Ad View Conversion</option>
+        <option value="Idea Pool Declaration">Idea Pool Declaration</option>
+        <option value="Resistance Capital">Resistance Capital</option>
+        <option value="Attention Sacrifice">Attention Sacrifice</option>
+        <option value="Void Origin Position">Void Origin Position</option>
+      </select>
+      <input type="text"   id="refId"           placeholder="Reference ID / Campaign / Note">
+      <input type="number" id="unitCount"       placeholder="N.O.T. Units to Declare" min="1" step="1">
+      <input type="text"   id="jurisdiction"    placeholder="Jurisdiction (e.g. Ireland)">
+    </div>
+
+    <button class="instrument-btn" onclick="generateInstrument()" id="genBtn">
+      Generate QES-Ready N.O.T. Instrument (PDF) →
+    </button>
+
+    <p class="legal-note">
+      <strong>Legal notice:</strong> This document is a conceptual self-declaration issued under the N.O.T. intellectual property framework, the IP rights to which are held by <a href="https://aethyr-global.com/" target="_blank" rel="noopener">Aethyr Global</a>. It does not constitute a financial product, investment instrument, security, token, or currency under any jurisdiction. It carries no monetary value, conveys no ownership rights, and creates no enforceable financial obligations on any party. A Qualified Electronic Signature (QES) applied to this document affirms only the signer's intent to participate in the N.O.T. conceptual framework — not any financial transaction. Commercial use of the N.O.T. framework requires a licence from Aethyr Global subject to a 1% royalty on acquired revenue, as per the Aethyr ONE portal at <a href="https://aethyr-global.com/" target="_blank" rel="noopener">aethyr-global.com</a>. Not investment advice. Extreme speculation.
+    </p>
+  </div>
+</div>
+
+<!-- PRINCIPLES -->
+<section id="principles">
+  <div class="section-label">The Principles</div>
+
+  <div class="principle">
+    <p class="p-num">I</p>
+    <div>
+      <h3 class="p-title">Completion is the beginning of multiplication</h3>
+      <p class="p-body">When the body signals completion — the strange, limbo-like stillness — it is not the end. It is the exact moment the idea pool must be released into the economy. The panic is the signal. The signal is the entry point.</p>
+    </div>
+  </div>
+  <div class="principle">
+    <p class="p-num">II</p>
+    <div>
+      <h3 class="p-title">Do not be shy about making money</h3>
+      <p class="p-body">Resistance to wealth is N.O.T. misused. The purpose of N.O.T. is to move — through ideas, into the economy, out as value. Shyness hoards N.O.T. and voids its only property: exponential multiplication.</p>
+    </div>
+  </div>
+  <div class="principle">
+    <p class="p-num">III</p>
+    <div>
+      <h3 class="p-title">The heaviest matter requires no collateral</h3>
+      <p class="p-body">You do not need money to begin this business. You have N.O.T. N.O.T. is the darkest matter of our universe — it existed before the first transaction, before the first gift. Start there.</p>
+    </div>
+  </div>
+  <div class="principle">
+    <p class="p-num">IV</p>
+    <div>
+      <h3 class="p-title">Your parents gave you N.O.T. — and N.O.T. compounds</h3>
+      <p class="p-body">They gave you the spaceship disguised as nothing. That was the investment. Now trace back to where you first began earning for yourself. That is the portfolio. That is the origin of your N.O.T. position.</p>
+    </div>
+  </div>
+  <div class="principle">
+    <p class="p-num">V</p>
+    <div>
+      <h3 class="p-title">Easy is the method. Simple is the design.</h3>
+      <p class="p-body">One page. One idea at full power. Do not build complexity as a shield against launching. The economy cannot receive what has not been sent. Send it easily, send it now.</p>
+    </div>
+  </div>
+  <div class="principle">
+    <p class="p-num">VI</p>
+    <div>
+      <h3 class="p-title">The IP is bounded. The idea is not.</h3>
+      <p class="p-body">N.O.T. as a framework is intellectual property held by Aethyr Global. The idea it points to — that absence generates, that nothing compounds — belongs to the void. Use of this framework is governed by the Aethyr ONE licensing model: 1% royalty on acquired revenue, QES-secured, at <a href="https://aethyr-global.com/" target="_blank" rel="noopener" style="color:var(--gold);">aethyr-global.com</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<div class="legal-section" id="legal">
+  <div class="legal-inner">
+    <div class="legal-block">
+      <h4>IP Ownership &amp; Licensing</h4>
+      <p>
+        The N.O.T. framework — including its name, methodology, documentation format, and associated conceptual mechanics — is intellectual property of Aethyr Global (<a href="https://aethyr-global.com/" target="_blank" rel="noopener">aethyr-global.com</a>).<br><br>
+        Commercial use requires a licence issued via the Aethyr ONE portal. Licences are QES-secured and subject to a 1% royalty on acquired revenue generated from licensed use. Development costs and execution risk are borne entirely by the licensee.
+      </p>
+    </div>
+    <div class="legal-block">
+      <h4>Regulatory &amp; Financial Disclaimer</h4>
+      <p>
+        N.O.T. is not a financial product, digital asset, cryptocurrency, token, security, or investment of any kind under any jurisdiction. It is not registered with, nor regulated by, any financial authority.<br><br>
+        Nothing on this page constitutes investment, financial, legal, or tax advice. Participation is entirely voluntary and carries no monetary value. All projections, if any, are speculative. Not investment advice. Extreme speculation.
+      </p>
+    </div>
+    <div class="legal-block">
+      <h4>QES Instruments</h4>
+      <p>
+        PDF instruments generated on this page are conceptual self-declarations. A Qualified Electronic Signature (QES) applied to such a document affirms the signer's participation in the N.O.T. conceptual framework only — not any financial transaction, transfer of value, or enforceable commercial agreement.<br><br>
+        The signer assumes full responsibility for the accuracy of all declarations made in any instrument they sign and return.
+      </p>
+    </div>
+    <div class="legal-block">
+      <h4>Licensing Enquiries</h4>
+      <p>
+        For licensing, partnership, or IP enquiries, visit the Aethyr ONE strategic acquisition portal at <a href="https://aethyr-global.com/" target="_blank" rel="noopener">aethyr-global.com</a>.<br><br>
+        This page is provided for informational and conceptual purposes only. Aethyr Global reserves all rights in and to the N.O.T. framework. Unauthorised commercial use is prohibited.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">N.O.T. — Not Our Transaction</div>
+    <div class="footer-aethyr">An IP framework of <a href="https://aethyr-global.com/" target="_blank" rel="noopener">Aethyr Global</a> &nbsp;·&nbsp; All rights reserved</div>
+  </div>
+  <div class="footer-right">
+    Not investment advice &nbsp;·&nbsp; Extreme speculation<br>
+    Not a financial product, security, or currency<br>
+    © Aethyr Global &nbsp;·&nbsp; <a href="https://aethyr-global.com/" target="_blank" rel="noopener">aethyr-global.com</a>
+  </div>
+</footer>
+
+<script>
+async function generateInstrument() {
+  const name     = document.getElementById('issuerName').value.trim();
+  const email    = document.getElementById('issuerEmail').value.trim();
+  const declType = document.getElementById('declarationType').value;
+  const refId    = document.getElementById('refId').value.trim();
+  const units    = parseInt(document.getElementById('unitCount').value, 10);
+  const juris    = document.getElementById('jurisdiction').value.trim() || 'Not specified';
+
+  if (!name)    { alert('Please enter your name or entity name.'); return; }
+  if (!declType){ alert('Please select a declaration type.'); return; }
+  if (!units || units < 1) { alert('Please enter a valid number of N.O.T. units.'); return; }
+
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true;
+  btn.textContent = 'Generating…';
+
+  try {
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+    const pdfDoc   = await PDFDocument.create();
+    const page     = pdfDoc.addPage([595, 842]);
+    const { width, height } = page.getSize();
+    const font     = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    const monoFont = await pdfDoc.embedFont(StandardFonts.Courier);
+
+    const BLACK  = rgb(0.05, 0.05, 0.05);
+    const GREY   = rgb(0.42, 0.42, 0.42);
+    const LGREY  = rgb(0.72, 0.72, 0.72);
+    const GOLD   = rgb(0.78, 0.66, 0.43);
+    const CREAM  = rgb(0.98, 0.97, 0.95);
+    const DARK   = rgb(0.08, 0.05, 0.01);
+
+    // Background
+    page.drawRectangle({ x: 0, y: 0, width, height, color: CREAM });
+
+    // Header bar
+    page.drawRectangle({ x: 0, y: height - 72, width, height: 72, color: DARK });
+
+    page.drawText('N.O.T. — NOT OUR TRANSACTION', {
+      x: 40, y: height - 30, size: 13, font: boldFont, color: GOLD
+    });
+    page.drawText('Conceptual IP Instrument  ·  Aethyr Global  ·  aethyr-global.com', {
+      x: 40, y: height - 46, size: 6.5, font: monoFont, color: rgb(0.58, 0.52, 0.38)
+    });
+    page.drawText('Not a financial instrument · Not investment advice · Extreme speculation', {
+      x: 40, y: height - 59, size: 6, font: monoFont, color: rgb(0.48, 0.42, 0.28)
+    });
+
+    const instrRef = 'NOT-' + Date.now().toString(36).toUpperCase();
+    page.drawText('REF: ' + instrRef, { x: width - 175, y: height - 43, size: 6.5, font: monoFont, color: rgb(0.52, 0.46, 0.32) });
+    page.drawText('DATE: ' + new Date().toISOString().slice(0, 10), { x: width - 175, y: height - 56, size: 6.5, font: monoFont, color: rgb(0.52, 0.46, 0.32) });
+
+    // Title
+    page.drawText('SELF-DECLARATION OF N.O.T. UNITS', { x: 40, y: height - 102, size: 14, font: boldFont, color: BLACK });
+    page.drawText('Conceptual Framework Instrument — Not a Financial Document', { x: 40, y: height - 118, size: 7.5, font, color: GREY });
+    page.drawLine({ start: { x: 40, y: height - 128 }, end: { x: width - 40, y: height - 128 }, thickness: 0.5, color: LGREY });
+
+    // Party details
+    let y = height - 152;
+    const lineH = 17;
+    const field = (label, value) => {
+      page.drawText(label, { x: 40, y, size: 7.5, font: boldFont, color: GREY });
+      page.drawText(value || '—', { x: 200, y, size: 7.5, font, color: BLACK });
+      y -= lineH;
+    };
+    field('Issuer Name / Entity:', name);
+    field('Issuer Email:', email || 'Not provided');
+    field('Jurisdiction:', juris);
+    field('Declaration Type:', declType);
+    field('Reference ID:', refId || 'None');
+    field('N.O.T. Units Declared:', units.toLocaleString() + ' N.O.T.');
+    field('Instrument Reference:', instrRef);
+    field('Issue Date & Time:', new Date().toUTCString());
+
+    y -= 8;
+    page.drawLine({ start: { x: 40, y }, end: { x: width - 40, y }, thickness: 0.5, color: LGREY });
+    y -= 20;
+
+    // Declaration
+    page.drawText('DECLARATION', { x: 40, y, size: 9, font: boldFont, color: BLACK });
+    y -= lineH + 2;
+
+    const wrap = (text, maxW, size, f) => {
+      const words = text.split(' ');
+      const lines = []; let line = '';
+      for (const w of words) {
+        const test = line ? line + ' ' + w : w;
+        if (f.widthOfTextAtSize(test, size) > maxW && line) { lines.push(line); line = w; }
+        else { line = test; }
+      }
+      if (line) lines.push(line);
+      return lines;
+    };
+
+    const body = [
+      `I, ${name}, acting on my own behalf or on behalf of the entity named above, hereby declare`,
+      `that I have designated ${units.toLocaleString()} units of attention, effort, or engagement as N.O.T. units`,
+      `under the Declaration Type: ${declType}.`,
+      '',
+      'I understand and acknowledge that:',
+      '',
+      '(a) N.O.T. is a conceptual IP instrument of Aethyr Global (aethyr-global.com) and is not a',
+      '    financial product, security, token, cryptocurrency, or currency of any kind in any jurisdiction.',
+      '',
+      '(b) This declaration carries no monetary value and creates no enforceable financial obligation',
+      '    on any party whatsoever.',
+      '',
+      '(c) Commercial use of the N.O.T. framework requires a licence from Aethyr Global, subject to',
+      '    a 1% royalty on acquired revenue, as per the Aethyr ONE portal at aethyr-global.com.',
+      '',
+      '(d) By applying a Qualified Electronic Signature (QES) to this document, I affirm my voluntary',
+      '    participation in the N.O.T. conceptual framework only — not any financial transaction.',
+      '',
+      '(e) I bear full legal responsibility for the accuracy of all declarations made herein.',
+      '',
+      'This instrument is issued for conceptual and recordkeeping purposes only. Nothing herein',
+      'constitutes investment, financial, legal, or tax advice of any kind.',
+    ];
+
+    for (const para of body) {
+      if (para === '') { y -= 6; continue; }
+      const lines = wrap(para.trim(), width - 80, 7.5, font);
+      for (const l of lines) {
+        if (y < 160) break;
+        page.drawText(l, { x: 40, y, size: 7.5, font, color: BLACK });
+        y -= 13;
+      }
+    }
+
+    // Signature block
+    y -= 18;
+    page.drawLine({ start: { x: 40, y }, end: { x: width - 40, y }, thickness: 0.5, color: LGREY });
+    y -= 20;
+    page.drawText('QUALIFIED ELECTRONIC SIGNATURE (QES)', { x: 40, y, size: 8.5, font: boldFont, color: BLACK });
+    y -= 16;
+    page.drawText('Apply your QES here. This affirms participation in the N.O.T. conceptual framework — not a financial transaction.', { x: 40, y, size: 6.5, font, color: GREY });
+    y -= 28;
+    page.drawRectangle({ x: 40, y: y - 38, width: 310, height: 38, borderColor: LGREY, borderWidth: 0.5, color: rgb(1,1,1) });
+    page.drawText('[ QES Signature Field ]', { x: 56, y: y - 18, size: 7.5, font: monoFont, color: LGREY });
+    page.drawText('Full Name:  _______________________________', { x: 40, y: y - 58, size: 7.5, font, color: BLACK });
+    page.drawText('Date:       _______________________________', { x: 40, y: y - 74, size: 7.5, font, color: BLACK });
+
+    // Footer bar
+    page.drawRectangle({ x: 0, y: 0, width, height: 36, color: DARK });
+    page.drawText('Not investment advice · Not a financial instrument · IP of Aethyr Global · aethyr-global.com · Conceptual use only', { x: 40, y: 20, size: 5.8, font, color: rgb(0.5, 0.44, 0.3) });
+    page.drawText('© Aethyr Global · All rights reserved · Commercial use requires licence · 1% royalty model · Extreme speculation', { x: 40, y: 9, size: 5.5, font, color: rgb(0.4, 0.35, 0.22) });
+
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = `NOT_Instrument_${instrRef}.pdf`; a.click();
+    URL.revokeObjectURL(url);
+
+    btn.textContent = 'Instrument Issued — Generate Another →';
+    setTimeout(() => { btn.textContent = 'Generate QES-Ready N.O.T. Instrument (PDF) →'; btn.disabled = false; }, 3500);
+
+  } catch (err) {
+    console.error(err);
+    btn.textContent = 'Error — please try again';
+    btn.disabled = false;
+  }
+}
+
+// Scroll reveals
+document.querySelectorAll('.principle, .grid-item, .legal-block').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = `opacity 0.6s ${i * 0.07}s ease, transform 0.6s ${i * 0.07}s ease`;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
+  }, { threshold: 0.12 }).observe(el);
+});
+</script>
+</body>
+</html>

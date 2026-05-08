@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARVENIK-HL — Heavy-Lift Surface Retrieval Craft Giga package extras</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #1a1a1a;
+    --mid:    #444;
+    --light:  #777;
+    --rule:   #ccc;
+    --accent: #8b0000;
+    --bg:     #faf8f4;
+    --col-bg: #f5f2ed;
+    --eq-bg:  #f0ede8;
+    --warn:   #fff8e8;
+    --warn-b: #d4a800;
+    --note:   #f0f4f8;
+    --note-b: #336699;
+    --col-w:  46%;
+    --gap:    4%;
+    --full:   96%;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #e8e4dc;
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ─── PAPER SHEET ─── */
+  .paper {
+    background: var(--bg);
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 64px 72px 80px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.12);
+    border-top: 4px solid var(--accent);
+    position: relative;
+  }
+
+  /* ─── HEADER / TITLE ─── */
+  .journal-name {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--light);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .journal-name span { font-style: italic; letter-spacing: 0; text-transform: none; font-size: 11px; }
+
+  h1.paper-title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  h1.paper-title em { color: var(--accent); font-style: normal; }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--mid);
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+
+  .authors {
+    font-size: 13px;
+    color: var(--mid);
+    margin-bottom: 4px;
+  }
+  .affil {
+    font-size: 11.5px;
+    color: var(--light);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .dates {
+    font-size: 11px;
+    color: var(--light);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 32px;
+  }
+
+  /* ─── ABSTRACT ─── */
+  .abstract-box {
+    border: 1px solid var(--rule);
+    background: var(--col-bg);
+    padding: 18px 22px;
+    margin-bottom: 36px;
+  }
+  .abstract-box .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .abstract-box p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--mid);
+    text-align: justify;
+  }
+
+  .keywords {
+    font-size: 12.5px;
+    color: var(--light);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .keywords strong { font-style: normal; color: var(--mid); }
+
+  /* ─── TWO-COLUMN ─── */
+  .cols {
+    display: flex;
+    gap: var(--gap);
+    align-items: start;
+  }
+  .col { width: var(--col-w); }
+  .col-wide { width: 58%; }
+  .col-narrow { width: 38%; }
+
+  /* ─── SECTIONS ─── */
+  h2.sec {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 28px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h2.sec .num {
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px;
+    color: var(--light);
+  }
+
+  h3.subsec {
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    margin: 18px 0 6px;
+  }
+
+  p { 
+    text-align: justify; 
+    margin-bottom: 10px; 
+    font-size: 15.5px;
+    hyphens: auto;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── EQUATIONS ─── */
+  .eq {
+    background: var(--eq-bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 14px 0;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .eq .math { flex: 1; }
+  .eq .eqnum {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: var(--light);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  sup { font-size: 0.72em; vertical-align: super; }
+  sub { font-size: 0.72em; vertical-align: sub; }
+
+  /* ─── INLINE MATH ─── */
+  .m {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    background: var(--eq-bg);
+    padding: 1px 5px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ─── FIGURE / DIAGRAM ─── */
+  .figure {
+    margin: 20px 0;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+  .fig-inner {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .fig-caption {
+    border-top: 1px solid var(--rule);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--mid);
+    background: var(--col-bg);
+    line-height: 1.5;
+  }
+  .fig-caption strong { color: var(--ink); }
+
+  /* ─── DATA TABLE ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 14px 0;
+  }
+  .data-table caption {
+    font-size: 13px;
+    color: var(--mid);
+    font-style: italic;
+    margin-bottom: 6px;
+    text-align: left;
+    caption-side: top;
+  }
+  .data-table th {
+    background: var(--col-bg);
+    border-bottom: 2px solid var(--ink);
+    border-top: 1px solid var(--ink);
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .data-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--mid);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: 1px solid var(--ink); }
+  .data-table .opt { color: var(--accent); font-weight: 600; }
+  .data-table .head-row td { 
+    font-weight: 600; 
+    color: var(--ink); 
+    background: #f7f4ef; 
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .note {
+    border: 1px solid var(--note-b);
+    border-left: 4px solid var(--note-b);
+    background: var(--note);
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+  .note strong { color: var(--note-b); }
+
+  .warn {
+    border: 1px solid var(--warn-b);
+    border-left: 4px solid var(--warn-b);
+    background: var(--warn);
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #5a4500;
+  }
+  .warn strong { color: var(--warn-b); }
+
+  /* ─── FULL-WIDTH RULE ─── */
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 28px 0;
+  }
+
+  /* ─── REFERENCES ─── */
+  .refs { font-size: 13px; color: var(--mid); }
+  .refs li {
+    margin-bottom: 7px;
+    list-style-type: none;
+    padding-left: 28px;
+    text-indent: -28px;
+    line-height: 1.55;
+  }
+  .refs .refnum { 
+    color: var(--accent); 
+    font-family: 'Source Code Pro', monospace;
+    font-size: 11px;
+    margin-right: 6px;
+  }
+
+  /* ─── FOOTNOTE ─── */
+  .footnote {
+    font-size: 12px;
+    color: var(--light);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-top: 40px;
+    line-height: 1.6;
+  }
+
+  /* ─── RESULT HIGHLIGHT ─── */
+  .result {
+    background: #f0f8f4;
+    border: 1px solid #a0d4b8;
+    border-left: 4px solid #2e8b57;
+    padding: 13px 18px;
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .result .r-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2e8b57;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* ─── COLUMN RULE ─── */
+  .cols.ruled {
+    gap: 0;
+  }
+  .cols.ruled .col {
+    width: 50%;
+    padding: 0 28px;
+  }
+  .cols.ruled .col:first-child {
+    border-right: 1px solid var(--rule);
+    padding-left: 0;
+  }
+  .cols.ruled .col:last-child {
+    padding-right: 0;
+  }
+
+  /* Print feel */
+  @media print {
+    body { background: white; }
+    .paper { box-shadow: none; margin: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <!-- ═══ JOURNAL HEADER ═══ -->
+  <div class="journal-name">
+    <span>Aethyr Global · Technical Report Series · MRV-TR-003</span>
+    <span><em>Preprint — Not peer reviewed — October 2025</em></span>
+  </div>
+
+  <!-- ═══ TITLE BLOCK ═══ -->
+  <h1 class="paper-title">
+    <em>MARVENIK-HL</em>: Heavy-Lift Antimatter Fast Transit for<br>
+    Economically Viable Surface Retrieval - Giga licence addition
+  </h1>
+  <div class="subtitle">
+    Scale-up specification, atmospheric quantum-barrier re-entry, <br>
+    and $\Phi$-field negative gravity descent for high-yield M-type asteroids
+  </div>
+
+  <div class="authors">Miloš Ilić<sup>1</sup> &nbsp;·&nbsp; Aethyr Global Propulsion Division</div>
+  <div class="affil"><sup>1</sup>Aethyr Global, Strategic IP Acquisition, Umka, Serbia · contact: classified</div>
+
+  <div class="dates">
+    <span>Received: 10 Oct 2025</span>
+    <span>Revised: 14 Oct 2025</span>
+    <span>Status: Active Development — MRV-PROTO-002-HL</span>
+    <span>Classification: Open Prototype</span>
+  </div>
+
+  <!-- ═══ ABSTRACT ═══ -->
+  <div class="abstract-box">
+    <div class="label">Abstract</div>
+    <p>
+      We present the revised prototype specification for <em>MARVENIK-HL</em>, a scaled-up quadrilateral-pyramid 
+      surface retrieval spacecraft designed to resolve the economic unviability of earlier light-payload iterations. 
+      While prior models successfully minimized antimatter fuel mass, they failed to generate sufficient mineral 
+      revenue to offset fuel costs at current market rates ($12.5B/gram). By scaling the craft to a 24-meter base 
+      and a <strong>100,000 kg (100 metric ton) payload capacity</strong>, and targeting high-yield M-type asteroids 
+      (e.g., 1986 DA, 16 Psyche), fuel costs scale linearly while retrieval value scales exponentially. This paradigm 
+      shift generates a net positive ROI exceeding $4 Billion per sortie. To address the critical challenge of 
+      returning a 250-tonne loaded craft to Earth's surface, we introduce a novel atmospheric re-entry and landing 
+      framework utilizing QRFT $\Phi$-field dynamics. The system employs a discrete quantum network barrier for 
+      thermal dissipation of 10,000 K reentry plasma, combined with QVRC dark energy extraction to induce localized 
+      <strong>negative gravity levitation</strong>, allowing a propellentless, soft terrestrial landing.
+    </p>
+    <div class="keywords"><strong>Keywords:</strong> antimatter economics, $\Phi$-field levitation, quantum barrier re-entry, asteroid mining, heavy-lift spacecraft, QRFT</div>
+  </div>
+
+  <!-- ═══ BODY: TWO-COLUMN ═══ -->
+  <div class="cols ruled">
+
+    <!-- LEFT COLUMN -->
+    <div class="col">
+
+      <h2 class="sec"><span class="num">1.</span>Introduction</h2>
+      <p>
+        The initial MARVENIK programme specification (MRV-TR-002) achieved a vital engineering milestone: 
+        proving that Near-Earth Asteroid (NEA) missions could be accomplished with sub-kilogram quantities 
+        of antiproton fuel. However, economic analysis revealed a fatal flaw. A 50-tonne craft carrying a 
+        2.4-tonne payload generates a maximum of $300M in revenue. Even at minimal fuel loads (62 grams), 
+        the $775M fuel cost renders the mission economically unviable at current CERN-equivalent prices.
+      </p>
+      <p>
+        To transition MARVENIK from an R&amp;D loss-leader to a commercially viable asset, we must leverage 
+        economy of scale. This report introduces the <em>MARVENIK-HL</em> (Heavy Lift) architecture, scaling 
+        the craft by a factor of 5 to accommodate a 100-tonne mineral payload, fundamentally shifting the 
+        profitability matrix.
+      </p>
+
+      <h2 class="sec"><span class="num">2.</span>Propulsion &amp; Mass Scaling</h2>
+
+      <h3 class="subsec">2.1 Fuel vs. Mass Linearity</h3>
+      <p>
+        Antiproton–proton annihilation releases energy according to 
+        <span class="m">E = 2 m_AM c²</span>. For a craft of total loaded mass <span class="m">m_c = 250,000 kg</span> 
+        (150t dry + 100t payload), the minimum antimatter mass <span class="m">m_AM</span> required for symmetric 
+        acceleration and deceleration remains strictly linear with respect to craft mass:
+      </p>
+      <div class="eq">
+        <span class="math">m_AM(d,t) = m_c · (2d/t)² / (η · 2c²)</span>
+        <span class="eqnum">(1)</span>
+      </div>
+      <p>
+        Because fuel requirement scales linearly with mass, but payload scales cubically with vessel volume, 
+        increasing the craft's base from 12m to 24m allows a 41× increase in payload (2.4t to 100t) while 
+        only increasing total transit mass (and thus fuel cost) by a factor of 5.
+      </p>
+
+      <h3 class="subsec">2.2 Target Shift to M-Type Asteroids</h3>
+      <p>
+        To maximize the 100-tonne payload value, MARVENIK-HL shifts target profiles from standard chondrites 
+        to M-type (metallic) bodies. Targeting asteroid 1986 DA (a highly metallic NEA) or the Main Belt's 
+        16 Psyche ensures retrieval aggregates composed predominantly of Platinum-Group Metals (PGMs) and Gold, 
+        yielding an average refined value of ~$80,000 to $140,000 per kilogram.
+      </p>
+
+      <h2 class="sec"><span class="num">3.</span>Atmospheric Re-entry</h2>
+      <p>
+        Returning a 250-tonne irregular pyramid loaded with dense metals presents a severe ballistic and 
+        thermal challenge. Traditional ablative shielding is fundamentally incompatible with the craft's 
+        sharp aerodynamic profile and the need for rapid turnaround. 
+      </p>
+
+    </div><!-- /LEFT COL -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+
+      <h3 class="subsec">3.1 Thermal Quantum Barrier</h3>
+      <p>
+        Instead of material ablation, MARVENIK-HL utilizes the QRFT $\Phi$-field lattice to construct a 
+        "quantum barrier" <span class="m">[1]</span>. By reflecting relativistic atmospheric particles via 
+        the discrete network lattice (<span class="m">l_p ≈ 1.6×10⁻³⁵ m</span>), the craft achieves a 
+        probability of penetration <span class="m">P ≈ 0</span>.
+      </p>
+      <p>
+        The extreme thermal load (exceeding 10,000 K) is managed by establishing a localized warp horizon 
+        millimeters above the graphene hull. Plasma kinetic energy is absorbed and re-emitted as 
+        Hawking-like radiation from the $\Phi$-network, dissipating the heat externally and maintaining 
+        internal temperatures at ~300 K without heavy coolant loops.
+      </p>
+
+      <h2 class="sec"><span class="num">4.</span>Planetary Landing via $\Phi$-Levitation</h2>
+      <p>
+        Terminal descent of a 250-tonne mass without chemical retros requires localized gravity negation. 
+        Drawing on QRFT anti-gravity architecture <span class="m">[2]</span>, the craft utilizes a 
+        Quantum Vacuum Resonance Chamber (QVRC) to extract dark energy equivalent to 
+        <span class="m">10 kg</span> of mass-energy (<span class="m">E = 9×10¹⁷ J</span>).
+      </p>
+      <p>
+        This energy powers the $\Phi$-field generator to alter the spacetime metric <span class="m">g_μν</span> 
+        directly beneath the craft, mimicking exotic matter to induce a repulsive gravitational potential:
+      </p>
+      <div class="eq">
+        <span class="math">Φ(r) = + (G M_neg) / r</span>
+        <span class="eqnum">(2)</span>
+      </div>
+      <p>
+        To counteract Earth's gravity (<span class="m">g ≈ 9.81 m/s²</span>) for the 250,000 kg craft, 
+        the system requires a lift force <span class="m">F_lift = 2,452,500 N</span>. This is achieved by 
+        calibrating the effective negative mass <span class="m">M_neg</span> beneath the hull, allowing the 
+        pyramid to decelerate smoothly and hover precisely to a soft landing on terrestrial retrieval pads.
+      </p>
+
+      <h2 class="sec"><span class="num">5.</span>Revised Minimum Fuel &amp; Economics</h2>
+      <p>
+        Table 1 details the revised antimatter requirements for the 250-tonne HL configuration, assuming 
+        <span class="m">η = 0.40</span> and a 30-day transit.
+      </p>
+
+      <table class="data-table">
+        <caption>Table 1 — MARVENIK-HL Minimum fuel scale-up. <em>m<sub>c</sub></em> = 250 tonnes.</caption>
+        <tr>
+          <th>Sortie</th><th>Target</th><th><em>d</em></th><th><em>v</em></th><th>m<sub>AM</sub></th>
+        </tr>
+        <tr>
+          <td>MRV-HL-1</td><td>433 Eros</td><td>1.13 AU</td><td>0.0024<em>c</em></td>
+          <td class="opt">310 g</td>
+        </tr>
+        <tr>
+          <td>MRV-HL-2</td><td>1986 DA</td><td>1.45 AU</td><td>0.0031<em>c</em></td>
+          <td class="opt">512 g</td>
+        </tr>
+        <tr>
+          <td>MRV-HL-3</td><td>16 Psyche</td><td>2.92 AU</td><td>0.0063<em>c</em></td>
+          <td class="opt">2,065 g</td>
+        </tr>
+      </table>
+
+      <div class="warn">
+        <strong>Optimization confirmation:</strong> The $\Phi$-field is utilized exclusively for atmospheric 
+        re-entry and landing levitation (Regime I missions). Interplanetary transit remains driven by 
+        classical antimatter thrust to avoid warp-initiation energy overheads.
+      </div>
+
+    </div><!-- /RIGHT COL -->
+  </div><!-- /cols -->
+
+  <!-- ═══ FULL-WIDTH: CRAFT DIAGRAM ═══ -->
+  <hr class="rule">
+  <h2 class="sec" style="margin-top:0;"><span class="num">6.</span>Prototype Specification — MARVENIK-HL</h2>
+
+  <!-- DIAGRAM ROW -->
+  <div class="cols" style="gap:3%;align-items:start;">
+    <div style="width:42%;">
+      <div class="figure">
+        <div class="fig-inner" style="padding:16px 10px;">
+          <svg viewBox="0 0 380 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
+            <defs>
+              <filter id="sm"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="smv"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <linearGradient id="fL" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#111"/><stop offset="100%" stop-color="#222"/></linearGradient>
+              <linearGradient id="fR" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#080808"/></linearGradient>
+              <linearGradient id="fF" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1e1e"/><stop offset="100%" stop-color="#090909"/></linearGradient>
+              <radialGradient id="vG" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#336699" stop-opacity="0.5"/><stop offset="100%" stop-color="#336699" stop-opacity="0"/></radialGradient>
+              <!-- Heat shield glow -->
+              <linearGradient id="glow" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#d4a800" stop-opacity="0.3"/><stop offset="100%" stop-color="#d4a800" stop-opacity="0"/></linearGradient>
+            </defs>
+
+            <!-- Ground -->
+            <ellipse cx="190" cy="300" rx="150" ry="18" fill="none" stroke="#aaa" stroke-width="0.7" stroke-dasharray="5 4"/>
+            <text x="190" y="324" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#999" font-style="italic">Earth retrieval pad (levitation mode)</text>
+
+            <!-- Shadow / Levitation Field -->
+            <ellipse cx="190" cy="296" rx="108" ry="12" fill="url(#glow)"/>
+            <ellipse cx="190" cy="296" rx="90" ry="8" fill="rgba(212,168,0,0.15)" filter="url(#sm)"/>
+
+            <!-- Left face -->
+            <polygon points="190,44 76,268 190,238" fill="url(#fL)" stroke="#333" stroke-width="1.2"/>
+            <!-- Right face -->
+            <polygon points="190,44 304,268 190,238" fill="url(#fR)" stroke="#333" stroke-width="1.2"/>
+            <!-- Front face -->
+            <polygon points="76,268 304,268 190,238" fill="url(#fF)" stroke="#333" stroke-width="1.2"/>
+            <!-- Base ellipse -->
+            <ellipse cx="190" cy="268" rx="114" ry="15" fill="#101010" stroke="#555" stroke-width="1"/>
+
+            <!-- Panel texture -->
+            <line x1="190" y1="44" x2="140" y2="246" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="190" y1="44" x2="165" y2="252" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="190" y1="44" x2="215" y2="252" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="190" y1="44" x2="240" y2="246" stroke="#1e1e1e" stroke-width="0.6"/>
+            <line x1="118" y1="186" x2="262" y2="186" stroke="#1a1a1a" stroke-width="0.5"/>
+            <line x1="100" y1="232" x2="280" y2="232" stroke="#1a1a1a" stroke-width="0.5"/>
+
+            <!-- Apex -->
+            <circle cx="190" cy="44" r="3.5" fill="#8b0000" filter="url(#sm)"/>
+            <circle cx="190" cy="44" r="7" fill="none" stroke="#8b0000" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- Dashed back edges -->
+            <line x1="190" y1="44" x2="76" y2="268" stroke="#444" stroke-width="0.8" stroke-dasharray="4 5" opacity="0.6"/>
+            <line x1="190" y1="44" x2="304" y2="268" stroke="#444" stroke-width="0.8" stroke-dasharray="4 5" opacity="0.6"/>
+
+            <!-- Vacuum well (Scaled up) -->
+            <ellipse cx="190" cy="268" rx="54" ry="12" fill="url(#vG)" filter="url(#smv)"/>
+            <ellipse cx="190" cy="268" rx="54" ry="12" fill="none" stroke="#336699" stroke-width="1.4"/>
+            <ellipse cx="190" cy="268" rx="27" ry="6" fill="none" stroke="#336699" stroke-width="0.7" stroke-dasharray="2 2" opacity="0.6"/>
+
+            <!-- Levitation lines / Suction streams -->
+            <line x1="190" y1="276" x2="190" y2="306" stroke="#d4a800" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.7"/>
+            <line x1="160" y1="275" x2="150" y2="306" stroke="#d4a800" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.4"/>
+            <line x1="220" y1="275" x2="230" y2="306" stroke="#d4a800" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.4"/>
+
+            <!-- Retrieval Arms (Folded/Stowed for Reentry scale) -->
+            <line x1="120" y1="266" x2="90" y2="278" stroke="#555" stroke-width="1.8"/>
+            <circle cx="90" cy="278" r="2.5" fill="#8b0000" opacity="0.85" filter="url(#sm)"/>
+            <line x1="260" y1="266" x2="290" y2="278" stroke="#555" stroke-width="1.8"/>
+            <circle cx="290" cy="278" r="2.5" fill="#8b0000" opacity="0.85" filter="url(#sm)"/>
+
+            <!-- AM drive pods -->
+            <ellipse cx="100" cy="210" rx="11" ry="5.5" fill="#0d1520" stroke="#336699" stroke-width="1"/>
+            <ellipse cx="91" cy="210" rx="5" ry="3.5" fill="#0a1a28" stroke="#336699" stroke-width="0.8"/>
+            <circle cx="88" cy="210" r="2" fill="#336699" opacity="0.9" filter="url(#smv)"/>
+            <ellipse cx="280" cy="210" rx="11" ry="5.5" fill="#0d1520" stroke="#336699" stroke-width="1"/>
+            <ellipse cx="289" cy="210" rx="5" ry="3.5" fill="#0a1a28" stroke="#336699" stroke-width="0.8"/>
+            <circle cx="292" cy="210" r="2" fill="#336699" opacity="0.9" filter="url(#smv)"/>
+
+            <!-- Dimension arrows (UPDATED for HL) -->
+            <line x1="76" y1="282" x2="304" y2="282" stroke="#666" stroke-width="0.7"/>
+            <line x1="76" y1="278" x2="76" y2="286" stroke="#666" stroke-width="0.8"/>
+            <line x1="304" y1="278" x2="304" y2="286" stroke="#666" stroke-width="0.8"/>
+            <text x="190" y="294" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" font-style="italic">24 m</text>
+
+            <line x1="58" y1="44" x2="58" y2="268" stroke="#666" stroke-width="0.7"/>
+            <line x1="54" y1="44" x2="62" y1="44" x2="62" y2="44" stroke="#666" stroke-width="0.8"/>
+            <line x1="54" y1="268" x2="62" y2="268" stroke="#666" stroke-width="0.8"/>
+            <text x="48" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" font-style="italic" transform="rotate(-90,48,160)">18 m</text>
+
+            <!-- Labels -->
+            <text x="190" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8b0000" font-style="italic">apex / quantum shield locus</text>
+            <text x="190" y="270" text-anchor="middle" font-family="Source Code Pro,monospace" font-size="7" fill="#336699">vacuum well (8 m∅)</text>
+            <text x="97" y="204" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#336699" font-style="italic">AM pod</text>
+            <text x="283" y="204" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#336699" font-style="italic">AM pod</text>
+
+            <!-- TOP VIEW inset -->
+            <rect x="290" y="40" width="76" height="76" fill="#f8f8f8" stroke="#bbb" stroke-width="0.8"/>
+            <text x="328" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888" font-style="italic">top view</text>
+            <rect x="304" y="54" width="48" height="48" fill="none" stroke="#333" stroke-width="1.2"/>
+            <line x1="304" y1="54" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <line x1="352" y1="54" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <line x1="304" y1="102" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <line x1="352" y1="102" x2="328" y2="78" stroke="#888" stroke-width="0.8"/>
+            <circle cx="328" cy="78" r="2.5" fill="#8b0000"/>
+            <!-- Larger well in top down -->
+            <circle cx="328" cy="78" r="16" fill="none" stroke="#336699" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="fig-caption">
+          <strong>Fig. 1.</strong> MARVENIK-HL scaled prototype. Black: graphene-composite hull. Dark red: apex and $\Phi$-lattice shield locus. Gold: Negative gravity levitation field. Dimensions doubled from MRV-1 to accommodate 100-tonne payload capacity.
+        </div>
+      </div>
+    </div>
+
+    <div style="width:55%;">
+
+      <!-- SPECS TABLE -->
+      <table class="data-table" style="margin-top:0;">
+        <caption>Table 2 — MARVENIK-HL specification summary.</caption>
+        <tr><th colspan="2">Geometry &amp; Mass</th></tr>
+        <tr><td>Configuration</td><td>4-sided black pyramid (square base)</td></tr>
+        <tr><td>Base dimensions</td><td>24 m × 24 m</td></tr>
+        <tr><td>Apex height</td><td>18 m</td></tr>
+        <tr><td>Dry mass m<sub>c</sub></td><td>150,000 kg (150 tonnes)</td></tr>
+        <tr><td><strong>Max Payload</strong></td><td class="opt"><strong>100,000 kg (100 tonnes)</strong></td></tr>
+        <tr class="head-row"><td colspan="2">Propulsion &amp; Re-entry</td></tr>
+        <tr><td>Transit Fuel</td><td>Antiprotons (p̄), Penning-trap confined</td></tr>
+        <tr><td>Min. fuel (MRV-HL-1)</td><td class="opt">310 grams p̄</td></tr>
+        <tr><td>Atmospheric Re-entry</td><td>$\Phi$-lattice Quantum Barrier (Hawking rad)</td></tr>
+        <tr><td>Max Re-entry Temp</td><td>&gt; 10,000 K (external), 300 K (internal)</td></tr>
+        <tr><td>Landing Mechanism</td><td>QVRC Dark Energy Negative Gravity Levitation</td></tr>
+        <tr><td>Levitation F<sub>lift</sub></td><td>2.45 MN (offsets 250t mass at 1g)</td></tr>
+        <tr class="head-row"><td colspan="2">Extraction System</td></tr>
+        <tr><td>Vacuum well diameter</td><td>8 m (central macro-aggregate intake)</td></tr>
+        <tr><td>Retrieval arms</td><td>4 × heavy-duty articulated, corner-mounted</td></tr>
+        <tr><td>Primary Targets</td><td>M-type Near Earth Asteroids (1986 DA, Amun)</td></tr>
+        <tr class="head-row"><td colspan="2">Target Minerals &amp; Economics</td></tr>
+        <tr><td>Target Composition</td><td>Rhodium, Platinum, Iridium, Osmium, Gold</td></tr>
+        <tr><td>Average PGM Value</td><td>~$80,000 to $140,000 / kg</td></tr>
+        <tr><td><strong>Gross per sortie</strong></td><td class="opt"><strong>$8.0B – $14.0B</strong></td></tr>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- ═══ FULL-WIDTH: FURTHER SECTIONS ═══ -->
+  <hr class="rule">
+
+  <div class="cols ruled">
+    <div class="col">
+
+      <h2 class="sec"><span class="num">7.</span>Economic Viability &amp; ROI</h2>
+      <p>
+        The core justification for the heavy-lift scale-up is economic. By increasing the craft's total mass 
+        by a factor of 5 (50t to 250t), the antimatter fuel requirement — and consequently the mission cost — 
+        increases linearly by a factor of 5. However, by doubling the craft's dimensions, the internal cargo 
+        volume increases cubically, allowing a payload jump from 2.4 tonnes to 100 tonnes (~41× increase).
+      </p>
+      <p>
+        Table 3 demonstrates the mission economics assuming the prevailing market cost of $12.5 Billion per 
+        gram of antimatter. Payload revenue is calculated assuming a conservative average yield of 
+        $80M per metric ton for mixed M-type asteroid refractory metals and PGMs.
+      </p>
+
+      <table class="data-table">
+        <caption>Table 3 — Financial model for MARVENIK-HL sorties vs prior MRV-1 baseline.</caption>
+        <tr><th>Metric</th><th>Prior (MRV-1A)</th><th>HL-1 (Eros)</th><th>HL-2 (1986 DA)</th></tr>
+        <tr><td>Payload Mass</td><td>2.4 t</td><td>100 t</td><td>100 t</td></tr>
+        <tr><td>Fuel Req.</td><td>62 g</td><td>310 g</td><td>512 g</td></tr>
+        <tr><td>Fuel Cost</td><td>$775M</td><td>$3.87B</td><td>$6.40B</td></tr>
+        <tr><td>Mineral Rev.</td><td>$250M</td><td>$8.0B</td><td>$11.0B (higher yield)</td></tr>
+        <tr class="head-row">
+          <td>Net Profit</td>
+          <td style="color:var(--accent)">−$525M (Loss)</td>
+          <td class="opt">+$4.13B</td>
+          <td class="opt">+$4.60B</td>
+        </tr>
+      </table>
+
+      <div class="result">
+        <div class="r-label">Principal Result</div>
+        The MARVENIK-HL architecture completely resolves the antimatter cost bottleneck. By utilizing 
+        a 100-tonne payload capacity, a single sortie to an M-type NEA generates upward of 
+        <strong>$4 Billion in net profit</strong> per flight. This makes the programme economically 
+        self-sustaining <em>without</em> requiring immediate breakthroughs in synchrotron scale-up or 
+        reductions in antimatter unit pricing.
+      </div>
+
+    </div>
+    <div class="col">
+
+      <h2 class="sec"><span class="num">8.</span>Open Problems &amp; Implementation</h2>
+      <p>
+        While the heavy-lift model secures the economic baseline, successful implementation relies on 
+        resolving three secondary engineering hurdles:
+      </p>
+      <p>
+        <strong>(i) Macro-aggregate extraction.</strong> Moving from 2.4 tonnes to 100 tonnes requires 
+        extracting massive continuous regolith chunks. The 8-meter vacuum well must operate in tandem 
+        with plasma cutters to shear solid metallic veins from the asteroid body, ensuring the payload bay 
+        is filled to structural density limits.
+      </p>
+      <p>
+        <strong>(ii) Levitation field stability.</strong> The QVRC dark energy extraction used to generate 
+        negative mass (<span class="m">M_neg</span>) must maintain microsecond stability during descent 
+        through Earth's troposphere. Wind shear against the 24m pyramid cross-section requires dynamic 
+        asymmetric tuning of the $\Phi$-field to prevent lateral drift over the retrieval pad.
+      </p>
+      <p>
+        <strong>(iii) Initial fuel acquisition.</strong> Despite the massive ROI, the first HL-1 mission 
+        requires 310 grams of antiprotons upfront — a capital expenditure of ~$3.87 Billion. Financing 
+        this initial load requires leveraging the guaranteed return of the 100-tonne PGM payload via 
+        futures contracts.
+      </p>
+
+      <h2 class="sec"><span class="num">9.</span>Conclusion</h2>
+      <p>
+        The MARVENIK-HL framework transforms an economically doomed prototype into an incredibly lucrative 
+        heavy-lift asset. By separating the transit propulsion (classical antimatter thrust) from the 
+        re-entry/landing systems (QRFT $\Phi$-field quantum barrier and negative gravity), we maximize 
+        safety and payload volume. A 250-tonne craft returning 100 tonnes of Rhodium, Platinum, and Gold 
+        yields multi-billion dollar profits per sortie, validating the commercial viability of 
+        antimatter-driven asteroid mining.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ═══ REFERENCES ═══ -->
+  <hr class="rule">
+  <h2 class="sec" style="margin-top:0;"><span class="num"></span>References</h2>
+  <ol class="refs">
+    <li><span class="refnum">[1]</span> Ilić, M. (2025). <em>Emergent Warp Network: QRFT Φ-field spacetime contraction and quantum shielding.</em> Aethyr Global Internal Report MRV-005, September 2025.</li>
+    <li><span class="refnum">[2]</span> Ilić, M. (2025). <em>Antigravity Mechanism: Negative gravitational fields via QRFT's Φ-field and Dark Energy extraction.</em> Aethyr Global Internal Report MRV-009, September 2025.</li>
+    <li><span class="refnum">[3]</span> Ilić, M. (2025). <em>Antiproton production economics and market structure.</em> Aethyr Global Internal Report MRV-002, September 2025.</li>
+    <li><span class="refnum">[4]</span> CERN ALPHA/BASE Collaboration (2025). <em>Successful transport of 92 antiprotons over extended baseline.</em> Nature Physics, forthcoming.</li>
+  </ol>
+
+  <div class="footnote">
+    MRV-TR-003 · Aethyr Global Propulsion Division · Preprint, October 2025 · 
+    All figures derived from internal programme documentation MRV-001 through MRV-009. 
+    Equations (1)–(2) reflect scaled derivations for the HL class. 
+    Mineral prices as of Q4 2025 market data (Rhodium avg. $140M/t, Platinum avg. $31M/t). 
+    Antimatter pricing referenced at CERN-equivalent production cost ($12.5B/g). ·
+    <em>MARVENIK</em> is a registered programme designation of Aethyr Global.
+  </div>
+
+</div><!-- /paper -->
+</body>
+</html>

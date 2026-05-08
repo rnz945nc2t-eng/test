@@ -1,0 +1,2927 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head><script src="//archive.org/includes/athena.js" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app244.us.archive.org';v.server_ms=813;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://aethyr-global.com/","20250520014947","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1747705787");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="Aethyr One: Decentralized blockchain with governance, real-time analytics, token swapping, developer hub, and AI-driven insights." name="description"/>
+    <meta content="Aethyr One, blockchain, AETHYR-GLOBAL, vΓ.2-ΔΣ OverMind Evolved" name="keywords"/>
+    <meta content="index, follow" name="robots"/>
+    <title>Aethyr One - Advanced Blockchain Ecosystem</title>
+    <script src="https://web.archive.org/web/20250520014947js_/https://cdn.tailwindcss.com/"></script>
+    <link href="https://web.archive.org/web/20250520014947cs_/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://web.archive.org/web/20250520014947cs_/https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Cinzel:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://web.archive.org/web/20250520014947js_/https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <script src="https://web.archive.org/web/20250520014947js_/https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    <link href="/web/20250520014947im_/https://aethyr-global.com/white-b.jpg" id="favicon-light" rel="icon" type="image/jpeg"/>
+    <link href="/web/20250520014947im_/https://aethyr-global.com/black b.jpg" id="favicon-dark" rel="icon" type="image/jpeg"/>
+    <script>
+        // Tailwind CSS configuration with custom colors and animations
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode based on 'dark' class
+            theme: {
+                extend: {
+                    colors: {
+                        // Light Theme Colors (Adjusted to be less bright)
+                        light: {
+                            background: '#F0F0F5', // Slightly darker grey background than pure white
+                            text: '#222222', // Dark grey text
+                            card: '#FFFFFF', // White card background (can keep cards white for contrast)
+                            border: '#D0D0D0', // Slightly darker light grey border
+                            primary: '#D4AF37', // Gold (kept for accents)
+                            secondary: '#C0A030', // Slightly darker gold
+                            accent: '#E5C158', // Lighter gold accent
+                            'primary-hover': '#E5C158',
+                            'secondary-hover': '#DAB943',
+                        },
+                        // Dark Theme Colors (Applied with .dark class) - Adjusted for a blacker look
+                        dark: {
+                            background: '#0A0A0A', // Closer to black
+                            text: '#F8E7AC', // Light gold text
+                            card: '#1A1A1A', // Very dark grey for cards
+                            border: '#333333', // Dark grey border
+                            primary: '#D4AF37', // Gold
+                            secondary: '#C0A030', // Slightly darker gold
+                            accent: '#E5C158', // Lighter gold accent
+                            'primary-hover': '#E5C158',
+                            'secondary-hover': '#DAB943',
+                        },
+                        // Status Colors (can be used in both themes)
+                        status: {
+                            pending: '#F59E0B', // Yellow
+                            active: '#10B981', // Green
+                            closed: '#EF4444', // Red
+                            executed: '#3B82F6', // Blue
+                            failed: '#6B7280', // Gray
+                        }
+                    },
+                    fontFamily: {
+                        'serif': ['Times New Roman', 'serif'],
+                        'display': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'], // Added Inter
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in': 'slideIn 0.5s ease-in-out',
+                        'scale-in': 'scaleIn 0.5s ease-in-out',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'node-pulse': 'nodePulse 2.5s infinite ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'star-twinkle': 'starTwinkle 4s ease-in-out infinite',
+                        'moving-stars': 'movingStars 120s linear infinite',
+                        'background-animation-light': 'backgroundAnimationLight 30s linear infinite', // Light background animation
+                        'background-animation-dark': 'backgroundAnimationDark 30s linear infinite', // Dark background animation
+                         'spin-slow': 'spin 3s linear infinite', /* Added slow spin for loading */
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideIn: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        scaleIn: { '0%': { transform: 'scale(0.95)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+                        pulse: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.7' } },
+                        nodePulse: {
+                            '0%': { transform: 'scale(0.95)', opacity: 0.7 },
+                            '50%': { transform: 'scale(1.05)', opacity: 1 },
+                            '100%': { transform: 'scale(0.95)', opacity: 0.7 },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        starTwinkle: {
+                            '0%, 100%': { opacity: 0.3, transform: 'scale(0.9)' },
+                            '50%': { opacity: 1, transform: 'scale(1.1)' }
+                        },
+                        movingStars: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '200% 200%' }
+                        },
+                        // Keyframes for animated backgrounds (subtle gradient shift)
+                        backgroundAnimationLight: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '100% 100%' },
+                        },
+                         backgroundAnimationDark: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '100% 100%' },
+                        },
+                        spin: { /* Added spin keyframes */
+                           '0%': { transform: 'rotate(0deg)' },
+                           '100%': { transform: 'rotate(360deg)' },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles for light theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: theme('colors.light.background');
+            color: theme('colors.light.text');
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            /* Light background gradient with animation */
+            background-image:
+                radial-gradient(circle at top left, rgba(212, 175, 55, 0.05) 0%, rgba(240, 240, 245, 0) 30%), /* Use light background color in gradient */
+                radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.05) 0%, rgba(240, 240, 245, 0) 30%),
+                linear-gradient(135deg, theme('colors.light.background') 0%, theme('colors.light.card') 50%, theme('colors.light.background') 100%);
+            background-size: 200% 200%;
+            animation: backgroundAnimationLight 30s linear infinite;
+
+            /* Default scaling */
+            transform: scale(0.67);
+            transform-origin: top left;
+            width: calc(100% / 0.67); /* Adjust width to compensate for scaling */
+            height: calc(100vh / 0.67); /* Adjust height to compensate for scaling */
+            overflow-y: auto; /* Ensure scrolling works within scaled area */
+            padding-bottom: 200px; /* Add some padding to ensure bottom content is reachable */
+        }
+
+        /* Dark theme styles */
+        html.dark body {
+            background-color: theme('colors.dark.background');
+            color: theme('colors.dark.text');
+             /* Dark background gradient with animation */
+            background-image:
+                radial-gradient(circle at top left, rgba(212, 175, 55, 0.1) 0%, rgba(10, 10, 10, 0) 30%), /* Use dark background color in gradient */
+                radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.1) 0%, rgba(10, 10, 10, 0) 30%),
+                linear-gradient(135deg, theme('colors.dark.background') 0%, theme('colors.dark.card') 50%, theme('colors.dark.background') 100%);
+            animation: backgroundAnimationDark 30s linear infinite;
+        }
+
+        /* Adjust scaling for smaller viewports if needed */
+        @media (max-width: 768px) {
+            body {
+                transform: scale(1); /* Disable scaling on smaller screens */
+                transform-origin: top left;
+                width: 100%;
+                height: auto;
+                padding-bottom: 0;
+            }
+        }
+
+
+        .font-display {
+            font-family: 'Cinzel', serif;
+        }
+
+        section {
+            padding: 4rem 1rem;
+            position: relative;
+            z-index: 1;
+             /* Compensate for scaling */
+            transform: scale(1 / 0.67);
+            transform-origin: top left;
+            width: 100%; /* Ensure sections take full width within scaled body */
+             /* Adjust padding to maintain visual spacing after compensating scale */
+            padding: calc(4rem * (1 / 0.67)) calc(1rem * (1 / 0.67));
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: calc(5rem * (1 / 0.67)) calc(2rem * (1 / 0.67));
+            }
+        }
+
+         @media (max-width: 768px) {
+            section {
+                 transform: scale(1); /* Disable scaling compensation on smaller screens */
+                 padding: 4rem 1rem; /* Revert to normal padding */
+                 width: 100%;
+            }
+             @media (min-width: 768px) {
+                section {
+                    padding: 5rem 2rem;
+                }
+            }
+         }
+
+
+        .action-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .action-btn:hover:not(:disabled) {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .card {
+            @apply rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            background-color: theme('colors.light.card');
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), 0 0 10px rgba(212, 175, 55, 0.05);
+            border: 1px solid theme('colors.light.border');
+        }
+
+        html.dark .card {
+             background-color: theme('colors.dark.card');
+             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+             border: 1px solid theme('colors.dark.border');
+        }
+
+
+        .data-table {
+            @apply w-full rounded-lg shadow-lg overflow-x-auto;
+             background-color: theme('colors.light.card');
+             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), 0 0 10px rgba(212, 175, 55, 0.05);
+             border: 1px solid theme('colors.light.border');
+        }
+
+         html.dark .data-table {
+            background-color: theme('colors.dark.card');
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+            border: 1px solid theme('colors.dark.border');
+         }
+
+
+        .data-table th, .data-table td {
+            @apply px-5 py-3 text-sm border-b;
+            border-color: theme('colors.light.border');
+             color: theme('colors.light.text');
+        }
+
+         html.dark .data-table th, html.dark .data-table td {
+             border-color: theme('colors.dark.border');
+             color: theme('colors.dark.text');
+         }
+
+
+        .data-table th {
+            @apply font-semibold text-left tracking-wider;
+             background-color: theme('colors.light.border');
+             color: theme('colors.light.text');
+        }
+
+         html.dark .data-table th {
+             background-color: theme('colors.dark.border');
+             color: theme('colors.dark.text');
+         }
+
+
+        .data-table tr:hover td {
+             background-color: theme('colors.light.border');
+        }
+         html.dark .data-table tr:hover td {
+             background-color: theme('colors.dark.border');
+         }
+
+
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid theme('colors.light.border');
+        }
+         html.dark .nav-sticky {
+            background: rgba(10, 10, 10, 0.9); /* Use dark background color */
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 5px rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+         }
+
+
+        .nav-link {
+            @apply font-medium px-3 py-2 rounded-md text-sm transition-colors;
+             color: theme('colors.light.text');
+             @apply hover:text-primary;
+        }
+         html.dark .nav-link {
+             color: theme('colors.dark.text');
+         }
+
+
+        .nav-link.active {
+            @apply text-primary bg-opacity-80 border border-primary border-opacity-30;
+            background-color: theme('colors.light.card');
+        }
+        html.dark .nav-link.active {
+            background-color: theme('colors.dark.card');
+        }
+
+        /* Back to top button positioning adjusted for scaling */
+        .back-to-top {
+            position: fixed;
+            bottom: calc(2rem / 0.67); /* Scale compensation */
+            right: calc(2rem / 0.67); /* Scale compensation */
+            background: theme('colors.primary');
+            color: theme('colors.dark.background'); /* Changed to dark background for contrast */
+            padding: calc(0.75rem / 0.67); /* Scale compensation */
+            border-radius: 50%;
+            display: none;
+            z-index: 40;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+             /* Apply inverse scale */
+            transform: scale(1 / 0.67);
+            transform-origin: bottom right;
+        }
+         html.dark .back-to-top {
+             color: theme('colors.dark.background'); /* Keep dark background text */
+             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+         }
+
+
+        .back-to-top:hover {
+            background: theme('colors.accent');
+            transform: scale(1.1); /* Apply hover scale after inverse scale */
+        }
+
+        .back-to-top.visible {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+         @media (max-width: 768px) {
+             .back-to-top {
+                 bottom: 2rem; /* Revert to normal positioning */
+                 right: 2rem;
+                 padding: 0.75rem;
+                 transform: scale(1); /* Disable inverse scale */
+             }
+             .back-to-top:hover {
+                 transform: scale(1.1);
+             }
+         }
+
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            @apply px-2 py-1 rounded-full text-xs font-medium;
+        }
+        .status-indicator.pending { @apply text-status-pending bg-status-pending bg-opacity-20; }
+        .status-indicator.active { @apply text-status-active bg-status-active bg-opacity-20; }
+        .status-indicator.closed { @apply text-status-closed bg-status-closed bg-opacity-20; }
+        .status-indicator.executed { @apply text-status-executed bg-status-executed bg-opacity-20; }
+        .status-indicator.failed { @apply text-status-failed bg-status-failed bg-opacity-20; }
+
+
+        .chart-container {
+            max-width: 100%;
+            height: 350px;
+            background: theme('colors.light.card');
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid theme('colors.light.border');
+        }
+        html.dark .chart-container {
+            background: theme('colors.dark.card');
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 0 5px rgba(212, 175, 55, 0.1);
+            border: 1px solid theme('colors.dark.border');
+        }
+
+
+        .tab {
+            @apply px-4 py-2 cursor-pointer border-b-2 border-transparent transition-all;
+            color: theme('colors.light.text');
+             @apply hover:text-primary;
+        }
+         html.dark .tab {
+             color: theme('colors.dark.text');
+         }
+
+
+        .tab.active {
+            @apply text-primary border-primary font-semibold;
+        }
+
+        /* Chat icon styles from chat.html - Merged and adapted */
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px; /* Size of the chat icon */
+            height: 50px;
+            background: theme('colors.primary'); /* Primary gold */
+            color: theme('colors.dark.background'); /* Dark background */
+            border-radius: 50%; /* Circular icon */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001; /* Above the bubble when minimized */
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+        }
+        html.dark .chat-icon {
+            background: theme('colors.accent'); /* Accent gold */
+            color: theme('colors.dark.background'); /* Dark background */
+        }
+
+        .chat-icon:hover {
+            transform: scale(1.1);
+            background: theme('colors.accent'); /* Accent gold */
+        }
+        html.dark .chat-icon:hover {
+            background: theme('colors.primary'); /* Primary gold */
+        }
+
+        .chat-icon svg {
+            width: 24px; /* Icon size */
+            height: 24px;
+            fill: currentColor; /* Use button text color for icon */
+        }
+
+        /* Chat bubble container styles from chat.html - Merged and adapted */
+        .chat-bubble-container {
+            background: theme('colors.light.card'); /* White background */
+            color: theme('colors.light.text'); /* Dark text */
+            border: 1px solid theme('colors.light.border'); /* Light grey border */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px; /* Adjusted max-width */
+            height: 500px; /* Adjusted Height */
+            overflow: hidden; /* Hide overflow of the container itself */
+            display: flex;
+            flex-direction: column;
+            position: fixed; /* Position absolutely on the screen */
+            bottom: 20px; /* Distance from bottom */
+            left: 20px; /* Distance from left */
+            z-index: 1000; /* Ensure it's on top */
+            /* Hidden by default */
+            display: none;
+            transition: all 0.3s ease-in-out; /* Added transition for smooth open/close */
+        }
+        html.dark .chat-bubble-container {
+            background: theme('colors.dark.card'); /* Dark background */
+            color: theme('colors.dark.text'); /* Light gold text */
+            border: 1px solid theme('colors.dark.border'); /* Dark grey border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(212, 175, 55, 0.2); /* Darker shadow with gold tint */
+        }
+
+        /* Responsive adjustments for the chat bubble */
+        @media (max-width: 768px) {
+            .chat-bubble-container {
+                width: 95%; /* Wider on smaller screens */
+                max-width: none; /* Remove max-width constraint */
+                height: 80vh; /* Use viewport height */
+                bottom: 10px;
+                left: 2.5%; /* Center horizontally */
+                right: 2.5%;
+            }
+        }
+
+        /* Chat header styles from chat.html - Merged and adapted */
+        .chat-header {
+            background: theme('colors.light.border'); /* Slightly darker header */
+            padding: 12px 16px;
+            border-bottom: 1px solid theme('colors.light.border'); /* Light grey border */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0; /* Prevent header from shrinking */
+        }
+         html.dark .chat-header {
+             background: theme('colors.dark.border'); /* Darker header */
+             border-bottom: 1px solid #444444; /* Darker border */
+         }
+        .chat-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: theme('colors.light.text'); /* Medium gray header text */
+        }
+         html.dark .chat-header h3 {
+             color: theme('colors.dark.text'); /* Light gold text */
+         }
+        .chat-header .close-button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: theme('colors.light.text'); /* Darker gray close button */
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            display: flex; /* Use flex to center icon */
+            align-items: center;
+            justify-content: center;
+            width: 24px; /* Give button a fixed size */
+            height: 24px;
+            border-radius: 4px; /* Subtle rounded corners */
+            transition: background-color 0.2s ease-in-out;
+        }
+         html.dark .chat-header .close-button {
+             color: theme('colors.dark.text'); /* Light gold text */
+         }
+         .chat-header .close-button:hover {
+             background-color: theme('colors.light.border'); /* Hover effect */
+         }
+         html.dark .chat-header .close-button:hover {
+             background-color: theme('colors.dark.border'); /* Dark hover effect */
+         }
+        .chat-header .close-button svg {
+            width: 16px; /* Icon size */
+            height: 16px;
+            fill: currentColor; /* Use button text color for icon */
+        }
+        .chat-body {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+             flex-grow: 1; /* Allow body to grow */
+             min-height: 0; /* Allow flex item to shrink below content size */
+        }
+        .input-area {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0; /* Prevent input area from shrinking */
+        }
+        .input-area input {
+            flex-grow: 1;
+            background: theme('colors.light.background'); /* Light input background */
+            color: theme('colors.light.text'); /* Dark text */
+            border: 1px solid theme('colors.light.border'); /* Light grey border */
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+        }
+         html.dark .input-area input {
+             background: theme('colors.dark.background'); /* Dark input background */
+             color: theme('colors.dark.text'); /* Light gold text */
+             border: 1px solid theme('colors.dark.border'); /* Dark grey border */
+         }
+        .input-area input:focus {
+            border-color: theme('colors.primary'); /* Primary gold focus */
+             box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3); /* Gold shadow */
+        }
+        .input-area button {
+            background: theme('colors.primary'); /* Primary gold button */
+            color: theme('colors.dark.background'); /* Dark text on button */
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            outline: none;
+        }
+         html.dark .input-area button {
+             background: theme('colors.accent'); /* Accent gold button */
+             color: theme('colors.dark.background'); /* Dark text on button */
+         }
+        .input-area button:hover:not(:disabled) { /* Add hover effect for non-disabled */
+            background: theme('colors.accent'); /* Accent gold on hover */
+        }
+         html.dark .input-area button:hover:not(:disabled) {
+             background: theme('colors.primary'); /* Primary gold on hover */
+         }
+         .input-area button:disabled { /* Style for disabled button */
+             opacity: 0.6;
+             cursor: not-allowed;
+         }
+
+        /* Console styles from chat.html - Merged and adapted */
+        #console {
+            background: theme('colors.light.background'); /* Very light gray console background */
+            border: 1px solid theme('colors.light.border');
+            border-radius: 6px;
+            padding: 10px;
+            flex-grow: 1; /* Console takes remaining height */
+            overflow-y: auto; /* Enable vertical scrollbar */
+            white-space: pre-wrap;
+            font-size: 0.8rem;
+            line-height: 1.3;
+            color: theme('colors.light.text'); /* Medium gray console output text */
+            min-height: 0; /* Allow flex item to shrink below content size */
+            display: flex; /* Use flex to stack messages */
+            flex-direction: column;
+        }
+         html.dark #console {
+             background: theme('colors.dark.background'); /* Dark console background */
+             border: 1px solid theme('colors.dark.border'); /* Dark grey border */
+             color: theme('colors.dark.text'); /* Light gray text */
+         }
+         /* Custom scrollbar for the console */
+        #console::-webkit-scrollbar {
+            width: 6px;
+        }
+        #console::-webkit-scrollbar-track {
+            background: theme('colors.light.background');
+            border-radius: 10px;
+        }
+         html.dark #console::-webkit-scrollbar-track {
+             background: theme('colors.dark.background'); /* Dark scrollbar track */
+         }
+        #console::-webkit-scrollbar-thumb {
+            background: theme('colors.light.border');
+            border-radius: 10px;
+        }
+         html.dark #console::-webkit-scrollbar-thumb {
+             background: theme('colors.dark.border'); /* Dark scrollbar thumb */
+         }
+        html.dark #console::-webkit-scrollbar-thumb:hover {
+             background: #777777; /* Darker scrollbar thumb on hover */
+         }
+
+
+        /* Styles for individual messages from chat.html - Merged and adapted */
+        .console-message {
+            margin-bottom: 8px; /* Space between messages */
+            padding: 6px 8px;
+            border-radius: 4px;
+            word-break: break-word; /* Prevent long words from overflowing */
+        }
+
+        .console-message.user {
+            background-color: theme('colors.light.border'); /* Light gray for user messages */
+            align-self: flex-end; /* Align user messages to the right */
+            color: theme('colors.light.text');
+        }
+         html.dark .console-message.user {
+             background-color: theme('colors.dark.border'); /* Dark gray for user messages */
+             color: theme('colors.dark.text'); /* Light gold text */
+         }
+
+        .console-message.bot {
+            background-color: theme('colors.light.border'); /* Slightly darker gray for bot messages */
+            align-self: flex-start; /* Align bot messages to the left */
+            color: theme('colors.light.text');
+        }
+         html.dark .console-message.bot {
+             background-color: #444444; /* Darker gray for bot messages */
+             color: theme('colors.dark.text'); /* Light gray text */
+         }
+
+
+        .console-status {
+            color: theme('colors.light.text'); /* Medium gray for status messages */
+            font-weight: 600;
+            display: block; /* Make status messages block level */
+            margin-bottom: 4px;
+        }
+         html.dark .console-status {
+             color: theme('colors.dark.text'); /* Lighter gray for status messages */
+         }
+         .console-error {
+            color: #a0a0a0; /* Darker gray for errors */
+            font-weight: 600;
+            display: block; /* Make error messages block level */
+            margin-bottom: 4px;
+        }
+         html.dark .console-error {
+             color: #FF6666; /* Red for errors */
+         }
+
+        /* Loading Indicator from chat.html */
+        .loading-dots span {
+          display: inline-block;
+          animation: blink 1.4s infinite both;
+        }
+
+        .loading-dots span:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+
+        .loading-dots span:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+          0%, 80%, 100% { opacity: 0; }
+          40% { opacity: 1; }
+        }
+
+        /* Keyframes from previous version (kept for consistency) */
+        @keyframes fadeIn { '0%': { opacity: '0' }; '100%': { opacity: '1' }; }
+        @keyframes slideIn { '0%': { transform: 'translateY(20px)', opacity: '0' }; '100%': { transform: 'translateY(0)', opacity: '1' }; }
+        @keyframes scaleIn { '0%': { transform: 'scale(0.95)', opacity: '0' }; '100%': { transform: 'scale(1)', opacity: '1' }; }
+        @keyframes pulse { '0%, 100%': { opacity: '1' }; '50%': { opacity: '0.7' }; }
+        @keyframes nodePulse { 0% { transform: 'scale(0.95)', opacity: 0.7 }; 50% { transform: 'scale(1.05)', opacity: 1 }; 100% { transform: 'scale(0.95)', opacity: 0.7 }; }
+        @keyframes float { 0%, 100% { transform: 'translateY(0)' }; 50% { transform: 'translateY(-10px)' }; }
+        @keyframes starTwinkle { 0%, 100% { opacity: 0.3, transform: 'scale(0.9)' }; 50% { opacity: 1, transform: 'scale(1.1)' }; }
+        @keyframes movingStars { 0% { backgroundPosition: '0% 0%' }; 100% { backgroundPosition: '200% 200%' }; }
+        @keyframes backgroundAnimationLight { 0% { backgroundPosition: '0% 0%' }; 100% { backgroundPosition: '100% 100%' }; }
+        @keyframes backgroundAnimationDark { 0% { backgroundPosition: '0% 0%' }; 100% { backgroundPosition: '100% 100%' }; }
+        @keyframes spin { '0%': { transform: 'rotate(0deg)' }; '100%': { transform: 'rotate(360deg)' }; }
+    </style>
+</head>
+<body class="bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;" toolbar-mode="auto">
+<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="donato" style="position:relative;width:100%;height:0;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20250520014947/https%3A//aethyr-global.com/"
+	    scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;" nav="async">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="https://aethyr-global.com/" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20250520014947" /><input type="submit" value="Go" />
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;">
+                    <a class="t" href="/web/20250520014947*/https://aethyr-global.com/" title="See a list of every capture for this URL">49 captures</a>
+          <div class="r" title="Timespan for captures of this URL">20 May 2025 - 04 Mar 2026</div>
+          </div>
+        <div class="k">
+          <a href="" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="775" height="27" border="0"></canvas>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap">Apr</td>
+            <td class="c" id="displayMonthEl" title="You are here: 01:49:47 May 20, 2025">MAY</td>
+            <td class="f" nowrap="nowrap">Jun</td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><span class="ta"></span></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 01:49:47 May 20, 2025">20</td>
+            <td class="f" nowrap="nowrap"><span class="ta"></span></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap">2024</td>
+            <td class="c" id="displayYearEl" title="You are here: 01:49:47 May 20, 2025">2025</td>
+            <td class="f" nowrap="nowrap">2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive" >
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+        </span>
+                <a class="xxs" href="https://help.archive.org/help/category/the-wayback-machine/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="/web/20250520014947/http://web.archive.org/screenshot/https://aethyr-global.com/"
+           id="wm-screenshot"
+           title="screenshot">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20250520014947/https://aethyr-global.com/" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20250520014947/https://aethyr-global.com/" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archiveteam);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/archiveteam" target="_new"><span class="wm-title">Archive Team</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  <img align="right" src="https://wiki.archiveteam.org/images/e/e6/Archiveteam.jpg" width="200"> Formed in 2009, the Archive Team (not to be confused with the archive.org Archive-It Team) is a rogue archivist collective dedicated to saving copies of rapidly dying or deleted websites for the sake of history and digital heritage. The group is 100% composed of volunteers and interested parties, and has expanded into a large amount of related projects for saving online and digital history.
+<p>
+History is littered with hundreds of conflicts over the future of a community, group, location or business that were "resolved" when one of the parties stepped ahead and destroyed what was there. With the original point of contention destroyed, the debates would fall to the wayside. Archive Team believes that by duplicated condemned data, the conversation and debate can continue, as well as the richness and insight gained by keeping the materials. Our projects have ranged in size from a single volunteer downloading the data to a small-but-critical site, to over 100 volunteers stepping forward to acquire terabytes of user-created data to save for future generations.
+</p><p>
+The main site for Archive Team is at <a href="https://wiki.archiveteam.org/">archiveteam.org</a> and contains up to the date information on various projects, manifestos, plans and walkthroughs.
+</p><p>
+This collection contains the output of many Archive Team projects, both ongoing and completed. Thanks to the generous providing of disk space by the Internet Archive, multi-terabyte datasets can be made available, as well as in use by the <a href="https://web.archive.org">Wayback Machine</a>, providing a path back to lost websites and work. 
+</p><p>
+Our collection has grown to the point of having sub-collections for the type of data we acquire. If you are seeking to browse the contents of these collections, the Wayback Machine is the best first stop. Otherwise, you are free to dig into the stacks to see what you may find.
+</p><p>
+<b>The Archive Team Panic Downloads</b> are full pulldowns of currently extant websites, meant to serve as emergency backups for needed sites that are in danger of closing, or which will be missed dearly if suddenly lost due to hard drive crashes or server failures. 
+</p><p></p>
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archiveteam_urls)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/archiveteam_urls" target="_new"><span class="wm-title">Archive Team: URLs</span></a></div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading" /></div>
+    </div>
+    </div>
+  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20250520014947/https://aethyr-global.com/</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(775,27,25,2,"web","https://aethyr-global.com/","20250520014947",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+<div id="toast-container"></div>
+<nav class="nav-sticky p-3 md:p-4 flex flex-wrap justify-between items-center">
+<div class="flex items-center space-x-3">
+<div class="h-8 w-8 md:h-10 md:w-10 object-contain flex items-center justify-center">
+<img alt="Aethyr One Logo (Light)" class="logo-img" id="logo-img-light" src="/web/20250520014947im_/https://aethyr-global.com/white-b.png"/>
+<img alt="Aethyr One Logo (Dark)" class="logo-img hidden" id="logo-img-dark" src="/web/20250520014947im_/https://aethyr-global.com/black b.png"/>
+</div>
+<span class="text-xl md:text-2xl font-display font-bold text-primary">Aethyr One</span>
+</div>
+<button class="md:hidden p-2 rounded-md text-light-text dark:text-dark-text hover:bg-gray-200 dark:hover:bg-dark-card" id="mobile-menu-button">
+<i class="fas fa-bars text-xl"></i>
+</button>
+<div class="hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto mt-3 md:mt-0" id="nav-links">
+<a class="nav-link active" href="#home">Home</a>
+<a class="nav-link" href="#governance">Governance</a>
+<a class="nav-link" href="#aethyrscan">Aethyrscan</a>
+<a class="nav-link" href="#swap">Aethyr Swap</a>
+<a class="nav-link" href="#developer-hub">Developers</a>
+<a class="nav-link" href="#ai-insights">AI Insights</a>
+<a class="nav-link" href="#contact">Contact</a>
+</div>
+<div class="flex space-x-2 md:space-x-3 items-center ml-auto md:ml-4 mt-3 md:mt-0">
+<button aria-label="Toggle theme" id="theme-toggle">
+<i class="fas fa-moon text-xl"></i> </button>
+<button aria-label="Wallet status" class="bg-primary hover:bg-primary-hover text-dark-background shadow-md rounded-full p-2 md:py-3 md:px-4 flex items-center action-btn text-xs md:text-sm" id="wallet-status-btn">
+<i class="fas fa-wallet mr-1 md:mr-2"></i>
+<span id="wallet-status-text">Connect Wallet</span>
+</button>
+</div>
+</nav>
+<a aria-label="Back to top" class="back-to-top" href="#home" id="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="home">
+<div class="max-w-4xl mx-auto text-center z-10 p-4 animate-on-scroll">
+<div class="logo-emblem-img animate-float flex items-center justify-center" style="width: 320px; height: 320px; margin: 0 auto 40px;">
+<img alt="Aethyr One Logo (Light)" class="logo-img" id="home-logo-img-light" src="/web/20250520014947im_/https://aethyr-global.com/white-b.png" style="width: 320px; height: 320px;"/>
+<img alt="Aethyr One Logo (Dark)" class="logo-img hidden" id="home-logo-img-dark" src="/web/20250520014947im_/https://aethyr-global.com/black b.png" style="width: 320px; height: 320px;"/>
+</div>
+<h1 class="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-4 text-primary animate-fade-in">Aethyr One</h1>
+<h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-6 gold-text-gradient animate-slide-in" style="animation-delay: 0.2s;">BLOCKCHAIN LEDGER</h2>
+<p class="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.4s;">Aethyr Global (vΓ.2-ΔΣ OverMind Evolved) decentralized network: Uniting advanced governance, real-time analytics, seamless token swapping, a comprehensive developer hub, and predictive AI insights.</p>
+<div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-10 animate-scale-in" style="animation-delay: 0.6s;">
+<div class="text-center">
+<div class="text-3xl md:text-4xl font-display font-bold text-primary">100,000</div>
+<div class="text-sm md:text-base text-gray-500 dark:text-gray-400">TPS</div>
+</div>
+<div class="text-center">
+<div class="text-3xl md:text-4xl font-display font-bold text-primary">250</div>
+<div class="text-sm md:text-base text-gray-500 dark:text-gray-400">PARTNERS</div>
+</div>
+<div class="text-center">
+<div class="text-3xl md:text-4xl font-display font-bold text-primary">99%</div>
+<div class="text-sm md:text-base text-gray-500 dark:text-gray-400">UPTIME</div>
+</div>
+</div>
+<a class="action-btn bg-primary text-dark-background py-3 px-8 rounded-lg font-semibold shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 animate-scale-in" href="#governance" style="animation-delay: 0.8s;">Explore Aethyr</a>
+</div>
+</section>
+<section class="bg-light-background dark:bg-dark-background relative" id="governance">
+<div class="section-loading-overlay hidden" id="governance-loading-overlay"><div class="section-loading-spinner"></div></div>
+<div class="max-w-6xl mx-auto animate-on-scroll relative z-10">
+<h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-primary text-center">Decentralized Governance</h2>
+<p class="text-center text-gray-700 dark:text-gray-300 mb-10 max-w-3xl mx-auto">Aethyr One is governed by its community. AETH token holders can propose, debate, and vote on protocol upgrades and strategic decisions, ensuring the network evolves with its users.</p>
+<div class="flex flex-col md:flex-row gap-4 mb-8">
+<input aria-label="Search proposals" class="flex-1 px-4 py-3 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary placeholder-gray-500" id="proposal-search" placeholder="Search proposals by title or ID..." type="text"/>
+<select aria-label="Filter by status" class="px-4 py-3 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary" id="status-filter">
+<option value="all">All Statuses</option><option value="pending">Pending</option><option value="active">Active</option><option value="closed">Closed (Passed)</option><option value="failed">Closed (Failed)</option><option value="executed">Executed</option>
+</select>
+<button class="action-btn bg-primary hover:bg-primary-hover text-dark-background py-3 px-6 rounded-lg font-semibold" id="create-proposal-btn">Create Proposal</button>
+</div>
+<div class="data-table">
+<table><thead><tr><th>ID</th><th>Title</th><th>Status</th><th>Proposer</th><th>Voting Ends</th><th>Actions</th></tr></thead><tbody id="proposal-table-body"></tbody></table>
+</div>
+<p class="text-center py-8 text-gray-500 hidden" id="no-proposals-message">No proposals found matching your criteria.</p>
+<div class="modal" id="proposal-modal">
+<div class="modal-content">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-2xl font-semibold text-primary" id="proposal-modal-title">Create New Proposal</h3>
+<button class="text-gray-500 hover:text-red-500 text-2xl" id="close-proposal-modal">×</button>
+</div>
+<form class="space-y-4" id="proposal-form">
+<div><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="proposal-title-input">Title</label><input class="w-full px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary border border-light-border dark:border-dark-border" id="proposal-title-input" placeholder="E.g., Upgrade Network Sharding Algorithm v2.1" required="" type="text"/></div>
+<div><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="proposal-description-input">Description (Markdown supported)</label><textarea class="w-full px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary h-36 border border-light-border dark:border-dark-border" id="proposal-description-input" placeholder="Detailed explanation of the proposal, its benefits, and potential impact..." required=""></textarea></div>
+<div><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="voting-period-input">Voting Period (days)</label><input class="w-full px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary border border-light-border dark:border-dark-border" id="voting-period-input" max="30" min="1" required="" type="number" value="7"/></div>
+<button class="action-btn bg-primary hover:bg-primary-hover text-dark-background py-3 px-6 rounded-lg w-full font-semibold" id="submit-proposal-btn" type="submit">Submit Proposal</button>
+</form>
+<div class="hidden space-y-3 text-light-text dark:text-dark-text" id="proposal-details-view">
+<p><strong class="text-gray-700 dark:text-gray-300">ID:</strong> <span id="view-proposal-id"></span></p>
+<p><strong class="text-gray-700 dark:text-gray-300">Proposer:</strong> <span class="truncate" id="view-proposal-proposer"></span></p>
+<p><strong class="text-gray-700 dark:text-gray-300">Status:</strong> <span id="view-proposal-status"></span></p>
+<p><strong class="text-gray-700 dark:text-gray-300">Voting Ends:</strong> <span id="view-proposal-ends"></span></p>
+<div class="text-gray-700 dark:text-gray-300"><strong class="block mb-1">Description:</strong> <div class="prose prose-light dark:prose-invert max-h-48 overflow-y-auto bg-gray-200 dark:bg-gray-800 p-3 rounded-md border border-light-border dark:border-dark-border" id="view-proposal-description"></div></div>
+<div class="mt-4 pt-4 border-t border-light-border dark:border-dark-border" id="vote-section">
+<h4 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">Cast Your Vote</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Your Voting Power: <span class="font-semibold" id="user-voting-power">0 AETH</span></p>
+<div class="flex space-x-4">
+<button class="action-btn bg-primary hover:bg-primary-hover text-dark-background py-2 px-6 rounded-lg flex-1" id="vote-for-btn">Vote For</button>
+<button class="action-btn bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg flex-1" id="vote-against-btn">Vote Against</button>
+</div>
+<div class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+<p>Current Votes: For <span class="font-semibold" id="current-votes-for">0%</span> | Against <span class="font-semibold" id="current-votes-against">0%</span></p>
+</div>
+</div></div></div></div></div>
+</section>
+<section class="bg-light-card dark:bg-dark-card relative" id="aethyrscan">
+<div class="section-loading-overlay hidden" id="aethyrscan-loading-overlay"><div class="section-loading-spinner"></div></div>
+<div class="max-w-7xl mx-auto animate-on-scroll">
+<h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-primary text-center">Aethyrscan: Real-time Explorer</h2>
+<p class="text-center text-gray-700 dark:text-gray-300 mb-10 max-w-3xl mx-auto">Explore the Aethyr One blockchain. View real-time transactions, blocks, smart contract interactions, and network statistics with unparalleled transparency.</p>
+<div class="mb-8">
+<input aria-label="Aethyrscan search" class="w-full px-5 py-3.5 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary shadow-sm placeholder-gray-500" id="aethyrscan-search" placeholder="Search by Address / Txn Hash / Block / Token" type="text"/>
+</div>
+<div class="grid md:grid-cols-2 gap-8 mb-10">
+<div class="card">
+<h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center"><i class="fas fa-cubes mr-3 text-primary"></i>Latest Blocks</h3>
+<ul class="space-y-3 max-h-80 overflow-y-auto text-gray-700 dark:text-gray-300" id="latest-blocks-list"></ul>
+</div>
+<div class="card">
+<h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center"><i class="fas fa-exchange-alt mr-3 text-primary"></i>Latest Transactions</h3>
+<ul class="space-y-3 max-h-80 overflow-y-auto text-gray-700 dark:text-gray-300" id="latest-transactions-list"></ul>
+</div></div>
+<div class="card hidden" id="search-results-area">
+<h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Search Results</h3>
+<div class="text-gray-700 dark:text-gray-300" id="search-results-content"></div>
+<p class="text-center py-4 text-gray-500 hidden" id="no-search-results">No results found for your query.</p>
+</div></div>
+</section>
+<section class="bg-light-background dark:bg-dark-background relative" id="swap">
+<div class="section-loading-overlay hidden" id="swap-loading-overlay"><div class="section-loading-spinner"></div></div>
+<div class="max-w-md mx-auto animate-on-scroll relative z-10">
+<h2 class="text-3xl md:text-4xl font-display font-bold mb-8 text-primary text-center">Aethyr Swap</h2>
+<div class="card text-light-text dark:text-dark-text p-6 md:p-8">
+<div class="mb-5"><label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="from-token">From</label><div class="flex"><select class="flex-grow p-3 rounded-l-lg bg-gray-200 dark:bg-gray-800 border border-light-border dark:border-dark-border focus:ring-2 focus:ring-primary focus:outline-none text-light-text dark:text-dark-text" id="from-token"><option value="AETH">AETH</option><option value="USDT">USDT</option><option value="WBTC">WBTC</option></select><input class="w-2/5 p-3 rounded-r-lg bg-gray-200 dark:bg-gray-800 border border-l-0 border-light-border dark:border-dark-border focus:ring-2 focus:ring-primary focus:outline-none text-light-text dark:text-dark-text" id="from-amount" placeholder="0.0" type="number"/></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Balance: <span id="from-token-balance">0.00</span></p></div>
+<div class="flex justify-center my-4"><button class="p-2 bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors" id="swap-tokens-button"><i class="fas fa-exchange-alt text-primary"></i></button></div>
+<div class="mb-5"><label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="to-token">To</label><div class="flex"><select class="flex-grow p-3 rounded-l-lg bg-gray-200 dark:bg-gray-800 border border-light-border dark:border-dark-border focus:ring-2 focus:ring-primary focus:outline-none text-light-text dark:text-dark-text" id="to-token"><option value="USDT">USDT</option><option value="AETH">AETH</option><option value="WBTC">WBTC</option></select><input class="w-2/5 p-3 rounded-r-lg bg-gray-300 dark:bg-gray-700 border border-l-0 border-light-border dark:border-dark-border focus:outline-none text-light-text dark:text-dark-text" id="to-amount" placeholder="0.0" readonly="" type="number"/></div><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Balance: <span id="to-token-balance">0.00</span></p></div>
+<div class="text-sm text-gray-600 dark:text-gray-400 mb-5 space-y-1"><p>Price: <span id="swap-price">1 AETH = X USDT</span></p><p>Slippage Tolerance: <input class="w-16 bg-gray-200 dark:bg-gray-800 border border-light-border dark:border-dark-border rounded px-1 text-xs text-light-text dark:text-dark-text" id="slippage" step="0.1" type="number" value="0.5"/> %</p><p>Minimum Received: <span id="min-received">0.00</span></p><p>Network Fee (Est.): <span id="network-fee">~0.001 AETH</span></p></div>
+<button class="action-btn bg-primary hover:bg-primary-hover text-dark-background w-full py-3 rounded-lg font-semibold" disabled="" id="execute-swap-btn">Connect Wallet to Swap</button>
+</div></div>
+</section>
+<section class="bg-light-card dark:bg-dark-card relative" id="developer-hub">
+<div class="section-loading-overlay hidden" id="developer-loading-overlay"><div class="section-loading-spinner"></div></div>
+<div class="max-w-5xl mx-auto animate-on-scroll text-center">
+<h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-primary">Developer Hub</h2>
+<p class="text-gray-700 dark:text-gray-300 mb-10 max-w-2xl mx-auto">Access comprehensive documentation, SDKs, APIs, and tools to build powerful dApps on Aethyr One. Join our vibrant developer community and start innovating today.</p>
+<div class="grid md:grid-cols-3 gap-6 text-left">
+<div class="card"><i class="fas fa-book text-3xl text-accent mb-3"></i><h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-primary">Documentation</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-3">In-depth guides, tutorials, and API references.</p><a class="text-primary hover:underline font-medium text-sm" href="#">Read Docs <i class="fas fa-arrow-right text-xs ml-1"></i></a></div>
+<div class="card"><i class="fas fa-code text-3xl text-accent mb-3"></i><h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-primary">SDKs &amp; Libraries</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Client libraries for JavaScript, Python, Go, and Rust.</p><a class="text-primary hover:underline font-medium text-sm" href="#">Get SDKs <i class="fas fa-arrow-right text-xs ml-1"></i></a></div>
+<div class="card"><i class="fas fa-key text-3xl text-accent mb-3"></i><h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-primary">API Access</h3><p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Connect to Aethyrscan APIs and other network services.</p><button class="text-primary hover:underline font-medium text-sm" id="generate-api-key-btn">Generate API Key <i class="fas fa-arrow-right text-xs ml-1"></i></button><input class="mt-2 w-full bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text p-2 rounded text-xs border border-light-border dark:border-dark-border" id="api-key-display" placeholder="Your API Key will appear here" readonly="" type="text"/></div>
+</div></div>
+</section>
+<section class="bg-light-background dark:bg-dark-background relative" id="ai-insights">
+<div class="section-loading-overlay hidden" id="ai-insights-loading-overlay"><div class="section-loading-spinner"></div></div>
+<div class="max-w-5xl mx-auto animate-on-scroll relative z-10">
+<h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-primary text-center">AethyrPredict: AI-Driven Insights</h2>
+<p class="text-center text-gray-700 dark:text-gray-300 mb-10 max-w-3xl mx-auto">Leverage the power of Aethyr's integrated AI, "OverMind Evolved," for predictive analytics, market sentiment analysis, and risk assessment within the ecosystem.</p>
+<div class="grid md:grid-cols-2 gap-8 items-start">
+<div class="card text-light-text dark:text-dark-text">
+<h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-primary">Market Sentiment Analysis (AETH)</h3>
+<div class="chart-container"><canvas id="market-sentiment-chart"></canvas></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">Powered by OverMind vΓ.2-ΔΣ</p>
+</div>
+<div class="card text-light-text dark:text-dark-text">
+<h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-primary">AI Predictions</h3>
+<div class="space-y-3">
+<div><label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300" for="prediction-asset">Select Asset:</label><select class="w-full p-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 border border-light-border dark:border-dark-border focus:ring-2 focus:ring-primary focus:outline-none text-light-text dark:text-dark-text" id="prediction-asset"><option value="AETH">AETH Token</option><option value="BTC">Bitcoin (BTC)</option><option value="ETH">Ethereum (ETH)</option></select></div>
+<button class="action-btn bg-primary hover:bg-primary-hover text-dark-background w-full py-2.5 rounded-lg" id="fetch-prediction-btn">Fetch Prediction</button>
+<div class="mt-3 p-3 bg-gray-200 dark:bg-gray-800 rounded-md min-h-[80px] text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border" id="prediction-output"><p class="text-sm text-gray-500 dark:text-gray-400">Select an asset and click "Fetch Prediction".</p></div>
+</div></div></div></div>
+</section>
+<section class="bg-light-card dark:bg-dark-card relative" id="contact">
+<div class="section-loading-overlay hidden" id="contact-loading-overlay"><div class="section-loading-spinner"></div></div>
+<div class="max-w-6xl mx-auto animate-on-scroll">
+<h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-primary text-center">Get in Touch</h2>
+<p class="text-gray-700 dark:text-gray-300 mb-8 max-w-xl mx-auto text-center">We're excited to hear from you. Whether you're a developer, investor, or enthusiast, let's connect and build the future together.</p>
+<div class="grid md:grid-cols-2 gap-10">
+<form class="card max-w-lg mx-auto text-left space-y-5 p-8" id="contact-form">
+<div><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="contact-name">Full Name</label><input class="w-full px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary border border-light-border dark:border-dark-border" id="contact-name" name="name" required="" type="text"/></div>
+<div><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="contact-email">Email Address</label><input class="w-full px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary border border-light-border dark:border-dark-border" id="contact-email" name="email" required="" type="email"/></div>
+<div><label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="contact-message">Message</label><textarea class="w-full px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-light-text dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-primary h-32 border border-light-border dark:border-dark-border" id="contact-message" name="message" required="" rows="5"></textarea></div>
+<button class="action-btn bg-primary hover:bg-primary-hover text-dark-background w-full py-3 rounded-lg font-semibold" type="submit">Send Message</button>
+</form>
+<div class="card p-8 flex flex-col justify-between text-gray-700 dark:text-gray-300">
+<div><h3 class="text-xl font-semibold mb-6 text-primary">Contact Information</h3><div class="space-y-4"><div class="flex items-start"><div class="text-primary mr-3 text-xl"><i class="fas fa-map-marker-alt"></i></div><div><h4 class="font-medium text-gray-800 dark:text-gray-200">Office Location:</h4><p class="text-gray-600 dark:text-gray-400">Majdanpek, Serbia<br/>Global Operations: Worldwide</p></div></div><div class="flex items-start"><div class="text-primary mr-3 text-xl"><i class="fas fa-envelope"></i></div><div><h4 class="font-medium text-gray-800 dark:text-gray-200">Email:</h4><p class="text-gray-600 dark:text-gray-400">contact@aethyrone.io</p></div></div><div class="flex items-start"><div class="text-primary mr-3 text-xl"><i class="fas fa-phone"></i></div><div><h4 class="font-medium text-gray-800 dark:text-gray-200">Support:</h4><p class="text-gray-600 dark:text-gray-400">Available 24/7 through AI Assistant</p></div></div></div></div>
+<div class="mt-8"><h4 class="font-medium text-gray-800 dark:text-gray-200 mb-4">Connect With Us:</h4><div class="flex flex-wrap gap-4"><a class="contact-icon" href="#" title="Email"><i class="fas fa-envelope"></i></a><a class="contact-icon" href="#" title="Twitter"><i class="fab fa-twitter"></i></a><a class="contact-icon" href="https://web.archive.org/web/20250520014947/https://github.com/ilicilicc/AETHYR-GLOBAL-v-.2--OverMind-Evolved-" title="GitHub"><i class="fab fa-github"></i></a><a class="contact-icon" href="#" title="Telegram"><i class="fab fa-telegram"></i></a><a class="contact-icon" href="#" title="Discord"><i class="fab fa-discord"></i></a><a class="contact-icon" href="#" title="Medium"><i class="fab fa-medium"></i></a></div></div></div></div></div>
+</section>
+<footer class="bg-light-border dark:bg-dark-border text-gray-600 dark:text-gray-400 py-12 px-4 text-center">
+<div class="max-w-5xl mx-auto">
+<div class="flex items-center justify-center mb-6">
+<div class="footer-logo-img flex items-center justify-center">
+<img alt="Aethyr One Logo (Light)" class="logo-img" id="footer-logo-img-light" src="/web/20250520014947im_/https://aethyr-global.com/white-b.png"/>
+<img alt="Aethyr One Logo (Dark)" class="logo-img hidden" id="footer-logo-img-dark" src="/web/20250520014947im_/https://aethyr-global.com/black b.png"/>
+</div>
+<h3 class="text-2xl font-display font-bold text-primary">Aethyr One</h3>
+</div>
+<p class="mb-6 text-sm">© <span id="current-year"></span> Aethyr Global Foundation. All rights reserved.</p>
+<div class="flex justify-center space-x-6 mb-6"><a class="hover:text-primary transition-colors" href="#"><i class="fab fa-twitter text-xl"></i></a><a class="hover:text-primary transition-colors" href="#"><i class="fab fa-telegram-plane text-xl"></i></a><a class="hover:text-primary transition-colors" href="#"><i class="fab fa-discord text-xl"></i></a><a class="hover:text-primary transition-colors" href="https://web.archive.org/web/20250520014947/https://github.com/ilicilicc/AETHYR-GLOBAL-v-.2--OverMind-Evolved-"><i class="fab fa-github text-xl"></i></a><a class="hover:text-primary transition-colors" href="#"><i class="fab fa-medium text-xl"></i></a></div>
+<div class="text-xs space-x-4 mb-4"><a class="hover:text-primary" href="#">Privacy Policy</a><span>|</span><a class="hover:text-primary" href="#">Terms of Use</a><span>|</span><a class="hover:text-primary" href="#">Whitepaper</a></div>
+<div class="text-xs"><a class="text-primary hover:underline" href="https://web.archive.org/web/20250520014947/https://github.com/ilicilicc/AETHYR-GLOBAL-v-.2--OverMind-Evolved-">AETHYR-GLOBAL (vΓ.2-ΔΣ OverMind Evolved)</a></div>
+</div></footer>
+
+<div class="chat-icon" id="chatIcon">
+     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 6H6v-2h8v2zm4-4H6V7h12v4z"/></svg>
+</div>
+
+<div class="chat-bubble-container" id="chatBubble">
+    <div class="chat-header">
+        <h3>AETHYR-GLOBAL AI</h3>
+        <button class="close-button" id="closeChatButton">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+    </div>
+    <div class="chat-body">
+        <div class="input-area">
+            <input id="queryInput" type="text" placeholder="Ask AETHYR..."/>
+            <button id="sendButton">Send</button>
+        </div>
+        <div id="console">
+            </div>
+    </div>
+</div>
+<script>
+// --- Configuration for Aethyr One (Production Ready) ---
+const AETHYR_CONFIG = {
+    // Production contract addresses (placeholders)
+    governanceContractAddress: "0x6AETHGovernanceContractAddressProduction",
+    tokenSwapRouterAddress: "0x7AETHSwapRouterAddressProduction",
+    aethTokenAddress: "0x8AETHNativeTokenAddressProduction",
+    // Production API endpoints (placeholders)
+    aethyrscanApiBase: "https://web.archive.org/web/20250520014947/https://api.aethyrscan.io",
+    aiPredictApiBase: "https://web.archive.org/web/20250520014947/https://predict.aethyr.io",
+    // Network details (placeholders)
+    chainId: "0xAE01", // Example Chain ID
+    chainName: "Aethyr One Mainnet",
+    rpcUrl: "https://web.archive.org/web/20250520014947/https://rpc.aethyr.one", // Example RPC URL
+    nativeCurrency: {
+        name: "Aethyr",
+        symbol: "AETH",
+        decimals: 18,
+    },
+    blockExplorerUrl: "https://web.archive.org/web/20250520014947/https://aethyrscan.io", // Example Block Explorer URL
+    // Contact form email recipient
+    contactEmailRecipient: "ilic.ilic@outlook.com",
+
+    // Gemini API Configuration (Used by the integrated chat logic)
+    // --- CRITICAL SECURITY WARNING: HARDCODED API KEYS ---
+    // THESE API KEYS ARE EXPOSED IN CLIENT-SIDE CODE. THIS IS HIGHLY INSECURE AND FOR TESTING PURPOSES ONLY AS REQUESTED.
+    // DO NOT USE THIS CODE IN PRODUCTION. REPLACE WITH SECURE SERVER-SIDE IMPLEMENTATION FOR REAL APPLICATIONS.
+    GEMINI_API_KEY_1: "AIzaSyAAKQ5SswjPMOLg4-3vJyqgB-Owapuo6Eg", // User Provided Key 1
+    GEMINI_API_KEY_2: "AIzaSyDqDoh_2IS2qrkJqcSp-v5vjNiw7ctoZZU", // User Provided Key 2
+    // --- END CRITICAL SECURITY WARNING ---
+};
+
+
+// --- Global State ---
+let web3Instance = null;
+let userAccount = null;
+let userAETHBalance = 0;
+let currentMarketSentimentChart = null;
+
+// --- Toast Notification System ---
+function showToast(message, type = 'info', duration = 3000) {
+    const toastContainer = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    // Trigger reflow to enable animation
+    toast.offsetHeight;
+
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300); // Allow animation to finish
+    }, duration);
+}
+
+// --- Core Application Logic ---
+const App = {
+    // --- Initialization ---
+    init: async () => {
+        console.log("Aethyr One Ecosystem Initializing (vΓ.2-ΔΣ OverMind Evolved)...");
+        App.setupEventListeners();
+        App.handleScrollAnimations();
+        App.handleBackToTopButton();
+        App.handleStickyNav();
+        App.handleMobileMenu();
+        App.updateCurrentYear();
+        App.initThemeToggle(); // Initialize theme toggle and favicon
+        App.Chat.init(); // Initialize the integrated chat
+
+        // Attempt to connect to wallet if already permitted (e.g., page refresh)
+        if (typeof window.ethereum !== 'undefined' && window.ethereum.selectedAddress) {
+            await App.connectWallet(false); // false indicates not a direct click
+        } else {
+            App.updateWalletStatusUI(false); // Not connected
+        }
+
+        // Load initial data for sections
+        App.Governance.init();
+        App.Aethyrscan.init();
+        App.Swap.init();
+        App.AIInsights.init();
+        App.Contact.init(); // Contact form init
+
+        console.log("Aethyr One Ecosystem Ready for Mainnet.");
+    },
+
+    // --- Event Listeners Setup ---
+    setupEventListeners: () => {
+        document.getElementById('wallet-status-btn').addEventListener('click', () => App.connectWallet(true));
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    // Update active nav link
+                    document.querySelectorAll('nav a.nav-link').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    },
+
+    // --- Wallet Management ---
+    connectWallet: async (isUserInitiated = true) => {
+        const walletStatusBtn = document.getElementById('wallet-status-btn');
+        const walletStatusText = document.getElementById('wallet-status-text');
+        walletStatusText.textContent = 'Connecting...';
+        walletStatusBtn.disabled = true;
+
+        if (typeof window.ethereum !== 'undefined') {
+            try {
+                web3Instance = new Web3(window.ethereum);
+                // Request account access
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                userAccount = accounts[0];
+
+                // Optional: Check and switch to Aethyr One network
+                await App.switchToAethyrNetwork();
+
+                App.updateWalletStatusUI(true, userAccount);
+                await App.fetchUserBalance();
+
+                // Enable features that require a wallet
+                App.enableWalletDependentFeatures();
+                if (isUserInitiated) showToast('Wallet connected successfully!', 'success');
+
+            } catch (error) {
+                console.error("Wallet connection error:", error);
+                App.updateWalletStatusUI(false);
+                if (isUserInitiated) {
+                    if (error.code === 4001) { // User rejected request
+                        showToast('Wallet connection rejected by user.', 'info');
+                    } else {
+                        showToast(`Error connecting wallet: ${error.message || 'Unknown error'}`, 'error');
+                    }
+                }
+            } finally {
+                walletStatusBtn.disabled = false;
+            }
+        } else {
+            App.updateWalletStatusUI(false);
+            walletStatusBtn.disabled = false;
+            if (isUserInitiated) showToast('MetaMask (or compatible wallet) not detected. Please install it.', 'error');
+            // Optionally, guide user to install MetaMask
+        }
+    },
+
+    switchToAethyrNetwork: async () => {
+        try {
+            await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: AETHYR_CONFIG.chainId }],
+            });
+        } catch (switchError) {
+            // This error code indicates that the chain has not been added to MetaMask.
+            if (switchError.code === 4902) {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [{
+                            chainId: AETHYR_CONFIG.chainId,
+                            chainName: AETHYR_CONFIG.chainName,
+                            rpcUrls: [AETHYR_CONFIG.rpcUrl],
+                            nativeCurrency: AETHYR_CONFIG.nativeCurrency,
+                            blockExplorerUrls: [AETHYR_CONFIG.blockExplorerUrl]
+                        }],
+                    });
+                } catch (addError) {
+                    console.error("Failed to add Aethyr network:", addError);
+                    showToast('Failed to add Aethyr network to wallet.', 'error');
+                }
+            } else {
+                console.error("Failed to switch to Aethyr network:", switchError);
+                showToast('Failed to switch to Aethyr network.', 'error');
+            }
+        }
+    },
+
+    fetchUserBalance: async () => {
+        if (!web3Instance || !userAccount) return;
+        try {
+            const balanceWei = await web3Instance.eth.getBalance(userAccount);
+            userAETHBalance = web3Instance.utils.fromWei(balanceWei, 'ether');
+            console.log(`User AETH Balance: ${userAETHBalance}`);
+            // Update UI elements that display AETH balance
+            document.querySelectorAll('.user-aeth-balance').forEach(el => el.textContent = `${parseFloat(userAETHBalance).toFixed(4)} AETH`);
+            App.Governance.updateVotingPowerDisplay();
+            App.Swap.updateTokenBalances(); // Update swap balances
+        } catch (error) {
+            console.error("Error fetching AETH balance:", error);
+            showToast('Error fetching AETH balance.', 'error');
+        }
+    },
+
+    updateWalletStatusUI: (isConnected, account = null) => {
+        const walletStatusText = document.getElementById('wallet-status-text');
+        const walletStatusBtn = document.getElementById('wallet-status-btn');
+        if (isConnected && account) {
+            walletStatusText.textContent = `${account.substring(0, 6)}...${account.substring(account.length - 4)}`;
+            walletStatusBtn.classList.remove('bg-primary', 'hover:bg-primary-hover');
+            walletStatusBtn.classList.add('bg-secondary', 'hover:bg-secondary-hover');
+        } else {
+            walletStatusText.textContent = 'Connect Wallet';
+            walletStatusBtn.classList.remove('bg-secondary', 'hover:bg-secondary-hover');
+            walletStatusBtn.classList.add('bg-primary', 'hover:bg-primary-hover');
+            userAccount = null; // Clear account on disconnect
+            userAETHBalance = 0;
+            App.disableWalletDependentFeatures();
+        }
+    },
+
+    enableWalletDependentFeatures: () => {
+        // Governance
+        document.getElementById('submit-proposal-btn').disabled = false;
+        document.getElementById('vote-for-btn').disabled = false;
+        document.getElementById('vote-against-btn').disabled = false;
+        // Swap
+        document.getElementById('execute-swap-btn').disabled = false;
+        document.getElementById('execute-swap-btn').textContent = 'Swap';
+    },
+
+    disableWalletDependentFeatures: () => {
+        // Governance
+        document.getElementById('submit-proposal-btn').disabled = true;
+        document.getElementById('vote-for-btn').disabled = true;
+        document.getElementById('vote-against-btn').disabled = true;
+        App.Governance.updateVotingPowerDisplay(0); // Reset voting power display
+        // Swap
+        document.getElementById('execute-swap-btn').disabled = true;
+        document.getElementById('execute-swap-btn').textContent = 'Connect Wallet to Swap';
+        App.Swap.updateTokenBalances(); // Reset token balances display
+    },
+
+    // --- UI Enhancements ---
+    handleScrollAnimations: () => {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
+    },
+
+    handleBackToTopButton: () => {
+        const button = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                button.classList.add('visible');
+            } else {
+                button.classList.remove('visible');
+            }
+        });
+    },
+
+    handleStickyNav: () => {
+        const nav = document.querySelector('nav');
+        const sentinel = document.createElement('div');
+        sentinel.style.height = '1px';
+        nav.parentNode.insertBefore(sentinel, nav);
+
+        const observer = new IntersectionObserver(([entry]) => {
+            // Add/remove a class to nav if it's not intersecting the sentinel (meaning it's sticky)
+            // This example assumes nav-sticky already handles visual changes.
+            // For more complex behavior, you might toggle a class like 'is-sticky'.
+        }, { threshold: [0] });
+        observer.observe(sentinel);
+
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // Adjust offset based on sticky nav height and scaling
+                const offset = nav.offsetHeight * (1 / 0.67) + 10; // Scale compensation
+                 if (window.innerWidth <= 768) { // Adjust for mobile where scaling is off
+                     const offsetMobile = nav.offsetHeight + 10;
+                     if (pageYOffset >= section.offsetTop - offsetMobile) {
+                         current = section.getAttribute('id');
+                     }
+                 } else {
+                     if (pageYOffset >= sectionTop - offset) {
+                         current = section.getAttribute('id');
+                     }
+                 }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+             // Default to home if no section is active (e.g., at the very top or bottom beyond sections)
+            if (!current && pageYOffset < sections[0].offsetTop) {
+                const homeLink = document.querySelector('nav a[href="#home"]');
+                if (homeLink) homeLink.classList.add('active');
+            }
+        });
+    },
+
+    handleMobileMenu: () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const navLinksContainer = document.getElementById('nav-links');
+        const navLinks = navLinksContainer.querySelectorAll('a');
+
+        menuButton.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('hidden');
+            navLinksContainer.classList.toggle('flex'); // Keep flex for column layout
+        });
+
+        // Close menu when a link is clicked (for SPA-like navigation)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!navLinksContainer.classList.contains('md:flex')) { // Only close if it's the mobile layout
+                     navLinksContainer.classList.add('hidden');
+                     navLinksContainer.classList.remove('flex');
+                }
+            });
+        });
+    },
+
+    updateCurrentYear: () => {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    },
+
+    // --- Theme Toggle ---
+    initThemeToggle: () => {
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement; // Use html element for dark class
+
+        // Set initial icon and favicon based on current theme
+        App.updateThemeToggleIcon();
+        App.updateFavicon(); // Initial favicon update
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            App.updateThemeToggleIcon();
+            App.updateFavicon(); // Update favicon on theme change
+             // Update chart colors if visible
+            if (currentMarketSentimentChart) {
+                 App.AIInsights.renderMarketSentimentChart(); // Re-render chart with new theme colors
+            }
+        });
+
+        // Apply saved theme from local storage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            if (savedTheme === 'dark') {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+        } else {
+             // Default to light if no theme is saved
+             htmlElement.classList.remove('dark');
+        }
+         App.updateThemeToggleIcon(); // Ensure correct icon on load
+         App.updateFavicon(); // Ensure correct favicon on load
+    },
+
+    updateThemeToggleIcon: () => {
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const icon = themeToggleBtn.querySelector('i');
+        if (document.documentElement.classList.contains('dark')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun'); // Sun icon for dark mode
+            themeToggleBtn.setAttribute('aria-label', 'Toggle light theme');
+            App.updateLogoVisibility('dark');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon'); // Moon icon for light mode
+             themeToggleBtn.setAttribute('aria-label', 'Toggle dark theme');
+             App.updateLogoVisibility('light');
+        }
+    },
+
+    updateLogoVisibility: (theme) => {
+        // Target image elements instead of SVGs
+        const logos = {
+            navbar: { light: document.getElementById('logo-img-light'), dark: document.getElementById('logo-img-dark') },
+            home: { light: document.getElementById('home-logo-img-light'), dark: document.getElementById('home-logo-img-dark') },
+            footer: { light: document.getElementById('footer-logo-img-light'), dark: document.getElementById('footer-logo-img-dark') },
+            // Chat logo is handled within the chat HTML structure now
+        };
+
+        for (const key in logos) {
+            if (logos[key].light && logos[key].dark) {
+                if (theme === 'light') {
+                    logos[key].light.classList.remove('hidden');
+                    logos[key].dark.classList.add('hidden');
+                } else { // theme === 'dark'
+                    logos[key].light.classList.add('hidden');
+                    logos[key].dark.classList.remove('hidden');
+                }
+            }
+        }
+    },
+
+    // --- Favicon Update ---
+    updateFavicon: () => {
+        const faviconLight = document.getElementById('favicon-light');
+        const faviconDark = document.getElementById('favicon-dark');
+
+        if (document.documentElement.classList.contains('dark')) {
+            if (faviconDark) faviconDark.setAttribute('rel', 'icon');
+            if (faviconLight) faviconLight.setAttribute('rel', 'alternate icon'); // Hide light favicon
+        } else {
+            if (faviconLight) faviconLight.setAttribute('rel', 'icon');
+            if (faviconDark) faviconDark.setAttribute('rel', 'alternate icon'); // Hide dark favicon
+        }
+    },
+
+
+    // --- Helper: Simulate API Call ---
+    _simulateApiCall: (data, delay = 1000) => {
+        return new Promise(resolve => setTimeout(() => resolve(data), delay));
+    },
+
+    // --- Helper: Truncate Address ---
+    _truncateAddress: (address) => {
+        if (!address) return '';
+        return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
+    },
+
+    // --- Helper: Show Loading Overlay for Section ---
+    _showSectionLoading: (sectionId) => {
+        const overlay = document.getElementById(`${sectionId}-loading-overlay`);
+        if (overlay) overlay.classList.remove('hidden');
+    },
+
+    // --- Helper: Hide Loading Overlay for Section ---
+    _hideSectionLoading: (sectionId) => {
+        const overlay = document.getElementById(`${sectionId}-loading-overlay`);
+        if (overlay) overlay.classList.add('hidden');
+    },
+
+
+    // --- Governance Module ---
+    Governance: {
+        proposals: [], // Stores all proposals
+        currentProposalDetail: null, // Stores detail of proposal being viewed/voted on
+
+        init: () => {
+            document.getElementById('proposal-search').addEventListener('input', App.Governance.filterProposals);
+            document.getElementById('status-filter').addEventListener('change', App.Governance.filterProposals);
+            document.getElementById('create-proposal-btn').addEventListener('click', App.Governance.openCreateProposalModal);
+            document.getElementById('close-proposal-modal').addEventListener('click', App.Governance.closeProposalModal);
+            document.getElementById('proposal-form').addEventListener('submit', App.Governance.handleSubmitProposal);
+
+            document.getElementById('vote-for-btn').addEventListener('click', () => App.Governance.handleVote('for'));
+            document.getElementById('vote-against-btn').addEventListener('click', () => App.Governance.handleVote('against'));
+
+            App.Governance.loadProposals();
+        },
+
+        loadProposals: async () => {
+            App._showSectionLoading('governance'); // Show loading
+            try {
+                // REAL INTEGRATION: Fetch proposals from the Aethyr governance smart contract
+                // const contract = new web3Instance.eth.Contract(GOVERNANCE_ABI, AETHYR_CONFIG.governanceContractAddress);
+                // const proposalCount = await contract.methods.proposalCount().call();
+                // let fetchedProposals = [];
+                // for (let i = 0; i < proposalCount; i++) {
+                //     const p = await contract.methods.proposals(i).call();
+                //     fetchedProposals.push({ id: i, title: p.title, ... });
+                // }
+                // App.Governance.proposals = fetchedProposals;
+
+                // SIMULATED DATA:
+                const mockProposals = [
+                    { id: 'AIP-001', title: "Upgrade AI Sharding Algorithm to v2.1", status: 'active', proposer: '0x1234...abcd', votingEnds: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], description: "This proposal aims to upgrade the AI-driven sharding algorithm to version 2.1, enhancing network throughput by an estimated 25% and reducing latency. Key changes include optimized node selection and dynamic shard resizing based on real-time load.", votesFor: 600000, votesAgainst: 250000, totalVotes: 1000000 },
+                    { id: 'AIP-002', title: "Implement Quantum-Resistant Signature Scheme", status: 'pending', proposer: '0x5678...efgh', votingEnds: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], description: "Proposal to integrate CRYSTALS-Dilithium as the primary signature scheme for transactions, future-proofing Aethyr One against quantum threats. This is a critical security upgrade.", votesFor: 0, votesAgainst: 0, totalVotes: 0 },
+                    { id: 'AIP-003', title: "Adjust Treasury Allocation for Developer Grants", status: 'closed', proposer: '0x9abc...ijkl', votingEnds: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], description: "Increase the quarterly developer grant pool by 15% from the ecosystem treasury to foster more dApp innovation. This proposal passed.", votesFor: 850000, votesAgainst: 100000, totalVotes: 1000000, result: 'passed' },
+                     { id: 'AIP-004', title: "Reduce Minimum Staking Requirement", status: 'executed', proposer: '0xDef0...mnop', votingEnds: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], description: "Lower the minimum AETH staking requirement for validators from 1000 AETH to 500 AETH to promote decentralization. This was executed successfully.", votesFor: 920000, votesAgainst: 50000, totalVotes: 1000000, result: 'passed' },
+                     { id: 'AIP-005', title: "Integrate Cross-Chain Bridge with Ethereum", status: 'active', proposer: '0xCafe...Babe', votingEnds: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], description: "Deploy a secure and audited bridge to facilitate AETH and Aethyr-based asset transfers to and from the Ethereum network.", votesFor: 150000, votesAgainst: 20000, totalVotes: 1000000 },
+                ];
+                App.Governance.proposals = await App._simulateApiCall(mockProposals);
+                App.Governance.renderProposals();
+            } catch (error) {
+                console.error("Error loading proposals:", error);
+                showToast('Failed to load governance proposals.', 'error');
+                document.getElementById('no-proposals-message').textContent = 'Error loading proposals. Please try again later.';
+                document.getElementById('no-proposals-message').classList.remove('hidden');
+            } finally {
+                App._hideSectionLoading('governance'); // Hide loading
+            }
+        },
+
+        renderProposals: (filteredProposals = null) => {
+            const proposalsToRender = filteredProposals || App.Governance.proposals;
+            const tableBody = document.getElementById('proposal-table-body');
+            const noProposalsMsg = document.getElementById('no-proposals-message');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            if (proposalsToRender.length === 0) {
+                noProposalsMsg.textContent = 'No proposals found matching your criteria.';
+                noProposalsMsg.classList.remove('hidden');
+                return;
+            }
+            noProposalsMsg.classList.add('hidden');
+
+            proposalsToRender.forEach(proposal => {
+                const row = tableBody.insertRow();
+                row.insertCell().textContent = proposal.id;
+
+                const titleCell = row.insertCell();
+                titleCell.textContent = proposal.title;
+                titleCell.classList.add('font-medium', 'text-gray-800', 'dark:text-gray-200');
+
+                const statusCell = row.insertCell();
+                const statusSpan = document.createElement('span');
+                statusSpan.textContent = proposal.status.charAt(0).toUpperCase() + proposal.status.slice(1);
+                statusSpan.className = `status-indicator ${proposal.status}`;
+                statusCell.appendChild(statusSpan);
+
+                row.insertCell().textContent = App._truncateAddress(proposal.proposer);
+                row.insertCell().textContent = new Date(proposal.votingEnds).toLocaleDateString();
+
+                const actionsCell = row.insertCell();
+                const viewButton = document.createElement('button');
+                viewButton.innerHTML = '<i class="fas fa-eye mr-1"></i> View';
+                viewButton.className = 'action-btn bg-primary hover:bg-primary-hover text-dark-background text-xs py-1.5 px-3 rounded-md';
+                viewButton.onclick = () => App.Governance.openViewProposalModal(proposal.id);
+                actionsCell.appendChild(viewButton);
+
+                if (proposal.status === 'active' && userAccount) {
+                    const voteButton = document.createElement('button');
+                    voteButton.innerHTML = '<i class="fas fa-vote-yea mr-1"></i> Vote';
+                    voteButton.className = 'action-btn bg-secondary hover:bg-secondary-hover text-dark-background text-xs py-1.5 px-3 rounded-md ml-2';
+                    voteButton.onclick = () => App.Governance.openViewProposalModal(proposal.id, true); // true to focus vote section
+                    actionsCell.appendChild(voteButton);
+                }
+            });
+        },
+
+        filterProposals: () => {
+            const searchTerm = document.getElementById('proposal-search').value.toLowerCase();
+            const statusFilter = document.getElementById('status-filter').value;
+            const filtered = App.Governance.proposals.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(searchTerm) || p.id.toLowerCase().includes(searchTerm);
+                const matchesStatus = statusFilter === 'all' || p.status === statusFilter || (statusFilter === 'closed' && (p.status === 'closed' || p.status === 'executed' || p.status === 'failed'));
+                return matchesSearch && matchesStatus;
+            });
+            App.Governance.renderProposals(filtered);
+        },
+
+        openCreateProposalModal: () => {
+            if (!userAccount) {
+                showToast('Please connect your wallet to create a proposal.', 'info');
+                App.connectWallet(true);
+                return;
+            }
+            document.getElementById('proposal-modal-title').textContent = 'Create New Proposal';
+            document.getElementById('proposal-form').reset();
+            document.getElementById('proposal-form').classList.remove('hidden');
+            document.getElementById('proposal-details-view').classList.add('hidden');
+            document.getElementById('submit-proposal-btn').textContent = 'Submit Proposal';
+            document.getElementById('proposal-modal').classList.add('active');
+        },
+
+        openViewProposalModal: (proposalId, focusVote = false) => {
+            const proposal = App.Governance.proposals.find(p => p.id === proposalId);
+            if (!proposal) return;
+            App.Governance.currentProposalDetail = proposal;
+
+            document.getElementById('proposal-modal-title').textContent = `Proposal: ${proposal.title}`;
+            document.getElementById('proposal-form').classList.add('hidden');
+            document.getElementById('proposal-details-view').classList.remove('hidden');
+
+            document.getElementById('view-proposal-id').textContent = proposal.id;
+            document.getElementById('view-proposal-proposer').textContent = proposal.proposer; // Full address for detail view
+
+            const statusSpan = document.getElementById('view-proposal-status');
+            statusSpan.textContent = proposal.status.charAt(0).toUpperCase() + proposal.status.slice(1);
+            statusSpan.className = `status-indicator ${proposal.status}`;
+
+            document.getElementById('view-proposal-ends').textContent = new Date(proposal.votingEnds).toLocaleString();
+            // Basic Markdown-like rendering for description (newlines)
+            document.getElementById('view-proposal-description').innerHTML = proposal.description.replace(/\n/g, '<br>');
+
+            const voteSection = document.getElementById('vote-section');
+            if (proposal.status === 'active' && userAccount) {
+                voteSection.classList.remove('hidden');
+                App.Governance.updateVotingPowerDisplay();
+                // Simulate fetching current vote distribution
+                const votesForPercent = proposal.totalVotes > 0 ? (proposal.votesFor / proposal.totalVotes * 100).toFixed(1) : 0;
+                const votesAgainstPercent = proposal.totalVotes > 0 ? (proposal.votesAgainst / proposal.totalVotes * 100).toFixed(1) : 0;
+                document.getElementById('current-votes-for').textContent = `${votesForPercent}%`;
+                document.getElementById('current-votes-against').textContent = `${votesAgainstPercent}%`;
+                document.getElementById('vote-for-btn').disabled = false;
+                document.getElementById('vote-against-btn').disabled = false;
+            } else {
+                voteSection.classList.add('hidden');
+            }
+
+            document.getElementById('proposal-modal').classList.add('active');
+            if (focusVote) voteSection.scrollIntoView({behavior: 'smooth'});
+        },
+
+        closeProposalModal: () => {
+            document.getElementById('proposal-modal').classList.remove('active');
+            App.Governance.currentProposalDetail = null;
+        },
+
+        handleSubmitProposal: async (event) => {
+            event.preventDefault();
+            if (!userAccount) {
+                showToast('Please connect your wallet first.', 'error');
+                return;
+            }
+
+            const title = document.getElementById('proposal-title-input').value;
+            const description = document.getElementById('proposal-description-input').value;
+            const votingDays = parseInt(document.getElementById('voting-period-input').value);
+
+            if (!title.trim() || !description.trim() || isNaN(votingDays) || votingDays <= 0) {
+                showToast('Please fill all fields correctly.', 'error');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-proposal-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+
+            try {
+                // REAL INTEGRATION:
+                // const contract = new web3Instance.eth.Contract(GOVERNANCE_ABI, AETHYR_CONFIG.governanceContractAddress);
+                // const votingPeriodSeconds = votingDays * 24 * 60 * 60;
+                // // You'd likely have more parameters for the proposal action (e.g., contract to call, data)
+                // await contract.methods.submitProposal(title, description, votingPeriodSeconds, ...otherParams)
+                //     .send({ from: userAccount, gas: '500000' }) // Estimate gas appropriately
+                //     .on('transactionHash', (hash) => {
+                //         showToast(`Proposal submission transaction sent: ${App._truncateAddress(hash)}`, 'info');
+                //     })
+                //     .on('receipt', (receipt) => {
+                //         showToast('Proposal submitted successfully!', 'success');
+                //         App.Governance.loadProposals(); // Refresh list
+                //         App.Governance.closeProposalModal();
+                //     })
+                //     .on('error', (error) => {
+                //         console.error("Proposal submission error:", error);
+                //         showToast(`Proposal submission failed: ${error.message}`, 'error');
+                //     });
+
+                // SIMULATED SUBMISSION:
+                await App._simulateApiCall({}, 1500); // Simulate network delay
+                const newProposal = {
+                    id: `AIP-${String(App.Governance.proposals.length + 1).padStart(3, '0')}`,
+                    title,
+                    description,
+                    status: 'pending',
+                    proposer: userAccount,
+                    votingEnds: new Date(Date.now() + votingDays * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                    votesFor: 0, votesAgainst: 0, totalVotes: 0
+                };
+                App.Governance.proposals.unshift(newProposal); // Add to top
+                App.Governance.renderProposals();
+                showToast('Proposal submitted successfully!', 'success');
+                App.Governance.closeProposalModal();
+
+            } catch (error) {
+                console.error("Error submitting proposal:", error);
+                showToast(`Error submitting proposal: ${error.message || 'Unknown error'}`, 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit Proposal';
+            }
+        },
+
+        handleVote: async (voteType) => { // 'for' or 'against'
+            if (!userAccount || !App.Governance.currentProposalDetail) {
+                showToast('Cannot vote. Ensure wallet is connected and proposal is selected.', 'error');
+                return;
+            }
+            if (App.Governance.currentProposalDetail.status !== 'active') {
+                showToast('Voting for this proposal is not active.', 'info');
+                return;
+            }
+
+            const voteForBtn = document.getElementById('vote-for-btn');
+            const voteAgainstBtn = document.getElementById('vote-against-btn');
+            voteForBtn.disabled = true;
+            voteAgainstBtn.disabled = true;
+            const originalTextFor = voteForBtn.innerHTML;
+            const originalTextAgainst = voteAgainstBtn.innerHTML;
+            const VOTE_BTN_LOADING_HTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Voting...';
+            if (voteType === 'for') voteForBtn.innerHTML = VOTE_BTN_LOADING_HTML;
+            else voteAgainstBtn.innerHTML = VOTE_BTN_LOADING_HTML;
+
+
+            try {
+                // REAL INTEGRATION:
+                // const contract = new web3Instance.eth.Contract(GOVERNANCE_ABI, AETHYR_CONFIG.governanceContractAddress);
+                // const proposalId = App.Governance.currentProposalDetail.id; // Assuming ID matches contract's proposal ID
+                // const support = (voteType === 'for'); // true for 'for', false for 'against'
+                // await contract.methods.castVote(proposalId, support)
+                //     .send({ from: userAccount, gas: '200000' }); // Estimate gas
+                //     .on('transactionHash', (hash) => {
+                //          showToast(`Vote transaction sent: ${App._truncateAddress(hash)}`, 'info');
+                //     })
+                //     .on('receipt', (receipt) => {
+                //         showToast(`Voted ${voteType} successfully!`, 'success');
+                //         // Update proposal details in UI or reload
+                //         App.Governance.loadProposals(); // Simplest way to refresh
+                //         // Potentially update just the current proposal's vote counts
+                //     })
+                //     .on('error', (error) => {
+                //         console.error(error); showToast(`Vote failed: ${error.message}`, 'error');
+                //     });
+
+                // SIMULATED VOTE:
+                await App._simulateApiCall({}, 1200);
+                const proposal = App.Governance.currentProposalDetail;
+                // This is a crude simulation. Real voting power and uniqueness would be handled by the contract.
+                const voteWeight = parseFloat(userAETHBalance) || 1; // Simulate voting power
+                if (voteType === 'for') {
+                    proposal.votesFor += voteWeight;
+                } else {
+                    proposal.votesAgainst += voteWeight;
+                }
+                proposal.totalVotes += voteWeight; // Simplified total, contract would manage this better
+
+                // Update UI for current proposal view
+                const votesForPercent = proposal.totalVotes > 0 ? (proposal.votesFor / proposal.totalVotes * 100).toFixed(1) : 0;
+                const votesAgainstPercent = proposal.totalVotes > 0 ? (proposal.votesAgainst / proposal.totalVotes * 100).toFixed(1) : 0;
+                document.getElementById('current-votes-for').textContent = `${votesForPercent}%`;
+                document.getElementById('current-votes-against').textContent = `${votesAgainstPercent}%`;
+
+                showToast(`Voted ${voteType} successfully!`, 'success');
+                App.Governance.renderProposals(); // Re-render the main list if needed
+
+            } catch (error) {
+                console.error("Error casting vote:", error);
+                showToast(`Error casting vote: ${error.message || 'Unknown error'}`, 'error');
+            } finally {
+                voteForBtn.disabled = false;
+                voteAgainstBtn.disabled = false;
+                 voteForBtn.innerHTML = originalTextFor;
+                 voteAgainstBtn.innerHTML = originalTextAgainst;
+            }
+        },
+
+        updateVotingPowerDisplay: () => {
+            const votingPowerEl = document.getElementById('user-voting-power');
+            if (votingPowerEl) {
+                 votingPowerEl.textContent = userAccount ? `${parseFloat(userAETHBalance).toFixed(4)} AETH` : '0 AETH (Connect Wallet)';
+            }
+        }
+    },
+
+    // --- Aethyrscan Module ---
+    Aethyrscan: {
+        latestBlocks: [],
+        latestTransactions: [],
+        blockUpdateInterval: null,
+
+        init: () => {
+            document.getElementById('aethyrscan-search').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') App.Aethyrscan.handleSearch();
+            });
+            App.Aethyrscan.fetchInitialData();
+            // Start polling for new blocks (simulation) - in a real scenario, use WebSockets or similar
+            clearInterval(App.Aethyrscan.blockUpdateInterval); // Clear previous interval if any
+            App.Aethyrscan.blockUpdateInterval = setInterval(App.Aethyrscan.fetchLatestBlock, 15000); // Fetch new block every 15s
+        },
+
+        fetchInitialData: async () => {
+            App._showSectionLoading('aethyrscan'); // Show loading
+            try {
+                // REAL INTEGRATION: Fetch from Aethyrscan API or direct node RPC
+                // const blocksResponse = await fetch(`${AETHYR_CONFIG.aethyrscanApiBase}/blocks?limit=5`);
+                // App.Aethyrscan.latestBlocks = await blocksResponse.json();
+                // const txsResponse = await fetch(`${AETHYR_CONFIG.aethyrscanApiBase}/transactions?limit=5`);
+                // App.Aethyrscan.latestTransactions = await txsResponse.json();
+
+                // SIMULATED DATA:
+                const mockBlocks = Array.from({length: 5}, (_, i) => ({
+                    number: 1234567 - i,
+                    timestamp: Date.now() - i * 15000 - Math.random()*5000,
+                    transactions: Math.floor(Math.random() * 100) + 10,
+                    miner: `0xMinerAddress...${i}`,
+                    hash: `0xBlockhash...${i}`
+                }));
+                const mockTxs = Array.from({length: 5}, (_, i) => ({
+                    hash: `0xTxHash...${i}${Math.random().toString(16).slice(2,8)}`,
+                    from: `0xFromAddress...${i}`,
+                    to: `0xToAddress...${i}`,
+                    value: (Math.random() * 10).toFixed(4),
+                    timestamp: Date.now() - i * 3000 - Math.random()*2000,
+                }));
+                App.Aethyrscan.latestBlocks = await App._simulateApiCall(mockBlocks, 800);
+                App.Aethyrscan.latestTransactions = await App._simulateApiCall(mockTxs, 800);
+
+                App.Aethyrscan.renderBlocks();
+                App.Aethyrscan.renderTransactions();
+            } catch (error) {
+                console.error("Error fetching Aethyrscan initial data:", error);
+                showToast('Failed to load Aethyrscan data.', 'error');
+                document.getElementById('latest-blocks-list').innerHTML = '<li class="text-center text-red-500">Failed to load blocks.</li>';
+                document.getElementById('latest-transactions-list').innerHTML = '<li class="text-center text-red-500">Failed to load transactions.</li>';
+            } finally {
+                App._hideSectionLoading('aethyrscan'); // Hide loading
+            }
+        },
+
+        fetchLatestBlock: async () => { // Simulates a new block appearing
+            try {
+                const lastBlockNumber = App.Aethyrscan.latestBlocks.length > 0 ? App.Aethyrscan.latestBlocks[0].number : 1234567;
+                const newBlock = {
+                    number: lastBlockNumber + 1,
+                    timestamp: Date.now(),
+                    transactions: Math.floor(Math.random() * 50) + 5,
+                    miner: `0xMinerAddress...N`,
+                    hash: `0xNewBlockhash...${Math.random().toString(16).slice(2,10)}`
+                };
+                // SIMULATED:
+                // In reality, you'd fetch this from an API
+                App.Aethyrscan.latestBlocks.unshift(newBlock); // Add to beginning
+                if (App.Aethyrscan.latestBlocks.length > 10) App.Aethyrscan.latestBlocks.pop(); // Keep list size manageable
+                App.Aethyrscan.renderBlocks();
+
+                // Simulate some new transactions with the block
+                const newTxsCount = Math.floor(Math.random() * 3) + 1;
+                for(let i=0; i<newTxsCount; i++) {
+                    const newTx = {
+                        hash: `0xNewTxHash...${Math.random().toString(16).slice(2,10)}`,
+                        from: `0xRndFrom...${i}`,
+                        to: `0xRndTo...${i}`,
+                        value: (Math.random() * 2).toFixed(4),
+                        timestamp: Date.now() - Math.random()*1000,
+                    };
+                    App.Aethyrscan.latestTransactions.unshift(newTx);
+                    if(App.Aethyrscan.latestTransactions.length > 10) App.Aethyrscan.latestTransactions.pop();
+                }
+                App.Aethyrscan.renderTransactions();
+
+
+            } catch (error) {
+                console.error("Error fetching latest block:", error);
+            }
+        },
+
+        renderBlocks: () => {
+            const list = document.getElementById('latest-blocks-list');
+            list.innerHTML = '';
+            if (App.Aethyrscan.latestBlocks.length === 0) {
+                 list.innerHTML = '<li class="text-center text-gray-500">No blocks available.</li>';
+                 return;
+            }
+            App.Aethyrscan.latestBlocks.slice(0, 7).forEach(block => { // Display up to 7 blocks
+                const li = document.createElement('li');
+                li.className = 'p-3 rounded-md shadow-sm transition-colors bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700';
+                li.innerHTML = `
+                    <div class="flex justify-between items-center text-sm">
+                        <a href="#" class="text-primary font-medium hover:underline" onclick="App.Aethyrscan.searchAndDisplay('${block.number}', 'block')">Block #${block.number}</a>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">${new Date(block.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                    <div class="text-xs text-gray-700 dark:text-gray-300 mt-1">
+                        <span>Miner: <a href="#" class="text-primary hover:underline" onclick="App.Aethyrscan.searchAndDisplay('${block.miner}', 'address')">${App._truncateAddress(block.miner)}</a></span> |
+                        <span>${block.transactions} Txns</span>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        },
+
+        renderTransactions: () => {
+            const list = document.getElementById('latest-transactions-list');
+            list.innerHTML = '';
+             if (App.Aethyrscan.latestTransactions.length === 0) {
+                 list.innerHTML = '<li class="text-center text-gray-500">No transactions available.</li>';
+                 return;
+            }
+            App.Aethyrscan.latestTransactions.slice(0, 7).forEach(tx => { // Display up to 7 transactions
+                const li = document.createElement('li');
+                li.className = 'p-3 rounded-md shadow-sm transition-colors bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700';
+                li.innerHTML = `
+                    <div class="flex justify-between items-center text-sm">
+                        <a href="#" class="text-primary font-medium hover:underline truncate max-w-[120px] sm:max-w-none" title="${tx.hash}" onclick="App.Aethyrscan.searchAndDisplay('${tx.hash}', 'transaction')">${App._truncateAddress(tx.hash)}</a>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">${new Date(tx.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                    <div class="text-xs text-gray-700 dark:text-gray-300 mt-1">
+                        <span>From: <a href="#" class="text-primary hover:underline" onclick="App.Aethyrscan.searchAndDisplay('${tx.from}', 'address')">${App._truncateAddress(tx.from)}</a></span><br>
+                        <span>To: <a href="#" class="text-primary hover:underline" onclick="App.Aethyrscan.searchAndDisplay('${tx.to}', 'address')">${App._truncateAddress(tx.to)}</a></span> |
+                        <span class="font-semibold">${tx.value} AETH</span>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        },
+
+        handleSearch: () => {
+            const query = document.getElementById('aethyrscan-search').value.trim();
+            if (!query) return;
+            // Basic type detection (very simplified)
+            let type = 'transaction'; // Default
+            if (/^(0x)?[0-9a-fA-F]{40}$/.test(query)) type = 'address';
+            else if (/^\d+$/.test(query)) type = 'block';
+            else if (!query.toLowerCase().startsWith('0x') || query.length < 60) type = 'unknown'; // Could be token name
+
+            App.Aethyrscan.searchAndDisplay(query, type);
+        },
+
+        searchAndDisplay: async (query, type) => {
+            const resultsArea = document.getElementById('search-results-area');
+            const resultsContent = document.getElementById('search-results-content');
+            const noResultsMsg = document.getElementById('no-search-results');
+
+             // Show loading indicator within the results area for search specifically
+            resultsContent.innerHTML = '<div class="text-center py-4 text-gray-700 dark:text-gray-300"><i class="fas fa-spinner fa-spin text-2xl text-primary"></i><p>Searching...</p></div>';
+            resultsArea.classList.remove('hidden');
+            noResultsMsg.classList.add('hidden');
+            document.getElementById('aethyrscan-search').value = query; // Populate search bar
+
+            try {
+                // REAL INTEGRATION:
+                // const response = await fetch(`${AETHYR_CONFIG.aethyrscanApiBase}/search?query=${query}&type=${type}`);
+                // const data = await response.json();
+                // if (!data || (Array.isArray(data) && data.length === 0) || (typeof data === 'object' && Object.keys(data).length === 0) ) {
+                //    noResultsMsg.classList.remove('hidden');
+                //    resultsContent.innerHTML = '';
+                // } else {
+                //    resultsContent.innerHTML = App.Aethyrscan.formatSearchResults(data, type);
+                // }
+
+                // SIMULATED SEARCH:
+                await App._simulateApiCall({}, 1200);
+                let mockResult;
+                if (type === 'block') {
+                    mockResult = App.Aethyrscan.latestBlocks.find(b => b.number == query) ||
+                                 { number: query, timestamp: Date.now() - Math.random()*100000, transactions: Math.floor(Math.random()*200), miner: '0xUnknownMiner...', hash: `0xSimulatedBlockHashFor${query}`, gasUsed: '15000000', gasLimit: '30000000', parentHash: '0xParentHash...' };
+                } else if (type === 'transaction') {
+                    mockResult = App.Aethyrscan.latestTransactions.find(t => t.hash === query) ||
+                                 { hash: query, from: '0xSimFrom...', to: '0xSimTo...', value: (Math.random()*5).toFixed(3), blockNumber: 1234500 - Math.floor(Math.random()*100), timestamp: Date.now() - Math.random()*100000, gasPrice: '20 Gwei', gasUsed: '21000', status: 'Success' };
+                } else if (type === 'address') {
+                     mockResult = { address: query, balance: (Math.random()*1000).toFixed(4) + ' AETH', transactionCount: Math.floor(Math.random()*500), type: Math.random() > 0.5 ? 'Externally Owned Account' : 'Contract Account', contractCreator: (Math.random() > 0.5 ? `0xCreator...${Math.random().toString(16).slice(2,8)}` : null) };
+                } else {
+                    noResultsMsg.classList.remove('hidden');
+                    resultsContent.innerHTML = '';
+                    return;
+                }
+
+                if (mockResult && Object.keys(mockResult).length > 0) { // Check if mockResult is not an empty object
+                    resultsContent.innerHTML = App.Aethyrscan.formatSearchResults(mockResult, type);
+                } else {
+                    noResultsMsg.classList.remove('hidden');
+                    resultsContent.innerHTML = '';
+                }
+
+            } catch (error) {
+                console.error("Aethyrscan search error:", error);
+                showToast('Error performing Aethyrscan search.', 'error');
+                resultsContent.innerHTML = '<p class="text-red-500 text-center">Search failed. Please try again.</p>';
+            }
+        },
+
+        formatSearchResults: (data, type) => {
+            // This should be a more robust templating system in a real app
+            let html = `<h4 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">${type.charAt(0).toUpperCase() + type.slice(1)} Details: <span class="text-primary">${type === 'address' ? App._truncateAddress(data.address) : (data.hash || data.number)}</span></h4>`;
+            html += '<div class="space-y-2 text-sm overflow-x-auto">';
+            for (const key in data) {
+                let value = data[key];
+                if (typeof value === 'string' && value.startsWith('0x') && value.length > 20) { // Likely an address or hash
+                    const linkType = (key.toLowerCase().includes('hash') || key === 'hash') ? 'transaction' : 'address';
+                    if (key === 'miner' || key === 'from' || key === 'to' || key === 'contractCreator' || key === 'address') {
+                         value = `<a href="#" class="text-primary hover:underline" onclick="App.Aethyrscan.searchAndDisplay('${data[key]}', 'address')">${App._truncateAddress(data[key])}</a>`;
+                    } else if (key.toLowerCase().includes('hash')) {
+                         value = `<a href="#" class="text-primary hover:underline" onclick="App.Aethyrscan.searchAndDisplay('${data[key]}', 'transaction')">${App._truncateAddress(data[key])}</a>`;
+                    } else {
+                        value = App._truncateAddress(data[key]);
+                    }
+                } else if (key === 'timestamp' && typeof data[key] === 'number') {
+                    value = `${new Date(data[key]).toLocaleString()} (${Math.round((Date.now() - data[key])/1000)} seconds ago)`;
+                } else if (key === 'status' && type === 'transaction') {
+                    const statusClass = data[key].toLowerCase() === 'success' ? 'text-green-500' : 'text-red-500';
+                    value = `<span class="${statusClass} font-semibold">${data[key]}</span>`;
+                }
+                html += `<p><strong class="text-gray-500 dark:text-gray-400 capitalize">${key.replace(/([A-Z])/g, ' $1')}:</strong> ${value !== null && value !== undefined ? value : 'N/A'}</p>`;
+            }
+            html += '</div>';
+            return html;
+        }
+    },
+
+    // --- Aethyr Swap Module ---
+    Swap: {
+        tokens: { // In a real app, this would come from a token list or registry contract
+            "AETH": { symbol: "AETH", name: "Aethyr Native Token", decimals: 18, address: AETHYR_CONFIG.aethTokenAddress, balance: 0 },
+            "USDT": { symbol: "USDT", name: "Tether USD", decimals: 6, address: "0xdAC17F958D2ee523a2206206994597C13D831ec7", balance: 0 }, // Example Ethereum address
+            "WBTC": { symbol: "WBTC", name: "Wrapped Bitcoin", decimals: 8, address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599", balance: 0 } // Example Ethereum address
+        },
+
+        init: () => {
+            document.getElementById('from-token').addEventListener('change', App.Swap.handleTokenChange);
+            document.getElementById('to-token').addEventListener('change', App.Swap.handleTokenChange);
+            document.getElementById('from-amount').addEventListener('input', App.Swap.calculateSwap);
+            document.getElementById('swap-tokens-button').addEventListener('click', App.Swap.reverseTokens);
+            document.getElementById('execute-swap-btn').addEventListener('click', App.Swap.executeSwap);
+            document.getElementById('slippage').addEventListener('input', App.Swap.calculateSwap);
+
+            App.Swap.populateTokenSelectors();
+            App.Swap.updateTokenBalances(); // Initial balance update
+            App.Swap.calculateSwap(); // Initial price calculation
+        },
+
+        populateTokenSelectors: () => {
+            const fromSelect = document.getElementById('from-token');
+            const toSelect = document.getElementById('to-token');
+            // Clear existing options except defaults if any
+            // fromSelect.innerHTML = ''; toSelect.innerHTML = '';
+
+            // Assuming options are already in HTML, this function would dynamically populate if needed
+            // For now, we'll just ensure the internal 'tokens' object matches.
+        },
+
+        updateTokenBalances: async () => {
+            const fromTokenSymbol = document.getElementById('from-token').value;
+            const toTokenSymbol = document.getElementById('to-token').value;
+
+            App._showSectionLoading('swap'); // Show loading
+            try {
+                if (userAccount && web3Instance) {
+                    // Fetch AETH balance (native)
+                    App.Swap.tokens["AETH"].balance = parseFloat(userAETHBalance).toFixed(4);
+
+                    // Fetch ERC20 token balances
+                    // REAL INTEGRATION:
+                    // for (const symbol in App.Swap.tokens) {
+                    //     if (symbol !== "AETH") { // AETH is native
+                    //         const token = App.Swap.tokens[symbol];
+                    //         const tokenContract = new web3Instance.eth.Contract(ERC20_ABI, token.address);
+                    //         const bal = await tokenContract.methods.balanceOf(userAccount).call();
+                    //         token.balance = parseFloat(web3Instance.utils.fromWei(bal, token.decimals === 18 ? 'ether' : (token.decimals === 6 ? 'mwei' : 'wei'))).toFixed(4); // Adjust unit based on decimals
+                    //     }
+                    // }
+
+                    // SIMULATED BALANCES for non-AETH tokens
+                    App.Swap.tokens["USDT"].balance = (Math.random() * 10000).toFixed(2);
+                    App.Swap.tokens["WBTC"].balance = (Math.random() * 5).toFixed(4);
+
+                } else { // Reset balances if not connected
+                    for (const symbol in App.Swap.tokens) {
+                        App.Swap.tokens[symbol].balance = 0;
+                    }
+                }
+
+                 // Simulate fetch delay even if connected
+                 await App._simulateApiCall({}, 500);
+
+
+                document.getElementById('from-token-balance').textContent = `${parseFloat(App.Swap.tokens[fromTokenSymbol]?.balance || 0).toFixed(4)} ${fromTokenSymbol}`;
+                document.getElementById('to-token-balance').textContent = `${parseFloat(App.Swap.tokens[toTokenSymbol]?.balance || 0).toFixed(4)} ${toTokenSymbol}`;
+            } catch(error) {
+                 console.error("Error fetching token balances:", error);
+                 showToast('Failed to fetch token balances.', 'error');
+            } finally {
+                App._hideSectionLoading('swap'); // Hide loading
+            }
+        },
+
+        handleTokenChange: () => {
+            App.Swap.updateTokenBalances();
+            App.Swap.calculateSwap();
+        },
+
+        reverseTokens: () => {
+            const fromSelect = document.getElementById('from-token');
+            const toSelect = document.getElementById('to-token');
+            const fromAmountInput = document.getElementById('from-amount');
+            const toAmountInput = document.getElementById('to-amount');
+
+            const tempToken = fromSelect.value;
+            fromSelect.value = toSelect.value;
+            toSelect.value = tempToken;
+
+            // Swap amounts if 'to-amount' was user-editable (it's not here, but good practice)
+            // const tempAmount = fromAmountInput.value;
+            // fromAmountInput.value = toAmountInput.value;
+            // toAmountInput.value = tempAmount;
+
+            // If fromAmount has a value, recalculate. Otherwise, clear toAmount.
+            if (fromAmountInput.value) {
+                 App.Swap.calculateSwap();
+            } else {
+                toAmountInput.value = '';
+            }
+            App.Swap.updateTokenBalances();
+        },
+
+        // Simulate fetching price from a DEX router or oracle
+        _getSimulatedPrice: (fromTokenSymbol, toTokenSymbol) => {
+            // Highly simplified mock prices
+            const prices = {
+                "AETH_USDT": 3000 + (Math.random() * 100 - 50), // AETH price in USDT
+                "USDT_AETH": 1 / (3000 + (Math.random() * 100 - 50)),
+                "AETH_WBTC": 0.05 + (Math.random() * 0.01 - 0.005), // AETH price in WBTC
+                "WBTC_AETH": 1 / (0.05 + (Math.random() * 0.01 - 0.005)),
+                "USDT_WBTC": 1 / (60000 + (Math.random() * 1000 - 500)), // USDT price in WBTC (via AETH usually)
+                "WBTC_USDT": 60000 + (Math.random() * 1000 - 500),
+            };
+            if (fromTokenSymbol === toTokenSymbol) return 1;
+            return prices[`${fromTokenSymbol}_${toTokenSymbol}`] || 0;
+        },
+
+        calculateSwap: () => {
+            const fromTokenSymbol = document.getElementById('from-token').value;
+            const toTokenSymbol = document.getElementById('to-token').value;
+            const fromAmount = parseFloat(document.getElementById('from-amount').value);
+            // const toAmount = parseFloat(document.getElementById('to-amount').value); // Expected output - recalculate
+            const minReceivedDisplay = document.getElementById('min-received');
+            const slippage = parseFloat(document.getElementById('slippage').value) / 100 || 0.005; // Default 0.5%
+            const toAmountInput = document.getElementById('to-amount');
+
+
+            if (fromTokenSymbol === toTokenSymbol) {
+                document.getElementById('swap-price').textContent = `1 ${fromTokenSymbol} = 1 ${toTokenSymbol}`;
+                toAmountInput.value = fromAmount > 0 ? fromAmount.toFixed(App.Swap.tokens[toTokenSymbol]?.decimals || 4) : '';
+                minReceivedDisplay.textContent = fromAmount > 0 ? (fromAmount * (1 - slippage)).toFixed(App.Swap.tokens[toTokenSymbol]?.decimals || 4) : '0.00';
+                document.getElementById('network-fee').textContent = `~0.0000 AETH`; // No fee for same token
+                return;
+            }
+
+            const price = App.Swap._getSimulatedPrice(fromTokenSymbol, toTokenSymbol);
+            document.getElementById('swap-price').textContent = `1 ${fromTokenSymbol} = ${price.toFixed(6)} ${toTokenSymbol}`;
+
+            if (fromAmount > 0 && price > 0) {
+                const calculatedToAmount = fromAmount * price;
+                toAmountInput.value = calculatedToAmount.toFixed(App.Swap.tokens[toTokenSymbol]?.decimals || 4);
+                minReceivedDisplay.textContent = (calculatedToAmount * (1 - slippage)).toFixed(App.Swap.tokens[toTokenSymbol]?.decimals || 4);
+            } else {
+                toAmountInput.value = '';
+                minReceivedDisplay.textContent = '0.00';
+            }
+            // Update estimated network fee (highly dependent on actual blockchain)
+            document.getElementById('network-fee').textContent = `~${(Math.random() * 0.005 + 0.001).toFixed(4)} AETH`;
+        },
+
+        executeSwap: async () => {
+            if (!userAccount) {
+                showToast('Please connect your wallet to swap tokens.', 'info');
+                App.connectWallet(true);
+                return;
+            }
+
+            const fromTokenSymbol = document.getElementById('from-token').value;
+            const toTokenSymbol = document.getElementById('to-token').value;
+            const fromAmount = parseFloat(document.getElementById('from-amount').value);
+            const toAmount = parseFloat(document.getElementById('to-amount').value); // Expected output
+            const minReceived = parseFloat(document.getElementById('min-received').textContent);
+
+            if (!(fromAmount > 0) || !(toAmount > 0)) { // Check calculated toAmount is valid
+                showToast('Please enter a valid amount to swap.', 'error');
+                return;
+            }
+
+            const fromToken = App.Swap.tokens[fromTokenSymbol];
+            const toToken = App.Swap.tokens[toTokenSymbol];
+
+            if (parseFloat(fromToken.balance) < fromAmount) {
+                showToast(`Insufficient ${fromTokenSymbol} balance.`, 'error');
+                return;
+            }
+
+            const swapBtn = document.getElementById('execute-swap-btn');
+            swapBtn.disabled = true;
+            swapBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing Swap...';
+
+            App._showSectionLoading('swap'); // Show loading overlay for the action
+
+            try {
+                // REAL INTEGRATION:
+                // 1. Approve token spending (if fromToken is ERC20)
+                // if (fromTokenSymbol !== "AETH") {
+                //     const tokenContract = new web3Instance.eth.Contract(ERC20_ABI, token.address);
+                //     const amountWei = web3Instance.utils.toWei(fromAmount.toString(), fromToken.decimals === 18 ? 'ether' : ...);
+                //     const allowance = await tokenContract.methods.allowance(userAccount, AETHYR_CONFIG.tokenSwapRouterAddress).call();
+                //     if (new web3Instance.utils.BN(allowance).lt(new web3Instance.utils.BN(amountWei))) {
+                //         showToast('Approving token spend...', 'info');
+                //         await tokenContract.methods.approve(AETHYR_CONFIG.tokenSwapRouterAddress, amountWei) // Or max uint256 for simplicity
+                //             .send({ from: userAccount, gas: '100000' });
+                //         showToast('Approval successful. Proceeding with swap.', 'success');
+                //     }
+                // }
+                // 2. Call swap function on router contract
+                // const routerContract = new web3Instance.eth.Contract(SWAP_ROUTER_ABI, AETHYR_CONFIG.tokenSwapRouterAddress);
+                // const path = [fromToken.address, toToken.address]; // Simplified path
+                // const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 minutes from now
+                // const amountInWei = web3Instance.utils.toWei(fromAmount.toString(), ...);
+                // const amountOutMinWei = web3Instance.utils.toWei(minReceived.toString(), ...);
+                // let txPromise;
+                // if (fromTokenSymbol === "AETH") { // Native to ERC20
+                //    txPromise = routerContract.methods.swapExactETHForTokens(amountOutMinWei, path, userAccount, deadline)
+                //        .send({ from: userAccount, value: amountInWei, gas: '300000' });
+                // } else if (toTokenSymbol === "AETH") { // ERC20 to Native
+                //    txPromise = routerContract.methods.swapExactTokensForETH(amountInWei, amountOutMinWei, path, userAccount, deadline)
+                //        .send({ from: userAccount, gas: '300000' });
+                // } else { // ERC20 to ERC20
+                //    txPromise = routerContract.methods.swapExactTokensForTokens(amountInWei, amountOutMinWei, path, userAccount, deadline)
+                //        .send({ from: userAccount, gas: '300000' });
+                // }
+                // txPromise.on('transactionHash', hash => showToast(`Swap transaction sent: ${App._truncateAddress(hash)}`, 'info'))
+                //    .on('receipt', receipt => {
+                //        showToast('Swap successful!', 'success');
+                //        App.fetchUserBalance(); // Refresh native balance
+                //        App.Swap.updateTokenBalances(); // Refresh all token balances
+                //        document.getElementById('from-amount').value = '';
+                //        document.getElementById('to-amount').value = '';
+                //    })
+                //    .on('error', err => { console.error(err); showToast(`Swap failed: ${err.message}`, 'error'); });
+
+                // SIMULATED SWAP:
+                await App._simulateApiCall({}, 2000); // Simulate network delay
+                // Update balances (crude simulation)
+                App.Swap.tokens[fromTokenSymbol].balance = (parseFloat(fromToken.balance) - fromAmount).toFixed(fromToken.decimals === 6 ? 2:4);
+                App.Swap.tokens[toTokenSymbol].balance = (parseFloat(toToken.balance) + toAmount).toFixed(toToken.decimals === 6 ? 2:4);
+                if (fromTokenSymbol === "AETH") userAETHBalance = App.Swap.tokens[fromTokenSymbol].balance;
+                if (toTokenSymbol === "AETH") userAETHBalance = App.Swap.tokens[toTokenSymbol].balance;
+
+                App.Swap.updateTokenBalances(); // Re-fetch simulated balances and update UI
+                document.getElementById('from-amount').value = '';
+                document.getElementById('to-amount').value = '';
+                document.getElementById('min-received').textContent = '0.00'; // Reset min received
+
+                showToast(`Swapped ${fromAmount} ${fromTokenSymbol} for ~${toAmount.toFixed(4)} ${toTokenSymbol}!`, 'success');
+
+            } catch (error) {
+                console.error("Error executing swap:", error);
+                showToast(`Swap execution failed: ${error.message || 'Unknown error'}`, 'error');
+            } finally {
+                swapBtn.disabled = false;
+                swapBtn.innerHTML = userAccount ? 'Swap' : 'Connect Wallet to Swap';
+                App._hideSectionLoading('swap'); // Hide loading
+            }
+        }
+    },
+
+    // --- Developer Hub ---
+    DeveloperHub: {
+        init: () => {
+            document.getElementById('generate-api-key-btn').addEventListener('click', App.DeveloperHub.generateApiKey);
+        },
+        generateApiKey: async () => { // Made async to fit simulation pattern
+            // SIMULATION: In a real system, this would involve authentication and a backend call.
+            const apiKeyDisplay = document.getElementById('api-key-display');
+            const generateBtn = document.getElementById('generate-api-key-btn');
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating...'; // Add spinner
+
+            App._showSectionLoading('developer-hub'); // Show loading
+
+            try {
+                await App._simulateApiCall({}, 800); // Simulate network delay
+                const newKey = `aethyr_sk_live_${[...Array(32)].map(() => Math.random().toString(36)[2]).join('')}`;
+                apiKeyDisplay.value = newKey;
+                showToast('API Key generated. Store it securely!', 'success');
+            } catch (error) {
+                 console.error("Error generating API key:", error);
+                 showToast('Failed to generate API key.', 'error');
+                 apiKeyDisplay.value = 'Error generating key.';
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = 'Generate API Key <i class="fas fa-arrow-right text-xs ml-1"></i>'; // Restore button text
+                App._hideSectionLoading('developer-hub'); // Hide loading
+            }
+        }
+    },
+
+    // --- AI Insights (AethyrPredict) ---
+    AIInsights: {
+        init: () => {
+            App.AIInsights.renderMarketSentimentChart();
+            document.getElementById('fetch-prediction-btn').addEventListener('click', App.AIInsights.fetchPrediction);
+        },
+
+        renderMarketSentimentChart: () => {
+            const ctx = document.getElementById('market-sentiment-chart')?.getContext('2d');
+            if (!ctx) return;
+
+            // SIMULATED DATA:
+            const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+            const sentimentData = labels.map(() => Math.random() * 80 + 10); // Score 10-90
+
+            // Get colors based on current theme
+            const isDarkMode = document.documentElement.classList.contains('dark');
+            const textColor = isDarkMode ? theme('colors.dark.text') : theme('colors.light.text');
+            const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+
+            if (currentMarketSentimentChart) {
+                currentMarketSentimentChart.destroy();
+            }
+
+            currentMarketSentimentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'AETH Market Sentiment Score (0-100)',
+                        data: sentimentData,
+                        borderColor: theme('colors.primary'), // primary gold color
+                        backgroundColor: isDarkMode ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: gridColor },
+                            ticks: { color: textColor }
+                        },
+                        x: {
+                            grid: { display: false }, // No vertical grid lines for cleaner look
+                            ticks: { color: textColor }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: textColor }
+                        }
+                    }
+                }
+            });
+        },
+
+        fetchPrediction: async () => {
+            const asset = document.getElementById('prediction-asset').value;
+            const outputDiv = document.getElementById('prediction-output');
+            const fetchBtn = document.getElementById('fetch-prediction-btn');
+
+            fetchBtn.disabled = true;
+            fetchBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Fetching...';
+            outputDiv.innerHTML = `<p class="text-sm text-gray-500 dark:text-gray-400">Fetching prediction for ${asset}...</p>`;
+
+             App._showSectionLoading('ai-insights'); // Show loading
+
+            try {
+                // REAL INTEGRATION:
+                // const response = await fetch(`${AETHYR_CONFIG.aiPredictApiBase}/predict?asset=${asset}`);
+                // const predictionData = await response.json();
+                // outputDiv.innerHTML = `
+                //     <h4 class="font-semibold text-md mb-1">${predictionData.asset} Price Prediction (Next 7 Days)</h4>
+                //     <p class="text-lg text-green-500">${predictionData.prediction_price_target}</p>
+                //     <p class="text-xs">Confidence: ${predictionData.confidence_score}%</p>
+                //     <p class="text-xs mt-1">Analysis: ${predictionData.summary}</p>
+                // `;
+
+                // SIMULATED PREDICTION:
+                await App._simulateApiCall({}, 1500);
+                const priceTargets = { AETH: 3500, BTC: 75000, ETH: 4500 };
+                const currentPrice = priceTargets[asset] * (1 - (Math.random()*0.1 - 0.05)); // current price around target
+                const predictionTarget = priceTargets[asset] * (1 + (Math.random()*0.2 - 0.1)); // +/- 10%
+                const confidence = (Math.random() * 40 + 60).toFixed(1); // 60-100%
+                const trend = predictionTarget > currentPrice ? "bullish" : "bearish";
+                outputDiv.innerHTML = `
+                    <h4 class="font-semibold text-md mb-1 text-gray-800 dark:text-gray-200">${asset} Price Prediction (Next 7 Days)</h4>
+                    <p class="text-lg ${trend === 'bullish' ? 'text-green-500' : 'text-red-500'}">${predictionTarget.toLocaleString(undefined, {style:'currency', currency: 'USD'})}</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">Confidence: ${confidence}% | Trend: <span class="capitalize font-medium">${trend}</span></p>
+                    <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">Analysis: Based on current market volatility and projected network activity, OverMind vΓ.2-ΔΣ suggests a ${trend} short-term outlook. Key resistance/support levels identified.</p>
+                `;
+                showToast(`AI Prediction for ${asset} fetched.`, 'info');
+            } catch (error) {
+                console.error("Error fetching AI prediction:", error);
+                outputDiv.innerHTML = `<p class="text-sm text-red-500">Failed to fetch prediction for ${asset}.</p>`;
+                showToast('Failed to fetch AI prediction.', 'error');
+            } finally {
+                fetchBtn.disabled = false;
+                fetchBtn.innerHTML = 'Fetch Prediction';
+                App._hideSectionLoading('ai-insights'); // Hide loading
+            }
+        }
+    },
+
+    // --- Contact Form ---
+    Contact: {
+        init: () => {
+            document.getElementById('contact-form').addEventListener('submit', App.Contact.handleSubmit);
+        },
+        handleSubmit: async (event) => {
+            event.preventDefault();
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+
+             App._showSectionLoading('contact'); // Show loading
+
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+
+            // --- REAL INTEGRATION: Send data to a backend endpoint ---
+            // Direct client-side email sending is not secure or reliable.
+            // You need a server-side script or a service (like Formspree, EmailJS, etc.)
+            // to process this form submission and send the email.
+            // The code below is a placeholder demonstrating how you might send
+            // the data to a backend endpoint. Replace '/api/send-email' with
+            // your actual backend endpoint URL.
+
+            /*
+            try {
+                const response = await fetch('/api/send-email', { // Replace with your backend endpoint
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        message: message,
+                        recipient: AETHYR_CONFIG.contactEmailRecipient // Use the configured recipient
+                    }),
+                });
+
+                if (response.ok) {
+                    showToast('Message sent successfully! We will get back to you soon.', 'success');
+                    form.reset();
+                } else {
+                    const errorData = await response.json();
+                    showToast(`Failed to send message: ${errorData.message || 'Server error'}`, 'error');
+                }
+            } catch (error) {
+                console.error("Contact form submission error:", error);
+                showToast('Failed to send message. Please check your connection and try again.', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                 App._hideSectionLoading('contact'); // Hide loading
+            }
+            */
+
+            // --- SIMULATED SUBMISSION (Remove this section when integrating real backend) ---
+            console.log(`Simulating sending email to ${AETHYR_CONFIG.contactEmailRecipient}:`);
+            console.log(`Name: ${name}`);
+            console.log(`Email: ${email}`);
+            console.log(`Message: ${message}`);
+
+            try {
+                await App._simulateApiCall({}, 1500); // Simulate network delay
+                showToast('Message sent successfully! (Simulated)', 'success');
+                form.reset();
+            } catch (error) {
+                 showToast('Failed to send message. (Simulated Error)', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                App._hideSectionLoading('contact'); // Hide loading
+            }
+            // --- END SIMULATED SUBMISSION ---
+        }
+    },
+
+     // --- Integrated Chat Module ---
+    Chat: {
+        isProcessing: false, // State to track if AI is processing
+        chatHistory: [{ role: "system", content: "You are AETHYR-GLOBAL, an advanced AI support system. Provide concise and helpful answers." }], // Initial system message
+
+        init: () => {
+            const chatIcon = document.getElementById('chatIcon');
+            const chatBubble = document.getElementById('chatBubble');
+            const closeChatButton = document.getElementById('closeChatButton');
+            const queryInput = document.getElementById('queryInput');
+            const sendButton = document.getElementById('sendButton');
+
+            chatIcon.addEventListener('click', App.Chat.openChat);
+            closeChatButton.addEventListener('click', App.Chat.closeChat);
+            sendButton.addEventListener('click', App.Chat.runAETHYR);
+            queryInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevent default form submission if it were a form
+                    App.Chat.runAETHYR();
+                }
+            });
+
+            // Initial console message
+            App.Chat.addStatusMessageToDisplay("AETHYR Online. Ready.");
+        },
+
+        // Function to open the chat bubble
+        openChat: () => {
+            const chatBubble = document.getElementById('chatBubble');
+            const chatIcon = document.getElementById('chatIcon');
+            const queryInput = document.getElementById('queryInput');
+
+            chatBubble.style.display = 'flex';
+            chatIcon.style.display = 'none';
+            App.Chat.renderChatHistory(); // Render history when opening
+            queryInput.focus(); // Focus input when opened
+        },
+
+        // Function to close the chat bubble
+        closeChat: () => {
+            const chatBubble = document.getElementById('chatBubble');
+            const chatIcon = document.getElementById('chatIcon');
+            chatBubble.style.display = 'none';
+            chatIcon.style.display = 'flex';
+        },
+
+        // Render chat history in the console
+        renderChatHistory: () => {
+            const consoleOutput = document.getElementById('console');
+            consoleOutput.innerHTML = ''; // Clear current content
+            App.Chat.chatHistory.forEach(msg => {
+                if (msg.role === 'user') {
+                    App.Chat.addMessageToDisplay(msg.content, 'user');
+                } else if (msg.role === 'assistant') {
+                     App.Chat.addMessageToDisplay(msg.content, 'bot');
+                } else if (msg.role === 'status') {
+                     App.Chat.addStatusMessageToDisplay(msg.content, msg.type);
+                }
+            });
+            App.Chat.scrollToBottom();
+        },
+
+
+        // Helper to add a user or bot message to the console
+        addMessageToDisplay: (text, sender) => {
+            const consoleOutput = document.getElementById('console');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('console-message', sender);
+            messageDiv.textContent = text; // Use textContent to prevent XSS
+            consoleOutput.appendChild(messageDiv);
+            App.Chat.scrollToBottom();
+        },
+
+        // Helper to add a status or error message to the console
+        addStatusMessageToDisplay: (text, type = 'status') => {
+            const consoleOutput = document.getElementById('console');
+            const statusSpan = document.createElement('span');
+            statusSpan.classList.add(`console-${type}`);
+            statusSpan.textContent = text;
+            consoleOutput.appendChild(statusSpan);
+            App.Chat.scrollToBottom();
+        },
+
+        // Helper to add a loading indicator
+        addLoadingIndicator: () => {
+            const consoleOutput = document.getElementById('console');
+            const loadingSpan = document.createElement('span');
+            loadingSpan.classList.add('console-message', 'bot', 'loading-dots'); // Use bot style for loading
+            loadingSpan.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+            loadingSpan.id = 'loading-indicator'; // Give it an ID to easily remove
+            consoleOutput.appendChild(loadingSpan);
+            App.Chat.scrollToBottom();
+        },
+
+        // Helper to remove the loading indicator
+        removeLoadingIndicator: () => {
+            const loadingSpan = document.getElementById('loading-indicator');
+            if (loadingSpan) {
+                loadingSpan.remove();
+            }
+        },
+
+        // Helper to scroll the console to the bottom
+        scrollToBottom: () => {
+            const consoleOutput = document.getElementById('console');
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        },
+
+        // Helper function for fetching with retries
+        fetchWithRetry: async (url, options = {}, retries = 2, delay = 300) => { // Reduced default delay and retries
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response; // Success
+                    }
+                    if (response.status === 404) {
+                        throw new Error(`Resource not found (404)`); // Don't retry 404
+                    }
+                     if (response.status === 401 || response.status === 403) {
+                        throw new Error(`Authentication or Authorization error (Status: ${response.status})`); // Don't retry auth errors
+                     }
+                    // Retry on other non-OK statuses
+                    console.warn(`Fetch failed for ${url}, status: ${response.status}. Retrying ${i + 1}/${retries}...`);
+                    await new Promise(resolve => setTimeout(resolve, delay * (i + 1))); // Exponential backoff
+                } catch (error) {
+                    if (i === retries - 1) {
+                        throw error; // Throw error after last retry
+                    }
+                    console.warn(`Fetch failed for ${url}, error: ${error}. Retrying ${i + 1}/${retries}...`);
+                    await new Promise(resolve => setTimeout(resolve, delay * (i + 1))); // Exponential backoff
+                }
+            }
+            throw new Error(`Fetch failed for ${url} after ${retries} retries.`);
+        },
+
+        // Adapted callAethyrAI function from H&wi8.js to accept key and prompt
+        callAethyrAI: async (apiKey, prompt) => {
+            const url = `https://web.archive.org/web/20250520014947/https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            // Adjusted system prompt to encourage more comprehensive answers
+            const systemPrompt = `You are AETHYR-GLOBAL, an advanced AI support system. Provide a detailed and comprehensive answer based on the following query and any provided context. Query: ${prompt}`;
+            try {
+                const response = await App.Chat.fetchWithRetry(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemPrompt }] }],
+                        generationConfig: { temperature: 0.7, topP: 0.9, topK: 30, maxOutputTokens: 8192 } // Increased maxOutputTokens to maximum
+                    })
+                }, 1, 300); // Reduced retries and delay for speed
+                const data = await response.json();
+                if (!data.candidates || data.candidates.length === 0 || !data.candidates[0].content || !data.candidates[0].content.parts || data.candidates[0].content.parts.length === 0) {
+                     if (data.error) {
+                         throw new Error(`API Error: ${data.error.message}`);
+                     }
+                    console.error("Unexpected API response:", data);
+                    return `Error: Invalid or unexpected response format from Gemini API.`;
+                }
+                return data.candidates[0].content.parts[0].text;
+            } catch (err) {
+                console.error("Gemini API Error:", err.message);
+                return `Error: Could not get response from Gemini API (${err.message}).`;
+            }
+        },
+
+        // Function to run the AETHYR query process
+        runAETHYR: async () => {
+            if (App.Chat.isProcessing) return; // Prevent multiple calls
+
+            const queryInput = document.getElementById('queryInput');
+            const sendButton = document.getElementById('sendButton');
+            const query = queryInput.value.trim(); // Trim whitespace
+            if (!query) return;
+
+            App.Chat.isProcessing = true;
+            sendButton.disabled = true; // Disable send button
+            queryInput.disabled = true; // Disable input
+
+            App.Chat.addMessageToDisplay(query, 'user'); // Display user query
+            App.Chat.chatHistory.push({ role: 'user', content: query }); // Add to history
+            queryInput.value = ""; // Clear input immediately
+
+            // --- Invented Way to Answer "hello" (Alien-like) ---
+            const greetingKeywords = ['hello', 'hi', 'hey', 'greetings'];
+            const lowerQuery = query.toLowerCase();
+
+            if (greetingKeywords.some(keyword => lowerQuery === keyword || lowerQuery.startsWith(keyword + ' ') || lowerQuery.endsWith(' ' + keyword) || lowerQuery.includes(' ' + keyword + ' '))) {
+                const greetingResponse = "Affirmative. AETHYR protocols active.";
+                App.Chat.addMessageToDisplay(greetingResponse, 'bot');
+                App.Chat.addStatusMessageToDisplay("AETHYR Processing Complete"); // Removed symbol
+                App.Chat.chatHistory.push({ role: 'assistant', content: greetingResponse }); // Add to history
+
+                App.Chat.isProcessing = false;
+                sendButton.disabled = false;
+                queryInput.disabled = false;
+                queryInput.focus();
+                return; // Stop processing for greetings
+            }
+            // --- End Invented Way to Answer "hello" ---
+
+
+            App.Chat.addStatusMessageToDisplay("AETHYR Initiating Parallel Data Retrieval Sequence..."); // Removed symbol
+            App.Chat.addLoadingIndicator(); // Show loading indicator
+
+            // --- Parallel Fetching of Initial Data (Web Search Remains) ---
+            const webSearchPromise = (async () => {
+                 App.Chat.addStatusMessageToDisplay("   > Initiating Web Search fetch...");
+                 // Construct the DuckDuckGo search URL
+                const searchUrl = `https://web.archive.org/web/20250520014947/https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
+                // Use AllOrigins proxy to bypass CORS restrictions
+                const proxyUrl = "https://web.archive.org/web/20250520014947/https://api.allorigins.win/raw?url=" + encodeURIComponent(searchUrl);
+                let webText = "";
+                let sourceLinks = [];
+                try {
+                    const res = await App.Chat.fetchWithRetry(proxyUrl, {}, 1, 400); // Reduced delay and retries
+                    const html = await res.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+
+                    // Extract top 3 external links
+                    sourceLinks = [...doc.querySelectorAll('a')]
+                        .map(a => a.href)
+                        .filter(href => href.startsWith("http") && !href.includes("duckduckgo.com"))
+                        .slice(0, 3);
+
+                    if (sourceLinks.length > 0) {
+                         App.Chat.addStatusMessageToDisplay(`   > Identified ${sourceLinks.length} potential web data sources.`);
+                         App.Chat.addStatusMessageToDisplay("Source Links:\n" + sourceLinks.join("\n")); // Removed symbol
+                         App.Chat.addStatusMessageToDisplay("   > Retrieving content from web sources...");
+                        for (let i = 0; i < sourceLinks.length; i++) {
+                            const link = sourceLinks[i];
+                            const contentProxy = "https://web.archive.org/web/20250520014947/https://api.allorigins.win/raw?url=" + encodeURIComponent(link);
+                             App.Chat.addStatusMessageToDisplay(`      > Attempting Source ${i + 1} (${link})...`);
+                            try {
+                                const pageRes = await App.Chat.fetchWithRetry(contentProxy, {}, 1, 500); // Reduced delay and retries
+                                const pageHTML = await pageRes.text();
+                                let textContent = pageHTML.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim(); // Basic HTML tag removal and cleanup
+                                webText += textContent + " ";
+                                 App.Chat.addStatusMessageToDisplay(`      > Success Source ${i + 1}.`);
+                            } catch (innerErr) {
+                                 App.Chat.addStatusMessageToDisplay(`      > Failed Source ${i + 1}: ${innerErr.message}`, 'error');
+                            }
+                        }
+                    } else {
+                         App.Chat.addStatusMessageToDisplay("   > No relevant web data sources found.");
+                    }
+                } catch (err) {
+                     App.Chat.addStatusMessageToDisplay(`Web Search fetch failed: ${err.message}`, 'error'); // Removed symbol
+                }
+                return { source: 'web', text: webText, links: sourceLinks };
+            })();
+
+
+            // Wait for initial web search to complete
+            const webSearchResult = await webSearchPromise;
+            const initialWebTextForBouncing = webSearchResult.text;
+            const initialSourceLinks = webSearchResult.links;
+
+            let currentRefinedResponse = initialWebTextForBouncing || query; // Start bouncing with web text or original query if no web text
+
+
+            App.Chat.addStatusMessageToDisplay("\nAETHYR Initiating Gemini Bounce Refinement (3x)..."); // Changed bounce count
+            App.Chat.addLoadingIndicator(); // Show loading indicator during bouncing
+
+            const bounceRounds = 3; // Changed bounce count to 3
+            let currentApiKeyIndex = 0; // 0 for GEMINI_API_KEY_1, 1 for GEMINI_API_KEY_2
+            const geminiApiKeys = [AETHYR_CONFIG.GEMINI_API_KEY_1, AETHYR_CONFIG.GEMINI_API_KEY_2];
+
+
+            for (let i = 0; i < bounceRounds; i++) {
+                App.Chat.addStatusMessageToDisplay(`   > Bounce Round ${i + 1}/${bounceRounds}: Sending to Gemini API ${currentApiKeyIndex + 1}...`);
+                let nextResponse = "";
+                const apiKeyToUse = geminiApiKeys[currentApiKeyIndex];
+
+                // Include initial combined text and web text in the refinement prompt
+                const refinementPrompt = `Refine and improve the following text based on the original query "${query}". Focus on clarity, conciseness, and accuracy. Incorporate relevant details from the provided context if necessary. Text to refine: ${currentRefinedResponse}\n\nContext from initial fetch (including web data): ${initialWebTextForBouncing}`;
+
+
+                try {
+                    nextResponse = await App.Chat.callAethyrAI(apiKeyToUse, refinementPrompt);
+
+                    if (nextResponse && !nextResponse.startsWith('Error:')) {
+                        currentRefinedResponse = nextResponse; // Update if successful and not an error
+                         App.Chat.addStatusMessageToDisplay(`      > Refinement successful by Gemini API ${currentApiKeyIndex + 1}.`);
+                    } else {
+                         App.Chat.addStatusMessageToDisplay(`      > Refinement failed by Gemini API ${currentApiKeyIndex + 1}: ${nextResponse || 'No response'}. Keeping previous response.`, 'error');
+                    }
+                } catch (bounceError) {
+                     App.Chat.addStatusMessageToDisplay(`   > Error during Gemini Bounce Round ${i + 1}: ${bounceError.message}. Halting bouncing.`, 'error'); // Removed symbol
+                     break; // Stop bouncing if an error occurs
+                }
+
+                currentApiKeyIndex = (currentApiKeyIndex + 1) % geminiApiKeys.length; // Cycle between API keys
+            }
+
+            // --- Final Synthesized Response is the result of Gemini Bouncing ---
+            App.Chat.removeLoadingIndicator(); // Remove loading indicator before showing final response
+            App.Chat.addStatusMessageToDisplay("\nAETHYR Final Synthesized Response..."); // Removed symbol
+
+            let synthesizedResponse = currentRefinedResponse; // The final response is the result of Gemini bouncing
+
+            // Remove star symbols from the final response
+            synthesizedResponse = synthesizedResponse.replace(/\*\*/g, '').replace(/\*/g, '');
+
+
+            // Display source links if available
+            if (initialSourceLinks.length > 0) {
+                 synthesizedResponse += "\n\nSource Links:\n" + initialSourceLinks.join("\n");
+            }
+
+            App.Chat.addMessageToDisplay(synthesizedResponse, 'bot'); // Display final response
+            App.Chat.chatHistory.push({ role: 'assistant', content: synthesizedResponse }); // Add to history
+            // Keep history length reasonable
+             if (App.Chat.chatHistory.length > 11) { // System message + last 10 turns
+                 App.Chat.chatHistory.splice(1, App.Chat.chatHistory.length - 11); // Remove older messages
+             }
+
+
+             App.Chat.addStatusMessageToDisplay("AETHYR Processing Complete"); // Removed symbol
+
+             App.Chat.isProcessing = false;
+             sendButton.disabled = false; // Re-enable send button
+             queryInput.disabled = false; // Re-enable input
+             queryInput.focus(); // Focus input field
+        }
+    }
+
+};
+
+// --- Initialize the App when DOM is ready ---
+document.addEventListener('DOMContentLoaded', App.init);
+
+</script>
+
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 01:49:47 May 20, 2025 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:36:33 Mar 05, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.667
+  exclusion.robots: 0.052
+  exclusion.robots.policy: 0.039
+  esindex: 0.01
+  cdx.remote: 9.681
+  LoadShardBlock: 246.487 (3)
+  PetaboxLoader3.datanode: 158.346 (5)
+  PetaboxLoader3.resolve: 410.307 (3)
+  load_resource: 522.72
+  loaddict: 115.824
+  nav: 0.181 (6)
+-->

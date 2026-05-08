@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nexus Dev - Multi-File Project Engine</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        :root { --accent: #00d9ff; --bg: #0d1117; --panel: #161b22; }
+        body { font-family: 'Fira Code', monospace; background: var(--bg); color: #c9d1d9; padding: 20px; }
+        .container { max-width: 1000px; margin: auto; background: var(--panel); border: 1px solid #30363d; border-radius: 12px; padding: 30px; }
+        textarea { width: 100%; height: 120px; background: #0d1117; border: 1px solid #444; color: var(--accent); padding: 15px; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; }
+        .btn-run { width: 100%; background: #238636; color: white; border: none; padding: 18px; border-radius: 8px; font-size: 18px; cursor: pointer; font-weight: bold; }
+        .btn-run:disabled { background: #1a4a25; cursor: not-allowed; }
+        .log-box { background: #000; color: #58a6ff; padding: 15px; border-radius: 8px; font-size: 12px; height: 100px; overflow-y: auto; border: 1px solid #30363d; margin: 20px 0; }
+        #downloadArea { display: none; background: #21262d; padding: 20px; border-radius: 8px; border: 1px solid var(--accent); }
+        .file-list { font-size: 14px; color: #7ee787; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>DEV-NEXUS <span style="color:var(--accent)">PROJECT BUILDER</span></h2>
+    <p style="font-size: 13px; color: #8b949e;">Generates multiple files, bundles them into a ZIP, and prepares them for local deployment.</p>
+    
+    <textarea id="taskInput" placeholder="Describe the database project (e.g., Python Flask app with SQLAlchemy models, a SQLite seed script, and a README...)"></textarea>
+    
+    <button id="runBtn" class="btn-run" onclick="buildProject()">BUILD & BUNDLE PROJECT</button>
+
+    <div class="log-box" id="logArea">> System ready. Waiting for project specs...</div>
+
+    <div id="downloadArea">
+        <h3 style="margin-top:0">Project Bundled!</h3>
+        <div class="file-list" id="filePreview"></div>
+        <button class="btn-run" style="background:#1f6feb" onclick="downloadZip()">DOWNLOAD PROJECT (.ZIP)</button>
+    </div>
+</div>
+
+<script>
+    let zipBlob = null;
+
+    function log(msg) {
+        const l = document.getElementById('logArea');
+        l.innerHTML += `<div>[${new Date().toLocaleTimeString()}] ${msg}</div>`;
+        l.scrollTop = l.scrollHeight;
+    }
+
+    // Heavy-duty string extractor to prevent [object Object] failures
+    function cleanAIResponse(res) {
+        if (!res) return "";
+        const target = res.message?.content || res.content || res;
+        if (Array.isArray(target)) return target.map(t => t.text || t).join("\n");
+        return typeof target === 'object' ? JSON.stringify(target) : String(target);
+    }
+
+    async function buildProject() {
+        const input = document.getElementById('taskInput').value;
+        if(!input) return;
+
+        const btn = document.getElementById('runBtn');
+        btn.disabled = true;
+        btn.innerText = "ENGINEERING...";
+        
+        log("Starting Multi-Model Pipeline...");
+        
+        try {
+            // STEP 1: ARCHITECT (GPT-4o) - Design the file structure
+            log("Phase 1: Designing File Architecture...");
+            const archPrompt = `Task: Create a file structure for: ${input}. List ONLY the filenames and their purpose.`;
+            const archRes = cleanAIResponse(await puter.ai.chat(archPrompt, { model: 'openai/gpt-4o' }));
+            
+            // STEP 2: AUDITOR (o3-mini) - Verify the logic
+            log("Phase 2: Auditing logic and schemas...");
+            const auditPrompt = `Project: ${input}\nStructure: ${archRes}\nTask: Identify any missing dependencies or database conflicts.`;
+            const auditRes = cleanAIResponse(await puter.ai.chat(auditPrompt, { model: 'openai/o3-mini' }));
+
+            // STEP 3: CODER (GPT-4o) - Generate actual file contents
+            log("Phase 3: Generating Source Code (Multi-file)...");
+            const codePrompt = `Project: ${input}\nAudit: ${auditRes}\nTask: Provide the full code for every file. 
+            CRITICAL: Use this format for EVERY file:
+            ---FILE: filename.ext---
+            [CODE HERE]
+            ---END---`;
+            
+            const finalContent = cleanAIResponse(await puter.ai.chat(codePrompt, { model: 'openai/gpt-4o' }));
+            
+            // STEP 4: BUNDLING
+            processFiles(finalContent);
+
+        } catch (err) {
+            log("CRITICAL ERROR: " + err.message);
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "BUILD & BUNDLE PROJECT";
+        }
+    }
+
+    function processFiles(textContent) {
+        log("Bundling files into ZIP...");
+        const zip = new JSZip();
+        const preview = document.getElementById('filePreview');
+        preview.innerHTML = "<strong>Files included:</strong><br>";
+        
+        // Regex to find content between ---FILE: name--- and ---END---
+        const fileRegex = /---FILE:\s*(.*?)\s*---([\s\S]*?)---END---/g;
+        let match;
+        let fileCount = 0;
+
+        while ((match = fileRegex.exec(textContent)) !== null) {
+            const fileName = match[1].trim();
+            const fileData = match[2].trim();
+            zip.file(fileName, fileData);
+            preview.innerHTML += `• ${fileName}<br>`;
+            fileCount++;
+        }
+
+        if (fileCount === 0) {
+            log("Warning: No file markers found. Creating a single fallback file.");
+            zip.file("project_output.txt", textContent);
+            preview.innerHTML += "• project_output.txt (Fallback)";
+        }
+
+        zip.generateAsync({ type: "blob" }).then(content => {
+            zipBlob = content;
+            document.getElementById('downloadArea').style.display = 'block';
+            log("Project bundled successfully.");
+        });
+    }
+
+    function downloadZip() {
+        if (!zipBlob) return;
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(zipBlob);
+        a.download = "ai_project_bundle.zip";
+        a.click();
+    }
+</script>
+</body>
+</html>

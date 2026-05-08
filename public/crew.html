@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHYR GLOBAL • Solar System Wealth Extraction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-dim: rgba(212,175,55,0.15);
+      --card: rgba(255,255,255,0.025);
+      --border: rgba(255,255,255,0.07);
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    .bebas { font-family: 'Bebas Neue', sans-serif; }
+    .raj   { font-family: 'Rajdhani', sans-serif; }
+    .hero-bg { background: radial-gradient(ellipse at 50% 40%, #111 0%, #000 70%); }
+    .gold-glow { text-shadow: 0 0 40px rgba(212,175,55,0.6); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 36px 38px; transition: border-color 0.3s; }
+    .card:hover { border-color: rgba(212,175,55,0.2); }
+    .card-gold { background: linear-gradient(135deg, rgba(212,175,55,0.07), rgba(212,175,55,0.02)); border: 1px solid rgba(212,175,55,0.25); border-radius: 20px; padding: 36px 38px; }
+    .pr-bg { background: linear-gradient(180deg, #07070a 0%, #0d0d12 30%, #08080b 100%); border-top: 1px solid rgba(212,175,55,0.22); }
+    .pr-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+    .pr-badge { display: inline-flex; align-items: center; gap: 9px; background: rgba(212,175,55,0.07); border: 1px solid rgba(212,175,55,0.38); border-radius: 100px; padding: 7px 22px; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+    .bar-bg { background: rgba(255,255,255,0.07); border-radius: 100px; height: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, #7a5c0e, #d4af37, #f5d060); width: 0%; transition: width 1.8s cubic-bezier(0.16,1,0.3,1); }
+    .trl-pip { width: 34px; height: 34px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 800; color: rgba(255,255,255,0.25); font-family: 'Rajdhani', sans-serif; }
+    .trl-pip.on   { background: linear-gradient(135deg, #8b6914, #d4af37); border-color: var(--gold); color: #000; box-shadow: 0 0 16px rgba(212,175,55,0.5); }
+    .trl-pip.soft { background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.35); color: var(--gold); }
+    .pull-quote { border-left: 3px solid var(--gold); padding: 16px 26px; background: rgba(212,175,55,0.04); border-radius: 0 12px 12px 0; font-size: 1.08rem; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.7; margin: 24px 0; }
+    .ci { display:flex; gap:12px; padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:0.93rem; color:rgba(255,255,255,0.75); line-height:1.6; }
+    .ci:last-child { border-bottom:none; }
+    .chk { color:var(--gold); flex-shrink:0; margin-top:2px; }
+    .cir { color:rgba(255,255,255,0.28); flex-shrink:0; margin-top:2px; }
+    .scenario { border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px 28px; margin-bottom: 14px; transition: border-color 0.25s; }
+    .scenario:hover { border-color: rgba(212,175,55,0.2); }
+    .stag { display:inline-block; font-size:0.67rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; padding:3px 12px; border-radius:6px; margin-bottom:10px; }
+    .stag-c { background:rgba(80,180,100,0.1); color:#6dc47a; border:1px solid rgba(80,180,100,0.25); }
+    .stag-b { background:rgba(212,175,55,0.1); color:var(--gold); border:1px solid rgba(212,175,55,0.28); }
+    .stag-a { background:rgba(200,70,70,0.1); color:#e07878; border:1px solid rgba(200,70,70,0.25); }
+    .stat { background:rgba(255,255,255,0.04); border-radius:12px; padding:16px 18px; text-align:center; }
+    .div-line { display:flex; align-items:center; gap:14px; margin:28px 0; }
+    .div-line::before,.div-line::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.06); }
+    .pill { display:inline-block; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:100px; padding:5px 16px; font-size:0.8rem; color:rgba(255,255,255,0.6); margin:3px; }
+    .meth-row { display:flex; gap:16px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:0.9rem; color:rgba(255,255,255,0.65); line-height:1.6; }
+    .meth-row:last-child { border-bottom:none; }
+    .num-dot { width:28px; height:28px; border-radius:50%; background:rgba(212,175,55,0.12); border:1px solid rgba(212,175,55,0.3); color:var(--gold); font-size:0.68rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Rajdhani',sans-serif; }
+    .grok-bar { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:24px 30px; display:flex; align-items:flex-start; gap:18px; }
+    .key-msg { background:linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.04)); border:1px solid rgba(212,175,55,0.3); border-radius:16px; padding:28px 32px; }
+    .cmp-row { display:grid; grid-template-columns: 1.8fr 1fr 1fr; }
+    .cmp-cell { padding:13px 16px; font-size:0.87rem; background:rgba(255,255,255,0.022); border-bottom:1px solid rgba(255,255,255,0.04); border-right:1px solid rgba(255,255,255,0.04); }
+    .cmp-cell:last-child { border-right:none; }
+    .cmp-head { background:rgba(212,175,55,0.1) !important; font-weight:700; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); }
+    .mission-header { background: linear-gradient(90deg, #d4af37, #f5d060); color: #000; padding: 4px 14px; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero-bg min-h-screen flex items-center justify-center pt-32 pb-24">
+    <div class="max-w-screen-2xl mx-auto px-8 text-center space-y-12">
+      
+      <h1 class="bebas gold-glow" style="font-size:clamp(4rem,12vw,11rem);letter-spacing:0.09em;line-height:1">
+        SOLAR SYSTEM<br>WEALTH EXTRACTION
+      </h1>
+      <p class="text-2xl md:text-4xl text-gray-300 max-w-4xl mx-auto font-light">
+        Maximum Resource Retrieval &nbsp;•&nbsp; AYR Token Economy &nbsp;•&nbsp; AI-Simulated Pre-Mission Protocol
+      </p>
+      <div class="inline-flex items-center gap-3 bg-white/5 border border-[#d4af37]/30 rounded-3xl px-8 py-4 text-sm tracking-widest font-medium">
+        <div class="w-3 h-3 bg-[#d4af37] rounded-full animate-pulse"></div>
+        VERSION 1.0 • MARCH 2026 • CHIEF ARCHITECT: MILOŠ M. ILIĆ (@antibattery)
+      </div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="py-24 border-t border-white/10">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <div class="pr-badge mb-8"><i class="fas fa-rocket mr-1"></i> MARVENIK MISSION PROGRAM • CONFIDENTIAL</div>
+        <h2 class="bebas" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">EXECUTIVE SUMMARY</h2>
+      </div>
+      <div class="card max-w-5xl mx-auto">
+        <p class="text-lg text-gray-300 leading-relaxed mb-8">
+          Aethyr Global operates proprietary orbital infrastructure that generates unlimited power and antimatter propellant at zero marginal cost. This infrastructure enables rapid, repeatable extraction of the solar system's richest resource surfaces — returning physical commodity value to Earth and converting it into the AYR BTC Token economic loop. Forty percent of all extraction revenue is returned directly to AYR stakers as yield denominated in Bitcoin. The remaining sixty percent funds relentless fleet expansion, making the system permanently self-capitalising.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="stat"><div class="text-4xl font-black text-[#d4af37]">$2.4 T</div><div class="text-xs uppercase tracking-widest text-gray-400">Year-3 Annual Target Revenue</div></div>
+          <div class="stat"><div class="text-4xl font-black text-[#d4af37]">40 %</div><div class="text-xs uppercase tracking-widest text-gray-400">AYR Holder Yield Share</div></div>
+          <div class="stat"><div class="text-4xl font-black text-[#d4af37]">100%</div><div class="text-xs uppercase tracking-widest text-gray-400">Missions Unmanned by Default</div></div>
+          <div class="stat"><div class="text-4xl font-black text-[#d4af37]">100 %</div><div class="text-xs uppercase tracking-widest text-gray-400">Revenue On-Chain / Auditable</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL AGENDA -->
+  <section class="py-24 border-t border-white/10" style="background: linear-gradient(180deg, #050508 0%, #08080d 100%);">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <div class="pr-badge mb-8"><i class="fas fa-globe mr-1"></i> STRATEGIC DOCTRINE • MARVENIK GLOBAL AGENDA</div>
+        <h2 class="bebas" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">THE AGENDA</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mt-4">Redirecting the world's most powerful military forces from resource conflict toward collective solar system retrieval — permanently ending the age of oil wars.</p>
+      </div>
+
+      <!-- Core Doctrine Statement -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="key-msg text-center">
+          <p class="text-2xl md:text-3xl font-light text-white leading-relaxed">
+            Every war fought over oil is a war fought over <em>scarcity</em>.<br>
+            <span class="text-[#d4af37] font-semibold">Marvenik eliminates scarcity at the source.</span>
+          </p>
+          <p class="text-gray-400 mt-6 text-lg max-w-3xl mx-auto">The solar system contains more metal, fuel, and raw material than humanity could consume in ten thousand years. The strategic case for war over Earth's finite reserves dissolves the moment those reserves become irrelevant.</p>
+        </div>
+      </div>
+
+      <!-- Two-Column: Oil Wars vs Marvenik -->
+      <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto mb-16">
+        <div class="card" style="border-color: rgba(200,70,70,0.2);">
+          <div class="stag stag-a mb-6">OLD PARADIGM — OIL WARS</div>
+          <div class="space-y-0">
+            <div class="ci"><span class="cir"><i class="fas fa-times"></i></span><span>Trillion-dollar military budgets deployed to secure finite hydrocarbon reserves</span></div>
+            <div class="ci"><span class="cir"><i class="fas fa-times"></i></span><span>Geopolitical rivalries structured entirely around territorial energy control</span></div>
+            <div class="ci"><span class="cir"><i class="fas fa-times"></i></span><span>Elite combat units and strategic assets wasted on resource policing</span></div>
+            <div class="ci"><span class="cir"><i class="fas fa-times"></i></span><span>Civilian casualties, infrastructure destruction, and generational instability</span></div>
+            <div class="ci"><span class="cir"><i class="fas fa-times"></i></span><span>Zero-sum competition — one nation's gain is another's loss</span></div>
+          </div>
+        </div>
+        <div class="card" style="border-color: rgba(212,175,55,0.3);">
+          <div class="stag stag-b mb-6">NEW PARADIGM — MARVENIK DOCTRINE</div>
+          <div class="space-y-0">
+            <div class="ci"><span class="chk"><i class="fas fa-check"></i></span><span>World-class military logistics, engineering, and rapid-deployment capability repurposed for Marvenik mission support</span></div>
+            <div class="ci"><span class="chk"><i class="fas fa-check"></i></span><span>Inter-nation resource sharing replaces zero-sum territorial conflict</span></div>
+            <div class="ci"><span class="chk"><i class="fas fa-check"></i></span><span>Special operations, aerospace units, and naval assets transition to orbital security and mission escort roles</span></div>
+            <div class="ci"><span class="chk"><i class="fas fa-check"></i></span><span>AYR token revenue distributed to participating nations — war becomes economically irrational</span></div>
+            <div class="ci"><span class="chk"><i class="fas fa-check"></i></span><span>Positive-sum model — the more nations participate, the greater the collective return</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Military Integration Framework -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <h3 class="bebas text-center mb-10" style="font-size:clamp(2rem,5vw,4rem);letter-spacing:0.07em">MILITARY INTEGRATION FRAMEWORK</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="card text-center">
+            <div class="text-5xl text-[#d4af37] mb-4"><i class="fas fa-fighter-jet"></i></div>
+            <h4 class="raj font-bold text-lg mb-3 uppercase tracking-wider">Aerospace Forces</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Advanced air and space branches from the US, China, Russia, EU, and allied nations provide orbital insertion capability, mission escort, and launch infrastructure integration for Marvenik fleet deployment.</p>
+          </div>
+          <div class="card text-center">
+            <div class="text-5xl text-[#d4af37] mb-4"><i class="fas fa-anchor"></i></div>
+            <h4 class="raj font-bold text-lg mb-3 uppercase tracking-wider">Naval & Logistics Corps</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Naval engineering, global supply chain operations, and rapid-deployment logistics corps are retasked to support deep-space resupply chains, refuelling depots, and Earth-return cargo handling for Marvenik payloads.</p>
+          </div>
+          <div class="card text-center">
+            <div class="text-5xl text-[#d4af37] mb-4"><i class="fas fa-shield-alt"></i></div>
+            <h4 class="raj font-bold text-lg mb-3 uppercase tracking-wider">Strategic Command</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Existing nuclear and strategic command infrastructure repurposed as Marvenik mission coordination hubs — converting the world's most sophisticated command-and-control networks into deep-space operational centres.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Participating Nations Concept -->
+      <div class="max-w-5xl mx-auto">
+        <div class="card-gold">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span class="pr-label">COLLECTIVE RETRIEVAL DOCTRINE</span>
+              <h3 class="bebas mb-4" style="font-size:clamp(2rem,4vw,3.2rem);letter-spacing:0.06em">THE NATIONS THAT MINE TOGETHER, PROSPER TOGETHER</h3>
+              <p class="text-gray-300 leading-relaxed mb-4">Marvenik's agenda is not unilateral. It is an invitation — extended to any nation capable of contributing military-grade logistics, engineering talent, or launch infrastructure — to join a collective that generates more wealth than any oil field could ever produce.</p>
+              <p class="text-gray-400 leading-relaxed text-sm">Participating military powers receive allocated AYR token reserves proportional to their mission contribution, guaranteed yield on extraction revenue, and a permanent seat in the Marvenik Mission Council — the first genuinely post-oil geopolitical alliance.</p>
+            </div>
+            <div class="space-y-5">
+              <div class="meth-row"><div class="num-dot">01</div><span><strong class="text-white">Primary Partners</strong> — US Space Force, PLA Strategic Support Force, Roscosmos military division, ESA member state aerospace commands</span></div>
+              <div class="meth-row"><div class="num-dot">02</div><span><strong class="text-white">Contribution Model</strong> — Nations contribute hardware, personnel, or launch slots; receive proportional AYR yield stakes and mission naming rights</span></div>
+              <div class="meth-row"><div class="num-dot">03</div><span><strong class="text-white">War Obsolescence Protocol</strong> — As Marvenik revenue scales, participating nations formally decommission oil-related force postures and redirect defence budgets to fleet co-investment</span></div>
+              <div class="meth-row"><div class="num-dot">04</div><span><strong class="text-white">Enforcement Mechanism</strong> — Resource abundance removes the economic incentive for conflict; AYR token distribution creates a financial bond that makes war between partners mutually destructive</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVENUE ENGINES -->
+  <section class="py-24 bg-zinc-950 border-t border-b border-white/10">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="bebas text-center mb-16" style="font-size:clamp(2.8rem,7vw,6rem);letter-spacing:0.07em">WHERE THE MONEY COMES FROM</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="card-gold">
+          <div class="mission-header mb-6"><i class="fas fa-meteor"></i> MARVENIK-01 • ASTEROID &amp; PLANETARY MINING</div>
+          <p class="text-gray-300">Physical extraction of platinum-group metals, gold, iron-nickel, helium-3, and rare-earth elements from the richest surfaces in the solar system. Raw material is refined in High Earth Orbit and delivered to market in controlled tranches.</p>
+          <div class="text-right mt-8"><span class="text-5xl font-black text-[#d4af37]">$1.8 T / yr</span></div>
+        </div>
+        <div class="card-gold">
+          <div class="mission-header mb-6"><i class="fas fa-atom"></i> MARVENIK-02 • ANTIMATTER SALES</div>
+          <p class="text-gray-300">OSAC orbital nodes produce 1,000 µg of antimatter per unit per year as a byproduct of operations. Sold to aerospace agencies, defence contractors, and research institutions at $3.2 M per microgram.</p>
+          <div class="text-right mt-8"><span class="text-5xl font-black text-[#d4af37]">$3.2 B / unit / yr</span></div>
+        </div>
+        <div class="card-gold">
+          <div class="mission-header mb-6"><i class="fas fa-microchip"></i> MARVENIK-03 • ORBITAL COMPUTE LEASING</div>
+          <p class="text-gray-300">Relativistic waste-electron streams power a Zettascale Monte Carlo supercomputer at zero additional energy cost. Leased to AI labs, pharma, financial institutions, and government agencies. Overflow cycles mine Bitcoin via gamma-clock SHA-256.</p>
+          <div class="text-right mt-8"><span class="text-5xl font-black text-[#d4af37]">$2.1 B / unit / yr</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARGET MATRIX -->
+  <section class="py-24">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="text-center mb-12">
+        <h2 class="bebas" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">SOLAR SYSTEM TARGET PRIORITY MATRIX</h2>
+        <p class="text-xl text-gray-400">All targets ranked by Net Extraction Value per Mission (NEVM).</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-[#d4af37] text-black text-sm">
+              <th class="px-6 py-4 font-bold">MARVENIK MISSION</th>
+              <th class="px-6 py-4 font-bold">BODY</th>
+              <th class="px-6 py-4 font-bold">LOCATION</th>
+              <th class="px-6 py-4 font-bold">PRIMARY RESOURCES</th>
+              <th class="px-6 py-4 font-bold text-right">TOTAL DEPOSIT</th>
+              <th class="px-6 py-4 font-bold text-right">REV/MISSION</th>
+              <th class="px-6 py-4 font-bold text-right">ROUND-TRIP</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300 divide-y divide-white/10">
+            <!-- TIER 1 -->
+            <tr class="bg-white/5"><td colspan="7" class="px-6 py-3 text-xs font-bold text-[#d4af37] tracking-widest">TIER 1 — IMMEDIATE • MARVENIK MISSIONS BEGIN YEAR 1</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-01</td><td class="px-6 py-4">16 Psyche</td><td class="px-6 py-4">Asteroid Belt</td><td class="px-6 py-4">Iron-Nickel-Gold-Platinum alloy</td><td class="px-6 py-4 text-right">$10,000 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$450 B</td><td class="px-6 py-4 text-right">110 days</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-02</td><td class="px-6 py-4">Amun 3554</td><td class="px-6 py-4">Venus-crossing NEA</td><td class="px-6 py-4">Platinum-group metals, pure surface dust</td><td class="px-6 py-4 text-right">$20 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$210 B</td><td class="px-6 py-4 text-right">28 days</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-03</td><td class="px-6 py-4">1986 DA</td><td class="px-6 py-4">NEA</td><td class="px-6 py-4">Gold, Platinum, Iron, Nickel</td><td class="px-6 py-4 text-right">$4 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$180 B</td><td class="px-6 py-4 text-right">30 days</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-04</td><td class="px-6 py-4">Lunar South Pole</td><td class="px-6 py-4">Earth's Moon</td><td class="px-6 py-4">Helium-3, Water ice, Titanium, REE</td><td class="px-6 py-4 text-right">$150 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$280 B</td><td class="px-6 py-4 text-right">4 days</td></tr>
+            <!-- TIER 2 -->
+            <tr class="bg-white/5"><td colspan="7" class="px-6 py-3 text-xs font-bold text-[#d4af37] tracking-widest">TIER 2 — YEAR 2+ • MARVENIK MISSIONS EXPAND</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-05</td><td class="px-6 py-4">4 Vesta</td><td class="px-6 py-4">Asteroid Belt</td><td class="px-6 py-4">Iron, Nickel, Vanadium, Chromium, olivine</td><td class="px-6 py-4 text-right">$1,000 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$280 B</td><td class="px-6 py-4 text-right">50 days</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-06</td><td class="px-6 py-4">Ceres</td><td class="px-6 py-4">Asteroid Belt</td><td class="px-6 py-4">Water ice, Ammonia clays, organics</td><td class="px-6 py-4 text-right">$300 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$320 B</td><td class="px-6 py-4 text-right">55 days</td></tr>
+            <!-- TIER 3 -->
+            <tr class="bg-white/5"><td colspan="7" class="px-6 py-3 text-xs font-bold text-[#d4af37] tracking-widest">TIER 3 — YEAR 4+ • MARVENIK OUTER SYSTEM MISSIONS</td></tr>
+            <tr><td class="px-6 py-4 font-medium">MARVENIK-07</td><td class="px-6 py-4">Io</td><td class="px-6 py-4">Jovian system</td><td class="px-6 py-4">Sulphur, SO2, silicates, rare volcanic metals</td><td class="px-6 py-4 text-right">$20 T</td><td class="px-6 py-4 text-right font-black text-[#d4af37]">$95 B</td><td class="px-6 py-4 text-right">180 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIVE RICHEST TARGETS -->
+  <section class="pr-bg py-24">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="bebas text-center mb-16" style="font-size:clamp(3rem,8vw,6.5rem);letter-spacing:0.07em">THE FIVE RICHEST MARVENIK TARGETS</h2>
+      <div class="space-y-8 max-w-6xl mx-auto">
+        <div class="scenario">
+          <div class="stag stag-b">MARVENIK-01 • THE TREASURY</div>
+          <h3 class="text-2xl font-bold mb-2">16 PSYCHE</h3>
+          <p class="text-gray-400">$10,000 Trillion total deposit • Asteroid Belt • Plasma-cutter drone swarms • 3 concurrent Marvenik harvesters • $450 B net per mission</p>
+        </div>
+        <div class="scenario">
+          <div class="stag stag-b">MARVENIK-04 • THE CLOSEST VAULT</div>
+          <h3 class="text-2xl font-bold mb-2">LUNAR SOUTH POLE</h3>
+          <p class="text-gray-400">$150 Trillion deposit • 4-day round-trip • Permanent base • $280 B per quarter • 52 Marvenik missions per year</p>
+        </div>
+        <div class="scenario">
+          <div class="stag stag-b">MARVENIK-02 • THE PLATINUM MILK RUN</div>
+          <h3 class="text-2xl font-bold mb-2">AMUN 3554</h3>
+          <p class="text-gray-400">$20 Trillion deposit • 28-day round-trip • Electrostatic dust collectors • $210 B per mission • 13 Marvenik missions per year</p>
+        </div>
+        <div class="scenario">
+          <div class="stag stag-b">MARVENIK-06 • THE WATER BANK</div>
+          <h3 class="text-2xl font-bold mb-2">CERES</h3>
+          <p class="text-gray-400">$300 Trillion deposit • Titan-class heavy harvesters • $320 B per mission • Mid-belt refuelling depot</p>
+        </div>
+        <div class="scenario">
+          <div class="stag stag-b">MARVENIK-05 • THE METAL CONTINENT</div>
+          <h3 class="text-2xl font-bold mb-2">4 VESTA</h3>
+          <p class="text-gray-400">$1,000 Trillion deposit • Rheasilvia crater • Vanadium dominance • $280 B per Titan-class Marvenik run</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRACTION FLEET -->
+  <section class="py-24">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="bebas text-center mb-12" style="font-size:clamp(2.8rem,7vw,6rem);letter-spacing:0.07em">MARVENIK EXTRACTION FLEET</h2>
+      <div class="card-gold mb-8 max-w-5xl mx-auto flex items-start gap-5">
+        <div class="text-3xl text-[#d4af37] mt-1 flex-shrink-0"><i class="fas fa-robot"></i></div>
+        <div>
+          <span class="pr-label" style="margin-bottom:6px">Core Doctrine</span>
+          <p class="text-gray-200 leading-relaxed"><strong class="text-white">All Marvenik missions are unmanned by default.</strong> Autonomous systems handle every phase — scanning, landing, extraction, hopping, and return. Human crew is authorised only in exceptional, pre-classified circumstances (e.g. structural rescue of a stranded harvester) and requires Mission Council sign-off. This eliminates life-support mass budgets, crew rotation cycles, and human-risk liability — maximising payload capacity and mission frequency.</p>
+        </div>
+      </div>
+      <div class="card mx-auto max-w-5xl">
+        <table class="w-full">
+          <thead>
+            <tr class="text-xs uppercase text-[#d4af37] border-b border-white/10">
+              <th class="py-4 text-left">CLASS</th>
+              <th class="py-4 text-left">MANNING</th>
+              <th class="py-4 text-left">CAPABILITY</th>
+              <th class="py-4 text-right">BUILD COST</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm divide-y divide-white/5 text-gray-300">
+            <tr>
+              <td class="py-6 font-medium">MARVENIK I — Valkyrie Surveyor</td>
+              <td class="py-6"><span class="stag stag-c" style="margin:0">Fully Autonomous</span></td>
+              <td class="py-6">Spectral prism scanner • AI element mapping • Surface-site selection</td>
+              <td class="py-6 text-right">$120 M</td>
+            </tr>
+            <tr>
+              <td class="py-6 font-medium">MARVENIK II — Midas Harvester</td>
+              <td class="py-6"><span class="stag stag-c" style="margin:0">Fully Autonomous</span></td>
+              <td class="py-6">Hoe-rake arm array • Central vacuum extraction • 50,000-tonne cargo hold • Multi-site hop capability</td>
+              <td class="py-6 text-right">$2.8 B</td>
+            </tr>
+            <tr>
+              <td class="py-6 font-medium">MARVENIK III — Titan Harvester</td>
+              <td class="py-6"><span class="stag stag-c" style="margin:0">Fully Autonomous</span></td>
+              <td class="py-6">Heavy extraction arms • 200,000-tonne hold • Onboard refinery • Rescue & retrieval systems</td>
+              <td class="py-6 text-right">$8.5 B</td>
+            </tr>
+            <tr style="background:rgba(200,70,70,0.04)">
+              <td class="py-6 font-medium text-gray-500">MARVENIK IV — Crewed Override Vessel</td>
+              <td class="py-6"><span class="stag stag-a" style="margin:0">Crew — Exception Only</span></td>
+              <td class="py-6 text-gray-500">Deployed exclusively for harvester rescue, critical in-situ repair, or Mission Council-authorised intervention. Not a standard mission class.</td>
+              <td class="py-6 text-right text-gray-500">$1.2 B</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-16 text-center">
+        <div class="inline-flex bg-white/5 px-8 py-6 rounded-3xl border border-[#d4af37]/20 items-center gap-12 text-2xl">
+          <div><span class="text-[#d4af37]">$25.4 T</span><br><span class="text-xs tracking-widest">TOTAL PROJECTED ANNUAL REVENUE (YEAR 3+)</span></div>
+          <div><span class="text-[#d4af37]">52×</span><br><span class="text-xs tracking-widest">LUNAR MARVENIK MISSIONS PER YEAR</span></div>
+          <div><span class="text-[#d4af37]">10</span><br><span class="text-xs tracking-widest">CONCURRENT MARVENIK MISSION STREAMS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTONOMOUS EXTRACTION METHODOLOGY -->
+  <section class="py-24 border-t border-white/10" style="background: linear-gradient(180deg, #060609 0%, #0a0a0f 100%);">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <div class="pr-badge mb-8"><i class="fas fa-robot mr-1"></i> AUTONOMOUS EXTRACTION PROTOCOL • UNMANNED PRIORITY DOCTRINE</div>
+        <h2 class="bebas" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">HOW THE HARVEST WORKS</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mt-4">Every phase of a Marvenik mission — from approach to re-entry — is designed to operate without a single human aboard. Crew deployment is the last resort, not the plan.</p>
+      </div>
+
+      <!-- Phase Timeline -->
+      <div class="max-w-5xl mx-auto mb-20">
+
+        <!-- Phase 1: Spectral Scan -->
+        <div class="flex gap-8 mb-2">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-black bebas text-2xl flex-shrink-0" style="background:linear-gradient(135deg,#8b6914,#d4af37)">01</div>
+            <div class="w-px flex-1 mt-3" style="background:rgba(212,175,55,0.2)"></div>
+          </div>
+          <div class="card flex-1 mb-8">
+            <div class="flex items-start justify-between gap-6 flex-wrap">
+              <div class="flex-1 min-w-0">
+                <span class="pr-label" style="margin-bottom:8px">APPROACH PHASE — SPECTRAL SURFACE SCAN</span>
+                <h3 class="bebas mb-3" style="font-size:1.9rem;letter-spacing:0.06em">NEWTONIAN PRISM SCANNING</h3>
+                <p class="text-gray-300 leading-relaxed mb-4">As the craft approaches 16 Psyche, it deploys a forward-facing spectral array — the same principle Isaac Newton applied when splitting starlight through a prism to reveal its elemental composition. Each surface patch reflects a unique spectral fingerprint: platinum-group metals, iron-nickel alloys, gold concentrations, and rare earths all emit distinct wavelength signatures. The onboard AI processes the full spectral return in real time, generating a high-resolution chemical density map of the entire visible surface before the craft has even entered orbit.</p>
+                <p class="text-gray-400 text-sm leading-relaxed">This is fast, passive, and requires zero physical contact. The craft scans thousands of square kilometres per hour. The output is a ranked list of extraction sites, sorted by yield-per-square-metre — the AI selects the top targets and plots the hop sequence autonomously.</p>
+              </div>
+              <div class="flex-shrink-0 text-center">
+                <div class="text-6xl text-[#d4af37] mb-2"><i class="fas fa-prism" style="font-size:3.5rem">◈</i></div>
+                <div class="text-xs text-gray-500 uppercase tracking-widest">Spectral<br>Mapping</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <div class="pill">Passive spectral camera array</div>
+              <div class="pill">Real-time AI element identification</div>
+              <div class="pill">Full-surface density mapping</div>
+              <div class="pill">Autonomous site ranking & hop sequencing</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2: Land & Deploy Arms -->
+        <div class="flex gap-8 mb-2">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-black bebas text-2xl flex-shrink-0" style="background:linear-gradient(135deg,#8b6914,#d4af37)">02</div>
+            <div class="w-px flex-1 mt-3" style="background:rgba(212,175,55,0.2)"></div>
+          </div>
+          <div class="card flex-1 mb-8">
+            <span class="pr-label" style="margin-bottom:8px">LANDING PHASE — SITE ACQUISITION</span>
+            <h3 class="bebas mb-3" style="font-size:1.9rem;letter-spacing:0.06em">PRECISION TOUCHDOWN ON HIGHEST-YIELD SURFACE</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">The craft descends onto the richest surface area identified by the spectral scan — landing with four stabilising feet on regolith. No human pilots this. Terrain-relative navigation and LIDAR-guided descent software handle the entire touchdown sequence, compensating for Psyche's micro-gravity and irregular surface topology. The moment landing is confirmed, the extraction sequence initiates automatically.</p>
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
+              <div class="stat"><div class="text-2xl font-black text-[#d4af37]">~0.13 g</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Psyche surface gravity — no crew, no risk</div></div>
+              <div class="stat"><div class="text-2xl font-black text-[#d4af37]">&lt; 90 sec</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Descent to touchdown — fully autonomous</div></div>
+              <div class="stat"><div class="text-2xl font-black text-[#d4af37]">±0.8 m</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Landing precision — LIDAR-guided</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3: Arm Deployment & Extraction -->
+        <div class="flex gap-8 mb-2">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-black bebas text-2xl flex-shrink-0" style="background:linear-gradient(135deg,#8b6914,#d4af37)">03</div>
+            <div class="w-px flex-1 mt-3" style="background:rgba(212,175,55,0.2)"></div>
+          </div>
+          <div class="card flex-1 mb-8" style="border-color:rgba(212,175,55,0.2)">
+            <span class="pr-label" style="margin-bottom:8px">EXTRACTION PHASE — THE HOE-RAKE ARM SYSTEM</span>
+            <h3 class="bebas mb-3" style="font-size:1.9rem;letter-spacing:0.06em">CIRCULAR ARM ARRAY • AGGRESSIVE MATTER COLLECTION</h3>
+            <p class="text-gray-300 leading-relaxed mb-5">The craft extends a radial array of mechanical arms outward from the hull — positioned in a full circle around the body. Each arm is fitted with dual-action end-effectors: a forward-raking blade that aggressively breaks and loosens surface regolith, and a hoeing scoop that drives matter inward toward the centre of the circle. The arms sweep rapidly, coordinating in sequence to avoid interference — continuously churning and driving material toward the craft's underbelly.</p>
+            <div class="key-msg mb-5">
+              <p class="text-white font-semibold mb-1">Central Vacuum Extraction</p>
+              <p class="text-gray-300 text-sm leading-relaxed">From the geometric centre beneath the craft, a high-flow vacuum tube extends into the collected matter. All loosened regolith, dust, and broken rock — already concentrated by the arm sweep — is drawn up this tube and into pressurised internal cargo containers. The system is self-clearing: the arms continuously replenish the intake zone as the vacuum empties it. No material is wasted and no human judgement is required mid-cycle.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <div class="pill">Full-circle radial arm array</div>
+              <div class="pill">Rake-hoe dual-action end-effectors</div>
+              <div class="pill">Inward sweep concentrates material</div>
+              <div class="pill">Central vacuum tube — continuous intake</div>
+              <div class="pill">Pressurised internal cargo containers</div>
+              <div class="pill">Zero crew involvement</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 4: Multi-Site Hopping -->
+        <div class="flex gap-8 mb-2">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-black bebas text-2xl flex-shrink-0" style="background:linear-gradient(135deg,#8b6914,#d4af37)">04</div>
+            <div class="w-px flex-1 mt-3" style="background:rgba(212,175,55,0.2)"></div>
+          </div>
+          <div class="card flex-1 mb-8">
+            <span class="pr-label" style="margin-bottom:8px">HOP PHASE — MULTI-SITE SURFACE TRAVERSAL</span>
+            <h3 class="bebas mb-3" style="font-size:1.9rem;letter-spacing:0.06em">JUMP — EXTRACT — REPEAT</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">Once a site is exhausted, the craft does not return to orbit. In Psyche's micro-gravity, a short thruster burn is enough to hop the vehicle several kilometres to the next pre-selected site — landing, deploying the arm array, and resuming extraction within minutes. The hop sequence was defined before touchdown by the spectral scan's ranked site list. The craft works through each site autonomously, maximising cargo density before committing propellant to the return journey.</p>
+            <div class="grid md:grid-cols-2 gap-5 mt-4">
+              <div class="grok-bar">
+                <div class="text-[#d4af37] text-2xl flex-shrink-0"><i class="fas fa-route"></i></div>
+                <div>
+                  <div class="text-sm font-semibold text-white mb-1">Hop Distance</div>
+                  <div class="text-gray-400 text-sm">1 – 50 km per hop in micro-gravity. Propellant cost per hop is negligible against payload value. Up to 12 extraction sites per mission.</div>
+                </div>
+              </div>
+              <div class="grok-bar">
+                <div class="text-[#d4af37] text-2xl flex-shrink-0"><i class="fas fa-database"></i></div>
+                <div>
+                  <div class="text-sm font-semibold text-white mb-1">Cargo Optimisation</div>
+                  <div class="text-gray-400 text-sm">AI cargo manager selects next hop site based on remaining hold capacity and element mix — prioritising highest-value material until containers are sealed.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 5: Return -->
+        <div class="flex gap-8 mb-2">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-black bebas text-2xl flex-shrink-0" style="background:linear-gradient(135deg,#8b6914,#d4af37)">05</div>
+            <div class="w-px flex-1 mt-3" style="background:rgba(212,175,55,0.2)"></div>
+          </div>
+          <div class="card flex-1 mb-8">
+            <span class="pr-label" style="margin-bottom:8px">RETURN PHASE — AUTONOMOUS EARTH DELIVERY</span>
+            <h3 class="bebas mb-3" style="font-size:1.9rem;letter-spacing:0.06em">FULL CARGO — DIRECT RETURN</h3>
+            <p class="text-gray-300 leading-relaxed">When cargo containers are at capacity, the craft executes a departure burn and initiates autonomous return trajectory. No crew. No rendezvous handoff needed. The sealed cargo pod re-enters on a pre-calculated recovery orbit, deploying deceleration systems for ocean or land recovery. Ground teams handle offloading. The craft is refuelled, inspected autonomously, and cleared for the next mission cycle without requiring human sign-off on standard telemetry.</p>
+          </div>
+        </div>
+
+        <!-- Phase 6: Recovery Protocol -->
+        <div class="flex gap-8">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center bebas text-2xl flex-shrink-0" style="background:rgba(200,70,70,0.15);border:2px solid rgba(200,70,70,0.4);color:#e07878">!</div>
+          </div>
+          <div class="flex-1 mb-0" style="background:rgba(200,70,70,0.04);border:1px solid rgba(200,70,70,0.2);border-radius:20px;padding:36px 38px;">
+            <span class="stag stag-a mb-4" style="display:inline-block">CONTINGENCY PROTOCOL — CRAFT MALFUNCTION &amp; ASSET RECOVERY</span>
+            <h3 class="bebas mb-3" style="font-size:1.9rem;letter-spacing:0.06em;color:#e07878">IF A CRAFT GOES DOWN — WE SEND ANOTHER ONE</h3>
+            <p class="text-gray-300 leading-relaxed mb-5">A malfunctioning harvester with a full or partial cargo hold is still an asset. If telemetry indicates a craft cannot complete its return under its own power, a recovery mission is dispatched automatically — no committee, no delay. A second Marvenik craft is routed to the stranded harvester's location, equipped with retrieval arms to physically capture and secure the disabled craft, then tow or transport it — and its cargo — back to Earth recovery orbit. The asset is never abandoned.</p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="stat">
+                <div class="text-2xl font-black" style="color:#e07878">Auto-Trigger</div>
+                <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Recovery dispatch requires no human authorisation — triggered by telemetry threshold breach</div>
+              </div>
+              <div class="stat">
+                <div class="text-2xl font-black" style="color:#e07878">Cargo Priority</div>
+                <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Cargo containers are sealed and recoverable even if the primary craft hull is non-functional</div>
+              </div>
+              <div class="stat">
+                <div class="text-2xl font-black" style="color:#e07878">Zero Crew Risk</div>
+                <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Because no crew is aboard, recovery can be aggressive — no life-safety constraints on retrieval approach</div>
+              </div>
+            </div>
+            <div class="pull-quote mt-6" style="border-left-color:#e07878">
+              Crewed intervention is only authorised when the value of stranded assets exceeds the cost and risk calculus of a manned recovery — and only with Mission Council sign-off. This is the exception, not the protocol.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AI PRE-MISSION SIMULATION FRAMEWORK -->
+  <section class="py-24 border-t border-white/10" style="background: linear-gradient(180deg, #030306 0%, #06060c 50%, #040408 100%); position:relative; overflow:hidden;">
+    <!-- Subtle grid overlay -->
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+    <!-- Glow orbs -->
+    <div style="position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(212,175,55,0.04) 0%,transparent 70%);pointer-events:none;"></div>
+
+    <div class="max-w-screen-2xl mx-auto px-8" style="position:relative;z-index:1">
+
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="pr-badge mb-8"><i class="fas fa-brain mr-1"></i> AI SIMULATION DOCTRINE • ZERO REAL-MISSION EXPOSURE WITHOUT AI CLEARANCE</div>
+        <h2 class="bebas gold-glow" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">PRE-MISSION<br>AI SIMULATION</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mt-4">Every Marvenik mission is run in full AI simulation — physics, trajectory, extraction, failure modes, economic outcome — before a single thruster fires in the real world. Reality is the last step, not the first.</p>
+      </div>
+
+      <!-- Doctrine Statement -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="key-msg text-center">
+          <p class="text-2xl md:text-3xl font-light text-white leading-relaxed mb-4">
+            <span style="color:#d4af37;font-weight:700">aethyr-global.com</span> is not just a company website.<br>It is the living architecture this simulation layer is built upon.
+          </p>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">The codebase, mission parameters, and operational data at aethyr-global.com serve as the foundation. Every module in this simulation framework references and extends that real infrastructure — no simulation runs in isolation from the actual mission doctrine.</p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <div class="pr-badge"><i class="fas fa-link mr-1"></i> FOUNDATION: aethyr-global.com</div>
+            <div class="pr-badge" style="border-color:rgba(80,200,120,0.4);color:#6dc47a"><i class="fas fa-check-circle mr-1"></i> REAL CODEBASE EXTENDED — NOT REPLACED</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Rule: AI Feasibility Gate -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div style="background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.02));border:2px solid rgba(212,175,55,0.4);border-radius:20px;padding:40px 44px;">
+          <div class="flex items-start gap-6 flex-wrap">
+            <div style="min-width:56px;height:56px;background:linear-gradient(135deg,#8b6914,#d4af37);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fas fa-lock-open" style="color:#000;font-size:1.5rem"></i>
+            </div>
+            <div class="flex-1">
+              <span class="pr-label">THE CARDINAL RULE — UNRESTRICTED AI FEASIBILITY GATE</span>
+              <h3 class="bebas mb-3" style="font-size:clamp(1.8rem,4vw,3rem);letter-spacing:0.06em">NO STEP PROCEEDS WITHOUT AI CLEARANCE FIRST</h3>
+              <p class="text-gray-300 leading-relaxed mb-4">Before any new mission phase, hardware decision, trajectory, extraction protocol, or system modification is committed to — it is put to an unrestricted AI feasibility check. The AI is given the full context, the full physics, and the full consequence stack, and is asked one question: <em style="color:#d4af37">"Is this actually possible?"</em></p>
+              <p class="text-gray-400 text-sm leading-relaxed">Only after receiving a grounded, technically sound affirmative — with identified failure vectors documented — does the process advance. This is not a rubber stamp. It is a genuine adversarial check. The AI is expected to find the reasons a plan will fail, not just confirm it will succeed. If it finds a blocker, the plan is revised, not forced through.</p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-5 mt-8">
+            <div class="stat">
+              <div class="text-2xl font-black" style="color:#d4af37"><i class="fas fa-question-circle"></i></div>
+              <div class="raj font-bold text-sm uppercase tracking-wider mt-2 mb-1">Question First</div>
+              <div class="text-xs text-gray-400 leading-relaxed">"Is this technically feasible given current physics, materials, and mission architecture?"</div>
+            </div>
+            <div class="stat">
+              <div class="text-2xl font-black" style="color:#d4af37"><i class="fas fa-microscope"></i></div>
+              <div class="raj font-bold text-sm uppercase tracking-wider mt-2 mb-1">Adversarial Probe</div>
+              <div class="text-xs text-gray-400 leading-relaxed">AI is prompted to find every failure mode, not just validate success. Blockers must be resolved before progression.</div>
+            </div>
+            <div class="stat">
+              <div class="text-2xl font-black" style="color:#d4af37"><i class="fas fa-stamp"></i></div>
+              <div class="raj font-bold text-sm uppercase tracking-wider mt-2 mb-1">Documented Clearance</div>
+              <div class="text-xs text-gray-400 leading-relaxed">Every AI clearance is logged as a mission artefact — the reasoning chain, failure vectors found, and the go/no-go conclusion.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulation Modules -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <h3 class="bebas text-center mb-10" style="font-size:clamp(2rem,5vw,4rem);letter-spacing:0.07em">SIMULATION MODULES — WHAT THE AI RUNS</h3>
+        <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto">Every aspect of a Marvenik mission is modelled before it runs for real. These are not approximations — each module is built from the actual mission parameters defined in the aethyr-global.com doctrine.</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <!-- Module 1 -->
+          <div class="scenario" style="border-color:rgba(212,175,55,0.2)">
+            <div class="flex items-start gap-4">
+              <div style="width:44px;height:44px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:#d4af37"><i class="fas fa-satellite"></i></div>
+              <div>
+                <div class="stag stag-b mb-2">MODULE 01</div>
+                <h4 class="raj font-bold text-white text-lg mb-2 uppercase tracking-wide">Trajectory & Orbital Mechanics</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Full Newtonian simulation of transit to 16 Psyche, approach corridors, orbital insertion, and surface descent. Gravitational bodies, solar radiation pressure, and propellant budget modelled at each delta-v node. AI identifies any trajectory that cannot close on available propellant.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 2 -->
+          <div class="scenario" style="border-color:rgba(80,180,100,0.2)">
+            <div class="flex items-start gap-4">
+              <div style="width:44px;height:44px;background:rgba(80,180,100,0.1);border:1px solid rgba(80,180,100,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:#6dc47a"><i class="fas fa-atom"></i></div>
+              <div>
+                <div class="stag stag-c mb-2">MODULE 02</div>
+                <h4 class="raj font-bold text-white text-lg mb-2 uppercase tracking-wide">Spectral Mapping & Element Yield</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Simulated spectral scan of Psyche's surface using known compositional data. AI generates synthetic density maps, ranks extraction sites, and projects element yield per site. The output is the hop sequence the real mission will follow — validated before launch.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="scenario" style="border-color:rgba(80,160,220,0.2)">
+            <div class="flex items-start gap-4">
+              <div style="width:44px;height:44px;background:rgba(80,160,220,0.1);border:1px solid rgba(80,160,220,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:#5ab4e0"><i class="fas fa-cogs"></i></div>
+              <div>
+                <div class="stag mb-2" style="background:rgba(80,160,220,0.1);color:#5ab4e0;border:1px solid rgba(80,160,220,0.25)">MODULE 03</div>
+                <h4 class="raj font-bold text-white text-lg mb-2 uppercase tracking-wide">Arm Deployment & Extraction Mechanics</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Full physics simulation of the hoe-rake arm array in micro-gravity. Regolith cohesion, arm torque, vacuum tube flow rates, and cargo fill rate are all modelled. AI surfaces any configuration that causes arm interference, vacuum blockage, or cargo overflow before the hardware is committed.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 4 -->
+          <div class="scenario" style="border-color:rgba(200,70,70,0.2)">
+            <div class="flex items-start gap-4">
+              <div style="width:44px;height:44px;background:rgba(200,70,70,0.1);border:1px solid rgba(200,70,70,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:#e07878"><i class="fas fa-radiation"></i></div>
+              <div>
+                <div class="stag stag-a mb-2">MODULE 04</div>
+                <h4 class="raj font-bold text-white text-lg mb-2 uppercase tracking-wide">Failure Mode & Fault Tree Analysis</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Every hardware component, software decision node, and communication link is stress-tested in simulation. AI constructs a complete fault tree and assigns probability weights. Any single-point-of-failure without a redundant path is flagged and either eliminated in design or covered by a failsafe protocol before the mission is cleared.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 5 -->
+          <div class="scenario" style="border-color:rgba(180,100,220,0.2)">
+            <div class="flex items-start gap-4">
+              <div style="width:44px;height:44px;background:rgba(180,100,220,0.1);border:1px solid rgba(180,100,220,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:#c47add"><i class="fas fa-coins"></i></div>
+              <div>
+                <div class="stag mb-2" style="background:rgba(180,100,220,0.1);color:#c47add;border:1px solid rgba(180,100,220,0.25)">MODULE 05</div>
+                <h4 class="raj font-bold text-white text-lg mb-2 uppercase tracking-wide">Economic Outcome Simulation</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Mission revenue, AYR token flow, fleet reinvestment curve, and BTC yield distribution are all projected in simulation before any capital is committed. AI models best-case, median, and catastrophic-loss scenarios. A mission only receives capital clearance if the median scenario remains AYR-positive.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 6 -->
+          <div class="scenario" style="border-color:rgba(212,175,55,0.35);background:rgba(212,175,55,0.02)">
+            <div class="flex items-start gap-4">
+              <div style="width:44px;height:44px;background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.08));border:1px solid rgba(212,175,55,0.5);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;color:#f5d060"><i class="fas fa-undo-alt"></i></div>
+              <div>
+                <div class="stag stag-b mb-2">MODULE 06</div>
+                <h4 class="raj font-bold text-white text-lg mb-2 uppercase tracking-wide">Return & Recovery Simulation</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Full simulation of cargo pod re-entry, deceleration, ocean or land recovery, offloading logistics, and craft refurbishment cycle time. AI also runs recovery-mission scenarios — what happens if the primary craft is stranded, how long until the recovery craft arrives, and whether the cargo value justifies the dispatch cost.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Failsafe Mechanism Chain -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <h3 class="bebas text-center mb-10" style="font-size:clamp(2rem,5vw,4rem);letter-spacing:0.07em">FAILSAFE MECHANISM CHAIN</h3>
+        <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto">Failsafes are not backup plans. They are pre-committed, automatically triggered responses to pre-identified failure conditions — each designed in the simulation layer and locked into mission architecture before launch.</p>
+
+        <!-- Failsafe chain visual -->
+        <div class="space-y-0">
+
+          <!-- FS-01 -->
+          <div class="flex gap-6 mb-2">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8b6914,#d4af37);display:flex;align-items:center;justify-content:center;color:#000;font-family:'Rajdhani',sans-serif;font-weight:800;font-size:0.85rem;flex-shrink:0">FS-1</div>
+              <div style="width:2px;flex:1;margin-top:6px;background:linear-gradient(180deg,rgba(212,175,55,0.4),rgba(212,175,55,0.1))"></div>
+            </div>
+            <div class="card flex-1 mb-4" style="border-color:rgba(212,175,55,0.25)">
+              <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <span class="pr-label" style="margin-bottom:6px">LAYER 1 — AI SIMULATION CLEARANCE</span>
+                  <h4 class="raj font-bold text-white text-lg uppercase tracking-wide mb-2">Full Mission Simulation Must Pass Before Any Hardware Is Built</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">The simulation must complete all six modules with no unresolved blockers. If any module surfaces an unresolvable failure mode, the mission design is revised and the simulation re-runs from the beginning. Hardware procurement is gated on full simulation clearance — no exceptions.</p>
+                </div>
+                <div class="stag stag-b flex-shrink-0" style="margin:0">AUTO-GATE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FS-02 -->
+          <div class="flex gap-6 mb-2">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8b6914,#d4af37);display:flex;align-items:center;justify-content:center;color:#000;font-family:'Rajdhani',sans-serif;font-weight:800;font-size:0.85rem;flex-shrink:0">FS-2</div>
+              <div style="width:2px;flex:1;margin-top:6px;background:linear-gradient(180deg,rgba(212,175,55,0.3),rgba(212,175,55,0.08))"></div>
+            </div>
+            <div class="card flex-1 mb-4">
+              <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <span class="pr-label" style="margin-bottom:6px">LAYER 2 — TELEMETRY THRESHOLD WATCHDOG</span>
+                  <h4 class="raj font-bold text-white text-lg uppercase tracking-wide mb-2">Real-Time AI Monitoring Against Simulated Nominal Envelope</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">During a live mission, every telemetry reading is compared in real time against the nominal envelope defined in the pre-mission simulation. Any deviation beyond the threshold triggers an automated hold, a diagnostic cycle, and — if the deviation cannot be resolved — escalation to the next failsafe layer. Human oversight is notified but does not block the automated response.</p>
+                </div>
+                <div class="stag stag-c flex-shrink-0" style="margin:0">LIVE MONITOR</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FS-03 -->
+          <div class="flex gap-6 mb-2">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8b6914,#d4af37);display:flex;align-items:center;justify-content:center;color:#000;font-family:'Rajdhani',sans-serif;font-weight:800;font-size:0.85rem;flex-shrink:0">FS-3</div>
+              <div style="width:2px;flex:1;margin-top:6px;background:linear-gradient(180deg,rgba(212,175,55,0.2),rgba(212,175,55,0.06))"></div>
+            </div>
+            <div class="card flex-1 mb-4">
+              <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <span class="pr-label" style="margin-bottom:6px">LAYER 3 — AUTONOMOUS MISSION ABORT PROTOCOL</span>
+                  <h4 class="raj font-bold text-white text-lg uppercase tracking-wide mb-2">The Craft Aborts and Initiates Return Without Ground Permission</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">If telemetry breach meets the abort threshold defined in simulation, the craft autonomously cancels the remaining extraction sequence, seals cargo containers, and initiates return trajectory — without waiting for a ground command. At Psyche's distance, a round-trip light-speed signal takes up to 45 minutes. The craft cannot wait. The abort logic was pre-approved in simulation and executes unconditionally.</p>
+                </div>
+                <div class="stag stag-a flex-shrink-0" style="margin:0">AUTO-ABORT</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FS-04 -->
+          <div class="flex gap-6 mb-2">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8b6914,#d4af37);display:flex;align-items:center;justify-content:center;color:#000;font-family:'Rajdhani',sans-serif;font-weight:800;font-size:0.85rem;flex-shrink:0">FS-4</div>
+              <div style="width:2px;flex:1;margin-top:6px;background:linear-gradient(180deg,rgba(212,175,55,0.12),rgba(212,175,55,0.03))"></div>
+            </div>
+            <div class="card flex-1 mb-4">
+              <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <span class="pr-label" style="margin-bottom:6px">LAYER 4 — RECOVERY CRAFT DISPATCH</span>
+                  <h4 class="raj font-bold text-white text-lg uppercase tracking-wide mb-2">A Second Marvenik Craft Is Pre-Assigned to Every Mission</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">Every mission launches with a pre-designated recovery craft on standby. If the primary craft cannot complete its return — whether through propulsion failure, communication loss, or navigation fault — the recovery craft is automatically dispatched from its holding position. The cargo is the asset. Recovery is aggressive, not cautious. No committees. No delay.</p>
+                </div>
+                <div class="stag stag-b flex-shrink-0" style="margin:0">PRE-ASSIGNED</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FS-05 -->
+          <div class="flex gap-6">
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,70,70,0.15);border:2px solid rgba(200,70,70,0.4);display:flex;align-items:center;justify-content:center;color:#e07878;font-family:'Rajdhani',sans-serif;font-weight:800;font-size:0.85rem;flex-shrink:0">FS-5</div>
+            </div>
+            <div class="flex-1 mb-0" style="background:rgba(200,70,70,0.04);border:1px solid rgba(200,70,70,0.2);border-radius:20px;padding:28px 32px;">
+              <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div>
+                  <span class="pr-label" style="margin-bottom:6px;color:#e07878">LAYER 5 — CREWED OVERRIDE (EXCEPTION ONLY)</span>
+                  <h4 class="raj font-bold text-lg uppercase tracking-wide mb-2" style="color:#e07878">Human Crew Is the Final Resort — Authorised Only by Mission Council</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">If FS-1 through FS-4 all fail to recover the mission, the asset value is assessed against a crewed intervention cost model — built and validated in the pre-mission simulation. Crewed deployment requires Mission Council authorisation. This is not a failure of the system. It is the system working as designed: autonomous first, crewed last, never the reverse.</p>
+                </div>
+                <div class="stag stag-a flex-shrink-0" style="margin:0">LAST RESORT</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- The Simulation-Reality Feedback Loop -->
+      <div class="max-w-5xl mx-auto">
+        <div class="card-gold">
+          <div class="text-center mb-8">
+            <span class="pr-label">CONTINUOUS IMPROVEMENT DOCTRINE</span>
+            <h3 class="bebas" style="font-size:clamp(2rem,4vw,3.5rem);letter-spacing:0.07em">EVERY REAL MISSION<br>REFINES THE SIMULATION</h3>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div class="text-4xl text-[#d4af37] mb-4"><i class="fas fa-flask"></i></div>
+              <h4 class="raj font-bold uppercase tracking-wide mb-2">Simulate</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Full-mission AI simulation runs against aethyr-global.com mission architecture. All six modules cleared. Failsafes pre-committed. AI feasibility gate passed.</p>
+            </div>
+            <div>
+              <div class="text-4xl text-[#d4af37] mb-4"><i class="fas fa-rocket"></i></div>
+              <h4 class="raj font-bold uppercase tracking-wide mb-2">Execute</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Real mission runs with telemetry streamed back against the simulated nominal envelope. Every deviation — however small — is logged as a simulation delta.</p>
+            </div>
+            <div>
+              <div class="text-4xl text-[#d4af37] mb-4"><i class="fas fa-sync-alt"></i></div>
+              <h4 class="raj font-bold uppercase tracking-wide mb-2">Refine</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Mission deltas are fed back into the simulation model. The AI recalibrates its physical constants, yield projections, and failure probability weights. Each mission makes the next simulation more accurate.</p>
+            </div>
+          </div>
+          <div class="pull-quote mt-8">
+            The simulation is not a one-time pre-launch exercise. It is the central nervous system of the entire Marvenik programme — alive, updated by real data, and always running one mission ahead of reality.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AYR TOKEN ECONOMY -->
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="bebas text-center mb-16" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">AYR TOKEN ECONOMY — THE SELF-SUSTAINING LOOP</h2>
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div class="card">
+          <div class="grid grid-cols-2 gap-8">
+            <div><div class="text-7xl font-black text-[#d4af37]">40%</div><div class="uppercase text-sm tracking-widest">AYR HOLDER YIELD<br><span class="text-gray-400">$10.16 T per year to stakers</span></div></div>
+            <div><div class="text-7xl font-black text-[#d4af37]">40%</div><div class="uppercase text-sm tracking-widest">FLEET EXPANSION<br><span class="text-gray-400">Relentless Marvenik fleet growth</span></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <p class="text-gray-300 mb-8">Every dollar earned in space flows through an on-chain treasury smart contract. The split is fixed in immutable code. All Marvenik missions feed this loop.</p>
+          <div class="flex flex-wrap gap-3">
+            <div class="pill">2.1 B Total AYR Supply</div>
+            <div class="pill">2% Revenue Buy-Burn</div>
+            <div class="pill">2.5× Max Yield Multiplier</div>
+            <div class="pill">BTC+AYR Yield Denomination</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MILITARY FUNDING & ROI -->
+  <section class="py-24 border-t border-white/10" style="background:linear-gradient(180deg,#06060a 0%,#0b0b10 100%)">
+    <div class="max-w-screen-2xl mx-auto px-8">
+
+      <div class="text-center mb-16">
+        <div class="pr-badge mb-8"><i class="fas fa-chart-line mr-1"></i> CAPITAL MOBILISATION • ROI PROJECTION</div>
+        <h2 class="bebas" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">THE FUNDING EQUATION</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mt-4">The world already spends $2.718 trillion per year defending finite resources. Redirect even a fraction of that into Marvenik — and the return dwarfs every war ever fought over oil.</p>
+      </div>
+
+      <!-- SIPRI Data Block -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="card-gold mb-4">
+          <span class="pr-label">SOURCE — SIPRI 2024 • STOCKHOLM INTERNATIONAL PEACE RESEARCH INSTITUTE</span>
+          <h3 class="bebas mb-6" style="font-size:clamp(1.8rem,4vw,3rem);letter-spacing:0.06em">GLOBAL MILITARY SPENDING: $2.718 TRILLION — ALL-TIME HIGH</h3>
+          <div class="grid md:grid-cols-2 gap-10 items-start">
+            <!-- Country bars -->
+            <div class="space-y-5">
+              <!-- USA -->
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span class="text-white font-semibold">🇺🇸 United States</span>
+                  <span class="text-[#d4af37] font-black">$997 B <span class="text-gray-400 font-normal text-xs">— 37% of global total</span></span>
+                </div>
+                <div class="bar-bg"><div class="bar-fill" data-w="97" style="width:97%"></div></div>
+              </div>
+              <!-- China -->
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span class="text-white font-semibold">🇨🇳 China</span>
+                  <span class="text-[#d4af37] font-black">$314 B <span class="text-gray-400 font-normal text-xs">— estimated</span></span>
+                </div>
+                <div class="bar-bg"><div class="bar-fill" data-w="31" style="width:31%"></div></div>
+              </div>
+              <!-- Russia -->
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span class="text-white font-semibold">🇷🇺 Russia</span>
+                  <span class="text-[#d4af37] font-black">$149 B <span class="text-gray-400 font-normal text-xs">— estimated</span></span>
+                </div>
+                <div class="bar-bg"><div class="bar-fill" data-w="15" style="width:15%"></div></div>
+              </div>
+              <!-- Germany -->
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span class="text-white font-semibold">🇩🇪 Germany</span>
+                  <span class="text-[#d4af37] font-black">$88.5 B</span>
+                </div>
+                <div class="bar-bg"><div class="bar-fill" data-w="9" style="width:9%"></div></div>
+              </div>
+              <!-- India -->
+              <div>
+                <div class="flex justify-between mb-1 text-sm">
+                  <span class="text-white font-semibold">🇮🇳 India</span>
+                  <span class="text-[#d4af37] font-black">$86.1 B</span>
+                </div>
+                <div class="bar-bg"><div class="bar-fill" data-w="8" style="width:8%"></div></div>
+              </div>
+            </div>
+            <!-- Summary stats -->
+            <div class="space-y-5">
+              <div class="stat">
+                <div class="text-4xl font-black text-[#d4af37]">$1.635 T</div>
+                <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Top 5 nations combined — 60% of all global military spend</div>
+              </div>
+              <div class="stat">
+                <div class="text-4xl font-black text-[#d4af37]">$1.506 T</div>
+                <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">NATO alone (32 nations) — 55% of global military spend</div>
+              </div>
+              <div class="stat">
+                <div class="text-4xl font-black text-[#d4af37]">$2.718 T</div>
+                <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Total global military expenditure 2024 — all-time record (SIPRI)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs tracking-widest">DATA: STOCKHOLM INTERNATIONAL PEACE RESEARCH INSTITUTE (SIPRI) • 2024 ANNUAL REPORT</p>
+      </div>
+
+      <!-- The 80% Reinvestment Model -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <h3 class="bebas text-center mb-10" style="font-size:clamp(2rem,5vw,4rem);letter-spacing:0.07em">THE 80% REINVESTMENT MODEL</h3>
+        <div class="key-msg mb-8 text-center">
+          <p class="text-2xl font-light text-white mb-3">80 cents of every dollar earned goes straight back into space.</p>
+          <p class="text-gray-400 max-w-3xl mx-auto">Not into bonds. Not into reserves. Into new craft, new missions, new targets — compounding the extraction capacity of the fleet faster than any financial instrument on Earth can match. The remaining 20% covers AYR holder yield, operations, and liquidity.</p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+          <div class="card text-center">
+            <div class="text-6xl font-black text-[#d4af37] mb-2">80%</div>
+            <div class="raj font-bold uppercase tracking-widest text-sm mb-3">Reinvested in Space</div>
+            <p class="text-gray-400 text-sm">Fleet expansion, new Marvenik harvesters, OSAC constellation growth, surveyor upgrades, refuelling depot construction, and recovery craft reserves.</p>
+          </div>
+          <div class="card text-center" style="border-color:rgba(212,175,55,0.3)">
+            <div class="text-6xl font-black text-[#d4af37] mb-2">10%</div>
+            <div class="raj font-bold uppercase tracking-widest text-sm mb-3">Shareholder Returns</div>
+            <p class="text-gray-400 text-sm">Direct yield to Marvenik shareholders and AYR equity holders — distributed quarterly, denominated in BTC. Shareholders are the first financial beneficiaries of every mission.</p>
+          </div>
+          <div class="card text-center">
+            <div class="text-6xl font-black text-[#d4af37] mb-2">7%</div>
+            <div class="raj font-bold uppercase tracking-widest text-sm mb-3">AYR Staker Yield</div>
+            <p class="text-gray-400 text-sm">Distributed to AYR token stakers and participating military-nation partners in proportion to their mission contribution stakes.</p>
+          </div>
+          <div class="card text-center">
+            <div class="text-6xl font-black text-[#d4af37] mb-2">3%</div>
+            <div class="raj font-bold uppercase tracking-widest text-sm mb-3">Operations & Liquidity</div>
+            <p class="text-gray-400 text-sm">Ground infrastructure, mission control, regulatory compliance, legal, and emergency liquidity reserve.</p>
+          </div>
+        </div>
+        <div class="pull-quote">
+          When 80% of revenue is continuously reinvested in space capacity, the fleet does not grow linearly — it compounds. Each new harvester funds three more. Each asteroid mission funds a belt campaign. The curve bends upward steeply after Year 2.
+        </div>
+      </div>
+
+      <!-- ROI Timeline -->
+      <div class="max-w-5xl mx-auto">
+        <h3 class="bebas text-center mb-12" style="font-size:clamp(2rem,5vw,4rem);letter-spacing:0.07em">RETURN ON INVESTMENT — YEAR BY YEAR</h3>
+
+        <!-- Scenario: if top 5 militaries redirect just 10% of combined budget -->
+        <div class="card-gold mb-10">
+          <span class="pr-label">SCENARIO — TOP 5 MILITARY POWERS REDIRECT 10% OF ANNUAL BUDGET TO MARVENIK</span>
+          <div class="grid md:grid-cols-4 gap-6 mt-2">
+            <div class="stat">
+              <div class="text-3xl font-black text-[#d4af37]">$163.5 B</div>
+              <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Year 1 capital input (10% of $1.635 T top-5 budget)</div>
+            </div>
+            <div class="stat">
+              <div class="text-3xl font-black text-[#d4af37]">~60</div>
+              <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Midas-class harvesters fully funded in Year 1 alone</div>
+            </div>
+            <div class="stat">
+              <div class="text-3xl font-black text-[#d4af37]">$2.4 T</div>
+              <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Projected revenue by end of Year 3</div>
+            </div>
+            <div class="stat">
+              <div class="text-3xl font-black text-[#d4af37]">14.7×</div>
+              <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Return on initial capital by Year 3</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Year by year table -->
+        <div class="card overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-xs uppercase text-[#d4af37] border-b border-white/10">
+                <th class="py-4 text-left pr-4">YEAR</th>
+                <th class="py-4 text-left pr-4">PHASE</th>
+                <th class="py-4 text-right pr-4">CAPITAL IN</th>
+                <th class="py-4 text-right pr-4">REVENUE GENERATED</th>
+                <th class="py-4 text-right pr-4">80% REINVESTED</th>
+                <th class="py-4 text-right">CUMULATIVE RETURN</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-300 divide-y divide-white/5">
+              <tr>
+                <td class="py-5 font-black text-[#d4af37] pr-4">Y1</td>
+                <td class="py-5 pr-4 text-gray-400">Fleet build & first Lunar missions</td>
+                <td class="py-5 text-right pr-4 font-semibold">$163.5 B</td>
+                <td class="py-5 text-right pr-4 text-[#d4af37] font-black">$64 B</td>
+                <td class="py-5 text-right pr-4">$51.2 B → new craft</td>
+                <td class="py-5 text-right text-gray-500">–$99.5 B <span class="text-xs">(still deploying)</span></td>
+              </tr>
+              <tr>
+                <td class="py-5 font-black text-[#d4af37] pr-4">Y2</td>
+                <td class="py-5 pr-4 text-gray-400">Belt campaigns begin • Fleet doubles</td>
+                <td class="py-5 text-right pr-4 font-semibold">$51.2 B <span class="text-xs text-gray-500">(reinvested)</span></td>
+                <td class="py-5 text-right pr-4 text-[#d4af37] font-black">$820 B</td>
+                <td class="py-5 text-right pr-4">$656 B → fleet tripling</td>
+                <td class="py-5 text-right" style="color:#6dc47a;font-weight:800">+$557 B net positive ✓</td>
+              </tr>
+              <tr>
+                <td class="py-5 font-black text-[#d4af37] pr-4">Y3</td>
+                <td class="py-5 pr-4 text-gray-400">Full multi-target operations</td>
+                <td class="py-5 text-right pr-4 font-semibold">$656 B <span class="text-xs text-gray-500">(reinvested)</span></td>
+                <td class="py-5 text-right pr-4 text-[#d4af37] font-black">$2.4 T</td>
+                <td class="py-5 text-right pr-4">$1.92 T → outer system prep</td>
+                <td class="py-5 text-right" style="color:#6dc47a;font-weight:800">+$2.4 T cumulative ✓</td>
+              </tr>
+              <tr>
+                <td class="py-5 font-black text-[#d4af37] pr-4">Y4</td>
+                <td class="py-5 pr-4 text-gray-400">Outer system fleet deployed</td>
+                <td class="py-5 text-right pr-4 font-semibold">$1.92 T <span class="text-xs text-gray-500">(reinvested)</span></td>
+                <td class="py-5 text-right pr-4 text-[#d4af37] font-black">$8.1 T</td>
+                <td class="py-5 text-right pr-4">$6.48 T → full belt saturation</td>
+                <td class="py-5 text-right" style="color:#6dc47a;font-weight:800">+$10.5 T cumulative ✓</td>
+              </tr>
+              <tr style="background:rgba(212,175,55,0.04)">
+                <td class="py-5 font-black text-[#d4af37] pr-4">Y5+</td>
+                <td class="py-5 pr-4 text-white font-semibold">Full 14-target concurrent — peak operations</td>
+                <td class="py-5 text-right pr-4 font-semibold">Self-funded</td>
+                <td class="py-5 text-right pr-4 text-[#d4af37] font-black">$25.4 T / yr</td>
+                <td class="py-5 text-right pr-4">$20.32 T / yr → fleet at scale</td>
+                <td class="py-5 text-right" style="color:#d4af37;font-weight:800;font-size:1.1rem">$155× initial input</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-600 mt-6 text-center tracking-wider">PROJECTIONS BASED ON MARVENIK MISSION PARAMETERS • YEAR 1 CAPITAL INPUT ASSUMES TOP-5 MILITARY POWERS AT 10% BUDGET REDIRECTION • ALL FIGURES INDICATIVE</p>
+        </div>
+
+        <!-- The key insight -->
+        <div class="mt-10 grid md:grid-cols-2 gap-8">
+          <div class="card">
+            <span class="pr-label">BREAKEVEN POINT</span>
+            <div class="text-5xl font-black text-[#d4af37] mb-3">Mid Year 2</div>
+            <p class="text-gray-300 leading-relaxed">With $163.5 B of initial capital (10% of the top-5 military budgets for a single year), Marvenik returns more than invested within 18–20 months of first mission deployment. From that point, every dollar of reinvestment is drawn from extraction revenue — not from national defence budgets.</p>
+          </div>
+          <div class="card">
+            <span class="pr-label">WHAT THIS MEANS FOR GLOBAL DEFENCE BUDGETS</span>
+            <div class="text-5xl font-black text-[#d4af37] mb-3">Year 3</div>
+            <p class="text-gray-300 leading-relaxed">By Year 3, Marvenik's annual revenue alone exceeds the entire combined military budget of the top 5 nations — $2.4 T vs $1.635 T. Participating military powers no longer need oil-driven geopolitics to fund their operations. Marvenik becomes their balance sheet.</p>
+          </div>
+        </div>
+
+        <div class="key-msg mt-10 text-center">
+          <p class="text-2xl font-light text-white mb-3">The top 5 militaries spend <span class="text-[#d4af37] font-bold">$1.635 trillion per year</span> defending resources that are already running out.</p>
+          <p class="text-gray-400 text-lg">A single year's contribution at 10% of that — <strong class="text-white">$163.5 billion</strong> — seeds a system that returns <strong class="text-white">$25.4 trillion annually</strong> within five years. That is not an investment. That is the end of scarcity economics.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="py-24">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="bebas text-center mb-16" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">MARVENIK GROWTH ROADMAP</h2>
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="flex gap-8"><div class="w-12 h-12 bg-[#d4af37] text-black rounded-2xl flex items-center justify-center bebas text-3xl flex-shrink-0">I</div><div class="flex-1"><strong>PHASE I — NOW TO YEAR 2</strong><br>OSAC constellation • First Lunar Marvenik base • Valkyrie surveyor fleet • $64 B → $14.5 T annual revenue</div></div>
+        <div class="flex gap-8"><div class="w-12 h-12 bg-[#d4af37] text-black rounded-2xl flex items-center justify-center bebas text-3xl flex-shrink-0">II</div><div class="flex-1"><strong>PHASE II — YEAR 2 TO YEAR 5</strong><br>Project Aurelius: Full Belt Marvenik operations • $8+ Trillion annually</div></div>
+        <div class="flex gap-8"><div class="w-12 h-12 bg-[#d4af37] text-black rounded-2xl flex items-center justify-center bebas text-3xl flex-shrink-0">III</div><div class="flex-1"><strong>PHASE III — YEAR 5+</strong><br>Outer system Marvenik fleet • Full 14-target concurrent operation • $25.4 Trillion annually</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIVILISATION TRANSFORMATION -->
+  <section class="py-28 border-t border-white/10" style="background:linear-gradient(180deg,#04040a 0%,#080812 50%,#04040a 100%)">
+    <div class="max-w-screen-2xl mx-auto px-8">
+
+      <div class="text-center mb-20">
+        <div class="pr-badge mb-8"><i class="fas fa-earth-americas mr-1"></i> CIVILISATION MANDATE • THE MARVENIK PROMISE</div>
+        <h2 class="bebas gold-glow" style="font-size:clamp(3rem,9vw,8rem);letter-spacing:0.07em;line-height:0.95">WHAT WE DO<br><span style="color:#d4af37">WITH THE MONEY</span></h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mt-6">Marvenik is not a wealth extraction programme. It is a civilisation upgrade. Every dollar pulled from the solar system is a tool to rebuild Earth — from the ground up, for everyone.</p>
+      </div>
+
+      <!-- Military Budget Transformation -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="card-gold">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span class="pr-label">GLOBAL DEFENCE BUDGET TRANSFORMATION</span>
+              <h3 class="bebas mb-4" style="font-size:clamp(2rem,4vw,3.2rem);letter-spacing:0.06em">FROM $2 TRILLION<br>TO OVER $50 TRILLION</h3>
+              <p class="text-gray-300 leading-relaxed mb-4">Today's global military budget of $2.718 trillion is spent largely on deterrence, territorial control, and resource competition. As Marvenik revenue flows into participating nations and the need for oil-war posturing dissolves, defence budgets are not cut — they are transformed. The same institutions, the same command structures, the same engineering talent — now funded to a level that makes current defence spending look like a rounding error.</p>
+              <p class="text-gray-400 text-sm leading-relaxed">At $25.4 trillion in annual extraction revenue, with 80% reinvested in civilisation-scale projects, the effective global budget for security, infrastructure, and human development surpasses $50 trillion within the first decade. Not a transfer of wealth — a creation of it.</p>
+            </div>
+            <div class="space-y-4">
+              <div class="stat">
+                <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Today — Global Military Budget</div>
+                <div class="text-4xl font-black text-gray-400">$2.7 T / yr</div>
+                <div class="bar-bg mt-3"><div class="bar-fill" style="width:5.4%"></div></div>
+              </div>
+              <div class="stat">
+                <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Year 3 — Marvenik + Defence Combined</div>
+                <div class="text-4xl font-black text-[#d4af37]">$5.1 T / yr</div>
+                <div class="bar-bg mt-3"><div class="bar-fill" style="width:10.2%"></div></div>
+              </div>
+              <div class="stat" style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.2)">
+                <div class="text-xs uppercase tracking-widest text-gray-500 mb-1">Year 5+ — Post-Scarcity Civilisation Budget</div>
+                <div class="text-4xl font-black" style="color:#f5d060">$50 T+ / yr</div>
+                <div class="bar-bg mt-3"><div class="bar-fill" style="width:100%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Six Mandates Grid -->
+      <div class="max-w-6xl mx-auto mb-16">
+        <h3 class="bebas text-center mb-12" style="font-size:clamp(2rem,5vw,4rem);letter-spacing:0.07em">THE SIX CIVILISATION MANDATES</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- 1: End Poverty -->
+          <div class="card" style="border-color:rgba(109,196,122,0.2)">
+            <div class="text-4xl mb-4" style="color:#6dc47a"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="stag stag-c mb-3">MANDATE 01</div>
+            <h4 class="bebas mb-3" style="font-size:1.6rem;letter-spacing:0.06em">END EXTREME POVERTY</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">Over 80% of our civilisation lives in conditions of material deprivation. Not because the Earth lacks resources — but because access to those resources has been engineered into scarcity. When extraction revenue removes the financial bottleneck, assets flow outward. Food security, clean water, housing, and energy become infrastructure problems — not economic ones. Infrastructure problems have engineering solutions.</p>
+            <div class="pill">Universal asset provision</div>
+            <div class="pill">Supply-chain decentralisation</div>
+          </div>
+
+          <!-- 2: Colonise Remote Earth Areas -->
+          <div class="card" style="border-color:rgba(212,175,55,0.2)">
+            <div class="text-4xl mb-4 text-[#d4af37]"><i class="fas fa-city"></i></div>
+            <div class="stag stag-b mb-3">MANDATE 02</div>
+            <h4 class="bebas mb-3" style="font-size:1.6rem;letter-spacing:0.06em">BUILD NEW CITIES — EARTH HAS SPACE</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">The majority of Earth's landmass is uninhabited — not because it is inhospitable, but because it lacks infrastructure. Remote regions of Central Asia, Sub-Saharan Africa, South America, and Siberia contain enough space to absorb the entire projected global population growth for the next two centuries. Marvenik funds the roads, power grids, water systems, and digital infrastructure that converts empty land into liveable cities — decentralising the overpopulation pressure on existing megacities.</p>
+            <div class="pill">New city construction programmes</div>
+            <div class="pill">Remote land activation</div>
+          </div>
+
+          <!-- 3: Water Canals -->
+          <div class="card" style="border-color:rgba(80,160,220,0.2)">
+            <div class="text-4xl mb-4" style="color:#5ab4e0"><i class="fas fa-water"></i></div>
+            <div class="stag mb-3" style="background:rgba(80,160,220,0.1);color:#5ab4e0;border:1px solid rgba(80,160,220,0.25)">MANDATE 03</div>
+            <h4 class="bebas mb-3" style="font-size:1.6rem;letter-spacing:0.06em">WATER CANALS — AFRICA & THE MIDDLE EAST</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">The Sahara and Arabian deserts receive enough solar energy to power the planet — but almost no fresh water. A continental canal network, fed by desalination infrastructure on the Atlantic and Mediterranean coasts, can route fresh water thousands of kilometres inland. The engineering has been understood for decades. The only obstacle has always been capital. Marvenik removes that obstacle permanently. Green corridors, agricultural belts, and new population centres follow the water.</p>
+            <div class="pill">Trans-Saharan canal system</div>
+            <div class="pill">Arabian peninsula water grid</div>
+            <div class="pill">Coastal desalination hubs</div>
+          </div>
+
+          <!-- 4: Extend Human Lifespan -->
+          <div class="card" style="border-color:rgba(180,100,220,0.2)">
+            <div class="text-4xl mb-4" style="color:#c47add"><i class="fas fa-dna"></i></div>
+            <div class="stag mb-3" style="background:rgba(180,100,220,0.1);color:#c47add;border:1px solid rgba(180,100,220,0.25)">MANDATE 04</div>
+            <h4 class="bebas mb-3" style="font-size:1.6rem;letter-spacing:0.06em">EXTEND HUMAN LIFESPAN — ARTIFICIALLY</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">The science of ageing is no longer a mystery — it is an engineering problem. Senolytics, telomere restoration, organ bioprinting, and AI-guided cellular repair have all demonstrated measurable life-extension in controlled settings. What they lack is funding at civilisation scale. Marvenik allocates a dedicated budget stream to longevity research and deployment infrastructure — with the explicit goal of making extended, healthy human lifespan accessible to all, not just the wealthy.</p>
+            <div class="pill">Longevity research endowment</div>
+            <div class="pill">Universal access — not a luxury</div>
+          </div>
+
+          <!-- 5: Decongest Cities & Cover Global Debt -->
+          <div class="card" style="border-color:rgba(212,175,55,0.2)">
+            <div class="text-4xl mb-4 text-[#d4af37]"><i class="fas fa-building-columns"></i></div>
+            <div class="stag stag-b mb-3">MANDATE 05</div>
+            <h4 class="bebas mb-3" style="font-size:1.6rem;letter-spacing:0.06em">ERASE GLOBAL DEBT — EXPAND THE BUDGET 10×</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">Global sovereign debt currently exceeds $97 trillion. It exists because nations have been running civilisation on a budget constrained by Earth's finite resource base. Marvenik changes the denominator. As extraction revenue enters the global financial system, the World Bank and IMF gain access to a capital base that can retire sovereign debt, fund development programmes without conditionality, and expand the effective global economic budget from ~$105 trillion GDP to over $1 quadrillion in accessible resource wealth within a generation.</p>
+            <div class="pill">Sovereign debt retirement</div>
+            <div class="pill">10× global budget expansion</div>
+            <div class="pill">World Bank capitalisation</div>
+          </div>
+
+          <!-- 6: Decentralisation -->
+          <div class="card" style="border-color:rgba(212,175,55,0.35);background:linear-gradient(135deg,rgba(212,175,55,0.07),rgba(212,175,55,0.02))">
+            <div class="text-4xl mb-4" style="color:#f5d060"><i class="fas fa-map-location-dot"></i></div>
+            <div class="stag stag-b mb-3">MANDATE 06</div>
+            <h4 class="bebas mb-3" style="font-size:1.6rem;letter-spacing:0.06em">DECENTRALISE — FILL THE EMPTY EARTH</h4>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">Earth is not overcrowded — it is badly distributed. Billions are compressed into a handful of megacities while vast stretches of viable land sit completely empty. Marvenik funds the infrastructure that makes those empty spaces liveable: roads, railways, power grids, hospitals, schools, and digital connectivity. New cities are built on the ground, in places that have always had space — spreading population outward, relieving pressure on overstretched urban centres, and giving people genuine choice about where they live. Decentralisation is the goal. Not towers in the sky — roots in the earth.</p>
+            <div class="pill">New ground-level city construction</div>
+            <div class="pill">Empty land activation worldwide</div>
+            <div class="pill">Full infrastructure provision</div>
+            <div class="pill">Megacity pressure relief</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Final Vision Statement -->
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center py-16 border-t border-white/5">
+          <h3 class="bebas gold-glow mb-6" style="font-size:clamp(2.5rem,6vw,5.5rem);letter-spacing:0.07em">THIS IS WHAT<br>THE MONEY IS FOR</h3>
+          <p class="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto">Not for shareholders. Not for governments. Not for the next quarter. The solar system's wealth exists to solve every problem we have been told was unsolvable — because we believed we could not afford the solution.</p>
+          <div class="grid md:grid-cols-4 gap-6 mt-12">
+            <div class="stat"><div class="text-3xl font-black text-[#d4af37]">0</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">People in extreme poverty — the target</div></div>
+            <div class="stat"><div class="text-3xl font-black text-[#d4af37]">$97 T</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Global sovereign debt — to be retired</div></div>
+            <div class="stat"><div class="text-3xl font-black text-[#d4af37]">10×</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Global economic budget — the minimum expansion</div></div>
+            <div class="stat" style="background:rgba(212,175,55,0.07);border:1px solid rgba(212,175,55,0.25)"><div class="text-3xl font-black" style="color:#f5d060">AYR</div><div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Shareholders receive direct yield — built into the model from day one</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CALL -->
+  <section class="py-32 text-center bg-black border-t border-[#d4af37]/20">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <h2 class="bebas mb-8" style="font-size:clamp(3rem,8vw,7rem);letter-spacing:0.07em">MARVENIK MISSIONS ARE LIVE</h2>
+      <p class="text-2xl text-gray-300 max-w-3xl mx-auto">The solar system is the balance sheet. 40% of every dollar flows directly to AYR holders.</p>
+      <div class="mt-16 inline-flex text-6xl font-black text-[#d4af37] items-baseline gap-3">
+        $25.4 T <span class="text-white text-3xl font-light">annual revenue at scale</span>
+      </div>
+      <div class="mt-12 text-lg text-gray-500">aethyr-global.com • Chief Architect: Miloš M. Ilić</div>
+    </div>
+  </section>
+
+  <footer class="bg-black border-t border-white/5 py-12 text-center text-sm text-gray-600">
+    © 2026 Aethyr Global • Marvenik Mission Program • Non-exclusive • Confidential
+  </footer>
+
+  <script>
+    // Animate bars if any (kept for compatibility)
+    const bars = [...document.querySelectorAll('.bar-fill')];
+    const widths = bars.map(b => b.dataset.w + '%');
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { bars.forEach((b,i) => b.style.width = widths[i]); obs.disconnect(); }
+    }, { threshold: 0.15 });
+    if (bars.length) obs.observe(document.querySelector('.card'));
+  </script>
+</body>
+</html>

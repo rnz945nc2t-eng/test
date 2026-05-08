@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4-AI Auto Builder – Faster Free Models 2026</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    :root { --bg:#0d1117; --panel:#161b22; --accent:#00d9ff; --green:#238636; --red:#ff4444; }
+    body { font-family: monospace; background:var(--bg); color:#c9d1d9; margin:0; padding:20px; line-height:1.5; }
+    .container { max-width:1100px; margin:auto; background:var(--panel); border:1px solid #30363d; border-radius:10px; padding:24px; }
+    input, textarea { width:100%; box-sizing:border-box; background:#0d1117; color:#a5d6ff; border:1px solid #444; padding:12px; font-family:monospace; border-radius:6px; margin:10px 0; }
+    textarea { resize:vertical; height:140px; }
+    button { padding:14px 28px; font-size:16px; font-weight:bold; border:none; border-radius:8px; cursor:pointer; color:white; margin:10px 0; }
+    .btn-go { background:var(--green); }
+    .btn-go:disabled { background:#1a4a25; cursor:not-allowed; }
+    .btn-dl { background:#1f6feb; }
+    #log { background:#000; color:#7ee787; padding:14px; border-radius:6px; min-height:200px; overflow-y:auto; font-size:13px; margin:16px 0; white-space:pre-wrap; }
+    #files-list { color:#7ee787; margin:12px 0; font-size:14px; }
+    .api-area { border:1px solid var(--accent); padding:16px; border-radius:8px; margin-bottom:20px; }
+    .warning { color:var(--red); font-size:13px; margin-top:4px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>4 Different Free AIs – Auto Builder (Optimized for Speed Feb 2026)</h2>
+  <p>Free key: <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--accent);">openrouter.ai/keys</a></p>
+
+  <div class="api-area">
+    <label>OpenRouter API Key:</label>
+    <input id="apiKey" type="password" placeholder="sk-or-v1-...">
+    <div class="warning">Free models can queue under load. Try during off-peak hours (non-US evenings). Daily limits ~50–500 req.</div>
+  </div>
+
+  <textarea id="projectDesc" placeholder="Keep description focused: e.g. 'Python Flask todo app with SQLite, user auth (Flask-Login), CRUD routes, basic templates, requirements.txt, README.md'"></textarea>
+
+  <button class="btn-go" id="buildBtn" onclick="startPipeline()">BUILD WITH 4 AIS (FASTER)</button>
+
+  <div id="log">Ready. Models: Step 3.5 Flash (fast reasoning), Trinity Preview (audit), GLM-4.5-Air (code/polish). Expect 1–4 min total.</div>
+
+  <div id="result" style="display:none; margin-top:24px;">
+    <h3>Project Bundled</h3>
+    <div id="files-list"></div>
+    <button class="btn-dl" onclick="downloadZip()">DOWNLOAD .ZIP</button>
+  </div>
+</div>
+
+<script>
+let zipBlob = null;
+const logEl = document.getElementById('log');
+
+const log = msg => {
+  logEl.innerHTML += `[${new Date().toLocaleTimeString()}] ${msg}\n`;
+  logEl.scrollTop = logEl.scrollHeight;
+};
+
+async function callAI(prompt, model) {
+  const key = document.getElementById('apiKey').value.trim();
+  if (!key) throw new Error("Enter API key");
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 600000); // 10 min
+
+  try {
+    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${key}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": window.location.href,
+        "X-Title": "Fast 4-AI Builder"
+      },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.3,
+        max_tokens: 10000
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(`API ${res.status}: ${errData.error?.message || res.statusText}`);
+    }
+
+    const data = await res.json();
+    return data.choices[0]?.message?.content?.trim() || "";
+  } catch (err) {
+    clearTimeout(timeout);
+    if (err.name === 'AbortError') throw new Error("Timed out (10 min) – try shorter desc or later.");
+    throw err;
+  }
+}
+
+async function startPipeline() {
+  const desc = document.getElementById('projectDesc').value.trim();
+  if (!desc) return alert("Add project description");
+
+  const btn = document.getElementById('buildBtn');
+  btn.disabled = true;
+  btn.textContent = "BUILDING...";
+
+  log("Starting fast 4-AI chain...");
+
+  try {
+    log("1. Architect (Step 3.5 Flash) ...");
+    const archPrompt = `Architect: Clean file/folder structure + 1-line purpose/file for: ${desc}. ONLY markdown list/tree. No intro/text.`;
+    const arch = await callAI(archPrompt, "stepfun/step-3.5-flash:free");
+
+    log("2. Auditor (Trinity Large Preview) ...");
+    const auditPrompt = `Auditor: Review ${desc}\nStructure: ${arch}\nList issues (missing, security, bad patterns, deps) + fixes. Bullets only.`;
+    const audit = await callAI(auditPrompt, "arcee-ai/trinity-large-preview:free");
+
+    log("3. Code Gen (GLM-4.5-Air) – this can take longest ...");
+    const codePrompt = `Generate code for: ${desc}\nStructure: ${arch}\nFixes: ${audit}\nCOMPLETE files ONLY. Format:\n--- FILE: path/to/file.ext ---\ncode (indent preserved)\n--- END FILE ---\nNo extra text. Keep concise.`;
+    const rawCode = await callAI(codePrompt, "z-ai/glm-4.5-air:free");
+
+    log("4. Polish (GLM-4.5-Air again) ...");
+    const polishPrompt = `Polish bundle: ${rawCode}\nFix format/indent, add missing tests/README if logical, apply fixes. Keep --- FILE --- format. Output improved files only.`;
+    const finalCode = await callAI(polishPrompt, "z-ai/glm-4.5-air:free") || rawCode;
+
+    log("Bundling ...");
+    buildZip(finalCode);
+
+  } catch (err) {
+    log(`ERROR: ${err.message}`);
+    alert("Failed: " + err.message + " (check console F12). Retry or simplify desc.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "BUILD WITH 4 AIS (FASTER)";
+  }
+}
+
+function buildZip(text) {
+  const zip = new JSZip();
+  const filesDiv = document.getElementById('files-list');
+  filesDiv.innerHTML = "<b>Files:</b><br>";
+  let count = 0;
+
+  const rx = /---\s*FILE:\s*(.+?)\s*---([\s\S]*?)---\s*END\s*(?:FILE)?\s*---/gi;
+  let m;
+  while ((m = rx.exec(text)) !== null) {
+    const name = m[1].trim();
+    const content = m[2].trim();
+    zip.file(name, content);
+    filesDiv.innerHTML += `• ${name}<br>`;
+    count++;
+  }
+
+  if (count === 0) {
+    zip.file("FULL_CODE.md", text);
+    filesDiv.innerHTML += "• fallback FULL_CODE.md";
+  }
+
+  zip.generateAsync({type:"blob"}).then(blob => {
+    zipBlob = blob;
+    document.getElementById('result').style.display = 'block';
+    log(`ZIP ready (${count || 1} files)`);
+  }).catch(err => log("ZIP fail: " + err));
+}
+
+function downloadZip() {
+  if (!zipBlob) return;
+  const url = URL.createObjectURL(zipBlob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `project-${Date.now()}.zip`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 100);
+}
+</script>
+</body>
+</html>

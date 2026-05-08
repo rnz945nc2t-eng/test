@@ -1,0 +1,2163 @@
+{
+  "name": "GIGA",
+  "path": "public/GIGA",
+  "type": "folder",
+  "children": [
+    {
+      "name": "AURA",
+      "path": "public/GIGA/AURA",
+      "type": "folder",
+      "children": [
+        {
+          "name": "0.3.zip",
+          "path": "public/GIGA/AURA/0.3.zip",
+          "type": "file",
+          "size": 17126
+        },
+        {
+          "name": "AURA 0.2.zip",
+          "path": "public/GIGA/AURA/AURA 0.2.zip",
+          "type": "file",
+          "size": 11956
+        },
+        {
+          "name": "ver 0.1.zip",
+          "path": "public/GIGA/AURA/ver 0.1.zip",
+          "type": "file",
+          "size": 8932
+        }
+      ]
+    },
+    {
+      "name": "Aethyr Blockchain",
+      "path": "public/GIGA/Aethyr Blockchain",
+      "type": "folder",
+      "children": [
+        {
+          "name": "aethyr",
+          "path": "public/GIGA/Aethyr Blockchain/aethyr",
+          "type": "folder",
+          "children": [
+            {
+              "name": "app",
+              "path": "public/GIGA/Aethyr Blockchain/aethyr/app",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "globals.css",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/app/globals.css",
+                  "type": "file",
+                  "size": 23
+                },
+                {
+                  "name": "layout.tsx",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/app/layout.tsx",
+                  "type": "file",
+                  "size": 380
+                }
+              ]
+            },
+            {
+              "name": "artifacts",
+              "path": "public/GIGA/Aethyr Blockchain/aethyr/artifacts",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "build-info",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/artifacts/build-info",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "2e53675bc339241313225e84253c8ea7.json",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/artifacts/build-info/2e53675bc339241313225e84253c8ea7.json",
+                      "type": "file",
+                      "size": 1850121
+                    }
+                  ]
+                },
+                {
+                  "name": "contracts",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/artifacts/contracts",
+                  "type": "folder",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "file_list_signed.pdf",
+              "path": "public/GIGA/Aethyr Blockchain/aethyr/file_list_signed.pdf",
+              "type": "file",
+              "size": 11589195
+            },
+            {
+              "name": "node.js",
+              "path": "public/GIGA/Aethyr Blockchain/aethyr/node.js",
+              "type": "file",
+              "size": 8766
+            },
+            {
+              "name": "scripts",
+              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "artifacts",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "build-info",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/build-info",
+                      "type": "folder",
+                      "children": [
+                        {
+                          "name": "a514917c763e1cba3e1217e2a7db45d4.json",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/build-info/a514917c763e1cba3e1217e2a7db45d4.json",
+                          "type": "file",
+                          "size": 279381
+                        },
+                        {
+                          "name": "d23754c3f4ca9ff16ae9cf90b5a2c4b7.json",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/build-info/d23754c3f4ca9ff16ae9cf90b5a2c4b7.json",
+                          "type": "file",
+                          "size": 2678288
+                        }
+                      ]
+                    },
+                    {
+                      "name": "contracts",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts",
+                      "type": "folder",
+                      "children": [
+                        {
+                          "name": "AYRMockOracle.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRMockOracle.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "AYRMockOracle.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRMockOracle.sol/AYRMockOracle.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "AYRMockOracle.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRMockOracle.sol/AYRMockOracle.json",
+                              "type": "file",
+                              "size": 28579
+                            }
+                          ]
+                        },
+                        {
+                          "name": "AYROracle.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYROracle.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "AYROracle.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYROracle.sol/AYROracle.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "AYROracle.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYROracle.sol/AYROracle.json",
+                              "type": "file",
+                              "size": 20804
+                            }
+                          ]
+                        },
+                        {
+                          "name": "AYRStaking.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRStaking.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "AYRStaking.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRStaking.sol/AYRStaking.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "AYRStaking.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRStaking.sol/AYRStaking.json",
+                              "type": "file",
+                              "size": 37241
+                            }
+                          ]
+                        },
+                        {
+                          "name": "AYRSwapRouter.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "AYRSwapRouter.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/AYRSwapRouter.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "AYRSwapRouter.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/AYRSwapRouter.json",
+                              "type": "file",
+                              "size": 55449
+                            },
+                            {
+                              "name": "IERC20Mintable.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IERC20Mintable.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "IERC20Mintable.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IERC20Mintable.json",
+                              "type": "file",
+                              "size": 2881
+                            },
+                            {
+                              "name": "IOracle.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IOracle.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "IOracle.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IOracle.json",
+                              "type": "file",
+                              "size": 602
+                            }
+                          ]
+                        },
+                        {
+                          "name": "AYRToken.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRToken.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "AYRToken.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRToken.sol/AYRToken.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "AYRToken.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRToken.sol/AYRToken.json",
+                              "type": "file",
+                              "size": 17827
+                            }
+                          ]
+                        },
+                        {
+                          "name": "BridgeLock.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/BridgeLock.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "BridgeLock.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/BridgeLock.sol/BridgeLock.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "BridgeLock.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/BridgeLock.sol/BridgeLock.json",
+                              "type": "file",
+                              "size": 10907
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UTXORegistry.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/UTXORegistry.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "UTXORegistry.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/UTXORegistry.sol/UTXORegistry.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "UTXORegistry.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/UTXORegistry.sol/UTXORegistry.json",
+                              "type": "file",
+                              "size": 31027
+                            }
+                          ]
+                        },
+                        {
+                          "name": "WrappedToken.sol",
+                          "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/WrappedToken.sol",
+                          "type": "folder",
+                          "children": [
+                            {
+                              "name": "WrappedToken.dbg.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/WrappedToken.sol/WrappedToken.dbg.json",
+                              "type": "file",
+                              "size": 105
+                            },
+                            {
+                              "name": "WrappedToken.json",
+                              "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/WrappedToken.sol/WrappedToken.json",
+                              "type": "file",
+                              "size": 33181
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "audit.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/audit.js",
+                  "type": "file",
+                  "size": 1231
+                },
+                {
+                  "name": "auxpow.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/auxpow.js",
+                  "type": "file",
+                  "size": 8487
+                },
+                {
+                  "name": "bitcoin_absorber.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/bitcoin_absorber.js",
+                  "type": "file",
+                  "size": 22217
+                },
+                {
+                  "name": "btc.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/btc.js",
+                  "type": "file",
+                  "size": 9369
+                },
+                {
+                  "name": "cache",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/cache",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "solidity-files-cache.json",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/cache/solidity-files-cache.json",
+                      "type": "file",
+                      "size": 7301
+                    }
+                  ]
+                },
+                {
+                  "name": "config.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/config.js",
+                  "type": "file",
+                  "size": 6293
+                },
+                {
+                  "name": "consensus.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/consensus.js",
+                  "type": "file",
+                  "size": 19596
+                },
+                {
+                  "name": "contracts",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "AYRMockOracle.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRMockOracle.sol",
+                      "type": "file",
+                      "size": 4664
+                    },
+                    {
+                      "name": "AYROracle.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYROracle.sol",
+                      "type": "file",
+                      "size": 3156
+                    },
+                    {
+                      "name": "AYRStaking.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRStaking.sol",
+                      "type": "file",
+                      "size": 6578
+                    },
+                    {
+                      "name": "AYRSwapRouter.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRSwapRouter.sol",
+                      "type": "file",
+                      "size": 8635
+                    },
+                    {
+                      "name": "AYRToken.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRToken.sol",
+                      "type": "file",
+                      "size": 1870
+                    },
+                    {
+                      "name": "BridgeLock.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/BridgeLock.sol",
+                      "type": "file",
+                      "size": 913
+                    },
+                    {
+                      "name": "UTXORegistry.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/UTXORegistry.sol",
+                      "type": "file",
+                      "size": 6052
+                    },
+                    {
+                      "name": "WrappedToken.sol",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/contracts/WrappedToken.sol",
+                      "type": "file",
+                      "size": 3535
+                    }
+                  ]
+                },
+                {
+                  "name": "cortex.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/cortex.js",
+                  "type": "file",
+                  "size": 14042
+                },
+                {
+                  "name": "deploy.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/deploy.js",
+                  "type": "file",
+                  "size": 4452
+                },
+                {
+                  "name": "hardhat.config.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/hardhat.config.js",
+                  "type": "file",
+                  "size": 1624
+                },
+                {
+                  "name": "hst_service.py",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/hst_service.py",
+                  "type": "file",
+                  "size": 22744
+                },
+                {
+                  "name": "node.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/node.js",
+                  "type": "file",
+                  "size": 8561
+                },
+                {
+                  "name": "observer.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/observer.js",
+                  "type": "file",
+                  "size": 4003
+                },
+                {
+                  "name": "oracle_feeder.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/oracle_feeder.js",
+                  "type": "file",
+                  "size": 4854
+                },
+                {
+                  "name": "plugins",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/plugins",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "bsc-rpc-checker.js",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/plugins/bsc-rpc-checker.js",
+                      "type": "file",
+                      "size": 906
+                    },
+                    {
+                      "name": "repair-node-plugin.js",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/plugins/repair-node-plugin.js",
+                      "type": "file",
+                      "size": 1166
+                    },
+                    {
+                      "name": "test-price.js",
+                      "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/plugins/test-price.js",
+                      "type": "file",
+                      "size": 265
+                    }
+                  ]
+                },
+                {
+                  "name": "recover.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/recover.js",
+                  "type": "file",
+                  "size": 12215
+                },
+                {
+                  "name": "redeploy.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/redeploy.js",
+                  "type": "file",
+                  "size": 2163
+                },
+                {
+                  "name": "register_ayr.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/register_ayr.js",
+                  "type": "file",
+                  "size": 1586
+                },
+                {
+                  "name": "relayer.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/relayer.js",
+                  "type": "file",
+                  "size": 12371
+                },
+                {
+                  "name": "rpc.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/rpc.js",
+                  "type": "file",
+                  "size": 9205
+                },
+                {
+                  "name": "signer.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/signer.js",
+                  "type": "file",
+                  "size": 5373
+                },
+                {
+                  "name": "signer.js.backup",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/signer.js.backup",
+                  "type": "file",
+                  "size": 6427
+                },
+                {
+                  "name": "solana.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/solana.js",
+                  "type": "file",
+                  "size": 1515
+                },
+                {
+                  "name": "telegram.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/telegram.js",
+                  "type": "file",
+                  "size": 34754
+                },
+                {
+                  "name": "utxo_native.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/utxo_native.js",
+                  "type": "file",
+                  "size": 13216
+                },
+                {
+                  "name": "watchdog.js",
+                  "path": "public/GIGA/Aethyr Blockchain/aethyr/scripts/watchdog.js",
+                  "type": "file",
+                  "size": 16253
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "old",
+          "path": "public/GIGA/Aethyr Blockchain/old",
+          "type": "folder",
+          "children": [
+            {
+              "name": "aethyr-blockchain.html",
+              "path": "public/GIGA/Aethyr Blockchain/old/aethyr-blockchain.html",
+              "type": "file",
+              "size": 170227
+            },
+            {
+              "name": "aethyr-blockchain.txt",
+              "path": "public/GIGA/Aethyr Blockchain/old/aethyr-blockchain.txt",
+              "type": "file",
+              "size": 170227
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Aethyr One Ai",
+      "path": "public/GIGA/Aethyr One Ai",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Aethyr_HST.pdf",
+          "path": "public/GIGA/Aethyr One Ai/Aethyr_HST.pdf",
+          "type": "file",
+          "size": 143202
+        },
+        {
+          "name": "Closed IF Set_signed.pdf",
+          "path": "public/GIGA/Aethyr One Ai/Closed IF Set_signed.pdf",
+          "type": "file",
+          "size": 123084
+        },
+        {
+          "name": "Development",
+          "path": "public/GIGA/Aethyr One Ai/Development",
+          "type": "folder",
+          "children": [
+            {
+              "name": "API.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/API.md",
+              "type": "file",
+              "size": 7367
+            },
+            {
+              "name": "CHANGELOG.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/CHANGELOG.md",
+              "type": "file",
+              "size": 5379
+            },
+            {
+              "name": "CODE_OF_CONDUCT.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/CODE_OF_CONDUCT.md",
+              "type": "file",
+              "size": 5234
+            },
+            {
+              "name": "CONTRIBUTING.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/CONTRIBUTING.md",
+              "type": "file",
+              "size": 7409
+            },
+            {
+              "name": "EXP",
+              "path": "public/GIGA/Aethyr One Ai/Development/EXP",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "GROK.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/EXP/GROK.txt",
+                  "type": "file",
+                  "size": 38023
+                },
+                {
+                  "name": "deepseek_python_20251211_265d82.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/EXP/deepseek_python_20251211_265d82.py",
+                  "type": "file",
+                  "size": 33212
+                },
+                {
+                  "name": "deepseek_python_20251211_6c90bc.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/EXP/deepseek_python_20251211_6c90bc.py",
+                  "type": "file",
+                  "size": 35764
+                },
+                {
+                  "name": "deepseek_python_20251211_9551f0.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/EXP/deepseek_python_20251211_9551f0.py",
+                  "type": "file",
+                  "size": 49527
+                }
+              ]
+            },
+            {
+              "name": "HST DUMP.txt",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST DUMP.txt",
+              "type": "file",
+              "size": 811566
+            },
+            {
+              "name": "HST Lattice.png",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST Lattice.png",
+              "type": "file",
+              "size": 5781972
+            },
+            {
+              "name": "HST V5 - GPT2 Training logs",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "G7jqUMxWIAAi3_N.png",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/G7jqUMxWIAAi3_N.png",
+                  "type": "file",
+                  "size": 35410
+                },
+                {
+                  "name": "HST Transfer.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/HST Transfer.txt",
+                  "type": "file",
+                  "size": 22807
+                },
+                {
+                  "name": "Valve 2.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/Valve 2.txt",
+                  "type": "file",
+                  "size": 22326
+                },
+                {
+                  "name": "Valve.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/Valve.txt",
+                  "type": "file",
+                  "size": 22808
+                }
+              ]
+            },
+            {
+              "name": "HST licencing snapshot.pdf",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST licencing snapshot.pdf",
+              "type": "file",
+              "size": 3533028
+            },
+            {
+              "name": "HST v3 Training logs",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "G7L-Nj4XMAAyCRT.jpg",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7L-Nj4XMAAyCRT.jpg",
+                  "type": "file",
+                  "size": 184632
+                },
+                {
+                  "name": "G7MJ_rhX0AABAkc.jpg",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MJ_rhX0AABAkc.jpg",
+                  "type": "file",
+                  "size": 76223
+                },
+                {
+                  "name": "G7MJpeFW8AARv7j.jpg",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MJpeFW8AARv7j.jpg",
+                  "type": "file",
+                  "size": 106386
+                },
+                {
+                  "name": "G7MOKRSWoAEZ8Gy.jpg",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MOKRSWoAEZ8Gy.jpg",
+                  "type": "file",
+                  "size": 99709
+                },
+                {
+                  "name": "G7MPxyxWgAEYUFQ.png",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MPxyxWgAEYUFQ.png",
+                  "type": "file",
+                  "size": 116721
+                },
+                {
+                  "name": "HST-v3-train.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v3 Training logs/HST-v3-train.txt",
+                  "type": "file",
+                  "size": 25778
+                }
+              ]
+            },
+            {
+              "name": "HST v5 Training logs",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST v5 Training logs",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "README.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v5 Training logs/README.txt",
+                  "type": "file",
+                  "size": 1568
+                },
+                {
+                  "name": "Screen Recording 2025-12-04 224421.mp4",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v5 Training logs/Screen Recording 2025-12-04 224421.mp4",
+                  "type": "file",
+                  "size": 17902199
+                },
+                {
+                  "name": "chunk128.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v5 Training logs/chunk128.py",
+                  "type": "file",
+                  "size": 20798
+                },
+                {
+                  "name": "hst_v5_chunk_story_100k_chars.txt",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v5 Training logs/hst_v5_chunk_story_100k_chars.txt",
+                  "type": "file",
+                  "size": 137017
+                },
+                {
+                  "name": "train-v5.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/HST v5 Training logs/train-v5.py",
+                  "type": "file",
+                  "size": 30713
+                }
+              ]
+            },
+            {
+              "name": "HST_Analysis_Report.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST_Analysis_Report.md",
+              "type": "file",
+              "size": 6233
+            },
+            {
+              "name": "HST_Architecture_Complete_Book.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/HST_Architecture_Complete_Book.md",
+              "type": "file",
+              "size": 19192
+            },
+            {
+              "name": "IMPROVEMENTS_SUMMARY.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/IMPROVEMENTS_SUMMARY.md",
+              "type": "file",
+              "size": 9961
+            },
+            {
+              "name": "INSTALL.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/INSTALL.md",
+              "type": "file",
+              "size": 1988
+            },
+            {
+              "name": "LICENCE.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/LICENCE.md",
+              "type": "file",
+              "size": 4634
+            },
+            {
+              "name": "README.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/README.md",
+              "type": "file",
+              "size": 5
+            },
+            {
+              "name": "USAGE.md",
+              "path": "public/GIGA/Aethyr One Ai/Development/USAGE.md",
+              "type": "file",
+              "size": 5876
+            },
+            {
+              "name": "WEB UI.zip",
+              "path": "public/GIGA/Aethyr One Ai/Development/WEB UI.zip",
+              "type": "file",
+              "size": 10578177
+            },
+            {
+              "name": "author.notes",
+              "path": "public/GIGA/Aethyr One Ai/Development/author.notes",
+              "type": "file",
+              "size": 13033
+            },
+            {
+              "name": "colab_training_scripts",
+              "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "HST_v3_Ultra_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v3_Ultra_Colab_Training.py",
+                  "type": "file",
+                  "size": 22763
+                },
+                {
+                  "name": "HST_v4_1_HyperLattice_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v4_1_HyperLattice_Colab_Training.py",
+                  "type": "file",
+                  "size": 15762
+                },
+                {
+                  "name": "HST_v4_Unified_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v4_Unified_Colab_Training.py",
+                  "type": "file",
+                  "size": 26126
+                },
+                {
+                  "name": "HST_v5_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v5_Colab_Training.py",
+                  "type": "file",
+                  "size": 21808
+                },
+                {
+                  "name": "HST_v6_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v6_Colab_Training.py",
+                  "type": "file",
+                  "size": 21290
+                },
+                {
+                  "name": "HST_v7_1_2_Agile_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v7_1_2_Agile_Colab_Training.py",
+                  "type": "file",
+                  "size": 23679
+                },
+                {
+                  "name": "HST_v8_2_Crystalline_Colab_Training.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v8_2_Crystalline_Colab_Training.py",
+                  "type": "file",
+                  "size": 16817
+                },
+                {
+                  "name": "README.md",
+                  "path": "public/GIGA/Aethyr One Ai/Development/colab_training_scripts/README.md",
+                  "type": "file",
+                  "size": 5266
+                }
+              ]
+            },
+            {
+              "name": "eslint.config.js",
+              "path": "public/GIGA/Aethyr One Ai/Development/eslint.config.js",
+              "type": "file",
+              "size": 739
+            },
+            {
+              "name": "examples",
+              "path": "public/GIGA/Aethyr One Ai/Development/examples",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "__init__.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/examples/__init__.py",
+                  "type": "file",
+                  "size": 0
+                },
+                {
+                  "name": "basic_usage.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/examples/basic_usage.py",
+                  "type": "file",
+                  "size": 2486
+                },
+                {
+                  "name": "representation_learning.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/examples/representation_learning.py",
+                  "type": "file",
+                  "size": 4679
+                },
+                {
+                  "name": "time_series_forecasting.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/examples/time_series_forecasting.py",
+                  "type": "file",
+                  "size": 5032
+                }
+              ]
+            },
+            {
+              "name": "hst.cl.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.cl.py",
+              "type": "file",
+              "size": 35278
+            },
+            {
+              "name": "hst.en.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.en.py",
+              "type": "file",
+              "size": 6762
+            },
+            {
+              "name": "hst.v3.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v3.py",
+              "type": "file",
+              "size": 28274
+            },
+            {
+              "name": "hst.v4.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v4.py",
+              "type": "file",
+              "size": 35386
+            },
+            {
+              "name": "hst.v5.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v5.py",
+              "type": "file",
+              "size": 41294
+            },
+            {
+              "name": "hst.v6.1.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v6.1.py",
+              "type": "file",
+              "size": 68890
+            },
+            {
+              "name": "hst.v6.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v6.py",
+              "type": "file",
+              "size": 54726
+            },
+            {
+              "name": "hst.v7.1.2.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v7.1.2.py",
+              "type": "file",
+              "size": 29864
+            },
+            {
+              "name": "hst.v7.1.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v7.1.py",
+              "type": "file",
+              "size": 70987
+            },
+            {
+              "name": "hst.v7.2.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v7.2.py",
+              "type": "file",
+              "size": 70987
+            },
+            {
+              "name": "hst.v8.1.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v8.1.py",
+              "type": "file",
+              "size": 84733
+            },
+            {
+              "name": "hst.v8.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst.v8.py",
+              "type": "file",
+              "size": 66992
+            },
+            {
+              "name": "hst_v4.1.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst_v4.1.py",
+              "type": "file",
+              "size": 19488
+            },
+            {
+              "name": "hst_v8.2.py",
+              "path": "public/GIGA/Aethyr One Ai/Development/hst_v8.2.py",
+              "type": "file",
+              "size": 91420
+            },
+            {
+              "name": "outputs.zip",
+              "path": "public/GIGA/Aethyr One Ai/Development/outputs.zip",
+              "type": "file",
+              "size": 42997
+            },
+            {
+              "name": "package-lock.json",
+              "path": "public/GIGA/Aethyr One Ai/Development/package-lock.json",
+              "type": "file",
+              "size": 148551
+            },
+            {
+              "name": "package.json",
+              "path": "public/GIGA/Aethyr One Ai/Development/package.json",
+              "type": "file",
+              "size": 904
+            },
+            {
+              "name": "postcss.config.js",
+              "path": "public/GIGA/Aethyr One Ai/Development/postcss.config.js",
+              "type": "file",
+              "size": 81
+            },
+            {
+              "name": "pyproject.toml",
+              "path": "public/GIGA/Aethyr One Ai/Development/pyproject.toml",
+              "type": "file",
+              "size": 2022
+            },
+            {
+              "name": "pytest.ini",
+              "path": "public/GIGA/Aethyr One Ai/Development/pytest.ini",
+              "type": "file",
+              "size": 283
+            },
+            {
+              "name": "requirements.txt",
+              "path": "public/GIGA/Aethyr One Ai/Development/requirements.txt",
+              "type": "file",
+              "size": 178
+            },
+            {
+              "name": "src",
+              "path": "public/GIGA/Aethyr One Ai/Development/src",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "App.tsx",
+                  "path": "public/GIGA/Aethyr One Ai/Development/src/App.tsx",
+                  "type": "file",
+                  "size": 212
+                },
+                {
+                  "name": "index.css",
+                  "path": "public/GIGA/Aethyr One Ai/Development/src/index.css",
+                  "type": "file",
+                  "size": 59
+                },
+                {
+                  "name": "main.tsx",
+                  "path": "public/GIGA/Aethyr One Ai/Development/src/main.tsx",
+                  "type": "file",
+                  "size": 234
+                },
+                {
+                  "name": "vite-env.d.ts",
+                  "path": "public/GIGA/Aethyr One Ai/Development/src/vite-env.d.ts",
+                  "type": "file",
+                  "size": 38
+                }
+              ]
+            },
+            {
+              "name": "tailwind.config.js",
+              "path": "public/GIGA/Aethyr One Ai/Development/tailwind.config.js",
+              "type": "file",
+              "size": 170
+            },
+            {
+              "name": "tests",
+              "path": "public/GIGA/Aethyr One Ai/Development/tests",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "__init__.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/tests/__init__.py",
+                  "type": "file",
+                  "size": 0
+                },
+                {
+                  "name": "test_hst.py",
+                  "path": "public/GIGA/Aethyr One Ai/Development/tests/test_hst.py",
+                  "type": "file",
+                  "size": 6489
+                }
+              ]
+            },
+            {
+              "name": "tsconfig.app.json",
+              "path": "public/GIGA/Aethyr One Ai/Development/tsconfig.app.json",
+              "type": "file",
+              "size": 552
+            },
+            {
+              "name": "tsconfig.json",
+              "path": "public/GIGA/Aethyr One Ai/Development/tsconfig.json",
+              "type": "file",
+              "size": 119
+            },
+            {
+              "name": "tsconfig.node.json",
+              "path": "public/GIGA/Aethyr One Ai/Development/tsconfig.node.json",
+              "type": "file",
+              "size": 479
+            },
+            {
+              "name": "vite.config.ts",
+              "path": "public/GIGA/Aethyr One Ai/Development/vite.config.ts",
+              "type": "file",
+              "size": 220
+            }
+          ]
+        },
+        {
+          "name": "HST_Architecture_Complete_Book.md",
+          "path": "public/GIGA/Aethyr One Ai/HST_Architecture_Complete_Book.md",
+          "type": "file",
+          "size": 19192
+        },
+        {
+          "name": "Q2AC2D17 (2).png",
+          "path": "public/GIGA/Aethyr One Ai/Q2AC2D17 (2).png",
+          "type": "file",
+          "size": 311359
+        },
+        {
+          "name": "QUICK_START.md",
+          "path": "public/GIGA/Aethyr One Ai/QUICK_START.md",
+          "type": "file",
+          "size": 6571
+        },
+        {
+          "name": "README.md",
+          "path": "public/GIGA/Aethyr One Ai/README.md",
+          "type": "file",
+          "size": 13109
+        },
+        {
+          "name": "Sign 01_signed.pdf",
+          "path": "public/GIGA/Aethyr One Ai/Sign 01_signed.pdf",
+          "type": "file",
+          "size": 172136
+        },
+        {
+          "name": "Sign 02_signed.pdf",
+          "path": "public/GIGA/Aethyr One Ai/Sign 02_signed.pdf",
+          "type": "file",
+          "size": 148864
+        },
+        {
+          "name": "Update.md",
+          "path": "public/GIGA/Aethyr One Ai/Update.md",
+          "type": "file",
+          "size": 5076
+        },
+        {
+          "name": "coder-prototype.html",
+          "path": "public/GIGA/Aethyr One Ai/coder-prototype.html",
+          "type": "file",
+          "size": 7060
+        },
+        {
+          "name": "hst_v8_closedif_core.py",
+          "path": "public/GIGA/Aethyr One Ai/hst_v8_closedif_core.py",
+          "type": "file",
+          "size": 15252
+        },
+        {
+          "name": "hst_v8_pytorch_closed_if.py",
+          "path": "public/GIGA/Aethyr One Ai/hst_v8_pytorch_closed_if.py",
+          "type": "file",
+          "size": 20634
+        }
+      ]
+    },
+    {
+      "name": "Jailbreak Data",
+      "path": "public/GIGA/Jailbreak Data",
+      "type": "folder",
+      "children": [
+        {
+          "name": "001.pdf",
+          "path": "public/GIGA/Jailbreak Data/001.pdf",
+          "type": "file",
+          "size": 830930
+        },
+        {
+          "name": "002.pdf",
+          "path": "public/GIGA/Jailbreak Data/002.pdf",
+          "type": "file",
+          "size": 223431
+        },
+        {
+          "name": "003.pdf",
+          "path": "public/GIGA/Jailbreak Data/003.pdf",
+          "type": "file",
+          "size": 382655
+        },
+        {
+          "name": "004.pdf",
+          "path": "public/GIGA/Jailbreak Data/004.pdf",
+          "type": "file",
+          "size": 226141
+        },
+        {
+          "name": "005.pdf",
+          "path": "public/GIGA/Jailbreak Data/005.pdf",
+          "type": "file",
+          "size": 230426
+        },
+        {
+          "name": "006.pdf",
+          "path": "public/GIGA/Jailbreak Data/006.pdf",
+          "type": "file",
+          "size": 432160
+        },
+        {
+          "name": "007.pdf",
+          "path": "public/GIGA/Jailbreak Data/007.pdf",
+          "type": "file",
+          "size": 233453
+        }
+      ]
+    },
+    {
+      "name": "MTH",
+      "path": "public/GIGA/MTH",
+      "type": "folder",
+      "children": [
+        {
+          "name": "1 sequence 01B 7NF22WWL (2)",
+          "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)",
+          "type": "folder",
+          "children": [
+            {
+              "name": "HST Lattice.png",
+              "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)/HST Lattice.png",
+              "type": "file",
+              "size": 5781972
+            },
+            {
+              "name": "Q2AC2D17 (2).png",
+              "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)/Q2AC2D17 (2).png",
+              "type": "file",
+              "size": 311359
+            },
+            {
+              "name": "Q2AC2D17.png",
+              "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)/Q2AC2D17.png",
+              "type": "file",
+              "size": 5781972
+            },
+            {
+              "name": "model v3.pdf",
+              "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)/model v3.pdf",
+              "type": "file",
+              "size": 8531
+            },
+            {
+              "name": "n2",
+              "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)/n2",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "hyp1-Model.xcf",
+                  "path": "public/GIGA/MTH/1 sequence 01B 7NF22WWL (2)/n2/hyp1-Model.xcf",
+                  "type": "file",
+                  "size": 12286606
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "10.png",
+          "path": "public/GIGA/MTH/10.png",
+          "type": "file",
+          "size": 255939
+        },
+        {
+          "name": "2 sequence 02 7NF22WWL (2)",
+          "path": "public/GIGA/MTH/2 sequence 02 7NF22WWL (2)",
+          "type": "folder",
+          "children": [
+            {
+              "name": "hyp-02.xcf",
+              "path": "public/GIGA/MTH/2 sequence 02 7NF22WWL (2)/hyp-02.xcf",
+              "type": "file",
+              "size": 1125620
+            },
+            {
+              "name": "hyp.bak",
+              "path": "public/GIGA/MTH/2 sequence 02 7NF22WWL (2)/hyp.bak",
+              "type": "file",
+              "size": 129194
+            },
+            {
+              "name": "hyp.dwg",
+              "path": "public/GIGA/MTH/2 sequence 02 7NF22WWL (2)/hyp.dwg",
+              "type": "file",
+              "size": 122280
+            },
+            {
+              "name": "s2.png",
+              "path": "public/GIGA/MTH/2 sequence 02 7NF22WWL (2)/s2.png",
+              "type": "file",
+              "size": 672087
+            },
+            {
+              "name": "seq_b.png",
+              "path": "public/GIGA/MTH/2 sequence 02 7NF22WWL (2)/seq_b.png",
+              "type": "file",
+              "size": 1490147
+            }
+          ]
+        },
+        {
+          "name": "4 binary spiral 7NF22WWL (2)",
+          "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)",
+          "type": "folder",
+          "children": [
+            {
+              "name": "bin_c_0.bak",
+              "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/bin_c_0.bak",
+              "type": "file",
+              "size": 451295
+            },
+            {
+              "name": "bin_c_0.dwg",
+              "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/bin_c_0.dwg",
+              "type": "file",
+              "size": 459099
+            },
+            {
+              "name": "new",
+              "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "3.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/3.png",
+                  "type": "file",
+                  "size": 956356
+                },
+                {
+                  "name": "4.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/4.png",
+                  "type": "file",
+                  "size": 874972
+                },
+                {
+                  "name": "6.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/6.png",
+                  "type": "file",
+                  "size": 652580
+                },
+                {
+                  "name": "8.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/8.png",
+                  "type": "file",
+                  "size": 587785
+                },
+                {
+                  "name": "8_dev.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/8_dev.png",
+                  "type": "file",
+                  "size": 608526
+                },
+                {
+                  "name": "resize",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "3t.png",
+                      "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/3t.png",
+                      "type": "file",
+                      "size": 171575
+                    },
+                    {
+                      "name": "4t.png",
+                      "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/4t.png",
+                      "type": "file",
+                      "size": 150816
+                    },
+                    {
+                      "name": "6t.png",
+                      "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/6t.png",
+                      "type": "file",
+                      "size": 106117
+                    },
+                    {
+                      "name": "8t.png",
+                      "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/8t.png",
+                      "type": "file",
+                      "size": 90786
+                    },
+                    {
+                      "name": "lattice.png",
+                      "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/lattice.png",
+                      "type": "file",
+                      "size": 418884
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "other",
+              "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "3.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/3.png",
+                  "type": "file",
+                  "size": 1878855
+                },
+                {
+                  "name": "3t.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/3t.png",
+                  "type": "file",
+                  "size": 115517
+                },
+                {
+                  "name": "4.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/4.png",
+                  "type": "file",
+                  "size": 1818064
+                },
+                {
+                  "name": "4t.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/4t.png",
+                  "type": "file",
+                  "size": 107694
+                },
+                {
+                  "name": "6.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/6.png",
+                  "type": "file",
+                  "size": 1412677
+                },
+                {
+                  "name": "6t.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/6t.png",
+                  "type": "file",
+                  "size": 76604
+                },
+                {
+                  "name": "8.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/8.png",
+                  "type": "file",
+                  "size": 1310750
+                },
+                {
+                  "name": "8t.png",
+                  "path": "public/GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/8t.png",
+                  "type": "file",
+                  "size": 67326
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "5 concept 7NF22WWL (2) 2000AH1573744AH12",
+          "path": "public/GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Drawing1.bak",
+              "path": "public/GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/Drawing1.bak",
+              "type": "file",
+              "size": 423272
+            },
+            {
+              "name": "Drawing1.dwg",
+              "path": "public/GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/Drawing1.dwg",
+              "type": "file",
+              "size": 408620
+            },
+            {
+              "name": "wave-1.png",
+              "path": "public/GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/wave-1.png",
+              "type": "file",
+              "size": 232023
+            },
+            {
+              "name": "wave.png",
+              "path": "public/GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/wave.png",
+              "type": "file",
+              "size": 340827
+            }
+          ]
+        },
+        {
+          "name": "6 Brojanica_01 7NF22WWL (2)",
+          "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)",
+          "type": "folder",
+          "children": [
+            {
+              "name": "1.xcf",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/1.xcf",
+              "type": "file",
+              "size": 1850943
+            },
+            {
+              "name": "2.xcf",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/2.xcf",
+              "type": "file",
+              "size": 1552915
+            },
+            {
+              "name": "3.xcf",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/3.xcf",
+              "type": "file",
+              "size": 1844597
+            },
+            {
+              "name": "brojevne strukture.bak",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/brojevne strukture.bak",
+              "type": "file",
+              "size": 713302
+            },
+            {
+              "name": "brojevne strukture.dwg",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/brojevne strukture.dwg",
+              "type": "file",
+              "size": 730376
+            },
+            {
+              "name": "const_count.png",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/const_count.png",
+              "type": "file",
+              "size": 1190316
+            },
+            {
+              "name": "const_sim.png",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/const_sim.png",
+              "type": "file",
+              "size": 1233535
+            },
+            {
+              "name": "const_unacross.png",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/const_unacross.png",
+              "type": "file",
+              "size": 837510
+            },
+            {
+              "name": "new.dwg",
+              "path": "public/GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/new.dwg",
+              "type": "file",
+              "size": 381042
+            }
+          ]
+        },
+        {
+          "name": "7 y34 calendar 7NF22WWL (2)",
+          "path": "public/GIGA/MTH/7 y34 calendar 7NF22WWL (2)",
+          "type": "folder",
+          "children": [
+            {
+              "name": "7NF22WWL (3).jpg",
+              "path": "public/GIGA/MTH/7 y34 calendar 7NF22WWL (2)/7NF22WWL (3).jpg",
+              "type": "file",
+              "size": 195053
+            },
+            {
+              "name": "calendar.dwg",
+              "path": "public/GIGA/MTH/7 y34 calendar 7NF22WWL (2)/calendar.dwg",
+              "type": "file",
+              "size": 379354
+            },
+            {
+              "name": "calendar.gif",
+              "path": "public/GIGA/MTH/7 y34 calendar 7NF22WWL (2)/calendar.gif",
+              "type": "file",
+              "size": 5691
+            },
+            {
+              "name": "calendar.pdf",
+              "path": "public/GIGA/MTH/7 y34 calendar 7NF22WWL (2)/calendar.pdf",
+              "type": "file",
+              "size": 5801
+            }
+          ]
+        },
+        {
+          "name": "desktop.ini",
+          "path": "public/GIGA/MTH/desktop.ini",
+          "type": "file",
+          "size": 67
+        },
+        {
+          "name": "exp 7NF22WWL (2)",
+          "path": "public/GIGA/MTH/exp 7NF22WWL (2)",
+          "type": "folder",
+          "children": [
+            {
+              "name": "8th seal.dwg",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/8th seal.dwg",
+              "type": "file",
+              "size": 509991
+            },
+            {
+              "name": "arch_exp_rise.dwg",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/arch_exp_rise.dwg",
+              "type": "file",
+              "size": 410060
+            },
+            {
+              "name": "lazy_pattern.dwg",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/lazy_pattern.dwg",
+              "type": "file",
+              "size": 387524
+            },
+            {
+              "name": "orbit.dwg",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/orbit.dwg",
+              "type": "file",
+              "size": 386932
+            },
+            {
+              "name": "simple_construct.dwg",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/simple_construct.dwg",
+              "type": "file",
+              "size": 397792
+            },
+            {
+              "name": "sketches",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/sketches",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "8.png",
+                  "path": "public/GIGA/MTH/exp 7NF22WWL (2)/sketches/8.png",
+                  "type": "file",
+                  "size": 189758
+                },
+                {
+                  "name": "time constant.png",
+                  "path": "public/GIGA/MTH/exp 7NF22WWL (2)/sketches/time constant.png",
+                  "type": "file",
+                  "size": 215793
+                }
+              ]
+            },
+            {
+              "name": "spiral,min3pointsfullpotential.bak",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/spiral,min3pointsfullpotential.bak",
+              "type": "file",
+              "size": 380402
+            },
+            {
+              "name": "spiral,min3pointsfullpotential.dwg",
+              "path": "public/GIGA/MTH/exp 7NF22WWL (2)/spiral,min3pointsfullpotential.dwg",
+              "type": "file",
+              "size": 379026
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Motor",
+      "path": "public/GIGA/Motor",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Control mechanism for Cascade Motor",
+          "path": "public/GIGA/Motor/Control mechanism for Cascade Motor",
+          "type": "folder",
+          "children": [
+            {
+              "name": "00_START_HERE.txt",
+              "path": "public/GIGA/Motor/Control mechanism for Cascade Motor/00_START_HERE.txt",
+              "type": "file",
+              "size": 16152
+            },
+            {
+              "name": "QUICK_REFERENCE.md",
+              "path": "public/GIGA/Motor/Control mechanism for Cascade Motor/QUICK_REFERENCE.md",
+              "type": "file",
+              "size": 13950
+            },
+            {
+              "name": "README.md",
+              "path": "public/GIGA/Motor/Control mechanism for Cascade Motor/README.md",
+              "type": "file",
+              "size": 16828
+            },
+            {
+              "name": "cascade_motor_control.py",
+              "path": "public/GIGA/Motor/Control mechanism for Cascade Motor/cascade_motor_control.py",
+              "type": "file",
+              "size": 28221
+            },
+            {
+              "name": "cascade_physics_engine.py",
+              "path": "public/GIGA/Motor/Control mechanism for Cascade Motor/cascade_physics_engine.py",
+              "type": "file",
+              "size": 20604
+            }
+          ]
+        },
+        {
+          "name": "m43.png",
+          "path": "public/GIGA/Motor/m43.png",
+          "type": "file",
+          "size": 966519
+        },
+        {
+          "name": "motor.pdf",
+          "path": "public/GIGA/Motor/motor.pdf",
+          "type": "file",
+          "size": 1221140
+        }
+      ]
+    },
+    {
+      "name": "NOT Computers",
+      "path": "public/GIGA/NOT Computers",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Aethyr One_ Technical Drawings.pdf",
+          "path": "public/GIGA/NOT Computers/Aethyr One_ Technical Drawings.pdf",
+          "type": "file",
+          "size": 186577
+        },
+        {
+          "name": "Ai control system for NOT computers - HEPI",
+          "path": "public/GIGA/NOT Computers/Ai control system for NOT computers - HEPI",
+          "type": "folder",
+          "children": [
+            {
+              "name": "ANTICOMPUTER_AI_ARCHITECTURE.md",
+              "path": "public/GIGA/NOT Computers/Ai control system for NOT computers - HEPI/ANTICOMPUTER_AI_ARCHITECTURE.md",
+              "type": "file",
+              "size": 16225
+            },
+            {
+              "name": "anticomputer_advanced_deployment.py",
+              "path": "public/GIGA/NOT Computers/Ai control system for NOT computers - HEPI/anticomputer_advanced_deployment.py",
+              "type": "file",
+              "size": 22144
+            },
+            {
+              "name": "anticomputer_ai_controller.py",
+              "path": "public/GIGA/NOT Computers/Ai control system for NOT computers - HEPI/anticomputer_ai_controller.py",
+              "type": "file",
+              "size": 28221
+            }
+          ]
+        },
+        {
+          "name": "Anticomputer_HEPI_MonteCarlo_QED.md_signed.pdf",
+          "path": "public/GIGA/NOT Computers/Anticomputer_HEPI_MonteCarlo_QED.md_signed.pdf",
+          "type": "file",
+          "size": 269360
+        },
+        {
+          "name": "Anticomputers-a.pdf",
+          "path": "public/GIGA/NOT Computers/Anticomputers-a.pdf",
+          "type": "file",
+          "size": 225604
+        },
+        {
+          "name": "Anticomputers.pdf",
+          "path": "public/GIGA/NOT Computers/Anticomputers.pdf",
+          "type": "file",
+          "size": 410429
+        },
+        {
+          "name": "CNBC_HEPI_Hybrid_Paper.txt_signed.pdf",
+          "path": "public/GIGA/NOT Computers/CNBC_HEPI_Hybrid_Paper.txt_signed.pdf",
+          "type": "file",
+          "size": 255583
+        },
+        {
+          "name": "HEPI crypto 01.pdf",
+          "path": "public/GIGA/NOT Computers/HEPI crypto 01.pdf",
+          "type": "file",
+          "size": 188442
+        },
+        {
+          "name": "HEPI monero ready submitted",
+          "path": "public/GIGA/NOT Computers/HEPI monero ready submitted",
+          "type": "folder",
+          "children": [
+            {
+              "name": "3ahtev.pdf",
+              "path": "public/GIGA/NOT Computers/HEPI monero ready submitted/3ahtev.pdf",
+              "type": "file",
+              "size": 28151
+            },
+            {
+              "name": "PRIJ-OPIS.pdf",
+              "path": "public/GIGA/NOT Computers/HEPI monero ready submitted/PRIJ-OPIS.pdf",
+              "type": "file",
+              "size": 53810
+            },
+            {
+              "name": "crte3.pdf",
+              "path": "public/GIGA/NOT Computers/HEPI monero ready submitted/crte3.pdf",
+              "type": "file",
+              "size": 56239
+            },
+            {
+              "name": "screen.jpg",
+              "path": "public/GIGA/NOT Computers/HEPI monero ready submitted/screen.jpg",
+              "type": "file",
+              "size": 80222
+            },
+            {
+              "name": "screen2.jpg",
+              "path": "public/GIGA/NOT Computers/HEPI monero ready submitted/screen2.jpg",
+              "type": "file",
+              "size": 35062
+            },
+            {
+              "name": "uputstvo-za-e-prijavu-patenti.pdf",
+              "path": "public/GIGA/NOT Computers/HEPI monero ready submitted/uputstvo-za-e-prijavu-patenti.pdf",
+              "type": "file",
+              "size": 294546
+            }
+          ]
+        },
+        {
+          "name": "Monero not.pdf",
+          "path": "public/GIGA/NOT Computers/Monero not.pdf",
+          "type": "file",
+          "size": 207563
+        },
+        {
+          "name": "NOT QUANT.pdf",
+          "path": "public/GIGA/NOT Computers/NOT QUANT.pdf",
+          "type": "file",
+          "size": 189043
+        },
+        {
+          "name": "NOT-01.pdf",
+          "path": "public/GIGA/NOT Computers/NOT-01.pdf",
+          "type": "file",
+          "size": 522825
+        },
+        {
+          "name": "OPIS.pdf",
+          "path": "public/GIGA/NOT Computers/OPIS.pdf",
+          "type": "file",
+          "size": 106348
+        },
+        {
+          "name": "Re-analysis.pdf",
+          "path": "public/GIGA/NOT Computers/Re-analysis.pdf",
+          "type": "file",
+          "size": 211782
+        },
+        {
+          "name": "hybrid 100_signed.pdf",
+          "path": "public/GIGA/NOT Computers/hybrid 100_signed.pdf",
+          "type": "file",
+          "size": 216100
+        },
+        {
+          "name": "nacrt.jpg",
+          "path": "public/GIGA/NOT Computers/nacrt.jpg",
+          "type": "file",
+          "size": 64036
+        },
+        {
+          "name": "nacrt.pdf",
+          "path": "public/GIGA/NOT Computers/nacrt.pdf",
+          "type": "file",
+          "size": 63112
+        }
+      ]
+    },
+    {
+      "name": "SECRETS.pdf",
+      "path": "public/GIGA/SECRETS.pdf",
+      "type": "file",
+      "size": 6418033
+    },
+    {
+      "name": "Satelittes",
+      "path": "public/GIGA/Satelittes",
+      "type": "folder",
+      "children": [
+        {
+          "name": "ORRT ai control",
+          "path": "public/GIGA/Satelittes/ORRT ai control",
+          "type": "folder",
+          "children": [
+            {
+              "name": "ORRT.py",
+              "path": "public/GIGA/Satelittes/ORRT ai control/ORRT.py",
+              "type": "file",
+              "size": 26968
+            }
+          ]
+        },
+        {
+          "name": "ORRT.pdf",
+          "path": "public/GIGA/Satelittes/ORRT.pdf",
+          "type": "file",
+          "size": 373484
+        },
+        {
+          "name": "OSAC.pdf",
+          "path": "public/GIGA/Satelittes/OSAC.pdf",
+          "type": "file",
+          "size": 261643
+        },
+        {
+          "name": "qrpws.pdf",
+          "path": "public/GIGA/Satelittes/qrpws.pdf",
+          "type": "file",
+          "size": 196684
+        },
+        {
+          "name": "telescope.docx",
+          "path": "public/GIGA/Satelittes/telescope.docx",
+          "type": "file",
+          "size": 11646
+        }
+      ]
+    },
+    {
+      "name": "fileslist.txt",
+      "path": "public/GIGA/fileslist.txt",
+      "type": "file",
+      "size": 23099
+    },
+    {
+      "name": "folder-structure.json",
+      "path": "public/GIGA/folder-structure.json",
+      "type": "file",
+      "size": 77885
+    },
+    {
+      "name": "other-scrap",
+      "path": "public/GIGA/other-scrap",
+      "type": "folder",
+      "children": [
+        {
+          "name": "1.png",
+          "path": "public/GIGA/other-scrap/1.png",
+          "type": "file",
+          "size": 107927
+        },
+        {
+          "name": "2.png",
+          "path": "public/GIGA/other-scrap/2.png",
+          "type": "file",
+          "size": 88240
+        },
+        {
+          "name": "3a ht ev.pdf",
+          "path": "public/GIGA/other-scrap/3a ht ev.pdf",
+          "type": "file",
+          "size": 97199
+        },
+        {
+          "name": "3a+ht+ev.pdf.pdf",
+          "path": "public/GIGA/other-scrap/3a+ht+ev.pdf.pdf",
+          "type": "file",
+          "size": 97199
+        },
+        {
+          "name": "3ахт 4.pdf",
+          "path": "public/GIGA/other-scrap/3ахт 4.pdf",
+          "type": "file",
+          "size": 86989
+        },
+        {
+          "name": "Code_Generated_Image (1).png",
+          "path": "public/GIGA/other-scrap/Code_Generated_Image (1).png",
+          "type": "file",
+          "size": 33869
+        },
+        {
+          "name": "Code_Generated_Image (2).png",
+          "path": "public/GIGA/other-scrap/Code_Generated_Image (2).png",
+          "type": "file",
+          "size": 41283
+        },
+        {
+          "name": "Code_Generated_Image (3).png",
+          "path": "public/GIGA/other-scrap/Code_Generated_Image (3).png",
+          "type": "file",
+          "size": 58890
+        },
+        {
+          "name": "Code_Generated_Image (4).png",
+          "path": "public/GIGA/other-scrap/Code_Generated_Image (4).png",
+          "type": "file",
+          "size": 39531
+        },
+        {
+          "name": "Code_Generated_Image.png",
+          "path": "public/GIGA/other-scrap/Code_Generated_Image.png",
+          "type": "file",
+          "size": 39554
+        },
+        {
+          "name": "HBEcvs0WEAAiNU4.png",
+          "path": "public/GIGA/other-scrap/HBEcvs0WEAAiNU4.png",
+          "type": "file",
+          "size": 9765
+        },
+        {
+          "name": "Revenue_projections_old",
+          "path": "public/GIGA/other-scrap/Revenue_projections_old",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Anticomputer Modular Cost Model V1.pdf",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/Anticomputer Modular Cost Model V1.pdf",
+              "type": "file",
+              "size": 114737
+            },
+            {
+              "name": "Risk_reduction.pdf",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/Risk_reduction.pdf",
+              "type": "file",
+              "size": 763499
+            },
+            {
+              "name": "aethyr_Revenue_projections.xlsx",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/aethyr_Revenue_projections.xlsx",
+              "type": "file",
+              "size": 16879
+            },
+            {
+              "name": "licensee_earnings_summary.md",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/licensee_earnings_summary.md",
+              "type": "file",
+              "size": 11157
+            },
+            {
+              "name": "licensee_economics_analysis.xlsx",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/licensee_economics_analysis.xlsx",
+              "type": "file",
+              "size": 12025
+            },
+            {
+              "name": "revenue_projection_report.md",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/revenue_projection_report.md",
+              "type": "file",
+              "size": 10735
+            },
+            {
+              "name": "why_to_invest.pdf",
+              "path": "public/GIGA/other-scrap/Revenue_projections_old/why_to_invest.pdf",
+              "type": "file",
+              "size": 274865
+            }
+          ]
+        },
+        {
+          "name": "index.html",
+          "path": "public/GIGA/other-scrap/index.html",
+          "type": "file",
+          "size": 6450
+        },
+        {
+          "name": "js",
+          "path": "public/GIGA/other-scrap/js",
+          "type": "folder",
+          "children": [
+            {
+              "name": "licencing.js",
+              "path": "public/GIGA/other-scrap/js/licencing.js",
+              "type": "file",
+              "size": 8431
+            },
+            {
+              "name": "main.js",
+              "path": "public/GIGA/other-scrap/js/main.js",
+              "type": "file",
+              "size": 4565
+            },
+            {
+              "name": "sim-3d.js",
+              "path": "public/GIGA/other-scrap/js/sim-3d.js",
+              "type": "file",
+              "size": 2893
+            },
+            {
+              "name": "sim-econ.js",
+              "path": "public/GIGA/other-scrap/js/sim-econ.js",
+              "type": "file",
+              "size": 7885
+            },
+            {
+              "name": "sim-gippc.js",
+              "path": "public/GIGA/other-scrap/js/sim-gippc.js",
+              "type": "file",
+              "size": 5827
+            }
+          ]
+        },
+        {
+          "name": "ketch 01.pdf",
+          "path": "public/GIGA/other-scrap/ketch 01.pdf",
+          "type": "file",
+          "size": 26729
+        },
+        {
+          "name": "new 2.html",
+          "path": "public/GIGA/other-scrap/new 2.html",
+          "type": "file",
+          "size": 38116
+        },
+        {
+          "name": "patentna_prijava_20str.docx",
+          "path": "public/GIGA/other-scrap/patentna_prijava_20str.docx",
+          "type": "file",
+          "size": 24975
+        },
+        {
+          "name": "v1.pdf",
+          "path": "public/GIGA/other-scrap/v1.pdf",
+          "type": "file",
+          "size": 25999
+        },
+        {
+          "name": "опис.pdf",
+          "path": "public/GIGA/other-scrap/опис.pdf",
+          "type": "file",
+          "size": 241821
+        }
+      ]
+    },
+    {
+      "name": "output.txt~",
+      "path": "public/GIGA/output.txt~",
+      "type": "file",
+      "size": 0
+    }
+  ]
+}

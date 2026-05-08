@@ -1,0 +1,135 @@
+'use strict';
+// ================================================================
+// AETHYR ONE — signer.js
+// Isolated key module. VAULT.SIGNER_PRIV is accessed ONLY here.
+// No other module should touch raw private key bytes.
+//
+// Signing: secp256k1 ECDSA with SHA-256 digest +
+//          chain-specific domain prefix to prevent cross-chain
+//          replay. Proper asymmetric — anyone with public key
+//          can verify, only key holder can sign.
+//
+// Key never leaves this module. No exports of raw key bytes.
+// ================================================================
+const crypto = require('crypto');
+const { VAULT, CHAIN_ID } = require('./config');
+
+// ── Domain separator (prevents cross-chain replay) ───────────────
+// Signs: SHA256("\x19AETHYR-210078 Block:\n" + blockHash)
+const DOMAIN_PREFIX = Buffer.from(`\x19AETHYR-${CHAIN_ID} Block:\n`, 'utf8');
+
+// ── Build PKCS#8 DER wrapper for raw secp256k1 private key ───────
+// Node.js crypto requires PKCS#8 format — raw 32-byte keys need wrapping.
+// All DER lengths here are < 128 bytes so single-byte encoding is safe.
+function buildPkcs8Der(rawHex) {
+  const raw = Buffer.from(rawHex.replace(/^0x/, ''), 'hex');
+  if (raw.length !== 32) throw new Error(`[SIGNER] Key must be 32 bytes, got ${raw.length}`);
+
+  // Inner: SEC1 ECPrivateKey SEQUENCE
+  // version = 1, privateKey OCTET STRING, [0] curve OID secp256k1
+  const ecVersion  = Buffer.from([0x02, 0x01, 0x01]);
+  const ecPrivOctet= Buffer.concat([Buffer.from([0x04, 0x20]), raw]);
+  const secp256k1  = Buffer.from([0xa0, 0x07, 0x06, 0x05, 0x2b, 0x81, 0x04, 0x00, 0x0a]);
+  const ecBody     = Buffer.concat([ecVersion, ecPrivOctet, secp256k1]);
+  const ecSeq      = Buffer.concat([Buffer.from([0x30, ecBody.length]), ecBody]);
+
+  // AlgorithmIdentifier: OID id-ecPublicKey + OID secp256k1
+  const algBody    = Buffer.from([
+    0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01,  // id-ecPublicKey
+    0x06, 0x05, 0x2b, 0x81, 0x04, 0x00, 0x0a,               // secp256k1
+  ]);
+  const algSeq     = Buffer.concat([Buffer.from([0x30, algBody.length]), algBody]);
+
+  // PKCS#8 PrivateKeyInfo SEQUENCE
+  const pkcs8Ver   = Buffer.from([0x02, 0x01, 0x00]);
+  const privKeyOs  = Buffer.concat([Buffer.from([0x04, ecSeq.length]), ecSeq]);
+  const pkcs8Body  = Buffer.concat([pkcs8Ver, algSeq, privKeyOs]);
+  return Buffer.concat([Buffer.from([0x30, pkcs8Body.length]), pkcs8Body]);
+}
+
+// ── Load key once at module init ─────────────────────────────────
+let _privateKey = null;   // crypto.KeyObject — not raw bytes
+let _publicKeyHex = null; // compressed public key for /vault display
+let _available = false;
+
+function _loadKey() {
+  if (!VAULT.SIGNER_PRIV) return;
+  try {
+    const der  = buildPkcs8Der(VAULT.SIGNER_PRIV);
+    _privateKey = crypto.createPrivateKey({ key: der, format: 'der', type: 'pkcs8' });
+    // Derive compressed public key for display
+    const pubDer = crypto.createPublicKey(_privateKey).export({ format: 'der', type: 'spki' });
+    // Last 65 bytes of SPKI DER = uncompressed pubkey; compress it
+    const uncompressed = pubDer.slice(-65);
+    const x = uncompressed.slice(1, 33);
+    const y = uncompressed.slice(33, 65);
+    const prefix = (y[31] & 1) ? 0x03 : 0x02;
+    _publicKeyHex = '0x' + Buffer.concat([Buffer.from([prefix]), x]).toString('hex');
+    _available = true;
+    console.log(`[SIGNER] secp256k1 key loaded — pubkey: ${_publicKeyHex.slice(0, 18)}...`);
+  } catch (e) {
+    console.error(`[SIGNER] Key load failed: ${e.message}`);
+  }
+}
+_loadKey();
+
+// ── Sign a block hash ────────────────────────────────────────────
+// Returns { sig: '0x...', method: 'ecdsa-secp256k1', pubkey }
+// sig is DER-encoded ECDSA signature, prefixed 0x
+function signBlock(blockHash) {
+  if (!_available || !_privateKey) {
+    return { sig: null, method: 'unsigned', pubkey: null };
+  }
+  try {
+    const hashBytes = Buffer.from(blockHash.replace(/^0x/, ''), 'hex');
+    const message   = Buffer.concat([DOMAIN_PREFIX, hashBytes]);
+    // SHA-256 digest, secp256k1 curve — proper ECDSA
+    const sigDer = crypto.sign('sha256', message, _privateKey);
+    return {
+      sig:    '0x' + sigDer.toString('hex'),
+      method: 'ecdsa-secp256k1',
+      pubkey: _publicKeyHex,
+    };
+  } catch (e) {
+    console.error(`[SIGNER] Sign failed: ${e.message}`);
+    return { sig: null, method: 'unsigned', pubkey: null };
+  }
+}
+
+// ── Verify a block signature (for future multi-validator use) ────
+function verifyBlock(blockHash, sigHex, pubkeyHex) {
+  try {
+    const sigDer    = Buffer.from(sigHex.replace(/^0x/, ''), 'hex');
+    const hashBytes = Buffer.from(blockHash.replace(/^0x/, ''), 'hex');
+    const message   = Buffer.concat([DOMAIN_PREFIX, hashBytes]);
+    // Reconstruct public key from compressed hex
+    const compressed = Buffer.from(pubkeyHex.replace(/^0x/, ''), 'hex');
+    // Wrap in SPKI DER for Node.js
+    const spkiAlg = Buffer.from([
+      0x30, 0x10,
+      0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01,
+      0x06, 0x05, 0x2b, 0x81, 0x04, 0x00, 0x0a,
+    ]);
+    const bitString = Buffer.concat([Buffer.from([0x03, compressed.length + 1, 0x00]), compressed]);
+    const spkiBody  = Buffer.concat([spkiAlg, bitString]);
+    const spki      = Buffer.concat([Buffer.from([0x30, spkiBody.length]), spkiBody]);
+    const pubKey    = crypto.createPublicKey({ key: spki, format: 'der', type: 'spki' });
+    return crypto.verify('sha256', message, pubKey, sigDer);
+  } catch { return false; }
+}
+
+// ── HMAC for audit log stamps (key not reused for signing) ───────
+// Audit uses a separate HMAC-SHA256 stamp — fine for log integrity.
+// We keep this here so it shares the same key without re-reading .env.
+function auditStamp(body) {
+  if (!VAULT.SIGNER_PRIV) {
+    return crypto.createHmac('sha256', 'aethyr-audit').update(body).digest('hex').slice(0, 16);
+  }
+  return crypto.createHmac('sha256', Buffer.from(VAULT.SIGNER_PRIV.replace(/^0x/, ''), 'hex'))
+               .update(body).digest('hex').slice(0, 16);
+}
+
+function getPublicKey() { return _publicKeyHex; }
+function isAvailable()  { return _available; }
+
+module.exports = { signBlock, verifyBlock, auditStamp, getPublicKey, isAvailable };

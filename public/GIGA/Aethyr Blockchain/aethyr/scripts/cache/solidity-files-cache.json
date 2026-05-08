@@ -1,0 +1,295 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/87CF3011/2777-87/scripts/contracts/AYRMockOracle.sol": {
+      "lastModificationDate": 1773309301128,
+      "contentHash": "832775238aeb1fb1f7de98c900cb6a99",
+      "sourceName": "contracts/AYRMockOracle.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "AYRMockOracle"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/AYRStaking.sol": {
+      "lastModificationDate": 1773310525665,
+      "contentHash": "d847ab4eacc9eef4a6eb79a80f4b0643",
+      "sourceName": "contracts/AYRStaking.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "AYRStaking"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/AYRSwapRouter.sol": {
+      "lastModificationDate": 1773309303116,
+      "contentHash": "47205fd2729756fa55732986d1346d68",
+      "sourceName": "contracts/AYRSwapRouter.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "AYRSwapRouter",
+        "IERC20Mintable",
+        "IOracle"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/AYRToken.sol": {
+      "lastModificationDate": 1773309303392,
+      "contentHash": "cd0a32208f7e52f85b62e44f6a3e4abe",
+      "sourceName": "contracts/AYRToken.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "AYRToken"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/BridgeLock.sol": {
+      "lastModificationDate": 1773309303458,
+      "contentHash": "b6a0ec85679653db162f0930a39a9882",
+      "sourceName": "contracts/BridgeLock.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "BridgeLock"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/UTXORegistry.sol": {
+      "lastModificationDate": 1773309303482,
+      "contentHash": "5d0d6194142d9c8e7b1af45033927225",
+      "sourceName": "contracts/UTXORegistry.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "UTXORegistry"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/WrappedToken.sol": {
+      "lastModificationDate": 1773309443503,
+      "contentHash": "b1eb23eb2647c44d19aeb84f1f73cbac",
+      "sourceName": "contracts/WrappedToken.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "WrappedToken"
+      ]
+    },
+    "/home/87CF3011/2777-87/scripts/contracts/AYROracle.sol": {
+      "lastModificationDate": 1773311328811,
+      "contentHash": "b53971862f619f26c968c415cafe887a",
+      "sourceName": "contracts/AYROracle.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "AYROracle"
+      ]
+    }
+  }
+}

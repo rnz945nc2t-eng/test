@@ -1,13 +1,13 @@
 'use strict';
 // ================================================================
-// AETHYR ONE — audit.js
+// AETHYR ONE - audit.js
 // Tamper-evident audit log (HMAC stamp via signer.js) +
 // in-memory ring buffer for /logs command.
 // ================================================================
 const fs = require('fs');
 const { AUDIT_FILE, LOG_FILE, sanitize } = require('./config');
 
-// Lazy import avoids circular dep (signer→config, audit→config — fine)
+// Lazy import avoids circular dep (signer→config, audit→config - fine)
 function _stamp(body) {
   try { return require('./signer').auditStamp(body); }
   catch { return '????????????????'; }

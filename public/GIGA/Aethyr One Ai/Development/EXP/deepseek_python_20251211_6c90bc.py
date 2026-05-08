@@ -169,7 +169,7 @@ class HolographicLatticeLayer(nn.Module):
             factor = 2 ** i
             
             if factor == 1:
-                res_x = x
+                res_x = processor(x)
             else:
                 # Downsample
                 res_x = F.avg_pool1d(x.transpose(1, 2), kernel_size=factor, 
@@ -178,9 +178,7 @@ class HolographicLatticeLayer(nn.Module):
                 res_x = processor(res_x)
                 # Upsample back
                 res_x = F.interpolate(res_x.transpose(1, 2), size=S, 
-                                    mode='linear', align_corners=False).transpose(1, 2)
-            else:
-                res_x = processor(x)
+                                    mode="linear", align_corners=False).transpose(1, 2)
             
             # Apply phase shift (holographic interference)
             res_x = res_x * torch.cos(self.phase_shift[i]) + \

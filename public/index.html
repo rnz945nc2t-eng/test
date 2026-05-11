@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aethyr Global — Executive Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050608;
+            --bg-secondary: #090b10;
+            --surface: #111420;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f0f2f8;
+            --text-dim: #8890a8;
+            --accent-teal: #2dd4bf;
+            --accent-blue: #4f8aff;
+            --accent-gold: #d4af37;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        aside {
+            width: var(--sidebar-width);
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-box {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .nav-section {
+            padding: 24px 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .nav-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            padding: 0 24px 12px;
+        }
+
+        .nav-item {
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-item.active {
+            border-right: 2px solid var(--accent-teal);
+        }
+
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        header {
+            height: 64px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            justify-content: space-between;
+        }
+
+        .search-bar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            width: 100%;
+            outline: none;
+        }
+
+        .content-area {
+            padding: 32px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(45, 212, 191, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .btn-view {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: rgba(79, 138, 255, 0.1);
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1px solid rgba(79, 138, 255, 0.2);
+        }
+
+        .btn-view:hover {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* Animated grid background */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <aside>
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-box">AY</div>
+                Aethyr Global
+            </div>
+        </div>
+        <div class="nav-section">
+            <div class="nav-label">Main</div>
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#apps" class="nav-item">Applications</a>
+            <a href="#assets" class="nav-item">Core Assets</a>
+            <a href="#vault" class="nav-item">GIGA Vault</a>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="Search archive, files, or nodes...">
+            </div>
+            <div class="status mono" style="font-size: 12px; color: var(--accent-teal);">
+                SYSTEM ONLINE // RESONANCE ACTIVE
+            </div>
+        </header>
+
+        <div class="content-area">
+            <div id="main-view">
+                <h2>Executive Terminal</h2>
+                <div class="dashboard-grid" id="dashboard-content">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let fileIndex = null;
+
+        async function loadIndex() {
+            try {
+                const response = await fetch('file-index.json');
+                fileIndex = await response.json();
+                renderDashboard();
+            } catch (err) {
+                console.error("Failed to load file index:", err);
+            }
+        }
+
+        function renderDashboard() {
+            const container = document.getElementById('dashboard-content');
+            container.innerHTML = '';
+
+            // Show highlight applications
+            const highlights = [
+                { name: 'Io AI', path: 'io.html', desc: 'Intelligence Beyond the Horizon' },
+                { name: 'AURA Protocol', path: 'aura.html', desc: 'Autonomous Universal Resonance Architecture' },
+                { name: 'Not Money', path: 'not-money.html', desc: 'Decentralized Economic Value System' }
+            ];
+
+            highlights.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3 style="margin-bottom: 8px; font-family: 'Syne', sans-serif;">${app.name}</h3>
+                    <p style="font-size: 14px; color: var(--text-dim); margin-bottom: 16px;">${app.desc}</p>
+                    <a href="${app.path}" class="btn-view mono">OPEN MODULE</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterView(category) {
+            const container = document.getElementById('dashboard-content');
+            const title = document.querySelector('#main-view h2');
+
+            // Update active state
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if(item.getAttribute('href') === category) item.classList.add('active');
+            });
+
+            if (!fileIndex) return;
+
+            let items = [];
+            if (category === '#apps') {
+                title.innerText = 'Applications';
+                items = fileIndex.Applications;
+            } else if (category === '#assets') {
+                title.innerText = 'Core Assets';
+                items = fileIndex['Core Assets'];
+            } else if (category === '#vault') {
+                title.innerText = 'GIGA Vault';
+                items = fileIndex.Vault;
+            } else {
+                title.innerText = 'Executive Terminal';
+                renderDashboard();
+                return;
+            }
+
+            container.innerHTML = '';
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                const ext = item.name.split('.').pop().toUpperCase();
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                        <h3 style="font-family: 'Syne', sans-serif; font-size: 16px;">${item.name}</h3>
+                        <span class="mono" style="font-size: 10px; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px;">${ext}</span>
+                    </div>
+                    <p class="mono" style="font-size: 11px; color: var(--text-dim); margin-bottom: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.path}</p>
+                    <a href="${item.path}" target="_blank" class="btn-view mono">VIEW ASSET</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            if (!term) {
+                renderDashboard();
+                return;
+            }
+
+            const container = document.getElementById('dashboard-content');
+            const title = document.querySelector('#main-view h2');
+            title.innerText = `Search results for: "${term}"`;
+            container.innerHTML = '';
+
+            const allItems = [
+                ...fileIndex.Applications,
+                ...fileIndex['Core Assets'],
+                ...fileIndex.Vault
+            ];
+
+            const matches = allItems.filter(item =>
+                item.name.toLowerCase().includes(term) ||
+                item.path.toLowerCase().includes(term)
+            );
+
+            if (matches.length === 0) {
+                container.innerHTML = '<p class="mono" style="color: var(--text-dim); grid-column: 1/-1; text-align: center; padding: 40px;">No results found in the Aethyr Field.</p>';
+                return;
+            }
+
+            matches.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                const ext = item.name.split('.').pop().toUpperCase();
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                        <h3 style="font-family: 'Syne', sans-serif; font-size: 16px;">${item.name}</h3>
+                        <span class="mono" style="font-size: 10px; padding: 2px 6px; background: rgba(255,255,255,0.05); border-radius: 4px;">${ext}</span>
+                    </div>
+                    <p class="mono" style="font-size: 11px; color: var(--text-dim); margin-bottom: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.path}</p>
+                    <a href="${item.path}" target="_blank" class="btn-view mono">VIEW ASSET</a>
+                `;
+                container.appendChild(card);
+            });
+        });
+
+        // Navigation handlers
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const href = item.getAttribute('href');
+                searchInput.value = ''; // Clear search on nav
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    filterView(href);
+                }
+            });
+        });
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            loadIndex();
+            console.log("Terminal Ready.");
+        });
+    </script>
+</body>
+</html>

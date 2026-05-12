@@ -146,13 +146,13 @@ class IoConfig:
     fb_iterations:    int   = 2
     hebbian_decay:    float = 0.995
     exit_threshold:   float = 0.90
-    lr:               float = 3.5e-4
+    lr:               float = 1e-4
     weight_decay:     float = 0.1
     warmup_steps:     int   = 2000
     max_steps:        int   = 50000
     batch_size:       int   = 4
     accum_steps:      int   = 4
-    grad_clip:        float = 1.0
+    grad_clip:        float = 0.5
     device:           str   = "cuda" if torch.cuda.is_available() else "cpu"
     use_amp:          bool  = True
 
@@ -216,9 +216,10 @@ class HyperbolicEmbedding(nn.Module):
         self.emb = nn.Embedding(vocab_size, d_model)
         nn.init.normal_(self.emb.weight, mean=0, std=0.01)
     def _project(self, x: torch.Tensor) -> torch.Tensor:
+        # Force vectors to stay slightly inside the ball (Stabilized for v1.0)
         norm = x.norm(dim=-1, keepdim=True)
-        max_norm = (1 - 1e-5) / math.sqrt(self.c)
-        return torch.where(norm > max_norm, x * (max_norm / (norm + 1e-9)), x)
+        # Using 0.99 as a safety anchor to prevent division by zero/NaN at boundaries
+        return x / (norm + 1e-7) * 0.99
     def forward(self, ids: torch.Tensor) -> torch.Tensor:
         return self._project(self.emb(ids))
 
@@ -379,10 +380,47 @@ class Io(nn.Module):
         self.feedback, self.hebbian, self.norm_out, self.lm_head, self.horizon = FeedbackLoop(cfg.d_model, self.cif), HebbianFastWeights(cfg.d_model, self.cif), nn.LayerNorm(cfg.d_model), nn.Linear(cfg.d_model, cfg.vocab_size, bias=False), SpeculativeHorizon(cfg.d_model, cfg.vocab_size, cfg.max_horizon)
         self.lm_head.weight = self.embedding.emb.weight
         self.apply(self._init_weights)
+
     def _init_weights(self, m):
         if isinstance(m, nn.Linear):
             torch.nn.init.normal_(m.weight, mean=0, std=0.02)
             if m.bias is not None: torch.nn.init.zeros_(m.bias)
+
+    def _transfer_block(self, src_block, tgt_block):
+        # Helper to transfer weights from a single GPT-2 layer to an HST layer
+        w = src_block.attn.c_attn.weight.t()
+        qw, kw, vw = w.split(self.cfg.d_model, dim=0)
+
+        tgt_block.attn.qkv_proj.weight.data.copy_(torch.cat([qw, kw, vw], dim=0))
+        tgt_block.attn.out_proj.weight.data.copy_(src_block.attn.c_proj.weight.t())
+
+        tgt_block.norm1.weight.data.copy_(src_block.ln_1.weight.data)
+        tgt_block.norm1.bias.data.copy_(src_block.ln_1.bias.data)
+        tgt_block.norm2.weight.data.copy_(src_block.ln_2.weight.data)
+        tgt_block.norm2.bias.data.copy_(src_block.ln_2.bias.data)
+
+        tgt_block.mixer.up.weight.data.copy_(src_block.mlp.c_fc.weight.t())
+        tgt_block.mixer.up.bias.data.copy_(src_block.mlp.c_fc.bias.data)
+        tgt_block.mixer.down.weight.data.copy_(src_block.mlp.c_proj.weight.t())
+        tgt_block.mixer.down.bias.data.copy_(src_block.mlp.c_proj.bias.data)
+
+    def load_gpt2_weights(self, gpt2_model):
+        """CRITICAL: Transfers all weights from the GPT-2 Teacher model."""
+        # 1. Embeddings
+        self.embedding.emb.weight.data.copy_(gpt2_model.transformer.wte.weight.data)
+        n_pos = min(self.pos_enc.abs_pe.shape[0], gpt2_model.transformer.wpe.weight.shape[0])
+        self.pos_enc.abs_pe.data[:n_pos].copy_(gpt2_model.transformer.wpe.weight.data[:n_pos])
+
+        gpt2_layers = gpt2_model.transformer.h
+        # 2. Layers
+        for i in range(min(len(self.layers), len(gpt2_layers))):
+            self._transfer_block(gpt2_layers[i], self.layers[i])
+
+        # 3. Final Norm and LM Head
+        self.norm_out.weight.data.copy_(gpt2_model.transformer.ln_f.weight.data)
+        self.norm_out.bias.data.copy_(gpt2_model.transformer.ln_f.bias.data)
+        self.lm_head.weight.data.copy_(self.embedding.emb.weight.data)
+
     def forward(self, ids, caches=None, training=True):
         B, S = ids.shape
         p_offset = caches[0].pos if caches else 0
@@ -443,10 +481,18 @@ class AsynchronousHFStreamer:
 # ══════════════════════════════════════════════════════════════════════════════════════════
 
 def train_gen(cfg: IoConfig, dataset: str) -> Generator[Dict[str, Any], None, None]:
-    yield {"status": "Loading Tokenizer..."}
+    yield {"status": "Loading Tokenizer & Teacher..."}
+    from transformers import GPT2LMHeadModel
     enc = tiktoken.get_encoding("gpt2")
-    yield {"status": "Initializing Architecture..."}
+    teacher = GPT2LMHeadModel.from_pretrained('gpt2').to(cfg.device)
+    teacher.eval()
+
+    yield {"status": "Initializing Student Architecture..."}
     model = Io(cfg).to(cfg.device)
+
+    yield {"status": "Transforming Knowledge from GPT..."}
+    model.load_gpt2_weights(teacher)
+
     yield {"status": "Configuring Optimizer..."}
     optimizer = torch.optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay, betas=(0.9, 0.95))
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda s: s/cfg.warmup_steps if s<cfg.warmup_steps else 0.5*(1+math.cos(math.pi*(s-cfg.warmup_steps)/(cfg.max_steps-cfg.warmup_steps))))
@@ -467,6 +513,9 @@ def train_gen(cfg: IoConfig, dataset: str) -> Generator[Dict[str, Any], None, No
     device_type = "cuda" if "cuda" in cfg.device else "cpu"
     scaler = torch.amp.GradScaler(device=device_type, enabled=cfg.use_amp)
 
+    kd_temp = 2.0
+    kd_alpha = 0.5
+
     t_start = time.time()
     for step in range(1, cfg.max_steps + 1):
         model.train()
@@ -479,9 +528,34 @@ def train_gen(cfg: IoConfig, dataset: str) -> Generator[Dict[str, Any], None, No
             x, y = batch[0].to(cfg.device), batch[1].to(cfg.device)
             with torch.amp.autocast(device_type=device_type, enabled=cfg.use_amp):
                 out = model(x, training=True)
+
+                # Student Cross-Entropy
                 loss_lm = F.cross_entropy(out["logits"].view(-1, cfg.vocab_size), y.view(-1))
+
+                # Teacher Soft Targets
+                with torch.no_grad():
+                    teacher_logits = teacher(x).logits
+
+                # KD Loss
+                soft_targets = F.softmax(teacher_logits / kd_temp, dim=-1)
+                soft_predictions = F.log_softmax(out["logits"] / kd_temp, dim=-1)
+                loss_kd = F.kl_div(
+                    soft_predictions.view(-1, cfg.vocab_size),
+                    soft_targets.view(-1, cfg.vocab_size),
+                    reduction='batchmean'
+                ) * (kd_temp ** 2)
+
+                # Speculative Loss
                 loss_h = F.cross_entropy(out["drafts"][:, 0, :], y[:, -1])
-                batch_loss = (cfg.accum_steps**-1) * (model.cif.lm_weight.get() * loss_lm + model.cif.hor_weight.get() * loss_h + model.cif.unc_weight.get() * out["unc"].mean())
+
+                # Composite
+                batch_loss = (cfg.accum_steps**-1) * (
+                    (1 - kd_alpha) * loss_lm +
+                    kd_alpha * loss_kd +
+                    model.cif.hor_weight.get() * loss_h +
+                    model.cif.unc_weight.get() * out["unc"].mean()
+                )
+
             scaler.scale(batch_loss).backward(); total_loss += batch_loss.item()
         scaler.unscale_(optimizer); nn.utils.clip_grad_norm_(model.parameters(), cfg.grad_clip); scaler.step(optimizer); scaler.update(); optimizer.zero_grad(); scheduler.step()
 

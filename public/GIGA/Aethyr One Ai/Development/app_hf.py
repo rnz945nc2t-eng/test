@@ -43,9 +43,9 @@ def start_training():
 
     for update in generator:
         if "status" in update:
-            logs.append(f">>> {update['status']}")
+            logs.append(f"[{time.strftime('%H:%M:%S')}] >>> {update['status']}")
         else:
-            logs.append(f"Step {update['step']:4d} | Loss: {update['loss']:.4f} | TPS: {update['tps']:.1f}")
+            logs.append(f"[{time.strftime('%H:%M:%S')}] Step {update['step']:4d} | Loss: {update['loss']:.4f} | TPS: {update['tps']:.1f}")
 
         yield "\n".join(logs[-20:]) # Show last 20 lines
 

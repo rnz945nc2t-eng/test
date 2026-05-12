@@ -1,12 +1,13 @@
 """
 Io v2 Sacred (HST v8.2 Crystalline) - "THE BEST AI"
-Official Google Colab Training Script (COHERENCE INJECTOR)
+Official Google Colab Training Script (CONVERSATIONAL VERSION)
 Optimized for T4 GPU (16GB VRAM)
 
-Strategy:
-- ARCHITECTURAL INJECTION: The model trains on its own technical blueprints.
-- NUCLEUS SAMPLING (Top-P): Prevents incoherent output by focusing on high-probability tokens.
-- RAPID TRAINING: Designed to show coherent patterns within 5-10 minutes.
+Dataset: daily_dialog (Publicly available conversational data)
+Features:
+- Crystalline Architecture (Pell-Lucas, Diamond Mixer, Hebbian Plasticity)
+- Memory-Optimized HyperLattice
+- Nucleus Sampling (Top-P)
 """
 
 import os
@@ -35,62 +36,29 @@ except ImportError:
 
 try:
     from transformers import AutoTokenizer, get_linear_schedule_with_warmup
+    from datasets import load_dataset
     import tiktoken
 except ImportError:
     os.system('pip install transformers datasets tiktoken -q')
     from transformers import AutoTokenizer, get_linear_schedule_with_warmup
+    from datasets import load_dataset
     import tiktoken
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: {device}")
-if torch.cuda.is_available():
-    print(f"GPU: {torch.cuda.get_device_name(0)} | VRAM: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
 
 # HYPERPARAMETERS
-D_MODEL = 256
+D_MODEL = 512
 N_HEADS = 8
 N_LAYERS = 12
 LATTICE_DEPTH = 64
 MAX_SEQ_LEN = 256
 VOCAB_SIZE = 50257
-BATCH_SIZE = 4
-GRADIENT_ACCUMULATION_STEPS = 4
-MAX_TRAINING_STEPS = 300 # Sufficient for coherence on focused corpus
+BATCH_SIZE = 2
+GRADIENT_ACCUMULATION_STEPS = 8
+MAX_TRAINING_STEPS = 1000
 INITIAL_LR = 1e-4
-
-# ==================== SACRED ARCHITECTURAL CORPUS ====================
-COHERENCE_CORPUS = """
-# The Hierarchical Sequence Transformer (HST) v8.2 Crystalline
-The HST architecture represents a groundbreaking evolution in neural network design.
-It incorporates advanced mathematical concepts including Pell-Lucas sequences, hyperbolic geometry, and chaos theory.
-
-## Core Architectural Components
-
-1. Pell-Lucas Time Spine (Infinite Context)
-The Time Spine handles massive sequences through mathematical recursion.
-It allows the model to maintain long-range dependencies without the quadratic memory cost of standard attention.
-
-2. Diamond Mixer (Lossless Logic)
-Replacing the standard Feed-Forward Network, the Diamond Mixer uses synthesis and analysis paths (Z and W) to ensure information conservation.
-Topology: Z = x + y (Synthesis), W = y - x (Analysis).
-
-3. Holographic Lattice (Interference Field)
-The Lattice processes data through interference patterns, allowing for multi-dimensional semantic routing.
-It utilizes Hyper-Lattice semantic paths to determine which information is most relevant to the current prediction.
-
-4. Hebbian Plasticity (Runtime Learning)
-The model includes a plasticity layer that adapts during inference.
-This "Self-Correction" cycle allows the model to refine its outputs based on context in real-time.
-
-5. Hyperbolic Embeddings
-Tokens are projected into a Poincaré ball space.
-This exponentially expanding space matches the natural growth of the Pell-Lucas lattice, allowing for better hierarchical representation.
-
-## Performance and Scaling
-The HST v8.2 Crystalline is optimized for high TPS (Tokens Per Second).
-On T4 GPUs, it utilizes Paged KV Cache to manage memory efficiently, avoiding OOM (OutOfMemory) errors even with deep layers.
-The architecture scales linearly with sequence length while maintaining the complexity required for true artificial intelligence.
-""" * 10
+WARMUP_STEPS = 200
 
 # ==================== CORE ARCHITECTURE ====================
 
@@ -225,52 +193,48 @@ class HSTv8Crystalline(nn.Module):
 
 # ==================== DATA & TRAINING ====================
 
-class SacredCorpus(Dataset):
-    def __init__(self, text, seq_len):
-        self.enc = tiktoken.get_encoding("gpt2")
-        self.tokens = self.enc.encode(text)
-        self.seq_len = seq_len
-    def __len__(self): return len(self.tokens) - self.seq_len
-    def __getitem__(self, idx):
-        return torch.tensor(self.tokens[idx : idx + self.seq_len], dtype=torch.long)
-
 def train():
     print("Building Io v2 Sacred model...")
     model = HSTv8Crystalline(VOCAB_SIZE, D_MODEL, N_HEADS, N_LAYERS, LATTICE_DEPTH).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=INITIAL_LR, weight_decay=0.01)
     scaler = GradScaler()
-    dataset = SacredCorpus(COHERENCE_CORPUS, MAX_SEQ_LEN)
-    loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
-
-    print(f"Starting Coherent Architectural Injection...")
-    model.train(); step, start_time = 0, time.time()
-
-    try:
-        while step < MAX_TRAINING_STEPS:
-            for batch in loader:
-                if step >= MAX_TRAINING_STEPS: break
-                batch = batch.to(device)
-                with autocast(device_type=device.type):
-                    logits = model(batch)['logits']
-                    loss = F.cross_entropy(logits[:, :-1, :].reshape(-1, VOCAB_SIZE), batch[:, 1:].reshape(-1)) / GRADIENT_ACCUMULATION_STEPS
-                scaler.scale(loss).backward()
-                if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
-                    scaler.unscale_(optimizer); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-                    scaler.step(optimizer); scaler.update(); optimizer.zero_grad()
-                    if step % 20 == 0:
-                        print(f"Step {step} | Loss {loss.item()*GRADIENT_ACCUMULATION_STEPS:.4f} | Injection Active")
-                step += 1
-    except KeyboardInterrupt: pass
-
-    print("\n[Final Coherence Test]")
+    print("Loading Daily Dialog dataset...")
+    dataset = load_dataset("daily_dialog", split="train", streaming=True)
     tokenizer = AutoTokenizer.from_pretrained("gpt2")
-    prompt = "The HST architecture integrates"
+    def stream_loader():
+        for ex in dataset:
+            dialogue = ""
+            for i, utt in enumerate(ex['dialog']):
+                dialogue += f"{'User: ' if i % 2 == 0 else 'Assistant: '}{utt.strip()}\n"
+            ids = tokenizer(dialogue, truncation=True, max_length=MAX_SEQ_LEN)['input_ids']
+            if len(ids) > 1: yield torch.tensor(ids).unsqueeze(0)
+    loader = stream_loader()
+    scheduler = get_linear_schedule_with_warmup(optimizer, 100, MAX_TRAINING_STEPS)
+    print("Starting Conversational Training...")
+    model.train(); step, start_time = 0, time.time()
+    try:
+        for batch in loader:
+            if step >= MAX_TRAINING_STEPS: break
+            batch = batch.to(device)
+            with autocast(device_type=device.type):
+                logits = model(batch)['logits']
+                loss = F.cross_entropy(logits[:, :-1, :].reshape(-1, VOCAB_SIZE), batch[:, 1:].reshape(-1)) / GRADIENT_ACCUMULATION_STEPS
+            scaler.scale(loss).backward()
+            if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
+                scaler.unscale_(optimizer); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+                scaler.step(optimizer); scaler.update(); optimizer.zero_grad(); scheduler.step()
+                if step % (GRADIENT_ACCUMULATION_STEPS * 10) == 0:
+                    print(f"Step {step} | Loss {loss.item()*GRADIENT_ACCUMULATION_STEPS:.4f} | Time {time.time()-start_time:.1f}s")
+            step += 1
+    except KeyboardInterrupt: pass
+    torch.save(model.state_dict(), "io_conversational_final.pt")
+    print("\n[Final Conversational Test]")
+    prompt = "User: Hello, how are you today?\nAssistant:"
     input_ids = torch.tensor(tokenizer.encode(prompt)).unsqueeze(0).to(device)
-    output, tps = model.generate(input_ids, max_new_tokens=100, temperature=0.7, top_p=0.9)
-    generated_text = tokenizer.decode(output[0].tolist())
-    print(f"AI: {generated_text}\nPerformance: {tps:.2f} TPS")
-    with open("io_generation_report.txt", "w") as f:
-        f.write(f"TPS Record: {tps:.2f}\n\nCOHERENT OUTPUT:\n{generated_text}")
+    output, tps = model.generate(input_ids, max_new_tokens=50)
+    res = tokenizer.decode(output[0].tolist())
+    print(f"AI: {res}\nTPS: {tps:.2f}")
+    with open("io_report.txt", "w") as f: f.write(f"TPS: {tps:.2f}\n\nGenerated:\n{res}")
 
 if __name__ == "__main__":
     train()

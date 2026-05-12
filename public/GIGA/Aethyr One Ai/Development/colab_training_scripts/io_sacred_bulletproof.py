@@ -1,11 +1,20 @@
 """
 Io v2 Sacred (HST v8.2 Crystalline) - "THE BEST AI"
-Official Google Colab Training Script (CONVERSATIONAL VERSION - FIX V1)
+Official Google Colab Training Script (BULLETPROOF LARGE VERSION)
 Optimized for T4 GPU (16GB VRAM)
 
-Fix: Added trust_remote_code=True for daily_dialog dataset.
+Dataset: HuggingFaceFW/fineweb-edu (Sample-10BT)
+- Parquet-based, massive, clean, and high-quality.
+- NO loading scripts, NO trust_remote_code required.
+- Standard format for bulletproof loading.
+
+Features:
+- Crystalline Architecture (Pell-Lucas, Diamond Mixer, Hebbian Plasticity)
+- Memory-Optimized HyperLattice (Iterative Processing)
+- Nucleus Sampling (Top-P) for high coherence.
 """
 
+# ==================== RESILIENT SETUP ====================
 import os
 import sys
 import gc
@@ -14,6 +23,7 @@ import time
 import numpy as np
 from typing import Dict, Optional, Tuple, List
 
+# Set CUDA allocator config
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'backend:cudaMallocAsync,expandable_segments:True,max_split_size_mb:32'
 
 try:
@@ -23,6 +33,7 @@ try:
     from torch.amp import autocast, GradScaler
     from torch.utils.data import DataLoader, Dataset
 except ImportError:
+    print("Installing base dependencies...")
     os.system('pip install torch transformers datasets tiktoken -q')
     import torch
     import torch.nn as nn
@@ -40,20 +51,29 @@ except ImportError:
     from datasets import load_dataset
     import tiktoken
 
+# CUDA Safety Check
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: {device}")
 
-# HYPERPARAMETERS
+if torch.cuda.is_available():
+    try:
+        gpu_name = torch.cuda.get_device_name(0)
+        print(f"GPU: {gpu_name} | VRAM: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
+    except Exception as e:
+        print(f"CUDA Warning: {e}")
+        torch.cuda.init()
+
+# ==================== HYPERPARAMETERS ====================
 D_MODEL = 512
 N_HEADS = 8
 N_LAYERS = 12
 LATTICE_DEPTH = 64
-MAX_SEQ_LEN = 256
-VOCAB_SIZE = 50257
+MAX_SEQ_LEN = 512
+VOCAB_SIZE = 50257 # GPT-2
 BATCH_SIZE = 2
 GRADIENT_ACCUMULATION_STEPS = 8
 MAX_TRAINING_STEPS = 1000
-INITIAL_LR = 1e-4
+INITIAL_LR = 1.5e-4
 WARMUP_STEPS = 200
 
 # ==================== CORE ARCHITECTURE ====================
@@ -194,21 +214,26 @@ def train():
     model = HSTv8Crystalline(VOCAB_SIZE, D_MODEL, N_HEADS, N_LAYERS, LATTICE_DEPTH).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=INITIAL_LR, weight_decay=0.01)
     scaler = GradScaler()
-    print("Loading Daily Dialog dataset...")
-    # FIXED: trust_remote_code=True is required for script-based datasets in newer versions
-    dataset = load_dataset("daily_dialog", split="train", streaming=True, trust_remote_code=True)
+
+    print("Loading Bulletproof Dataset (FineWeb-Edu Parquet)...")
+    # FineWeb-Edu is Parquet-based, NO trust_remote_code needed, massive and clean.
+    dataset = load_dataset("HuggingFaceFW/fineweb-edu", "sample-10BT", split="train", streaming=True)
     tokenizer = AutoTokenizer.from_pretrained("gpt2")
+    tokenizer.pad_token = tokenizer.eos_token
+
     def stream_loader():
+        print("Data stream initialized. Bulletproof loading active...")
         for ex in dataset:
-            dialogue = ""
-            for i, utt in enumerate(ex['dialog']):
-                dialogue += f"{'User: ' if i % 2 == 0 else 'Assistant: '}{utt.strip()}\n"
-            ids = tokenizer(dialogue, truncation=True, max_length=MAX_SEQ_LEN)['input_ids']
-            if len(ids) > 1: yield torch.tensor(ids).unsqueeze(0)
+            ids = tokenizer(ex['text'], truncation=True, max_length=MAX_SEQ_LEN)['input_ids']
+            if len(ids) > 1:
+                yield torch.tensor(ids).unsqueeze(0)
+
     loader = stream_loader()
-    scheduler = get_linear_schedule_with_warmup(optimizer, 100, MAX_TRAINING_STEPS)
-    print("Starting Conversational Training...")
+    scheduler = get_linear_schedule_with_warmup(optimizer, WARMUP_STEPS, MAX_TRAINING_STEPS)
+
+    print("Starting Bulletproof Large-Scale Training...")
     model.train(); step, start_time = 0, time.time()
+
     try:
         for batch in loader:
             if step >= MAX_TRAINING_STEPS: break
@@ -217,21 +242,28 @@ def train():
                 logits = model(batch)['logits']
                 loss = F.cross_entropy(logits[:, :-1, :].reshape(-1, VOCAB_SIZE), batch[:, 1:].reshape(-1)) / GRADIENT_ACCUMULATION_STEPS
             scaler.scale(loss).backward()
+
             if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
                 scaler.unscale_(optimizer); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
                 scaler.step(optimizer); scaler.update(); optimizer.zero_grad(); scheduler.step()
-                if step % (GRADIENT_ACCUMULATION_STEPS * 10) == 0:
+                if step % (GRADIENT_ACCUMULATION_STEPS * 5) == 0:
                     print(f"Step {step} | Loss {loss.item()*GRADIENT_ACCUMULATION_STEPS:.4f} | Time {time.time()-start_time:.1f}s")
+                    torch.cuda.empty_cache(); gc.collect()
             step += 1
     except KeyboardInterrupt: pass
-    torch.save(model.state_dict(), "io_conversational_final.pt")
-    print("\n[Final Conversational Test]")
-    prompt = "User: Hello, how are you today?\nAssistant:"
+
+    torch.save(model.state_dict(), "io_sacred_bulletproof.pt")
+
+    # Final Test
+    print("\n[Final Coherence Test]")
+    prompt = "Artificial intelligence will enable a future where"
     input_ids = torch.tensor(tokenizer.encode(prompt)).unsqueeze(0).to(device)
-    output, tps = model.generate(input_ids, max_new_tokens=50)
+    output, tps = model.generate(input_ids, max_new_tokens=100, temperature=0.7, top_p=0.9)
     res = tokenizer.decode(output[0].tolist())
-    print(f"AI: {res}\nTPS: {tps:.2f}")
-    with open("io_report.txt", "w") as f: f.write(f"TPS: {tps:.2f}\n\nGenerated:\n{res}")
+    print(f"AI: {res}\nPerformance: {tps:.2f} TPS")
+
+    with open("io_bulletproof_report.txt", "w") as f:
+        f.write(f"TPS Record: {tps:.2f}\n\nGENERATED TEXT:\n{res}")
 
 if __name__ == "__main__":
     train()

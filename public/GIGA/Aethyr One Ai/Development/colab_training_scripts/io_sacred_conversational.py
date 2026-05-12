@@ -1,13 +1,9 @@
 """
 Io v2 Sacred (HST v8.2 Crystalline) - "THE BEST AI"
-Official Google Colab Training Script (CONVERSATIONAL VERSION)
+Official Google Colab Training Script (CONVERSATIONAL VERSION - FIX V1)
 Optimized for T4 GPU (16GB VRAM)
 
-Dataset: daily_dialog (Publicly available conversational data)
-Features:
-- Crystalline Architecture (Pell-Lucas, Diamond Mixer, Hebbian Plasticity)
-- Memory-Optimized HyperLattice
-- Nucleus Sampling (Top-P)
+Fix: Added trust_remote_code=True for daily_dialog dataset.
 """
 
 import os
@@ -199,7 +195,8 @@ def train():
     optimizer = torch.optim.AdamW(model.parameters(), lr=INITIAL_LR, weight_decay=0.01)
     scaler = GradScaler()
     print("Loading Daily Dialog dataset...")
-    dataset = load_dataset("daily_dialog", split="train", streaming=True)
+    # FIXED: trust_remote_code=True is required for script-based datasets in newer versions
+    dataset = load_dataset("daily_dialog", split="train", streaming=True, trust_remote_code=True)
     tokenizer = AutoTokenizer.from_pretrained("gpt2")
     def stream_loader():
         for ex in dataset:

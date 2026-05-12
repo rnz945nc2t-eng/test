@@ -5,3 +5,4 @@ tiktoken
 tqdm
 pandas
 pyarrow
+gradio

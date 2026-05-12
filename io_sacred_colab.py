@@ -1,15 +1,11 @@
 """
 Io v2 Sacred (HST v8.2 Crystalline) - "THE BEST AI"
-Official Google Colab Training Script
+Official Google Colab Training Script (MEMORY OPTIMIZED)
 Optimized for T4 GPU (16GB VRAM)
 
-Features:
-- Pell-Lucas Time Spine (Infinite Context)
-- Diamond Mixer (Lossless Logic)
-- Holographic Lattice (Interference Field)
-- Hebbian Plasticity (Runtime Learning)
-- Hyperbolic Embeddings (Hierarchical Representation)
-- Paged KV Cache (Efficient Memory Management)
+Key Fix:
+- Implemented Iterative Lattice Processing in HyperLatticeBlock to prevent OOM.
+- Optimized D_MODEL and MAX_SEQ_LEN for stable training.
 """
 
 # ==================== RESILIENT SETUP ====================
@@ -21,7 +17,7 @@ import time
 import numpy as np
 from typing import Dict, Optional, Tuple, List
 
-# Set CUDA allocator config BEFORE torch import
+# Set CUDA allocator config
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'backend:cudaMallocAsync,expandable_segments:True,max_split_size_mb:32'
 
 try:
@@ -60,16 +56,15 @@ if torch.cuda.is_available():
         vram = torch.cuda.get_device_properties(0).total_memory / 1e9
         print(f"VRAM: {vram:.1f} GB")
     except Exception as e:
-        print(f"CUDA Error during initialization: {e}")
-        print("Falling back to stable initialization...")
+        print(f"CUDA Error: {e}")
         torch.cuda.init()
 
-# ==================== HYPERPARAMETERS ====================
-D_MODEL = 768
-N_HEADS = 12
+# ==================== HYPERPARAMETERS (REFINED) ====================
+D_MODEL = 512 # Optimized for VRAM stability
+N_HEADS = 8
 N_LAYERS = 16
 LATTICE_DEPTH = 64
-MAX_SEQ_LEN = 1024
+MAX_SEQ_LEN = 512 # Optimized for VRAM stability
 HORIZON = 16
 VOCAB_SIZE = 50257
 BATCH_SIZE = 1
@@ -165,6 +160,7 @@ class HebbianFastWeights(nn.Module):
 class HyperLatticeBlock(nn.Module):
     def __init__(self, d_model, lattice_depth=64):
         super().__init__()
+        self.lattice_depth = lattice_depth
         self.gate = nn.Linear(d_model, lattice_depth, bias=False)
         self.lattice_weights = nn.Parameter(torch.randn(lattice_depth, d_model, d_model) * 0.02)
         self.norm = nn.LayerNorm(d_model)
@@ -172,11 +168,20 @@ class HyperLatticeBlock(nn.Module):
     def forward(self, x):
         B, S, D = x.shape
         logits = self.gate(x)
-        k = max(1, int(logits.size(-1) * 0.1))
-        scores, indices = torch.topk(F.softmax(logits, dim=-1), k, dim=-1)
-        selected_weights = self.lattice_weights[indices]
-        effective_transform = (selected_weights * scores.unsqueeze(-1).unsqueeze(-1)).sum(dim=2)
-        return self.norm(x + torch.matmul(x.unsqueeze(2), effective_transform).squeeze(2))
+        scores = F.softmax(logits, dim=-1)
+        k = max(1, int(self.lattice_depth * 0.1))
+        top_scores, indices = torch.topk(scores, k, dim=-1)
+
+        # MEMORY OPTIMIZATION: Iterative processing to avoid large [B, S, k, D, D] tensors
+        output = torch.zeros_like(x)
+        for i in range(k):
+            idx = indices[:, :, i]
+            score = top_scores[:, :, i].unsqueeze(-1)
+            w = self.lattice_weights[idx]
+            trans = torch.matmul(x.unsqueeze(2), w).squeeze(2)
+            output += trans * score
+
+        return self.norm(x + output)
 
 class CrystallineAttention(nn.Module):
     def __init__(self, d_model, n_heads):
@@ -228,7 +233,6 @@ class HSTv8Crystalline(nn.Module):
     def forward(self, x, cache=None):
         B, S = x.shape
         past_len = cache[0].get_length() if cache else 0
-        # Positional encoding slicing
         pos_emb = self.pos_encoding[:, past_len:past_len+S, :]
         x = self.embedding(x) + pos_emb
 
@@ -237,30 +241,25 @@ class HSTv8Crystalline(nn.Module):
             if cache:
                 pk, pv = cache[i].get_all()
                 if pk is not None:
-                    # Prepare for CrystallineAttention [B, H, S, D]
                     layer_past = (pk.permute(0, 2, 1, 3), pv.permute(0, 2, 1, 3))
 
             x, present = block(x, layer_past)
 
             if cache:
-                # Capture new K, V [B, H, S, D] and permute to [B, S, H, D] for PagedKVCache
                 new_k = present[0][:, :, -S:, :].permute(0, 2, 1, 3)
                 new_v = present[1][:, :, -S:, :].permute(0, 2, 1, 3)
                 cache[i].append(new_k, new_v)
 
         x = self.lattice(x)
-        return {'logits': self.lm_head(self.ln_f(x)), 'hidden_states': x}
+        return {'logits': self.lm_head(self.ln_f(x))}
 
     @torch.no_grad()
     def generate(self, prompt_ids, max_new_tokens, temperature=1.0, top_k=50):
         self.eval()
         device = prompt_ids.device
-
-        # Initialize Paged KV Cache
         head_dim = self.d_model // self.n_heads
         cache = [PagedKVCache(head_dim, self.n_heads, device=device) for _ in range(len(self.blocks))]
 
-        # Prefill
         out = self(prompt_ids, cache=cache)
         logits = out['logits'][:, -1, :]
 
@@ -276,7 +275,6 @@ class HSTv8Crystalline(nn.Module):
             next_token = torch.multinomial(probs, 1)
             generated_ids = torch.cat([generated_ids, next_token], dim=1)
 
-            # Autoregressive step with cache
             out = self(next_token, cache=cache)
             logits = out['logits'][:, -1, :]
 
@@ -321,7 +319,6 @@ def train():
             with autocast():
                 outputs = model(batch)
                 logits = outputs['logits']
-                # Predict next tokens
                 loss = F.cross_entropy(logits[:, :-1, :].reshape(-1, VOCAB_SIZE), batch[:, 1:].reshape(-1))
                 loss = loss / GRADIENT_ACCUMULATION_STEPS
 
@@ -337,6 +334,8 @@ def train():
                 if step % (GRADIENT_ACCUMULATION_STEPS * 10) == 0:
                     elapsed = time.time() - start_time
                     print(f"Step {step} | Loss {loss.item()*GRADIENT_ACCUMULATION_STEPS:.4f} | Time {elapsed:.1f}s")
+                    torch.cuda.empty_cache()
+                    gc.collect()
 
             step += 1
 
@@ -346,18 +345,17 @@ def train():
     print("Training Complete. Saving model...")
     torch.save(model.state_dict(), "io_sacred_final.pt")
 
-    # Final Test & TPS Record
+    # Final Test
     print("\n[Inference Test]")
     prompt = "The future of artificial intelligence is"
     input_ids = torch.tensor(tokenizer.encode(prompt)).unsqueeze(0).to(device)
-    output, tps = model.generate(input_ids, max_new_tokens=100)
+    output, tps = model.generate(input_ids, max_new_tokens=50)
 
     generated_text = tokenizer.decode(output[0].tolist())
     print(f"Prompt: {prompt}")
     print(f"AI: {generated_text}")
     print(f"Performance: {tps:.2f} TPS")
 
-    # Record to file
     with open("io_generation_report.txt", "w") as f:
         f.write(f"TPS Record: {tps:.2f}\n\n")
         f.write("Generated Text:\n")

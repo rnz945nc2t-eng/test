@@ -8,9 +8,10 @@ def train_briefly(model, vocab_size=50257, iterations=50):
     print(f"--- Training Io briefly ({iterations} iterations) ---")
     optimizer = optim.AdamW(model.parameters(), lr=1e-4)
     model.train()
+    device = next(model.parameters()).device
 
     # Synthetic dataset: predicting next token in a simple sequence
-    data = torch.arange(1, 11).unsqueeze(0).repeat(8, 1) # Batch of 8
+    data = torch.arange(1, 11).unsqueeze(0).repeat(8, 1).to(device) # Batch of 8
 
     start_time = time.time()
     for i in range(iterations):
@@ -39,7 +40,8 @@ def train_briefly(model, vocab_size=50257, iterations=50):
 def test_tps(model, seq_len=128, num_tokens=50):
     print("--- Testing TPS (Tokens Per Second) ---")
     model.eval()
-    prompt = torch.randint(1, 50257, (1, seq_len))
+    device = next(model.parameters()).device
+    prompt = torch.randint(1, 50257, (1, seq_len)).to(device)
 
     start_time = time.time()
     generated = model.generate(prompt, max_new_tokens=num_tokens)
@@ -55,7 +57,8 @@ def test_tps(model, seq_len=128, num_tokens=50):
 def test_architectural_integrity(model):
     print("--- Testing Architectural Integrity ---")
     model.eval()
-    x = torch.randint(1, 50257, (1, 10))
+    device = next(model.parameters()).device
+    x = torch.randint(1, 50257, (1, 10)).to(device)
 
     # Test Time Spine
     spine_len = len(model.time_spine.spine)
@@ -83,7 +86,8 @@ def test_architectural_integrity(model):
 def main():
     vocab_size = 50257
     d_model = 768
-    model = IoSacred(vocab_size=vocab_size, d_model=d_model)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = IoSacred(vocab_size=vocab_size, d_model=d_model).to(device)
 
     print(f"Io v2 Sacred (v8.2 Crystalline) Initialized.")
     print("-" * 50)

@@ -39,7 +39,7 @@ class PellLucasTimeSpine(nn.Module):
         device = positions.device
 
         # Absolute encoding
-        abs_enc = self.absolute_pe[positions]
+        abs_enc = self.abs_pe[positions]
 
         # Lattice encoding
         # Vectorized lattice distance calculation
@@ -78,7 +78,7 @@ class PellLucasTimeSpine(nn.Module):
         div_term = torch.exp(torch.arange(0, d_model, 2).float() * -(np.log(10000.0) / d_model))
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
-        self.register_buffer('abs_pe_buffer', pe)
+        self.register_buffer('abs_pe', pe)
         return pe
 
 # ==============================================================================
@@ -186,8 +186,11 @@ class HebbianFastWeights(nn.Module):
             # Add to persistent memory during inference
             # Ensure shape matches batch
             if self.fast_weights.size(0) != B:
-                self.fast_weights = self.fast_weights.expand(B, -1, -1).contiguous()
-            self.fast_weights = self.lambda_decay * self.fast_weights + (1 - self.lambda_decay) * current_update
+                # Use data update to avoid breaking buffer registration
+                self.fast_weights.data = self.fast_weights.data.expand(B, -1, -1).contiguous()
+
+            # In-place update to maintain buffer persistence
+            self.fast_weights.data.mul_(self.lambda_decay).add_(current_update, alpha=(1 - self.lambda_decay))
             fw = self.fast_weights
         else:
             # Local update only for training to keep gradients sane

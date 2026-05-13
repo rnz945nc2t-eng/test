@@ -58,7 +58,7 @@ class DenyTorch(ClosedIfSetTorch):
     def test(self, condition_fn) -> bool:
         if self.cache is None:
             result = condition_fn(self.value)
-            self.cache = not result
+            self.cache = result
             self.cached = True
         return self.cache
     
@@ -95,8 +95,10 @@ class CachedPagedKVCache(nn.Module):
     def append(self, k: torch.Tensor, v: torch.Tensor):
         """Append KV pairs with optimized allocation."""
         if k.dim() == 4:
-            k = k.squeeze(0)  # [Seq, H, D]
-            v = v.squeeze(0)
+            # Handle batch dimension by taking the first sequence
+            # (Assuming BATCH_SIZE=1 for cache append or handling multiple)
+            k = k[0]  # [Seq, H, D]
+            v = v[0]
         
         seq_len = k.size(0)
         tokens_written = 0
@@ -242,10 +244,8 @@ class OptimizedMultiHeadAttention(nn.Module):
         if mask is not None:
             scores = scores.masked_fill(mask == 0, float('-inf'))
         
-        # Apply softmax (with potential caching for static inputs)
-        attn_weights = self._softmax_state.test(
-            lambda s: F.softmax(scores, dim=-1)
-        )
+        # Apply softmax
+        attn_weights = F.softmax(scores, dim=-1)
         
         attn_weights = self.dropout(attn_weights)
         

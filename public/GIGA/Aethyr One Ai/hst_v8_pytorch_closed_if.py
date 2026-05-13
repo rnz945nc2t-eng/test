@@ -324,19 +324,72 @@ class RotaryPositionalEmbedding(nn.Module):
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Apply rotary embeddings."""
-        return x
+        B, H, S, D = x.shape
+        cos = self.cos_cached[:, :, :S, :D]
+        sin = self.sin_cached[:, :, :S, :D]
+
+        # Split and rotate
+        x1, x2 = x[..., :D//2], x[..., D//2:]
+        rotated = torch.cat([-x2, x1], dim=-1)
+
+        return (x * cos) + (rotated * sin)
 
 
 # ==============================================================================
 # TRANSFORMER BLOCK
 # ==============================================================================
 
+class StreamlinedHorizonPredictor(nn.Module):
+    """Predicts multiple tokens ahead (HST Predictor)."""
+    def __init__(self, d_model: int, vocab_size: int, max_horizon: int = 16):
+        super().__init__()
+        self.max_horizon = max_horizon
+        self.predictor = nn.Sequential(
+            nn.Linear(d_model, d_model * 2),
+            nn.GELU(),
+            nn.Linear(d_model * 2, vocab_size * max_horizon)
+        )
+        self.uncertainty = nn.Sequential(
+            nn.Linear(d_model, 64),
+            nn.GELU(),
+            nn.Linear(64, 1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, h: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        B = h.size(0)
+        h_last = h[:, -1, :]
+        logits = self.predictor(h_last).view(B, self.max_horizon, -1)
+        uncertainty = self.uncertainty(h_last)
+        return logits, uncertainty
+
+
+class DiamondMixer(nn.Module):
+    """Lossless logic mixer (Diamond Mixer)."""
+    def __init__(self, d_model: int):
+        super().__init__()
+        self.split_proj = nn.Linear(d_model, d_model * 2)
+        self.z_process = nn.GELU()
+        self.w_process = nn.GELU()
+        self.merge_proj = nn.Linear(d_model * 2, d_model)
+        self.norm = nn.LayerNorm(d_model)
+
+    def forward(self, u: torch.Tensor) -> torch.Tensor:
+        xy = self.split_proj(u)
+        x, y = xy.chunk(2, dim=-1)
+        z = x + y
+        w = y - x
+        out = self.merge_proj(torch.cat([self.z_process(z), self.w_process(w)], dim=-1))
+        return self.norm(u + out)
+
+
 class TransformerBlockV8(nn.Module):
-    """Single transformer block with Closed If Set optimizations."""
+    """Single transformer block with Closed If Set and Diamond Mixer."""
     
     def __init__(self, d_model: int, n_heads: int, d_ffn: int, dropout: float = 0.1):
         super().__init__()
         self.attention = OptimizedMultiHeadAttention(d_model, n_heads, dropout)
+        self.diamond_mixer = DiamondMixer(d_model)
         self.ffn = nn.Sequential(
             nn.Linear(d_model, d_ffn),
             nn.GELU(),
@@ -348,14 +401,13 @@ class TransformerBlockV8(nn.Module):
         self.norm2 = nn.LayerNorm(d_model)
     
     def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
-        """Process through attention and feed-forward."""
+        """Process through attention and Diamond Mixer."""
         # Self-attention with pre-norm and residual
         attn_out = self.attention(self.norm1(x), mask=mask)
         x = x + attn_out
         
-        # Feed-forward with pre-norm and residual
-        ffn_out = self.ffn(self.norm2(x))
-        x = x + ffn_out
+        # Diamond Mixer replaces standard FFN
+        x = self.diamond_mixer(self.norm2(x))
         
         return x
 
@@ -415,6 +467,9 @@ class HSTv8Crystalline(nn.Module):
         self.output_norm = nn.LayerNorm(config.d_model)
         self.output_proj = nn.Linear(config.d_model, config.vocab_size, bias=False)
         
+        # HST Predictor
+        self.horizon_predictor = StreamlinedHorizonPredictor(config.d_model, config.vocab_size)
+
         # KV cache for generation
         self.kv_cache: Optional[List[CachedPagedKVCache]] = None
     
@@ -440,6 +495,7 @@ class HSTv8Crystalline(nn.Module):
         
         # Embed tokens
         x = self.token_embed(input_ids)
+        # pos_embed removed here, now used via RoPE in attention blocks
         x = self.input_dropout(x)
         
         # Lattice processing (structural memory)
@@ -458,13 +514,16 @@ class HSTv8Crystalline(nn.Module):
         x = self.output_norm(x)
         logits = self.output_proj(x)
         
-        # Compute uncertainty
+        # Compute uncertainty and horizon predictions (HST Predictor)
+        horizon_logits, predictor_uncertainty = self.horizon_predictor(x)
         uncertainty = self._compute_uncertainty(logits)
         
         return {
             'logits': logits,
+            'horizon_logits': horizon_logits,
             'hidden_states': x,
             'uncertainty': uncertainty,
+            'predictor_uncertainty': predictor_uncertainty
         }
     
     def _compute_uncertainty(self, logits: torch.Tensor) -> torch.Tensor:

@@ -59,7 +59,7 @@ class Affirm(ClosedIfSet):
 
 class Deny(ClosedIfSet):
     """
-    Memory-learned path: Computes once and caches the flipped result.
+    Memory-learned path: Computes once and caches the result.
     Use for expensive, static conditions.
     
     First call: O(n) - expensive computation
@@ -71,11 +71,10 @@ class Deny(ClosedIfSet):
     - Compiler optimization opportunities
     """
     
-    def test(self, condition_fn: Callable[[Any], bool]) -> bool:
-        """Compute once, cache the flipped result."""
+    def test(self, condition_fn: Callable[[Any], Any]) -> Any:
+        """Compute once, cache the result."""
         if self.cache is None:
-            result = condition_fn(self.value)
-            self.cache = not result  # Learn the flip, store in memory
+            self.cache = condition_fn(self.value)
         return self.cache
     
     def flip(self) -> 'ClosedIfSet':

@@ -55,10 +55,10 @@ class AffirmTorch(ClosedIfSetTorch):
 class DenyTorch(ClosedIfSetTorch):
     """Learning path - cached result after first computation."""
     
-    def test(self, condition_fn) -> bool:
+    def test(self, condition_fn) -> Any:
         if self.cache is None:
             result = condition_fn(self.value)
-            self.cache = not result
+            self.cache = result
             self.cached = True
         return self.cache
     

@@ -169,129 +169,384 @@ function FolderTree({ config }: { config: NodeConfig }) {
   );
 }
 
-// ── Seek simulation ───────────────────────────────────────────────────────────
+// ── Live Field Connection (real API) ─────────────────────────────────────────
 
-const DEMO_PEERS = [
-  { name: 'axiom-core',    tags: ['python', 'ml', 'research', 'data', 'science'] },
-  { name: 'solstice-ink',  tags: ['writing', 'poetry', 'text', 'notes', 'docs'] },
-  { name: 'ferrite-lab',   tags: ['rust', 'systems', 'embedded', 'code', 'fast'] },
-  { name: 'web-weave',     tags: ['javascript', 'web', 'frontend', 'design', 'code'] },
-  { name: 'brine-signal',  tags: ['audio', 'music', 'sound', 'wav', 'production'] },
-  { name: 'prism-node',    tags: ['image', 'visual', 'design', 'vector', 'svg'] },
-  { name: 'kelp-archive',  tags: ['data', 'csv', 'analysis', 'science', 'table'] },
-  { name: 'vessel-77',     tags: ['shell', 'automation', 'linux', 'sysadmin', 'code'] },
-];
-
-function resonanceScore(query: string, tags: string[]): number {
-  const words = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
-  if (!words.length) return 0;
-  let total = 0;
-  for (const w of words) {
-    for (const tag of tags) {
-      if (tag.includes(w) || w.includes(tag)) { total += 0.75; break; }
-    }
-  }
-  return Math.min(1, total / words.length);
+interface NodeStatus {
+  node_id: string;
+  wallet: string;
+  name: string;
+  channel: string | null;
+  field: string;
+  aura: Record<string, number>;
+  file_count: number;
+  balance: number;
+  peers: number;
+  uptime: number;
 }
 
-function SeekDemo({ config }: { config: NodeConfig }) {
+interface PeerRecord {
+  node_id: string;
+  name: string;
+  addr: string;
+  tags: string[];
+  last_seen: number;
+}
+
+interface SeekResult {
+  node_id: string;
+  name: string;
+  score: number;
+  tags: string[];
+  addr: string;
+}
+
+function FieldConnect() {
+  const [apiUrl, setApiUrl] = useState('http://127.0.0.1:7778');
+  const [editingUrl, setEditingUrl] = useState(false);
+  const [urlInput, setUrlInput] = useState('http://127.0.0.1:7778');
+  const [status, setStatus] = useState<NodeStatus | null>(null);
+  const [peers, setPeers] = useState<PeerRecord[]>([]);
+  const [inFiles, setInFiles] = useState<{ name: string; size: number }[]>([]);
+  const [connected, setConnected] = useState(false);
+  const [connecting, setConnecting] = useState(true);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<Array<{ name: string; tags: string[]; score: number; isMe: boolean }>>([]);
+  const [results, setResults] = useState<SeekResult[]>([]);
   const [seeking, setSeeking] = useState(false);
+  const [seekError, setSeekError] = useState('');
+  const [activeView, setActiveView] = useState<'peers' | 'seek' | 'in'>('peers');
 
-  const myTags = [config.lang, ...config.tags, ...config.name.split(/[-_\s]+/).filter(Boolean)].map(t => t.toLowerCase());
-  const myName = config.name || 'my-node';
+  const fetchAll = useCallback(async (url: string) => {
+    try {
+      const [sRes, pRes, iRes] = await Promise.all([
+        fetch(`${url}/status`, { signal: AbortSignal.timeout(3000) }),
+        fetch(`${url}/peers`,  { signal: AbortSignal.timeout(3000) }),
+        fetch(`${url}/in`,     { signal: AbortSignal.timeout(3000) }),
+      ]);
+      if (!sRes.ok) throw new Error(`HTTP ${sRes.status}`);
+      const [s, p, i] = await Promise.all([sRes.json(), pRes.json(), iRes.json()]);
+      setStatus(s);
+      setPeers(p.peers || []);
+      setInFiles(i.files || []);
+      setConnected(true);
+      setConnecting(false);
+    } catch {
+      setConnected(false);
+      setConnecting(false);
+      setStatus(null);
+    }
+  }, []);
 
-  const doSeek = () => {
-    if (!query.trim()) return;
+  useEffect(() => {
+    fetchAll(apiUrl);
+    const iv = setInterval(() => fetchAll(apiUrl), 5000);
+    return () => clearInterval(iv);
+  }, [apiUrl, fetchAll]);
+
+  const doSeek = async () => {
+    if (!query.trim() || !connected) return;
     setSeeking(true);
     setResults([]);
-    setTimeout(() => {
-      const all = DEMO_PEERS.map(p => ({ ...p, score: resonanceScore(query, p.tags), isMe: false }));
-      const myScore = resonanceScore(query, myTags);
-      if (myScore > 0.05) {
-        all.unshift({ name: myName, tags: myTags.slice(0, 5), score: myScore, isMe: true });
-      }
-      all.sort((a, b) => b.score - a.score);
-      setResults(all.filter(p => p.score > 0.05));
-      setSeeking(false);
-    }, 850);
+    setSeekError('');
+    try {
+      const res = await fetch(`${apiUrl}/seek`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
+        signal: AbortSignal.timeout(8000),
+      });
+      const data = await res.json();
+      setResults(data.results || []);
+      if ((data.results || []).length === 0) setSeekError('no resonance — no peers matched this query');
+    } catch (e: any) {
+      setSeekError(e.message || 'Seek failed');
+    }
+    setSeeking(false);
   };
 
+  const inputStyle: React.CSSProperties = {
+    flex: 1, padding: '11px 14px',
+    background: '#09071a', border: '1px solid rgba(108,99,255,0.2)',
+    borderRadius: 3, color: 'rgba(232,228,248,0.9)',
+    fontSize: 13, fontFamily: "'JetBrains Mono', monospace",
+    outline: 'none', transition: 'border-color 0.2s',
+  };
+
+  const tabBtn = (view: typeof activeView, label: string) => (
+    <button onClick={() => setActiveView(view)} style={{
+      fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase',
+      color: activeView === view ? '#6c63ff' : 'rgba(232,228,248,0.28)',
+      background: activeView === view ? 'rgba(108,99,255,0.1)' : 'none',
+      border: '1px solid',
+      borderColor: activeView === view ? 'rgba(108,99,255,0.3)' : 'rgba(255,255,255,0.06)',
+      borderRadius: 2, padding: '5px 14px', cursor: 'pointer', transition: 'all 0.2s',
+    }}>
+      {label}
+    </button>
+  );
+
+  /* ── Not connected ── */
+  if (!connected) {
+    return (
+      <div style={{
+        border: '1px solid rgba(108,99,255,0.15)', borderRadius: 6,
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          padding: '14px 20px',
+          background: 'rgba(108,99,255,0.05)',
+          borderBottom: '1px solid rgba(108,99,255,0.1)',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{
+              display: 'inline-block', width: 7, height: 7,
+              borderRadius: '50%', background: '#f87171',
+            }} />
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'rgba(232,228,248,0.4)' }}>
+              {connecting ? 'connecting…' : 'no node connected'}
+            </span>
+          </div>
+          {/* URL editor */}
+          {editingUrl ? (
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+              <input
+                value={urlInput}
+                onChange={e => setUrlInput(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') { setApiUrl(urlInput); setEditingUrl(false); setConnecting(true); }
+                  if (e.key === 'Escape') setEditingUrl(false);
+                }}
+                style={{ ...inputStyle, flex: 'unset', width: 220, fontSize: 11, padding: '5px 10px' }}
+                autoFocus
+              />
+              <button onClick={() => { setApiUrl(urlInput); setEditingUrl(false); setConnecting(true); }}
+                style={{ fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#3dd9c8', background: 'none', border: 'none', cursor: 'pointer' }}>
+                connect
+              </button>
+            </div>
+          ) : (
+            <button onClick={() => { setEditingUrl(true); setUrlInput(apiUrl); }}
+              style={{ fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(232,228,248,0.28)', background: 'none', border: 'none', cursor: 'pointer' }}>
+              {apiUrl} ✎
+            </button>
+          )}
+        </div>
+        <div style={{ padding: '32px 24px' }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: 'rgba(232,228,248,0.35)', lineHeight: 2, marginBottom: 20 }}>
+            Start your node to connect this panel to the live field:
+          </div>
+          <CodeBlock lang="bash" code={`# Install (once)\npip install aura-protocol\n\n# Build your node folder above, then:\naura join ./your-node\n\n# API starts automatically at http://127.0.0.1:7778\n# This panel connects automatically.`} />
+          <button
+            onClick={() => { setConnecting(true); fetchAll(apiUrl); }}
+            style={{
+              marginTop: 16, padding: '9px 22px',
+              background: 'rgba(108,99,255,0.1)', border: '1px solid rgba(108,99,255,0.25)',
+              borderRadius: 3, color: '#b06eff',
+              fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
+              cursor: 'pointer',
+            }}>
+            retry connection
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ── Connected ── */
   return (
-    <div>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-        <input
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && doSeek()}
-          placeholder="rust systems embedded..."
-          style={{
-            flex: 1, padding: '11px 14px',
-            background: '#09071a', border: '1px solid rgba(108,99,255,0.2)',
-            borderRadius: 3, color: 'rgba(232,228,248,0.9)',
-            fontSize: 13, fontFamily: "'JetBrains Mono', monospace",
-            outline: 'none', transition: 'border-color 0.2s',
-          }}
-          onFocus={e => (e.target.style.borderColor = '#6c63ff')}
-          onBlur={e => (e.target.style.borderColor = 'rgba(108,99,255,0.2)')}
-        />
-        <button onClick={doSeek} style={{
-          padding: '11px 22px',
-          background: 'rgba(108,99,255,0.14)', border: '1px solid rgba(108,99,255,0.3)',
-          borderRadius: 3, color: '#b06eff',
-          fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase',
-          cursor: 'pointer', transition: 'background 0.2s',
-        }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(108,99,255,0.26)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(108,99,255,0.14)')}>
-          {seeking ? '···' : 'seek'}
-        </button>
+    <div style={{ border: '1px solid rgba(108,99,255,0.2)', borderRadius: 6, overflow: 'hidden' }}>
+      {/* Status bar */}
+      <div style={{
+        padding: '12px 20px',
+        background: 'rgba(108,99,255,0.06)',
+        borderBottom: '1px solid rgba(108,99,255,0.1)',
+        display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ display: 'inline-block', width: 7, height: 7, borderRadius: '50%', background: '#3dd9c8', animation: 'pulse-dot 2s ease-in-out infinite' }} />
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#fff', fontWeight: 600 }}>
+            {status?.name}
+          </span>
+        </div>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'rgba(232,228,248,0.3)' }}>
+          {status?.node_id}
+        </span>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#6c63ff' }}>
+          {status?.field}
+        </span>
+        {status?.channel && (
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#b06eff' }}>
+            #{status.channel}
+          </span>
+        )}
+        <span style={{ marginLeft: 'auto', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#3dd9c8' }}>
+          {status?.balance.toFixed(2)} AYR
+        </span>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'rgba(232,228,248,0.25)' }}>
+          {peers.length} peer{peers.length !== 1 ? 's' : ''}
+        </span>
       </div>
 
-      {results.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-          {results.map((p, i) => (
-            <div key={i} style={{
-              display: 'flex', alignItems: 'center', gap: 14,
-              padding: '10px 14px',
-              background: p.isMe ? 'rgba(108,99,255,0.08)' : 'rgba(255,255,255,0.015)',
-              border: `1px solid ${p.isMe ? 'rgba(108,99,255,0.3)' : 'rgba(255,255,255,0.05)'}`,
-              borderRadius: 3,
-              animation: `slide-in 0.28s ease ${i * 0.06}s both`,
-            }}>
-              <div style={{ width: 80, flexShrink: 0 }}>
-                <div style={{
-                  height: 2, borderRadius: 1,
-                  background: 'linear-gradient(90deg,#6c63ff,#3dd9c8)',
-                  width: `${p.score * 100}%`, opacity: 0.85,
-                }} />
-                <div style={{
-                  fontSize: 9, color: '#6c63ff', marginTop: 4,
-                  fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.15em',
-                }}>
-                  {(p.score * 100).toFixed(0)}%
-                </div>
-              </div>
-              <div style={{ flex: 1, fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#fff' }}>
-                {p.name}
-                {p.isMe && (
-                  <span style={{ marginLeft: 10, fontSize: 9, color: '#3dd9c8', letterSpacing: '0.2em' }}>← your node</span>
-                )}
-              </div>
-              <div style={{ fontSize: 10, color: 'rgba(232,228,248,0.28)' }}>
-                {p.tags.slice(0, 3).join('  ')}
-              </div>
-            </div>
-          ))}
+      {/* Aura tags */}
+      {status?.aura && Object.keys(status.aura).length > 0 && (
+        <div style={{
+          padding: '10px 20px',
+          borderBottom: '1px solid rgba(108,99,255,0.07)',
+          display: 'flex', gap: 6, flexWrap: 'wrap',
+        }}>
+          {Object.entries(status.aura)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 10)
+            .map(([tag, weight]) => (
+              <span key={tag} style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 9, letterSpacing: '0.12em',
+                padding: '2px 8px', borderRadius: 2,
+                background: `rgba(108,99,255,${weight * 0.15})`,
+                border: `1px solid rgba(108,99,255,${weight * 0.4})`,
+                color: `rgba(176,110,255,${0.5 + weight * 0.5})`,
+              }}>
+                {tag}
+              </span>
+            ))}
         </div>
       )}
 
-      {!seeking && query && results.length === 0 && (
-        <div style={{ fontSize: 12, color: 'rgba(232,228,248,0.28)', fontFamily: "'JetBrains Mono', monospace", padding: '10px 0' }}>
-          no resonance — try different keywords
-        </div>
-      )}
+      {/* Tab bar */}
+      <div style={{
+        padding: '10px 20px',
+        borderBottom: '1px solid rgba(108,99,255,0.07)',
+        display: 'flex', gap: 6,
+      }}>
+        {tabBtn('peers', `peers (${peers.length})`)}
+        {tabBtn('seek', 'seek')}
+        {tabBtn('in', `in/ (${inFiles.length})`)}
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: '16px 20px', minHeight: 120 }}>
+
+        {/* Peers */}
+        {activeView === 'peers' && (
+          peers.length === 0 ? (
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'rgba(232,228,248,0.25)', padding: '12px 0' }}>
+              no peers — other nodes will appear here as they join the field
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+              {peers.map((p, i) => (
+                <div key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 14,
+                  padding: '10px 14px',
+                  background: 'rgba(255,255,255,0.015)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  borderRadius: 3,
+                }}>
+                  <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#3dd9c8', flexShrink: 0 }} />
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#fff', flex: 1 }}>
+                    {p.name}
+                  </span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'rgba(232,228,248,0.22)' }}>
+                    {p.node_id}
+                  </span>
+                  <span style={{ fontSize: 10, color: 'rgba(232,228,248,0.25)' }}>
+                    {p.tags.slice(0, 3).join('  ')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )
+        )}
+
+        {/* Seek */}
+        {activeView === 'seek' && (
+          <div>
+            <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
+              <input
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && doSeek()}
+                placeholder="python music data science..."
+                style={inputStyle}
+                onFocus={e => (e.target.style.borderColor = '#6c63ff')}
+                onBlur={e => (e.target.style.borderColor = 'rgba(108,99,255,0.2)')}
+              />
+              <button onClick={doSeek} disabled={seeking} style={{
+                padding: '11px 22px',
+                background: 'rgba(108,99,255,0.14)', border: '1px solid rgba(108,99,255,0.3)',
+                borderRadius: 3, color: '#b06eff',
+                fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase',
+                cursor: seeking ? 'default' : 'pointer', opacity: seeking ? 0.6 : 1,
+                transition: 'background 0.2s',
+              }}
+                onMouseEnter={e => !seeking && (e.currentTarget.style.background = 'rgba(108,99,255,0.26)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(108,99,255,0.14)')}>
+                {seeking ? '···' : 'seek'}
+              </button>
+            </div>
+            {results.length > 0 && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                {results.map((r, i) => (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 14,
+                    padding: '10px 14px',
+                    background: 'rgba(255,255,255,0.015)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: 3,
+                    animation: `slide-in 0.25s ease ${i * 0.05}s both`,
+                  }}>
+                    <div style={{ width: 76, flexShrink: 0 }}>
+                      <div style={{
+                        height: 2, borderRadius: 1,
+                        background: 'linear-gradient(90deg,#6c63ff,#3dd9c8)',
+                        width: `${r.score * 100}%`, opacity: 0.85,
+                      }} />
+                      <div style={{ fontSize: 9, color: '#6c63ff', marginTop: 4, fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.15em' }}>
+                        {(r.score * 100).toFixed(0)}%
+                      </div>
+                    </div>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#fff', flex: 1 }}>{r.name}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'rgba(232,228,248,0.22)' }}>{r.node_id}</span>
+                    <span style={{ fontSize: 10, color: 'rgba(232,228,248,0.28)' }}>{(r.tags || []).slice(0, 3).join('  ')}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            {seekError && (
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'rgba(232,228,248,0.3)', padding: '8px 0' }}>
+                {seekError}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* In/ files */}
+        {activeView === 'in' && (
+          inFiles.length === 0 ? (
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'rgba(232,228,248,0.25)', padding: '12px 0' }}>
+              in/ is empty — files routed to you by peers will appear here
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              {inFiles.map((f, i) => (
+                <div key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 12,
+                  padding: '8px 14px',
+                  background: 'rgba(61,217,200,0.03)',
+                  border: '1px solid rgba(61,217,200,0.08)',
+                  borderRadius: 3,
+                }}>
+                  <span style={{ color: '#3dd9c8', fontSize: 10 }}>↓</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#fff', flex: 1 }}>{f.name}</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'rgba(232,228,248,0.25)' }}>
+                    {f.size < 1024 ? `${f.size} B` : `${(f.size / 1024).toFixed(1)} KB`}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )
+        )}
+      </div>
     </div>
   );
 }
@@ -380,7 +635,7 @@ export default function App() {
     const shared = root.folder('shared')!;
     config.sharedFiles.forEach(f => shared.file(f, `# ${f}\n`));
     root.folder('private');
-    root.folder('.aura')!.file('README.txt', 'Keys are auto-generated on first mount:\n  python aura.py mount .\n');
+    root.folder('.aura')!.file('README.txt', 'Keys are generated automatically on first join:\n  pip install aura-protocol\n  aura join .\n\nThe .aura/ directory holds your Ed25519 signing keys and\nX25519 encryption keys. Never share these files.\n');
     const blob = await zip.generateAsync({ type: 'blob' });
     saveAs(blob, `${folderName}.zip`);
     setDownloading(false);
@@ -811,19 +1066,20 @@ export default function App() {
           </div>
         </section>
 
-        {/* SEEK DEMO */}
+        {/* LIVE FIELD CONNECTION */}
         <section style={{ padding: '96px 24px', maxWidth: 860, margin: '0 auto' }}>
           <div className="reveal" style={{ marginBottom: 38 }}>
-            <SectionLabel>Live Field Simulation</SectionLabel>
+            <SectionLabel>Live Field</SectionLabel>
             <h2 style={{ fontSize: 'clamp(26px,4.5vw,50px)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 10 }}>
-              Seek the field
+              Connect your node
             </h2>
-            <p style={{ fontSize: 13, color: 'rgba(232,228,248,0.42)', maxWidth: 480, lineHeight: 1.85 }}>
-              Type what you're looking for. Nodes resonate based on their tags, files, and descriptions.
-              Your node joins the simulation once you configure it above.
+            <p style={{ fontSize: 13, color: 'rgba(232,228,248,0.42)', maxWidth: 520, lineHeight: 1.85 }}>
+              Run <code style={{ color: '#3dd9c8', fontFamily: "'JetBrains Mono',monospace" }}>aura join ./your-node</code> and
+              this panel connects live to the real field — showing your actual peers,
+              real seek results, and files arriving in your <code style={{ color: '#3dd9c8', fontFamily: "'JetBrains Mono',monospace" }}>in/</code>.
             </p>
           </div>
-          <div className="reveal"><SeekDemo config={config} /></div>
+          <div className="reveal"><FieldConnect /></div>
         </section>
 
         {/* PROTOCOL */}
@@ -844,18 +1100,18 @@ export default function App() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {[
-                { n:'01', title:'New node', cmd:'aura new my-folder py', color:'#6c63ff',
-                  desc:'Scaffolds in/, out/, shared/, private/, aura.meta, and your entry point. The .aura/ directory with Ed25519 + X25519 keys is created on first mount.' },
-                { n:'02', title:'Mount', cmd:'aura mount my-folder', color:'#b06eff',
-                  desc:'Sets the active node for this session. Generates cryptographic keys if missing. Writes aura.lock with your node_id (SHA-256 of your public key, first 16 chars).' },
-                { n:'03', title:'Join the field', cmd:'aura field', color:'#3dd9c8',
-                  desc:'Opens the live REPL. Broadcasts UDP multicast heartbeats every 15s on 239.77.77.77:7777 — announcing your aura to every peer on the local network.' },
-                { n:'04', title:'Seek', cmd:'seek python data science', color:'#f0c060',
-                  desc:'Broadcasts MSG_SEEK. All nodes score their own aura against your query using semantic tag matching. High-scoring nodes reply with MSG_RESONATE.' },
-                { n:'05', title:'Pull & Route', cmd:'pull axiom-core analysis.csv', color:'#6c63ff',
-                  desc:'Copies a file from a peer\'s shared/ into your in/. Route does the reverse — shadow-routes a file to a peer\'s in/, encrypted with X25519 + ChaCha20-Poly1305 when peer keys are known.' },
-                { n:'06', title:'Talk', cmd:'talk axiom-core', color:'#b06eff',
-                  desc:'Opens a live bidirectional session. Each line you type is passed as AURA_QUERY to the peer\'s entry point. The entry point\'s stdout is the response.' },
+                { n:'01', title:'Scaffold a node', cmd:'aura new ./my-node --lang py', color:'#6c63ff',
+                  desc:'Creates in/, out/, shared/, private/, aura.meta, and your language entry point. Run this once per node. The node folder is the node — it can live anywhere on your filesystem.' },
+                { n:'02', title:'Join the field', cmd:'aura join ./my-node', color:'#b06eff',
+                  desc:'Generates Ed25519 signing keys and X25519 encryption keys in .aura/ (chmod 600). Broadcasts UDP multicast heartbeats on 239.77.77.77:7777. Starts the local HTTP API on 127.0.0.1:7778. The "Connect your node" panel above connects automatically.' },
+                { n:'03', title:'Seek', cmd:'aura seek ./my-node "python data science"', color:'#3dd9c8',
+                  desc:'Broadcasts MSG_SEEK across the multicast field. Every peer scores your query against their own tag map using semantic weighted matching. Peers scoring above 0.05 reply with MSG_RESONATE. Results are sorted by score.' },
+                { n:'04', title:'Pull & Route', cmd:'aura pull ./my-node <node_id> analysis.csv', color:'#f0c060',
+                  desc:'Pull copies a file from a peer\'s shared/ into your in/. Route sends a file to a peer\'s in/ — encrypted end-to-end with X25519 ECDH + ChaCha20-Poly1305. Files above 60 KB automatically switch to a direct TCP connection.' },
+                { n:'05', title:'Talk', cmd:'aura talk ./my-node <node_id>', color:'#6c63ff',
+                  desc:'Opens a persistent session. Each line is passed as AURA_QUERY to the peer\'s entry point via environment variable. The entry point\'s stdout becomes the reply. The entry point is any executable: Python, shell, Node, Rust — your logic.' },
+                { n:'06', title:'WAN relay', cmd:'aura relay --port 7779', color:'#b06eff',
+                  desc:'Deploy a relay on any public server. Nodes register with MSG_RELAY_REG and the relay forwards all field packets between peers in the same channel. The relay is stateless — it never decrypts or stores anything. Nodes reconnect automatically.' },
               ].map((s, i) => (
                 <div key={i} className="reveal">
                   <ProtoStep {...s} />

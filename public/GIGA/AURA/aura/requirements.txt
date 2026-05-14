@@ -1,0 +1,11 @@
+# AURA core dependencies
+cryptography>=42.0.0
+
+# Python < 3.11 needs tomli for config parsing
+tomli>=2.0.0; python_version < "3.11"
+
+# Development / testing
+pytest>=8.0.0
+pytest-cov>=4.0.0
+ruff>=0.4.0
+mypy>=1.0.0

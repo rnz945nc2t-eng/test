@@ -1,0 +1,72 @@
+[build-system]
+requires      = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name        = "aura-protocol"
+version     = "1.0.0"
+description = "AURA — Autonomous Universal Resonance Architecture. The new internet."
+readme      = "README.md"
+license     = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Aethyr Global", email = "protocol@aethyr-global.com" }]
+keywords = [
+  "networking", "p2p", "decentralized", "protocol",
+  "multicast", "cryptography", "distributed", "aura",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet",
+  "Topic :: System :: Networking",
+]
+dependencies = [
+  "cryptography>=42.0.0",
+]
+
+[project.optional-dependencies]
+toml  = ["tomli>=2.0.0; python_version < '3.11'"]
+all   = ["tomli>=2.0.0; python_version < '3.11'"]
+dev   = [
+  "pytest>=8.0",
+  "pytest-cov",
+  "ruff",
+  "mypy",
+]
+
+[project.scripts]
+aura = "aura.cli:main"
+
+[project.urls]
+Homepage      = "https://github.com/aethyr-global/aura"
+Documentation = "https://github.com/aethyr-global/aura#readme"
+Repository    = "https://github.com/aethyr-global/aura"
+"Bug Tracker" = "https://github.com/aethyr-global/aura/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["aura"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+select  = ["E", "F", "I", "UP", "B"]
+ignore  = ["E501", "B008"]
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
+strict = false
+
+[tool.pytest.ini_options]
+testpaths   = ["tests"]
+addopts     = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["aura"]
+omit   = ["tests/*"]

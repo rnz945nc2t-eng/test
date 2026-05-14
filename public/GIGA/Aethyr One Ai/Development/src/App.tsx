@@ -744,7 +744,7 @@ export default function App() {
                   <div style={{ fontSize: 10.5, color: 'rgba(232,228,248,0.25)', textAlign: 'center', lineHeight: 1.75 }}>
                     After downloading, run:<br />
                     <code style={{ color: '#3dd9c8', fontFamily: "'JetBrains Mono',monospace", fontSize: 10 }}>
-                      pip install cryptography && python aura.py mount .
+                      pip install aura-protocol && aura join .
                     </code>
                   </div>
                 </div>
@@ -971,14 +971,14 @@ export default function App() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {[
-              { step:'1', title:'Get AURA',
-                code:'git clone https://github.com/rnz945nc2t-eng/test\ncd test/public/GIGA/AURA/AURA\npip install -r requirements.txt' },
+              { step:'1', title:'Install AURA',
+                code:'pip install aura-protocol\n\n# or from source:\ngit clone https://github.com/aethyr-global/aura\ncd aura && pip install -e .' },
               { step:'2', title:'Build and download your node folder (above), then:',
                 code:`unzip ${folderName || 'my-node'}.zip\ncd ${folderName || 'my-node'}` },
-              { step:'3', title:'Mount your folder',
-                code:'python aura.py mount .\n# Generates Ed25519 + X25519 keys\n# Writes aura.lock with your node_id' },
-              { step:'4', title:'Enter the field',
-                code:'python aura.py field\n\n# Then in the REPL:\n> who\n> seek python data\n> ls\n> status\n> seek music audio' },
+              { step:'3', title:'Join the field',
+                code:'aura join .\n# Generates Ed25519 + X25519 keys\n# Announces your node · starts local API on :7778' },
+              { step:'4', title:'Seek and connect',
+                code:'aura seek . "python data music"\n\n# or use the API:\ncurl http://127.0.0.1:7778/peers\ncurl -X POST http://127.0.0.1:7778/seek \\\n  -d \'{"query": "music audio"}\'' },
             ].map((item, i) => (
               <div key={i} className="reveal" style={{ display: 'grid', gridTemplateColumns: '48px 1fr', gap: 0, alignItems: 'stretch' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -1054,14 +1054,14 @@ export default function App() {
             Part of the GIGA package · NOT Money runs on AYR<br />
             <span style={{ color: '#6c63ff' }}>aethyr-global.com</span>
           </div>
-          <a href="https://github.com/rnz945nc2t-eng/test/tree/main/public/GIGA/AURA/AURA"
+          <a href="https://github.com/aethyr-global/aura"
             target="_blank" rel="noopener noreferrer"
             style={{
               fontSize: 11, letterSpacing: '0.2em', color: '#3dd9c8',
               textDecoration: 'none', textTransform: 'uppercase',
               borderBottom: '1px solid rgba(61,217,200,0.28)', paddingBottom: 2,
             }}>
-            View Source ↗
+            github/aethyr-global/aura ↗
           </a>
         </footer>
       </div>

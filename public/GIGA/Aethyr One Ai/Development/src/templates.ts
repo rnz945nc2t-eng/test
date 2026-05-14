@@ -201,13 +201,17 @@ This folder is your node in the AURA field.
 ## Getting started
 
 \`\`\`bash
-pip install cryptography
-python aura.py mount .
-python aura.py field
+pip install aura-protocol
+aura join .
+
+# Seek the field from another terminal
+aura seek . "your query here"
+
+# Local HTTP API auto-starts at http://127.0.0.1:7778
 \`\`\`
 
 ## Protocol
 
 AURA v0.4 — UDP multicast, Ed25519 identity, X25519 encryption.
-Learn more: https://aethyr-global.com/
+Source: https://github.com/aethyr-global/aura
 `;

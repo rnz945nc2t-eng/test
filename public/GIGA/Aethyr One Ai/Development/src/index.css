@@ -1,3 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --void: #06040f;
+  --surface: #0c0918;
+  --surface2: #100d1e;
+  --border: rgba(108,99,255,0.14);
+  --border2: rgba(108,99,255,0.28);
+  --aura1: #6c63ff;
+  --aura2: #b06eff;
+  --aura3: #3dd9c8;
+  --warm: #f0c060;
+  --muted: rgba(232,228,248,0.38);
+  --text: rgba(232,228,248,0.92);
+  --text-dim: rgba(232,228,248,0.58);
+  --green: #4ade80;
+  --red: #f87171;
+  --ayr: #c8a04a;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.25); border-radius: 2px; }
+::selection { background: rgba(108,99,255,0.3); color: #fff; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity:1; box-shadow:0 0 0 0 rgba(61,217,200,.4); }
+  50% { opacity:.7; box-shadow:0 0 0 5px rgba(61,217,200,0); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fadeup { animation: fadeUp 0.6s ease both; }
+.animate-ticker { animation: ticker 28s linear infinite; }
+.animate-blink  { animation: blink 1s step-end infinite; }
+
+.font-mono { font-family: 'JetBrains Mono', monospace !important; }

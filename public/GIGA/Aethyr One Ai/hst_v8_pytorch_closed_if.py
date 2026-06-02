@@ -33,7 +33,7 @@ class ClosedIfSetTorch:
         self.cache = None
         self.cached = False
     
-    def test(self, condition_fn) -> bool:
+    def test(self, condition_fn) -> Any:
         """Override in subclasses."""
         raise NotImplementedError
     
@@ -45,7 +45,7 @@ class ClosedIfSetTorch:
 class AffirmTorch(ClosedIfSetTorch):
     """Direct path - immediate computation."""
     
-    def test(self, condition_fn) -> bool:
+    def test(self, condition_fn) -> Any:
         return condition_fn(self.value)
     
     def flip(self) -> 'ClosedIfSetTorch':
@@ -55,10 +55,9 @@ class AffirmTorch(ClosedIfSetTorch):
 class DenyTorch(ClosedIfSetTorch):
     """Learning path - cached result after first computation."""
     
-    def test(self, condition_fn) -> bool:
-        if self.cache is None:
-            result = condition_fn(self.value)
-            self.cache = not result
+    def test(self, condition_fn) -> Any:
+        if not self.cached:
+            self.cache = condition_fn(self.value)
             self.cached = True
         return self.cache
     
@@ -237,15 +236,14 @@ class OptimizedMultiHeadAttention(nn.Module):
         V = self.v_proj(x).reshape(B, S, self.n_heads, self.head_dim).transpose(1, 2)
         
         # Compute attention scores
+        # We need to be careful with caching when S changes
         scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.head_dim)
         
         if mask is not None:
             scores = scores.masked_fill(mask == 0, float('-inf'))
         
-        # Apply softmax (with potential caching for static inputs)
-        attn_weights = self._softmax_state.test(
-            lambda s: F.softmax(scores, dim=-1)
-        )
+        # Apply softmax (DISABLED caching for softmax because shape changes during generation)
+        attn_weights = F.softmax(scores, dim=-1)
         
         attn_weights = self.dropout(attn_weights)
         
@@ -303,28 +301,20 @@ class HyperbolicEmbedding(nn.Module):
         norm = x.norm(dim=-1, keepdim=True)
         max_norm = (1 - 1e-3) / math.sqrt(self.c)
         scale = torch.clamp(norm / max_norm, max=1.0)
+        # Avoid unnecessary division if scale is 1
         return x / (scale + 1e-8)
 
 
-class RotaryPositionalEmbedding(nn.Module):
-    """Efficient RoPE positional encoding."""
-    
+class AbsolutePositionalEmbedding(nn.Module):
+    """Simple absolute positional encoding."""
     def __init__(self, d_model: int, max_seq_len: int = 8192):
         super().__init__()
-        self.d_model = d_model
-        
-        inv_freq = 1.0 / (10000 ** (torch.arange(0, d_model, 2).float() / d_model))
-        self.register_buffer("inv_freq", inv_freq)
-        
-        t = torch.arange(max_seq_len).type_as(inv_freq)
-        freqs = torch.einsum("i,j->ij", t, inv_freq)
-        emb = torch.cat((freqs, freqs), dim=-1)
-        self.register_buffer("cos_cached", emb.cos()[None, None, :, :])
-        self.register_buffer("sin_cached", emb.sin()[None, None, :, :])
+        self.embed = nn.Embedding(max_seq_len, d_model)
     
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Apply rotary embeddings."""
-        return x
+    def forward(self, positions: torch.Tensor) -> torch.Tensor:
+        return self.embed(positions)
+
+
 
 
 # ==============================================================================
@@ -396,7 +386,7 @@ class HSTv8Crystalline(nn.Module):
         
         # Embeddings
         self.token_embed = HyperbolicEmbedding(config.vocab_size, config.d_model)
-        self.pos_embed = RotaryPositionalEmbedding(config.d_model, config.max_seq_len)
+        self.pos_embed = AbsolutePositionalEmbedding(config.d_model, config.max_seq_len)
         self.input_dropout = nn.Dropout(config.dropout)
         
         # Hyper-lattice core (structural memory)
@@ -423,6 +413,7 @@ class HSTv8Crystalline(nn.Module):
         input_ids: torch.Tensor,
         training: bool = True,
         use_cache: bool = False,
+        positions: Optional[torch.Tensor] = None,
     ) -> Dict[str, torch.Tensor]:
         """
         Forward pass.
@@ -431,6 +422,7 @@ class HSTv8Crystalline(nn.Module):
             input_ids: [B, S]
             training: Whether in training mode
             use_cache: Whether to use KV cache
+            positions: Optional positions for embeddings
         
         Returns:
             Dictionary with logits, hidden states, etc.
@@ -438,8 +430,11 @@ class HSTv8Crystalline(nn.Module):
         B, S = input_ids.shape
         device = input_ids.device
         
+        if positions is None:
+            positions = torch.arange(S, device=device).unsqueeze(0).expand(B, -1)
+
         # Embed tokens
-        x = self.token_embed(input_ids)
+        x = self.token_embed(input_ids) + self.pos_embed(positions)
         x = self.input_dropout(x)
         
         # Lattice processing (structural memory)
@@ -487,10 +482,15 @@ class HSTv8Crystalline(nn.Module):
         
         self.eval()
         current_ids = prompt_ids
+        B, S = current_ids.shape
+        device = current_ids.device
         
         for _ in range(max_new_tokens):
             # Forward pass
-            output = self(current_ids, training=False)
+            # Note: This is a simple implementation without KV cache optimization for generation
+            S_curr = current_ids.shape[1]
+            positions = torch.arange(S_curr, device=device).unsqueeze(0).expand(B, -1)
+            output = self(current_ids, training=False, positions=positions)
             logits = output['logits'][:, -1, :]
             
             # Apply temperature

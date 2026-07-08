@@ -1,0 +1,1873 @@
+{
+  "Applications": [
+    {
+      "name": "io.html",
+      "path": "io.html",
+      "size": 52433
+    },
+    {
+      "name": "aethyr-article.html",
+      "path": "aethyr-article.html",
+      "size": 33660
+    },
+    {
+      "name": "not-money.html",
+      "path": "not-money.html",
+      "size": 35559
+    },
+    {
+      "name": "merger.html",
+      "path": "merger.html",
+      "size": 3443
+    },
+    {
+      "name": "crew.html",
+      "path": "crew.html",
+      "size": 99642
+    },
+    {
+      "name": "marvenik.html",
+      "path": "marvenik.html",
+      "size": 42152
+    },
+    {
+      "name": "marvenik-01.html",
+      "path": "marvenik-01.html",
+      "size": 34669
+    },
+    {
+      "name": "apple-touch-icon.png",
+      "path": "apple-touch-icon.png",
+      "size": 15462
+    },
+    {
+      "name": "aethyr-vision.html",
+      "path": "aethyr-vision.html",
+      "size": 33987
+    },
+    {
+      "name": "land.html",
+      "path": "land.html",
+      "size": 54933
+    },
+    {
+      "name": "marvenik-02-FBB.html",
+      "path": "marvenik-02-FBB.html",
+      "size": 38304
+    },
+    {
+      "name": "404.html",
+      "path": "404.html",
+      "size": 1809
+    },
+    {
+      "name": "index.html",
+      "path": "index.html",
+      "size": 14498
+    },
+    {
+      "name": "aura.html",
+      "path": "aura.html",
+      "size": 60645
+    },
+    {
+      "name": "clock.html",
+      "path": "clock.html",
+      "size": 30223
+    }
+  ],
+  "Core Assets": [
+    {
+      "name": "sign-licence.md",
+      "path": "sign-licence.md",
+      "size": 866
+    },
+    {
+      "name": "thi-list_signed.pdf",
+      "path": "thi-list_signed.pdf",
+      "size": 530324
+    },
+    {
+      "name": "add04.pdf",
+      "path": "add04.pdf",
+      "size": 239282
+    },
+    {
+      "name": "fileslist.pdf",
+      "path": "fileslist.pdf",
+      "size": 121095
+    },
+    {
+      "name": "thi-list-CID_signed.pdf",
+      "path": "thi-list-CID_signed.pdf",
+      "size": 939132
+    },
+    {
+      "name": "add05.pdf",
+      "path": "add05.pdf",
+      "size": 140292
+    },
+    {
+      "name": "blacklist.pdf",
+      "path": "blacklist.pdf",
+      "size": 205714
+    },
+    {
+      "name": "notary.md",
+      "path": "notary.md",
+      "size": 827
+    },
+    {
+      "name": "PRT.pdf",
+      "path": "PRT.pdf",
+      "size": 176341
+    },
+    {
+      "name": "royalties-pay.md",
+      "path": "royalties-pay.md",
+      "size": 866
+    },
+    {
+      "name": "GIGA.pdf",
+      "path": "GIGA.pdf",
+      "size": 376688
+    },
+    {
+      "name": "2IP.pdf",
+      "path": "2IP.pdf",
+      "size": 2597390
+    },
+    {
+      "name": "Aethyr_Global_Conceptual_Designs.pdf",
+      "path": "Aethyr_Global_Conceptual_Designs.pdf",
+      "size": 55876
+    },
+    {
+      "name": "PRT2.pdf",
+      "path": "PRT2.pdf",
+      "size": 197605
+    },
+    {
+      "name": "IP.pdf",
+      "path": "IP.pdf",
+      "size": 217304
+    },
+    {
+      "name": "Notice_ETH_Currency_Designation_signed.pdf",
+      "path": "Notice_ETH_Currency_Designation_signed.pdf",
+      "size": 175702
+    },
+    {
+      "name": "PRT3.pdf",
+      "path": "PRT3.pdf",
+      "size": 219530
+    },
+    {
+      "name": "audit.pdf",
+      "path": "audit.pdf",
+      "size": 207018
+    },
+    {
+      "name": "add06.pdf",
+      "path": "add06.pdf",
+      "size": 158396
+    },
+    {
+      "name": "potvrda (2).pdf",
+      "path": "potvrda (2).pdf",
+      "size": 368515
+    },
+    {
+      "name": "Terms_and_Conditions_File_Delivery.pdf",
+      "path": "Terms_and_Conditions_File_Delivery.pdf",
+      "size": 76236
+    },
+    {
+      "name": "audit-list-updated.md",
+      "path": "audit-list-updated.md",
+      "size": 432
+    },
+    {
+      "name": "cern.pdf",
+      "path": "cern.pdf",
+      "size": 201851
+    },
+    {
+      "name": "Termination_Rights_Notice-02_signed.pdf",
+      "path": "Termination_Rights_Notice-02_signed.pdf",
+      "size": 277011
+    },
+    {
+      "name": "MOA.pdf",
+      "path": "MOA.pdf",
+      "size": 262561
+    },
+    {
+      "name": "\u041f\u0423\u041f_\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442.pdf",
+      "path": "\u041f\u0423\u041f_\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442.pdf",
+      "size": 455674
+    },
+    {
+      "name": "crypto.pdf",
+      "path": "crypto.pdf",
+      "size": 234365
+    },
+    {
+      "name": "cv.pdf",
+      "path": "cv.pdf",
+      "size": 2894381
+    },
+    {
+      "name": "SW-DECLARATION.pdf",
+      "path": "SW-DECLARATION.pdf",
+      "size": 206689
+    },
+    {
+      "name": "file_list_signed.pdf",
+      "path": "file_list_signed.pdf",
+      "size": 11589195
+    },
+    {
+      "name": "potvrda (1).pdf",
+      "path": "potvrda (1).pdf",
+      "size": 367577
+    },
+    {
+      "name": "sale.pdf",
+      "path": "sale.pdf",
+      "size": 20512
+    },
+    {
+      "name": "potvrda.pdf",
+      "path": "potvrda.pdf",
+      "size": 370054
+    },
+    {
+      "name": "audit_report.pdf",
+      "path": "audit_report.pdf",
+      "size": 17289
+    },
+    {
+      "name": "SMALL.pdf",
+      "path": "SMALL.pdf",
+      "size": 193712
+    },
+    {
+      "name": "report.pdf",
+      "path": "report.pdf",
+      "size": 25448
+    },
+    {
+      "name": "add03.pdf",
+      "path": "add03.pdf",
+      "size": 143214
+    }
+  ],
+  "Vault": [
+    {
+      "name": "m.png",
+      "path": "m.png",
+      "size": 119613
+    },
+    {
+      "name": "utorrent.dat",
+      "path": "utorrent.dat",
+      "size": 283623
+    },
+    {
+      "name": "WEB_SVG.ic_logo_postlogin.svg",
+      "path": "WEB_SVG.ic_logo_postlogin.svg",
+      "size": 446605
+    },
+    {
+      "name": "8nfNi.jpg",
+      "path": "8nfNi.jpg",
+      "size": 493982
+    },
+    {
+      "name": "unprofessional.jpg",
+      "path": "unprofessional.jpg",
+      "size": 658407
+    },
+    {
+      "name": "android-chrome-512x512.png",
+      "path": "android-chrome-512x512.png",
+      "size": 86820
+    },
+    {
+      "name": "merger.jpg",
+      "path": "merger.jpg",
+      "size": 183135
+    },
+    {
+      "name": "Singing.png",
+      "path": "Singing.png",
+      "size": 912200
+    },
+    {
+      "name": "marvenik.png",
+      "path": "marvenik.png",
+      "size": 431321
+    },
+    {
+      "name": "hand-legs.png",
+      "path": "hand-legs.png",
+      "size": 90694
+    },
+    {
+      "name": "white-b.png",
+      "path": "white-b.png",
+      "size": 280885
+    },
+    {
+      "name": "favicon-16x16.png",
+      "path": "favicon-16x16.png",
+      "size": 505
+    },
+    {
+      "name": "cid-history.txt",
+      "path": "cid-history.txt",
+      "size": 414261
+    },
+    {
+      "name": "site.webmanifest",
+      "path": "site.webmanifest",
+      "size": 263
+    },
+    {
+      "name": "M1VZE.jpg",
+      "path": "M1VZE.jpg",
+      "size": 495642
+    },
+    {
+      "name": "NnaRA.jpg",
+      "path": "NnaRA.jpg",
+      "size": 466381
+    },
+    {
+      "name": "should.png",
+      "path": "should.png",
+      "size": 3147838
+    },
+    {
+      "name": "favicon-32x32.png",
+      "path": "favicon-32x32.png",
+      "size": 1209
+    },
+    {
+      "name": "sitemap.xml",
+      "path": "sitemap.xml",
+      "size": 1530
+    },
+    {
+      "name": "favicon.ico",
+      "path": "favicon.ico",
+      "size": 15406
+    },
+    {
+      "name": "earth.png",
+      "path": "earth.png",
+      "size": 222541
+    },
+    {
+      "name": "dogi.png",
+      "path": "dogi.png",
+      "size": 952671
+    },
+    {
+      "name": "android-chrome-192x192.png",
+      "path": "android-chrome-192x192.png",
+      "size": 17265
+    },
+    {
+      "name": "404.png",
+      "path": "404.png",
+      "size": 492128
+    },
+    {
+      "name": "output.txt~",
+      "path": "GIGA/output.txt~",
+      "size": 0
+    },
+    {
+      "name": "folder-structure.json",
+      "path": "GIGA/folder-structure.json",
+      "size": 78176
+    },
+    {
+      "name": "hst_v8_pytorch_closed_if.py",
+      "path": "GIGA/Aethyr One Ai/hst_v8_pytorch_closed_if.py",
+      "size": 20634
+    },
+    {
+      "name": ".gitignore",
+      "path": "GIGA/Aethyr One Ai/.gitignore",
+      "size": 19
+    },
+    {
+      "name": "Sign 01_signed.pdf",
+      "path": "GIGA/Aethyr One Ai/Sign 01_signed.pdf",
+      "size": 172136
+    },
+    {
+      "name": "coder-prototype.html",
+      "path": "GIGA/Aethyr One Ai/coder-prototype.html",
+      "size": 7060
+    },
+    {
+      "name": "Q2AC2D17 (2).png",
+      "path": "GIGA/Aethyr One Ai/Q2AC2D17 (2).png",
+      "size": 311359
+    },
+    {
+      "name": "QUICK_START.md",
+      "path": "GIGA/Aethyr One Ai/QUICK_START.md",
+      "size": 6571
+    },
+    {
+      "name": "hst_v8_closedif_core.py",
+      "path": "GIGA/Aethyr One Ai/hst_v8_closedif_core.py",
+      "size": 15252
+    },
+    {
+      "name": "Aethyr_HST.pdf",
+      "path": "GIGA/Aethyr One Ai/Aethyr_HST.pdf",
+      "size": 143202
+    },
+    {
+      "name": "HST_Architecture_Complete_Book.md",
+      "path": "GIGA/Aethyr One Ai/HST_Architecture_Complete_Book.md",
+      "size": 19192
+    },
+    {
+      "name": "Sign 02_signed.pdf",
+      "path": "GIGA/Aethyr One Ai/Sign 02_signed.pdf",
+      "size": 148864
+    },
+    {
+      "name": "Update.md",
+      "path": "GIGA/Aethyr One Ai/Update.md",
+      "size": 5076
+    },
+    {
+      "name": "Closed IF Set_signed.pdf",
+      "path": "GIGA/Aethyr One Ai/Closed IF Set_signed.pdf",
+      "size": 123084
+    },
+    {
+      "name": "README.md",
+      "path": "GIGA/Aethyr One Ai/README.md",
+      "size": 13109
+    },
+    {
+      "name": "HST_Analysis_Report.md",
+      "path": "GIGA/Aethyr One Ai/Development/HST_Analysis_Report.md",
+      "size": 6233
+    },
+    {
+      "name": "IMPROVEMENTS_SUMMARY.md",
+      "path": "GIGA/Aethyr One Ai/Development/IMPROVEMENTS_SUMMARY.md",
+      "size": 9961
+    },
+    {
+      "name": "hst.cl.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.cl.py",
+      "size": 35278
+    },
+    {
+      "name": "package-lock.json",
+      "path": "GIGA/Aethyr One Ai/Development/package-lock.json",
+      "size": 148551
+    },
+    {
+      "name": "CHANGELOG.md",
+      "path": "GIGA/Aethyr One Ai/Development/CHANGELOG.md",
+      "size": 5379
+    },
+    {
+      "name": "hst_v4.1.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst_v4.1.py",
+      "size": 19488
+    },
+    {
+      "name": "eslint.config.js",
+      "path": "GIGA/Aethyr One Ai/Development/eslint.config.js",
+      "size": 739
+    },
+    {
+      "name": "pytest.ini",
+      "path": "GIGA/Aethyr One Ai/Development/pytest.ini",
+      "size": 283
+    },
+    {
+      "name": "tailwind.config.js",
+      "path": "GIGA/Aethyr One Ai/Development/tailwind.config.js",
+      "size": 170
+    },
+    {
+      "name": "hst.v6.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v6.py",
+      "size": 54726
+    },
+    {
+      "name": "vite.config.ts",
+      "path": "GIGA/Aethyr One Ai/Development/vite.config.ts",
+      "size": 220
+    },
+    {
+      "name": "HST Lattice.png",
+      "path": "GIGA/Aethyr One Ai/Development/HST Lattice.png",
+      "size": 5781972
+    },
+    {
+      "name": "hst.v3.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v3.py",
+      "size": 28274
+    },
+    {
+      "name": "CONTRIBUTING.md",
+      "path": "GIGA/Aethyr One Ai/Development/CONTRIBUTING.md",
+      "size": 7409
+    },
+    {
+      "name": "hst.v7.1.2.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v7.1.2.py",
+      "size": 29864
+    },
+    {
+      "name": "requirements.txt",
+      "path": "GIGA/Aethyr One Ai/Development/requirements.txt",
+      "size": 178
+    },
+    {
+      "name": "HST_Architecture_Complete_Book.md",
+      "path": "GIGA/Aethyr One Ai/Development/HST_Architecture_Complete_Book.md",
+      "size": 19192
+    },
+    {
+      "name": "HST DUMP.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST DUMP.txt",
+      "size": 811566
+    },
+    {
+      "name": "API.md",
+      "path": "GIGA/Aethyr One Ai/Development/API.md",
+      "size": 7367
+    },
+    {
+      "name": "pyproject.toml",
+      "path": "GIGA/Aethyr One Ai/Development/pyproject.toml",
+      "size": 2022
+    },
+    {
+      "name": "CODE_OF_CONDUCT.md",
+      "path": "GIGA/Aethyr One Ai/Development/CODE_OF_CONDUCT.md",
+      "size": 5234
+    },
+    {
+      "name": "author.notes",
+      "path": "GIGA/Aethyr One Ai/Development/author.notes",
+      "size": 13033
+    },
+    {
+      "name": "hst.v8.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v8.py",
+      "size": 66992
+    },
+    {
+      "name": "WEB UI.zip",
+      "path": "GIGA/Aethyr One Ai/Development/WEB UI.zip",
+      "size": 10578177
+    },
+    {
+      "name": "LICENCE.md",
+      "path": "GIGA/Aethyr One Ai/Development/LICENCE.md",
+      "size": 4634
+    },
+    {
+      "name": "tsconfig.node.json",
+      "path": "GIGA/Aethyr One Ai/Development/tsconfig.node.json",
+      "size": 479
+    },
+    {
+      "name": "hst.en.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.en.py",
+      "size": 6762
+    },
+    {
+      "name": "hst.v5.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v5.py",
+      "size": 41294
+    },
+    {
+      "name": "hst_v8.2.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst_v8.2.py",
+      "size": 91420
+    },
+    {
+      "name": "INSTALL.md",
+      "path": "GIGA/Aethyr One Ai/Development/INSTALL.md",
+      "size": 1988
+    },
+    {
+      "name": "outputs.zip",
+      "path": "GIGA/Aethyr One Ai/Development/outputs.zip",
+      "size": 42997
+    },
+    {
+      "name": "tsconfig.json",
+      "path": "GIGA/Aethyr One Ai/Development/tsconfig.json",
+      "size": 119
+    },
+    {
+      "name": "hst.v6.1.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v6.1.py",
+      "size": 68890
+    },
+    {
+      "name": "postcss.config.js",
+      "path": "GIGA/Aethyr One Ai/Development/postcss.config.js",
+      "size": 81
+    },
+    {
+      "name": "HST licencing snapshot.pdf",
+      "path": "GIGA/Aethyr One Ai/Development/HST licencing snapshot.pdf",
+      "size": 3533028
+    },
+    {
+      "name": "hst.v7.2.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v7.2.py",
+      "size": 70987
+    },
+    {
+      "name": "hst.v4.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v4.py",
+      "size": 35386
+    },
+    {
+      "name": "package.json",
+      "path": "GIGA/Aethyr One Ai/Development/package.json",
+      "size": 904
+    },
+    {
+      "name": "USAGE.md",
+      "path": "GIGA/Aethyr One Ai/Development/USAGE.md",
+      "size": 5876
+    },
+    {
+      "name": "hst.v8.1.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v8.1.py",
+      "size": 84733
+    },
+    {
+      "name": "README.md",
+      "path": "GIGA/Aethyr One Ai/Development/README.md",
+      "size": 5
+    },
+    {
+      "name": "tsconfig.app.json",
+      "path": "GIGA/Aethyr One Ai/Development/tsconfig.app.json",
+      "size": 552
+    },
+    {
+      "name": "hst.v7.1.py",
+      "path": "GIGA/Aethyr One Ai/Development/hst.v7.1.py",
+      "size": 70987
+    },
+    {
+      "name": "HST_v6_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v6_Colab_Training.py",
+      "size": 21290
+    },
+    {
+      "name": "HST_v5_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v5_Colab_Training.py",
+      "size": 21808
+    },
+    {
+      "name": "HST_v7_1_2_Agile_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v7_1_2_Agile_Colab_Training.py",
+      "size": 23679
+    },
+    {
+      "name": "HST_v4_1_HyperLattice_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v4_1_HyperLattice_Colab_Training.py",
+      "size": 15762
+    },
+    {
+      "name": "HST_v4_Unified_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v4_Unified_Colab_Training.py",
+      "size": 26126
+    },
+    {
+      "name": "HST_v8_2_Crystalline_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v8_2_Crystalline_Colab_Training.py",
+      "size": 16817
+    },
+    {
+      "name": "HST_v3_Ultra_Colab_Training.py",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/HST_v3_Ultra_Colab_Training.py",
+      "size": 22763
+    },
+    {
+      "name": "README.md",
+      "path": "GIGA/Aethyr One Ai/Development/colab_training_scripts/README.md",
+      "size": 5266
+    },
+    {
+      "name": "time_series_forecasting.py",
+      "path": "GIGA/Aethyr One Ai/Development/examples/time_series_forecasting.py",
+      "size": 5032
+    },
+    {
+      "name": "basic_usage.py",
+      "path": "GIGA/Aethyr One Ai/Development/examples/basic_usage.py",
+      "size": 2486
+    },
+    {
+      "name": "__init__.py",
+      "path": "GIGA/Aethyr One Ai/Development/examples/__init__.py",
+      "size": 0
+    },
+    {
+      "name": "representation_learning.py",
+      "path": "GIGA/Aethyr One Ai/Development/examples/representation_learning.py",
+      "size": 4679
+    },
+    {
+      "name": "index.css",
+      "path": "GIGA/Aethyr One Ai/Development/src/index.css",
+      "size": 59
+    },
+    {
+      "name": "App.tsx",
+      "path": "GIGA/Aethyr One Ai/Development/src/App.tsx",
+      "size": 212
+    },
+    {
+      "name": "vite-env.d.ts",
+      "path": "GIGA/Aethyr One Ai/Development/src/vite-env.d.ts",
+      "size": 38
+    },
+    {
+      "name": "main.tsx",
+      "path": "GIGA/Aethyr One Ai/Development/src/main.tsx",
+      "size": 234
+    },
+    {
+      "name": "chunk128.py",
+      "path": "GIGA/Aethyr One Ai/Development/HST v5 Training logs/chunk128.py",
+      "size": 20798
+    },
+    {
+      "name": "Screen Recording 2025-12-04 224421.mp4",
+      "path": "GIGA/Aethyr One Ai/Development/HST v5 Training logs/Screen Recording 2025-12-04 224421.mp4",
+      "size": 17902199
+    },
+    {
+      "name": "hst_v5_chunk_story_100k_chars.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST v5 Training logs/hst_v5_chunk_story_100k_chars.txt",
+      "size": 137017
+    },
+    {
+      "name": "README.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST v5 Training logs/README.txt",
+      "size": 1568
+    },
+    {
+      "name": "train-v5.py",
+      "path": "GIGA/Aethyr One Ai/Development/HST v5 Training logs/train-v5.py",
+      "size": 30713
+    },
+    {
+      "name": "HST-v3-train.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST v3 Training logs/HST-v3-train.txt",
+      "size": 25778
+    },
+    {
+      "name": "G7MJpeFW8AARv7j.jpg",
+      "path": "GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MJpeFW8AARv7j.jpg",
+      "size": 106386
+    },
+    {
+      "name": "G7MJ_rhX0AABAkc.jpg",
+      "path": "GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MJ_rhX0AABAkc.jpg",
+      "size": 76223
+    },
+    {
+      "name": "G7MOKRSWoAEZ8Gy.jpg",
+      "path": "GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MOKRSWoAEZ8Gy.jpg",
+      "size": 99709
+    },
+    {
+      "name": "G7MPxyxWgAEYUFQ.png",
+      "path": "GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7MPxyxWgAEYUFQ.png",
+      "size": 116721
+    },
+    {
+      "name": "G7L-Nj4XMAAyCRT.jpg",
+      "path": "GIGA/Aethyr One Ai/Development/HST v3 Training logs/G7L-Nj4XMAAyCRT.jpg",
+      "size": 184632
+    },
+    {
+      "name": "HST Transfer.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/HST Transfer.txt",
+      "size": 22807
+    },
+    {
+      "name": "G7jqUMxWIAAi3_N.png",
+      "path": "GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/G7jqUMxWIAAi3_N.png",
+      "size": 35410
+    },
+    {
+      "name": "Valve.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/Valve.txt",
+      "size": 22808
+    },
+    {
+      "name": "Valve 2.txt",
+      "path": "GIGA/Aethyr One Ai/Development/HST V5 - GPT2 Training logs/Valve 2.txt",
+      "size": 22326
+    },
+    {
+      "name": "deepseek_python_20251211_9551f0.py",
+      "path": "GIGA/Aethyr One Ai/Development/EXP/deepseek_python_20251211_9551f0.py",
+      "size": 49527
+    },
+    {
+      "name": "deepseek_python_20251211_265d82.py",
+      "path": "GIGA/Aethyr One Ai/Development/EXP/deepseek_python_20251211_265d82.py",
+      "size": 33212
+    },
+    {
+      "name": "GROK.txt",
+      "path": "GIGA/Aethyr One Ai/Development/EXP/GROK.txt",
+      "size": 38023
+    },
+    {
+      "name": "deepseek_python_20251211_6c90bc.py",
+      "path": "GIGA/Aethyr One Ai/Development/EXP/deepseek_python_20251211_6c90bc.py",
+      "size": 35764
+    },
+    {
+      "name": "__init__.py",
+      "path": "GIGA/Aethyr One Ai/Development/tests/__init__.py",
+      "size": 0
+    },
+    {
+      "name": "test_hst.py",
+      "path": "GIGA/Aethyr One Ai/Development/tests/test_hst.py",
+      "size": 6489
+    },
+    {
+      "name": ".gitignore",
+      "path": "GIGA/Aethyr One Ai/Development/.pytest_cache/.gitignore",
+      "size": 37
+    },
+    {
+      "name": "CACHEDIR.TAG",
+      "path": "GIGA/Aethyr One Ai/Development/.pytest_cache/CACHEDIR.TAG",
+      "size": 191
+    },
+    {
+      "name": "README.md",
+      "path": "GIGA/Aethyr One Ai/Development/.pytest_cache/README.md",
+      "size": 302
+    },
+    {
+      "name": "lastfailed",
+      "path": "GIGA/Aethyr One Ai/Development/.pytest_cache/v/cache/lastfailed",
+      "size": 31
+    },
+    {
+      "name": "nodeids",
+      "path": "GIGA/Aethyr One Ai/Development/.pytest_cache/v/cache/nodeids",
+      "size": 2
+    },
+    {
+      "name": "1.png",
+      "path": "GIGA/other-scrap/1.png",
+      "size": 107927
+    },
+    {
+      "name": "HBEcvs0WEAAiNU4.png",
+      "path": "GIGA/other-scrap/HBEcvs0WEAAiNU4.png",
+      "size": 9765
+    },
+    {
+      "name": "3a ht ev.pdf",
+      "path": "GIGA/other-scrap/3a ht ev.pdf",
+      "size": 97199
+    },
+    {
+      "name": "Code_Generated_Image (2).png",
+      "path": "GIGA/other-scrap/Code_Generated_Image (2).png",
+      "size": 41283
+    },
+    {
+      "name": "Code_Generated_Image (1).png",
+      "path": "GIGA/other-scrap/Code_Generated_Image (1).png",
+      "size": 33869
+    },
+    {
+      "name": "Code_Generated_Image (4).png",
+      "path": "GIGA/other-scrap/Code_Generated_Image (4).png",
+      "size": 39531
+    },
+    {
+      "name": "3\u0430\u0445\u0442 4.pdf",
+      "path": "GIGA/other-scrap/3\u0430\u0445\u0442 4.pdf",
+      "size": 86989
+    },
+    {
+      "name": "Code_Generated_Image.png",
+      "path": "GIGA/other-scrap/Code_Generated_Image.png",
+      "size": 39554
+    },
+    {
+      "name": "Code_Generated_Image (3).png",
+      "path": "GIGA/other-scrap/Code_Generated_Image (3).png",
+      "size": 58890
+    },
+    {
+      "name": "\u043e\u043f\u0438\u0441.pdf",
+      "path": "GIGA/other-scrap/\u043e\u043f\u0438\u0441.pdf",
+      "size": 241821
+    },
+    {
+      "name": "v1.pdf",
+      "path": "GIGA/other-scrap/v1.pdf",
+      "size": 25999
+    },
+    {
+      "name": "3a+ht+ev.pdf.pdf",
+      "path": "GIGA/other-scrap/3a+ht+ev.pdf.pdf",
+      "size": 97199
+    },
+    {
+      "name": "2.png",
+      "path": "GIGA/other-scrap/2.png",
+      "size": 88240
+    },
+    {
+      "name": "index.html",
+      "path": "GIGA/other-scrap/index.html",
+      "size": 6450
+    },
+    {
+      "name": "ketch 01.pdf",
+      "path": "GIGA/other-scrap/ketch 01.pdf",
+      "size": 26729
+    },
+    {
+      "name": "new 2.html",
+      "path": "GIGA/other-scrap/new 2.html",
+      "size": 38116
+    },
+    {
+      "name": "patentna_prijava_20str.docx",
+      "path": "GIGA/other-scrap/patentna_prijava_20str.docx",
+      "size": 24975
+    },
+    {
+      "name": "sim-econ.js",
+      "path": "GIGA/other-scrap/js/sim-econ.js",
+      "size": 7885
+    },
+    {
+      "name": "sim-3d.js",
+      "path": "GIGA/other-scrap/js/sim-3d.js",
+      "size": 2893
+    },
+    {
+      "name": "licencing.js",
+      "path": "GIGA/other-scrap/js/licencing.js",
+      "size": 8431
+    },
+    {
+      "name": "sim-gippc.js",
+      "path": "GIGA/other-scrap/js/sim-gippc.js",
+      "size": 5827
+    },
+    {
+      "name": "main.js",
+      "path": "GIGA/other-scrap/js/main.js",
+      "size": 4565
+    },
+    {
+      "name": "revenue_projection_report.md",
+      "path": "GIGA/other-scrap/Revenue_projections_old/revenue_projection_report.md",
+      "size": 10735
+    },
+    {
+      "name": "licensee_earnings_summary.md",
+      "path": "GIGA/other-scrap/Revenue_projections_old/licensee_earnings_summary.md",
+      "size": 11157
+    },
+    {
+      "name": "aethyr_Revenue_projections.xlsx",
+      "path": "GIGA/other-scrap/Revenue_projections_old/aethyr_Revenue_projections.xlsx",
+      "size": 16879
+    },
+    {
+      "name": "Anticomputer Modular Cost Model V1.pdf",
+      "path": "GIGA/other-scrap/Revenue_projections_old/Anticomputer Modular Cost Model V1.pdf",
+      "size": 114737
+    },
+    {
+      "name": "Risk_reduction.pdf",
+      "path": "GIGA/other-scrap/Revenue_projections_old/Risk_reduction.pdf",
+      "size": 763499
+    },
+    {
+      "name": "why_to_invest.pdf",
+      "path": "GIGA/other-scrap/Revenue_projections_old/why_to_invest.pdf",
+      "size": 274865
+    },
+    {
+      "name": "licensee_economics_analysis.xlsx",
+      "path": "GIGA/other-scrap/Revenue_projections_old/licensee_economics_analysis.xlsx",
+      "size": 12025
+    },
+    {
+      "name": "001.pdf",
+      "path": "GIGA/Jailbreak Data/001.pdf",
+      "size": 830930
+    },
+    {
+      "name": "004.pdf",
+      "path": "GIGA/Jailbreak Data/004.pdf",
+      "size": 226141
+    },
+    {
+      "name": "002.pdf",
+      "path": "GIGA/Jailbreak Data/002.pdf",
+      "size": 223431
+    },
+    {
+      "name": "005.pdf",
+      "path": "GIGA/Jailbreak Data/005.pdf",
+      "size": 230426
+    },
+    {
+      "name": "006.pdf",
+      "path": "GIGA/Jailbreak Data/006.pdf",
+      "size": 432160
+    },
+    {
+      "name": "003.pdf",
+      "path": "GIGA/Jailbreak Data/003.pdf",
+      "size": 382655
+    },
+    {
+      "name": "007.pdf",
+      "path": "GIGA/Jailbreak Data/007.pdf",
+      "size": 233453
+    },
+    {
+      "name": "10.png",
+      "path": "GIGA/MTH/10.png",
+      "size": 255939
+    },
+    {
+      "name": "desktop.ini",
+      "path": "GIGA/MTH/desktop.ini",
+      "size": 67
+    },
+    {
+      "name": "bin_c_0.dwg",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/bin_c_0.dwg",
+      "size": 459099
+    },
+    {
+      "name": "bin_c_0.bak",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/bin_c_0.bak",
+      "size": 451295
+    },
+    {
+      "name": "8_dev.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/8_dev.png",
+      "size": 608526
+    },
+    {
+      "name": "3.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/3.png",
+      "size": 956356
+    },
+    {
+      "name": "8.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/8.png",
+      "size": 587785
+    },
+    {
+      "name": "4.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/4.png",
+      "size": 874972
+    },
+    {
+      "name": "6.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/6.png",
+      "size": 652580
+    },
+    {
+      "name": "3t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/3t.png",
+      "size": 171575
+    },
+    {
+      "name": "8t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/8t.png",
+      "size": 90786
+    },
+    {
+      "name": "4t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/4t.png",
+      "size": 150816
+    },
+    {
+      "name": "lattice.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/lattice.png",
+      "size": 418884
+    },
+    {
+      "name": "6t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/new/resize/6t.png",
+      "size": 106117
+    },
+    {
+      "name": "3.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/3.png",
+      "size": 1878855
+    },
+    {
+      "name": "8.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/8.png",
+      "size": 1310750
+    },
+    {
+      "name": "3t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/3t.png",
+      "size": 115517
+    },
+    {
+      "name": "4.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/4.png",
+      "size": 1818064
+    },
+    {
+      "name": "8t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/8t.png",
+      "size": 67326
+    },
+    {
+      "name": "6.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/6.png",
+      "size": 1412677
+    },
+    {
+      "name": "4t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/4t.png",
+      "size": 107694
+    },
+    {
+      "name": "6t.png",
+      "path": "GIGA/MTH/4 binary spiral 7NF22WWL (2)/other/6t.png",
+      "size": 76604
+    },
+    {
+      "name": "s2.png",
+      "path": "GIGA/MTH/2 sequence 02 7NF22WWL (2)/s2.png",
+      "size": 672087
+    },
+    {
+      "name": "hyp.bak",
+      "path": "GIGA/MTH/2 sequence 02 7NF22WWL (2)/hyp.bak",
+      "size": 129194
+    },
+    {
+      "name": "seq_b.png",
+      "path": "GIGA/MTH/2 sequence 02 7NF22WWL (2)/seq_b.png",
+      "size": 1490147
+    },
+    {
+      "name": "hyp-02.xcf",
+      "path": "GIGA/MTH/2 sequence 02 7NF22WWL (2)/hyp-02.xcf",
+      "size": 1125620
+    },
+    {
+      "name": "hyp.dwg",
+      "path": "GIGA/MTH/2 sequence 02 7NF22WWL (2)/hyp.dwg",
+      "size": 122280
+    },
+    {
+      "name": "spiral,min3pointsfullpotential.dwg",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/spiral,min3pointsfullpotential.dwg",
+      "size": 379026
+    },
+    {
+      "name": "simple_construct.dwg",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/simple_construct.dwg",
+      "size": 397792
+    },
+    {
+      "name": "orbit.dwg",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/orbit.dwg",
+      "size": 386932
+    },
+    {
+      "name": "lazy_pattern.dwg",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/lazy_pattern.dwg",
+      "size": 387524
+    },
+    {
+      "name": "arch_exp_rise.dwg",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/arch_exp_rise.dwg",
+      "size": 410060
+    },
+    {
+      "name": "spiral,min3pointsfullpotential.bak",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/spiral,min3pointsfullpotential.bak",
+      "size": 380402
+    },
+    {
+      "name": "8th seal.dwg",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/8th seal.dwg",
+      "size": 509991
+    },
+    {
+      "name": "time constant.png",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/sketches/time constant.png",
+      "size": 215793
+    },
+    {
+      "name": "8.png",
+      "path": "GIGA/MTH/exp 7NF22WWL (2)/sketches/8.png",
+      "size": 189758
+    },
+    {
+      "name": "calendar.pdf",
+      "path": "GIGA/MTH/7 y34 calendar 7NF22WWL (2)/calendar.pdf",
+      "size": 5801
+    },
+    {
+      "name": "7NF22WWL (3).jpg",
+      "path": "GIGA/MTH/7 y34 calendar 7NF22WWL (2)/7NF22WWL (3).jpg",
+      "size": 195053
+    },
+    {
+      "name": "calendar.gif",
+      "path": "GIGA/MTH/7 y34 calendar 7NF22WWL (2)/calendar.gif",
+      "size": 5691
+    },
+    {
+      "name": "calendar.dwg",
+      "path": "GIGA/MTH/7 y34 calendar 7NF22WWL (2)/calendar.dwg",
+      "size": 379354
+    },
+    {
+      "name": "const_count.png",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/const_count.png",
+      "size": 1190316
+    },
+    {
+      "name": "3.xcf",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/3.xcf",
+      "size": 1844597
+    },
+    {
+      "name": "1.xcf",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/1.xcf",
+      "size": 1850943
+    },
+    {
+      "name": "const_unacross.png",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/const_unacross.png",
+      "size": 837510
+    },
+    {
+      "name": "const_sim.png",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/const_sim.png",
+      "size": 1233535
+    },
+    {
+      "name": "2.xcf",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/2.xcf",
+      "size": 1552915
+    },
+    {
+      "name": "new.dwg",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/new.dwg",
+      "size": 381042
+    },
+    {
+      "name": "brojevne strukture.bak",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/brojevne strukture.bak",
+      "size": 713302
+    },
+    {
+      "name": "brojevne strukture.dwg",
+      "path": "GIGA/MTH/6 Brojanica_01 7NF22WWL (2)/brojevne strukture.dwg",
+      "size": 730376
+    },
+    {
+      "name": "model v3.pdf",
+      "path": "GIGA/MTH/1 sequence 01B 7NF22WWL (2)/model v3.pdf",
+      "size": 8531
+    },
+    {
+      "name": "Q2AC2D17.png",
+      "path": "GIGA/MTH/1 sequence 01B 7NF22WWL (2)/Q2AC2D17.png",
+      "size": 5781972
+    },
+    {
+      "name": "HST Lattice.png",
+      "path": "GIGA/MTH/1 sequence 01B 7NF22WWL (2)/HST Lattice.png",
+      "size": 5781972
+    },
+    {
+      "name": "Q2AC2D17 (2).png",
+      "path": "GIGA/MTH/1 sequence 01B 7NF22WWL (2)/Q2AC2D17 (2).png",
+      "size": 311359
+    },
+    {
+      "name": "hyp1-Model.xcf",
+      "path": "GIGA/MTH/1 sequence 01B 7NF22WWL (2)/n2/hyp1-Model.xcf",
+      "size": 12286606
+    },
+    {
+      "name": "wave-1.png",
+      "path": "GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/wave-1.png",
+      "size": 232023
+    },
+    {
+      "name": "Drawing1.bak",
+      "path": "GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/Drawing1.bak",
+      "size": 423272
+    },
+    {
+      "name": "Drawing1.dwg",
+      "path": "GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/Drawing1.dwg",
+      "size": 408620
+    },
+    {
+      "name": "wave.png",
+      "path": "GIGA/MTH/5 concept 7NF22WWL (2) 2000AH1573744AH12/wave.png",
+      "size": 340827
+    },
+    {
+      "name": "Monero not.pdf",
+      "path": "GIGA/NOT Computers/Monero not.pdf",
+      "size": 207563
+    },
+    {
+      "name": "Anticomputers.pdf",
+      "path": "GIGA/NOT Computers/Anticomputers.pdf",
+      "size": 410429
+    },
+    {
+      "name": "Re-analysis.pdf",
+      "path": "GIGA/NOT Computers/Re-analysis.pdf",
+      "size": 211782
+    },
+    {
+      "name": "nacrt.pdf",
+      "path": "GIGA/NOT Computers/nacrt.pdf",
+      "size": 63112
+    },
+    {
+      "name": "Anticomputers-a.pdf",
+      "path": "GIGA/NOT Computers/Anticomputers-a.pdf",
+      "size": 225604
+    },
+    {
+      "name": "HEPI crypto 01.pdf",
+      "path": "GIGA/NOT Computers/HEPI crypto 01.pdf",
+      "size": 188442
+    },
+    {
+      "name": "Anticomputer_HEPI_MonteCarlo_QED.md_signed.pdf",
+      "path": "GIGA/NOT Computers/Anticomputer_HEPI_MonteCarlo_QED.md_signed.pdf",
+      "size": 269360
+    },
+    {
+      "name": "Aethyr One_ Technical Drawings.pdf",
+      "path": "GIGA/NOT Computers/Aethyr One_ Technical Drawings.pdf",
+      "size": 186577
+    },
+    {
+      "name": "OPIS.pdf",
+      "path": "GIGA/NOT Computers/OPIS.pdf",
+      "size": 106348
+    },
+    {
+      "name": "hybrid 100_signed.pdf",
+      "path": "GIGA/NOT Computers/hybrid 100_signed.pdf",
+      "size": 216100
+    },
+    {
+      "name": "NOT QUANT.pdf",
+      "path": "GIGA/NOT Computers/NOT QUANT.pdf",
+      "size": 189043
+    },
+    {
+      "name": "CNBC_HEPI_Hybrid_Paper.txt_signed.pdf",
+      "path": "GIGA/NOT Computers/CNBC_HEPI_Hybrid_Paper.txt_signed.pdf",
+      "size": 255583
+    },
+    {
+      "name": "nacrt.jpg",
+      "path": "GIGA/NOT Computers/nacrt.jpg",
+      "size": 64036
+    },
+    {
+      "name": "NOT-01.pdf",
+      "path": "GIGA/NOT Computers/NOT-01.pdf",
+      "size": 522825
+    },
+    {
+      "name": "anticomputer_advanced_deployment.py",
+      "path": "GIGA/NOT Computers/Ai control system for NOT computers - HEPI/anticomputer_advanced_deployment.py",
+      "size": 22144
+    },
+    {
+      "name": "anticomputer_ai_controller.py",
+      "path": "GIGA/NOT Computers/Ai control system for NOT computers - HEPI/anticomputer_ai_controller.py",
+      "size": 28221
+    },
+    {
+      "name": "ANTICOMPUTER_AI_ARCHITECTURE.md",
+      "path": "GIGA/NOT Computers/Ai control system for NOT computers - HEPI/ANTICOMPUTER_AI_ARCHITECTURE.md",
+      "size": 16225
+    },
+    {
+      "name": "uputstvo-za-e-prijavu-patenti.pdf",
+      "path": "GIGA/NOT Computers/HEPI monero ready submitted/uputstvo-za-e-prijavu-patenti.pdf",
+      "size": 294546
+    },
+    {
+      "name": "crte3.pdf",
+      "path": "GIGA/NOT Computers/HEPI monero ready submitted/crte3.pdf",
+      "size": 56239
+    },
+    {
+      "name": "3ahtev.pdf",
+      "path": "GIGA/NOT Computers/HEPI monero ready submitted/3ahtev.pdf",
+      "size": 28151
+    },
+    {
+      "name": "screen.jpg",
+      "path": "GIGA/NOT Computers/HEPI monero ready submitted/screen.jpg",
+      "size": 80222
+    },
+    {
+      "name": "PRIJ-OPIS.pdf",
+      "path": "GIGA/NOT Computers/HEPI monero ready submitted/PRIJ-OPIS.pdf",
+      "size": 53810
+    },
+    {
+      "name": "screen2.jpg",
+      "path": "GIGA/NOT Computers/HEPI monero ready submitted/screen2.jpg",
+      "size": 35062
+    },
+    {
+      "name": "telescope.docx",
+      "path": "GIGA/Satelittes/telescope.docx",
+      "size": 11646
+    },
+    {
+      "name": "OSAC.pdf",
+      "path": "GIGA/Satelittes/OSAC.pdf",
+      "size": 261643
+    },
+    {
+      "name": "qrpws.pdf",
+      "path": "GIGA/Satelittes/qrpws.pdf",
+      "size": 196684
+    },
+    {
+      "name": "ORRT.pdf",
+      "path": "GIGA/Satelittes/ORRT.pdf",
+      "size": 373484
+    },
+    {
+      "name": "ORRT.py",
+      "path": "GIGA/Satelittes/ORRT ai control/ORRT.py",
+      "size": 26968
+    },
+    {
+      "name": "node.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/node.js",
+      "size": 8766
+    },
+    {
+      "name": "file_list_signed.pdf",
+      "path": "GIGA/Aethyr Blockchain/aethyr/file_list_signed.pdf",
+      "size": 11589195
+    },
+    {
+      "name": "layout.tsx",
+      "path": "GIGA/Aethyr Blockchain/aethyr/app/layout.tsx",
+      "size": 380
+    },
+    {
+      "name": "globals.css",
+      "path": "GIGA/Aethyr Blockchain/aethyr/app/globals.css",
+      "size": 23
+    },
+    {
+      "name": "btc.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/btc.js",
+      "size": 9369
+    },
+    {
+      "name": "signer.js.backup",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/signer.js.backup",
+      "size": 6427
+    },
+    {
+      "name": "solana.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/solana.js",
+      "size": 1515
+    },
+    {
+      "name": "watchdog.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/watchdog.js",
+      "size": 16253
+    },
+    {
+      "name": "rpc.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/rpc.js",
+      "size": 9205
+    },
+    {
+      "name": "relayer.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/relayer.js",
+      "size": 12371
+    },
+    {
+      "name": "redeploy.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/redeploy.js",
+      "size": 2163
+    },
+    {
+      "name": "hst_service.py",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/hst_service.py",
+      "size": 22744
+    },
+    {
+      "name": "recover.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/recover.js",
+      "size": 12215
+    },
+    {
+      "name": "bitcoin_absorber.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/bitcoin_absorber.js",
+      "size": 22217
+    },
+    {
+      "name": "config.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/config.js",
+      "size": 6293
+    },
+    {
+      "name": "telegram.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/telegram.js",
+      "size": 34754
+    },
+    {
+      "name": "oracle_feeder.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/oracle_feeder.js",
+      "size": 4854
+    },
+    {
+      "name": "node.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/node.js",
+      "size": 8561
+    },
+    {
+      "name": "deploy.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/deploy.js",
+      "size": 4452
+    },
+    {
+      "name": "cortex.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/cortex.js",
+      "size": 14042
+    },
+    {
+      "name": "signer.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/signer.js",
+      "size": 5373
+    },
+    {
+      "name": "auxpow.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/auxpow.js",
+      "size": 8487
+    },
+    {
+      "name": "observer.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/observer.js",
+      "size": 4003
+    },
+    {
+      "name": "hardhat.config.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/hardhat.config.js",
+      "size": 1624
+    },
+    {
+      "name": "register_ayr.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/register_ayr.js",
+      "size": 1586
+    },
+    {
+      "name": "consensus.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/consensus.js",
+      "size": 19596
+    },
+    {
+      "name": "utxo_native.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/utxo_native.js",
+      "size": 13216
+    },
+    {
+      "name": "audit.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/audit.js",
+      "size": 1231
+    },
+    {
+      "name": "AYROracle.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYROracle.sol",
+      "size": 3156
+    },
+    {
+      "name": "UTXORegistry.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/UTXORegistry.sol",
+      "size": 6052
+    },
+    {
+      "name": "AYRToken.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRToken.sol",
+      "size": 1870
+    },
+    {
+      "name": "AYRStaking.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRStaking.sol",
+      "size": 6578
+    },
+    {
+      "name": "WrappedToken.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/WrappedToken.sol",
+      "size": 3535
+    },
+    {
+      "name": "AYRSwapRouter.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRSwapRouter.sol",
+      "size": 8635
+    },
+    {
+      "name": "AYRMockOracle.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/AYRMockOracle.sol",
+      "size": 4664
+    },
+    {
+      "name": "BridgeLock.sol",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/contracts/BridgeLock.sol",
+      "size": 913
+    },
+    {
+      "name": "bsc-rpc-checker.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/plugins/bsc-rpc-checker.js",
+      "size": 906
+    },
+    {
+      "name": "repair-node-plugin.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/plugins/repair-node-plugin.js",
+      "size": 1166
+    },
+    {
+      "name": "test-price.js",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/plugins/test-price.js",
+      "size": 265
+    },
+    {
+      "name": "AYROracle.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYROracle.sol/AYROracle.json",
+      "size": 20804
+    },
+    {
+      "name": "AYROracle.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYROracle.sol/AYROracle.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "UTXORegistry.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/UTXORegistry.sol/UTXORegistry.json",
+      "size": 31027
+    },
+    {
+      "name": "UTXORegistry.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/UTXORegistry.sol/UTXORegistry.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "AYRToken.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRToken.sol/AYRToken.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "AYRToken.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRToken.sol/AYRToken.json",
+      "size": 17827
+    },
+    {
+      "name": "AYRStaking.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRStaking.sol/AYRStaking.json",
+      "size": 37241
+    },
+    {
+      "name": "AYRStaking.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRStaking.sol/AYRStaking.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "WrappedToken.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/WrappedToken.sol/WrappedToken.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "WrappedToken.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/WrappedToken.sol/WrappedToken.json",
+      "size": 33181
+    },
+    {
+      "name": "IOracle.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IOracle.json",
+      "size": 602
+    },
+    {
+      "name": "IERC20Mintable.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IERC20Mintable.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "IERC20Mintable.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IERC20Mintable.json",
+      "size": 2881
+    },
+    {
+      "name": "IOracle.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/IOracle.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "AYRSwapRouter.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/AYRSwapRouter.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "AYRSwapRouter.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRSwapRouter.sol/AYRSwapRouter.json",
+      "size": 55449
+    },
+    {
+      "name": "AYRMockOracle.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRMockOracle.sol/AYRMockOracle.json",
+      "size": 28579
+    },
+    {
+      "name": "AYRMockOracle.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/AYRMockOracle.sol/AYRMockOracle.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "BridgeLock.dbg.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/BridgeLock.sol/BridgeLock.dbg.json",
+      "size": 105
+    },
+    {
+      "name": "BridgeLock.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/contracts/BridgeLock.sol/BridgeLock.json",
+      "size": 10907
+    },
+    {
+      "name": "a514917c763e1cba3e1217e2a7db45d4.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/build-info/a514917c763e1cba3e1217e2a7db45d4.json",
+      "size": 279381
+    },
+    {
+      "name": "d23754c3f4ca9ff16ae9cf90b5a2c4b7.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/artifacts/build-info/d23754c3f4ca9ff16ae9cf90b5a2c4b7.json",
+      "size": 2678288
+    },
+    {
+      "name": "solidity-files-cache.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/scripts/cache/solidity-files-cache.json",
+      "size": 7301
+    },
+    {
+      "name": "2e53675bc339241313225e84253c8ea7.json",
+      "path": "GIGA/Aethyr Blockchain/aethyr/artifacts/build-info/2e53675bc339241313225e84253c8ea7.json",
+      "size": 1850121
+    },
+    {
+      "name": "aethyr-blockchain.html",
+      "path": "GIGA/Aethyr Blockchain/old/aethyr-blockchain.html",
+      "size": 170227
+    },
+    {
+      "name": "aethyr-blockchain.txt",
+      "path": "GIGA/Aethyr Blockchain/old/aethyr-blockchain.txt",
+      "size": 170227
+    },
+    {
+      "name": "m43.png",
+      "path": "GIGA/Motor/m43.png",
+      "size": 966519
+    },
+    {
+      "name": "motor.pdf",
+      "path": "GIGA/Motor/motor.pdf",
+      "size": 1221140
+    },
+    {
+      "name": "00_START_HERE.txt",
+      "path": "GIGA/Motor/Control mechanism for Cascade Motor/00_START_HERE.txt",
+      "size": 16152
+    },
+    {
+      "name": "QUICK_REFERENCE.md",
+      "path": "GIGA/Motor/Control mechanism for Cascade Motor/QUICK_REFERENCE.md",
+      "size": 13950
+    },
+    {
+      "name": "cascade_motor_control.py",
+      "path": "GIGA/Motor/Control mechanism for Cascade Motor/cascade_motor_control.py",
+      "size": 28221
+    },
+    {
+      "name": "README.md",
+      "path": "GIGA/Motor/Control mechanism for Cascade Motor/README.md",
+      "size": 16828
+    },
+    {
+      "name": "cascade_physics_engine.py",
+      "path": "GIGA/Motor/Control mechanism for Cascade Motor/cascade_physics_engine.py",
+      "size": 20604
+    },
+    {
+      "name": "ver 0.1.zip",
+      "path": "GIGA/AURA/ver 0.1.zip",
+      "size": 8932
+    },
+    {
+      "name": "0.3.zip",
+      "path": "GIGA/AURA/0.3.zip",
+      "size": 17126
+    },
+    {
+      "name": "AURA 0.2.zip",
+      "path": "GIGA/AURA/AURA 0.2.zip",
+      "size": 11956
+    }
+  ]
+}

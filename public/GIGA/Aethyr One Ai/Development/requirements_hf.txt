@@ -1,0 +1,9 @@
+torch
+numpy
+datasets
+tiktoken
+tqdm
+pandas
+pyarrow
+gradio
+transformers
